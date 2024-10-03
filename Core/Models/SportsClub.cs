@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace Core.Models
 {
     public class SportsClub
     {
-        private List<Coach> _coachList;
-        private List<Player> _playerList;
-        public List<Staff> _staffList;
-        public int Id { get; set; }
+        private List<Coach> _coachList = new();
+        private List<Player> _playerList = new();
+        public List<Staff> _staffList = new();
+        public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime Rising { get; set; }

@@ -1,4 +1,5 @@
 ﻿using Core.Enums;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Models
 {
@@ -12,5 +13,8 @@ namespace Core.Models
         public int Goals { get; set; }
         public int Assists { get; set; }
         public int PlayedMatches { get; set; }
+        [ForeignKey("PlayerClub")]
+        public Guid PlayerClubId { get; set; }
+        public SportsClub? PlayerClub { get; set; }
     }
 }
