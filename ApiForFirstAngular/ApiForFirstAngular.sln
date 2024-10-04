@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiForFirstAngular", "ApiFo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "..\Core\Core.csproj", "{53BB9064-1636-46C3-BADA-77F21017D710}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "..\DataAccess\DataAccess.csproj", "{B27457B4-5279-40C3-9542-387F03BBF0D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "..\DataAccess\DataAccess.csproj", "{B27457B4-5279-40C3-9542-387F03BBF0D0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "..\Infrastructure\Infrastructure.csproj", "{BEBDBE4D-F9CC-474F-876E-0D8B00B3FDD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{B27457B4-5279-40C3-9542-387F03BBF0D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B27457B4-5279-40C3-9542-387F03BBF0D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B27457B4-5279-40C3-9542-387F03BBF0D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEBDBE4D-F9CC-474F-876E-0D8B00B3FDD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEBDBE4D-F9CC-474F-876E-0D8B00B3FDD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEBDBE4D-F9CC-474F-876E-0D8B00B3FDD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEBDBE4D-F9CC-474F-876E-0D8B00B3FDD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
