@@ -1,10 +1,12 @@
-﻿namespace Infrastructure.Interfaces
+﻿using Infrastructure.Comands.User;
+
+namespace Infrastructure.Interfaces
 {
     public interface IUserServices
     {
-        Task LoginUserAsync();
-        Task CreateUserAsync();
-        Task DeleteUserAsync();
-        Task GetUserByIdAsync(Guid id);
+        Task LoginUserAsync(LoginUser command);
+        Task CreateUserAsync(RegisterUser command);
+        Task<bool> DeleteUserAsync(Guid userId);
+        Task GetUserByIdAsync(Guid userId);
     }
 }
