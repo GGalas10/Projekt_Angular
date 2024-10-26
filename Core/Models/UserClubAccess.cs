@@ -6,5 +6,6 @@
         public Guid UserId { get;set; }
         public Guid SportsClubId { get; set; }
         public SportsClub SportsClub { get; set; }
+        public UserClubAccess() { }
     }
 }

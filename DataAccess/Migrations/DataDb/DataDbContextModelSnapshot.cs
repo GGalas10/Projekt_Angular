@@ -65,6 +65,24 @@ namespace DataAccess.Migrations.DataDb
                     b.ToTable("Coaches");
                 });
 
+            modelBuilder.Entity("Core.Models.ErrorModel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("CreateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ErrorMessage")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ErrorModels");
+                });
+
             modelBuilder.Entity("Core.Models.Player", b =>
                 {
                     b.Property<Guid>("Id")

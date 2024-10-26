@@ -1,8 +1,8 @@
 ﻿namespace Infrastructure.Comands.User
 {
-    public struct LoginUser
+    public sealed class LoginUser
     {
         public string login { get; set; }
-        public string password { get; set; }
+        public string password { get; set; }       
     }
 }

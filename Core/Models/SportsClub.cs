@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Core.Models
+﻿namespace Core.Models
 {
     public class SportsClub
     {
         private List<Coach> _coachList = new();
         private List<Player> _playerList = new();
-        public List<Staff> _staffList = new();
+        private List<Staff> _staffList = new();
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
@@ -15,6 +12,13 @@ namespace Core.Models
         public IEnumerable<Player> PlayerList => _playerList;
         public IEnumerable<Coach> CoachList => _coachList;
         public IEnumerable<Staff> StaffList => _staffList;
+        private SportsClub() { }
+        public SportsClub(string name, string description, DateTime rising)
+        {
+            Name = name;
+            Description = description;
+            Rising = rising;
+        }
         public void AddPlayer(Player player)
         {
             if (player == null)
@@ -45,6 +49,15 @@ namespace Core.Models
         {
             if (coach == null) throw new Exception("Coach_Is_Null_RemoveCoach");
             _coachList.Remove(coach);
+        }
+        public void UpdateFromModel(SportsClub model)
+        {
+            if (model == null)
+                throw new Exception("Modal_Cannot_Be_Null_UpdateModel");
+            Name = string.IsNullOrEmpty(model.Name) ? Name : model.Name; 
+            Description = string.IsNullOrEmpty(model.Description) ? Description : model.Description;
+            if(model.Rising != DateTime.MinValue && model.Rising != Rising)
+                Rising = model.Rising;
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Infrastructure.DTOs.User
 {
-    public struct UserDTO
+    public class UserDTO
     {
         public string name { get; set; }
     }

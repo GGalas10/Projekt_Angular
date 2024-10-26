@@ -1,8 +1,6 @@
 <nav class="navbar bg-primary">
-    <div class="container-fluid d-flex justify-content-center">
-        <span class="navbar-brand text-white m-0">Test {{def}}</span>
-        
-    </div>
-</nav>
-<input type="text" #testName [value]="def">
-<button (click)="testEventBinding(testName.value)">{{def}}</button>
+    <li class="d-flex" >
+        <ul><a routerLink="home" style="color: black;">Home</a></ul>
+        <ul><a routerLink="login" style="color: black;">Login</a></ul>
+    </li>
+</nav> 

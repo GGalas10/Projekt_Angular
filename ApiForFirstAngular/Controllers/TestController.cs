@@ -2,9 +2,12 @@
 
 namespace ApiForFirstAngular.Controllers
 {
+    
     public class TestController : Controller
     {
-        public IActionResult Index()
+		[Route("/Test")]
+        [HttpGet]
+		public IActionResult Index()
         {
             return Json("Testowa odpowiedź");
         }

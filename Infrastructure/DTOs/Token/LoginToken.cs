@@ -4,6 +4,6 @@
     {
         public string jwtToken { get; set; }
         public string refreshToken { get; set; }
-        public DateTime tokenExpiredAt { get; set; }
+        public long tokenExpiredAt { get; set; }
     }
 }

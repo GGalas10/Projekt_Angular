@@ -13,6 +13,6 @@ namespace DataAccess.Contexts
         internal DbSet<Player> Players { get; set; }
         internal DbSet<Staff> Staffs { get; set; }
         internal DbSet<UserClubAccess> UserClubAccesses { get; set; }
-
+        internal DbSet<ErrorModel> ErrorModels { get; set; }
     }
 }
