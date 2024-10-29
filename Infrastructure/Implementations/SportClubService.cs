@@ -41,7 +41,7 @@ namespace Infrastructure.Implementations
         public async Task<ClubDetailsDTO> GetClubById(Guid clubId)
         {
             if (clubId == Guid.Empty)
-                throw new Exception("ClubId_Cannot_Be_Empty_DeleteClub");
+                throw new Exception("ClubId_Cannot_Be_Empty_GetClubById");
             var result = await _clubRepository.GetClubByIdAsync(clubId);
             if (result == null)
                 throw new Exception("Cannot_Find_Club_GetClubById");
