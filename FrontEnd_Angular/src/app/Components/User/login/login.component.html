@@ -1,0 +1,5 @@
+<section>
+<app-login-form (loginCommand)="Login($event)" (IsRegister)="ChangeToRegister($event)"  *ngIf="IsLogin"></app-login-form>
+<app-register (loginEmit)="ChangeToRegister($event)" (register)="Register($event)" *ngIf="!IsLogin"></app-register>
+<app-base-alert *ngIf="ShowAlert" [baseAlert]="baseAlert"></app-base-alert>
+</section>

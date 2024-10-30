@@ -1,60 +1,81 @@
-*, *::before, *::after{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-p,h1,h2,h3,h4,h5,h6{
-    color:whitesmoke;
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: whitesmoke;
 }
-.Button-Modal{
-    border-radius: 15px;
-    background-color: red;
-    width: 25%;
+.Button-Modal {
+  border-radius: 15px;
+  background-color: red;
+  width: 25%;
 }
-a{
-    text-decoration: none;
+.UnderstandBtn {
+  padding: 5px 10px;
+  background: green;
+  border: none;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  color: whitesmoke;
 }
-.customErrorBody{
-    background-image: url("/404.png");
-    background-repeat: repeat;
-    background-position: center;
+a {
+  text-decoration: none;
 }
-.normalBgBody{
-        background-image: linear-gradient(
-        5deg,
-        hsl(93deg 96% 18%) 0%,
-        hsl(94deg 94% 18%) 12%,
-        hsl(96deg 93% 19%) 18%,
-        hsl(98deg 92% 19%) 22%,
-        hsl(100deg 90% 20%) 26%,
-        hsl(102deg 88% 21%) 29%,
-        hsl(104deg 86% 21%) 33%,
-        hsl(107deg 84% 22%) 36%,
-        hsl(109deg 82% 23%) 39%,
-        hsl(113deg 79% 24%) 42%,
-        hsl(116deg 77% 24%) 44%,
-        hsl(121deg 77% 25%) 47%,
-        hsl(126deg 89% 24%) 50%,
-        hsl(124deg 77% 26%) 53%,
-        hsl(122deg 70% 27%) 56%,
-        hsl(121deg 64% 28%) 58%,
-        hsl(119deg 61% 29%) 61%,
-        hsl(118deg 58% 30%) 64%,
-        hsl(118deg 56% 30%) 67%,
-        hsl(117deg 54% 31%) 71%,
-        hsl(116deg 52% 31%) 74%,
-        hsl(115deg 50% 32%) 78%,
-        hsl(115deg 49% 33%) 82%,
-        hsl(114deg 47% 33%) 88%,
-        hsl(114deg 45% 34%) 100%
-      );
-      background-repeat: no-repeat;
-      background-position: center;
-      height: 100vh;    
+.customErrorBody {
+  background-image: url('/404.png');
+  background-repeat: repeat;
+  background-position: center;
 }
-.hidden{
-    display: none;
+.normalBgBody {
+  background-image: linear-gradient(
+    5deg,
+    hsl(93deg 96% 18%) 0%,
+    hsl(94deg 94% 18%) 12%,
+    hsl(96deg 93% 19%) 18%,
+    hsl(98deg 92% 19%) 22%,
+    hsl(100deg 90% 20%) 26%,
+    hsl(102deg 88% 21%) 29%,
+    hsl(104deg 86% 21%) 33%,
+    hsl(107deg 84% 22%) 36%,
+    hsl(109deg 82% 23%) 39%,
+    hsl(113deg 79% 24%) 42%,
+    hsl(116deg 77% 24%) 44%,
+    hsl(121deg 77% 25%) 47%,
+    hsl(126deg 89% 24%) 50%,
+    hsl(124deg 77% 26%) 53%,
+    hsl(122deg 70% 27%) 56%,
+    hsl(121deg 64% 28%) 58%,
+    hsl(119deg 61% 29%) 61%,
+    hsl(118deg 58% 30%) 64%,
+    hsl(118deg 56% 30%) 67%,
+    hsl(117deg 54% 31%) 71%,
+    hsl(116deg 52% 31%) 74%,
+    hsl(115deg 50% 32%) 78%,
+    hsl(115deg 49% 33%) 82%,
+    hsl(114deg 47% 33%) 88%,
+    hsl(114deg 45% 34%) 100%
+  );
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
 }
-html{
-    font-size:15px;
+.hidden {
+  display: none;
+}
+html {
+  font-size: 15px;
+}
+.buttonAsText {
+  background-color: transparent;
+  color: whitesmoke;
+  border: none;
 }

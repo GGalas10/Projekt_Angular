@@ -1,0 +1,56 @@
+.LoginForm {
+  display: grid;
+  justify-content: center;
+  margin: 25px auto auto;
+  background-color: #5fec414f;
+  width: 50%;
+  height: 300px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
+  padding: 15px 0;
+}
+h2 {
+  text-align: center;
+}
+.buttonAsText {
+  font-weight: bolder;
+}
+form {
+  display: grid;
+  button {
+    border: none;
+    border-radius: 15px;
+    padding: 5px 10px;
+    width: 40%;
+    margin: 10px auto auto;
+    background-color: rgb(180, 111, 19);
+    color: rgb(3, 12, 3);
+    font-weight: 600;
+    transition-duration: 0.4s;
+  }
+  button:hover {
+    color: rgb(180, 111, 19);
+    background-color: rgb(3, 12, 3);
+  }
+  label {
+    text-align: center;
+    color: whitesmoke;
+    font-size: 1.1rem;
+    margin: 5px auto auto;
+  }
+  input {
+    min-width: 60%;
+    margin: 5px auto auto;
+    text-align: center;
+    padding: 1px 5px;
+    border-radius: 15px;
+    background-color: transparent;
+    color: whitesmoke;
+    outline: none;
+  }
+  input:focus,
+  input:active {
+    border: 1px dotted salmon;
+  }
+}

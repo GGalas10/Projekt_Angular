@@ -1,0 +1,25 @@
+.Background-Modal{
+    top:0;
+    left:0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px);
+    z-index: 1000;
+    position: absolute;
+    height: 100%;
+}
+.Main-Modal{
+    z-index: 1001;
+    position: fixed;
+    top:20%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width: 640px;
+    max-width: 90%;
+    min-height: 15vh;
+    background-color: rgba(70, 56, 105, 0.3);
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+    text-align: center;
+}

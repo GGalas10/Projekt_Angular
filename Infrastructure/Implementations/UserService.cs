@@ -39,7 +39,7 @@ namespace Infrastructure.Implementations
 
         public async Task CreateUserAsync(RegisterUser command)
         {
-            if (command == null)
+            if (command == null || command.Name == null || command.Password == null)
                 throw new Exception("Command_Cannot_Be_Null_CreateUser");
             var newUser = new User(command.Name,command.Password);
             await _userRepository.CreateUserAsync(newUser);

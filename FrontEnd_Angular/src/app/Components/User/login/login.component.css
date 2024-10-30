@@ -1,0 +1,7 @@
+section{
+    width: 100%;
+    display: grid;
+}
+app-login-form{
+    width: 100%;
+}

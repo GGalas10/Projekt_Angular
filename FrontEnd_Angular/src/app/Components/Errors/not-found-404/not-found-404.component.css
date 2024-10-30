@@ -1,0 +1,14 @@
+h1,
+h2 {
+  text-align: center;
+  color: whitesmoke;
+  margin: auto;
+  user-select: none;
+}
+h2 {
+  font-size: 3.5rem;
+}
+h1 {
+  font-size: 4rem;
+  margin-top: 25%;
+}

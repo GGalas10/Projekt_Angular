@@ -19,7 +19,7 @@ namespace ApiForFirstAngular.Controllers
             return Ok(token);
         }
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterUser command)
+        public async Task<IActionResult> Register([FromBody]RegisterUser command)
         {
             await _userService.CreateUserAsync(command);
             return Created();

@@ -16,7 +16,7 @@ namespace DataAccess.Repositories
         {
             if (user == null)
                 throw new Exception("User_Cannot_Be_null_CreateUser");
-            var checkUser = _context.Users.AsNoTracking().FirstOrDefaultAsync(x=>x.Login == user.Login);
+            var checkUser = await _context.Users.AsNoTracking().FirstOrDefaultAsync(x=>x.Login == user.Login);
             if (checkUser != null)
                 throw new Exception("User_With_Login_Already_Exist");
             await _context.AddAsync(user);

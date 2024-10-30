@@ -1,0 +1,16 @@
+<div class="LoginForm">
+  <h2>Jeśli nie masz konta zarejestruj się poniżej</h2>
+  <h2>
+    lub
+    <button class="buttonAsText" (click)="EmitRegister()">Zaloguj się</button>
+  </h2>
+  <form (ngSubmit)="onSubmit()" #testForm="ngForm">
+    <label for="loginInput">Login:</label>
+    <input type="text" [(ngModel)]="login" name="login" />
+
+    <label for="passwordInput">Hasło:</label>
+    <input type="text" [(ngModel)]="password" name="password" />
+
+    <button type="submit">Zarejestruj</button>
+  </form>
+</div>
