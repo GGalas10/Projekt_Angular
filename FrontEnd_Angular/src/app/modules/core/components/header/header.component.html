@@ -1,7 +1,7 @@
 <nav class="navbar customNavbar">
   <li class="d-flex">
     <ul>
-      <a href="/home">
+      <a href="/">
         <img src="Logo.png" height="40px" alt="Website logo" /></a>
     </ul>
   </li>
@@ -18,7 +18,7 @@
   </li>
   <li class="d-flex" style="margin-right: 15px">
     <ul>
-      <a routerLink="login" style="color: whitesmoke" *ngIf="!isLogin; else LogOut">Login</a>
+      <a href="/login" style="color: whitesmoke" *ngIf="!isLogin; else LogOut">Login</a>
     </ul>
     <ng-template #LogOut>
       <ul>

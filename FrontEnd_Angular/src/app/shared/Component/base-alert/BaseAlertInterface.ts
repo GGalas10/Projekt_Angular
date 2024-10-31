@@ -1,4 +1,4 @@
-export interface BaseAlert{
-    Title:string;
-    Message:string;
+export interface BaseAlert {
+  Title: string;
+  Message: string;
 }

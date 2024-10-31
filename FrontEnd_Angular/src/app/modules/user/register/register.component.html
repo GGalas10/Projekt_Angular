@@ -1,0 +1,26 @@
+<div class="LoginForm">
+    <h2>Jeśli nie masz konta zarejestruj się poniżej</h2>
+    <h2>
+        lub
+        <a class="buttonAsText" href="/login">Zaloguj się</a>
+    </h2>
+    <form (ngSubmit)="onSubmit()" [formGroup]="registerUser">
+        <label for="loginInput">Login:</label>
+        <input type="text" formControlName="login" name="login" />
+
+        <label for="passwordInput">Hasło:</label>
+        <input type="text" formControlName="password" name="password" />
+
+        <div style="height: 55px;display: grid;">
+            <ng-container *ngIf="!IsClick;else loader">
+                <button type="submit">Zarejestruj</button>
+            </ng-container>
+            <ng-template #loader>
+                <div class="loader" #loader></div>
+            </ng-template>
+        </div>
+    </form>
+</div>
+<ng-container *ngIf="ShowAlert">
+    <app-base-alert [baseAlert]="baseAlert"></app-base-alert>
+</ng-container>

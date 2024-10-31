@@ -1,0 +1,36 @@
+.NewestSection {
+  text-align: center;
+  display: grid;
+  h3 {
+    font-size: 2rem;
+  }
+}
+.ClubPresentation {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 80%;
+}
+.OneClub {
+  width: 30%;
+  height: 350px;
+  border: 1px solid black;
+  border-radius: 15px;
+  padding: 15px 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10.5px);
+  -webkit-backdrop-filter: blur(10.5px);
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  display: grid;
+  justify-content: center;
+}
+.DetailsBtn {
+  border: 1px solid;
+  border-radius: 16px;
+  width: 60%;
+  margin: auto;
+  cursor: pointer;
+  user-select: none;
+}
