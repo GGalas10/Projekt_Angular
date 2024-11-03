@@ -27,7 +27,7 @@ namespace ApiForFirstAngular.Controllers
         }
         [BindUserId]
         [HttpPost]
-        public async Task<IActionResult> CreateClub(CreateClub command)
+        public async Task<IActionResult> CreateClub([FromBody]CreateClub command)
         {
             var result = await _sportClubService.CreateClub(command, UserId);
             return Created();
@@ -40,9 +40,15 @@ namespace ApiForFirstAngular.Controllers
             return Ok(result);
         }
         [HttpGet]
-        public async Task<IActionResult> GetAllClub()
+        public async Task<IActionResult> GetAllClubs()
         {
             var result = await _sportClubService.GetClubForHomeList();
+            return Ok(result);
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetClubIdByName(string clubName)
+        {
+            var result = await _sportClubService.GetClubIdByNameAsync(clubName);
             return Ok(result);
         }
     }

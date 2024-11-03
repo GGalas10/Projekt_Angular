@@ -65,14 +65,19 @@ a {
     hsl(114deg 45% 34%) 100%
   );
   background-repeat: no-repeat;
-  background-position: center;
-  height: 100vh;
+  background-position: cover;
+  margin: 0px;
+  min-height: 100%;
+  width: 100%;
 }
 .hidden {
   display: none;
 }
 html {
   font-size: 15px;
+  margin: 0px;
+  min-height: 100%;
+  width: 100%;
 }
 .buttonAsText {
   background-color: transparent;
@@ -100,4 +105,26 @@ html {
   100% {
     transform: rotate(360deg);
   }
+}
+.SubmitButton {
+  margin: 15px;
+  border-radius: 15px;
+  color: whitesmoke;
+  border: none;
+  background-color: rgb(180, 111, 19);
+  color: rgb(3, 12, 3);
+}
+.SubmitButton:hover {
+  color: rgb(180, 111, 19);
+  background-color: rgb(3, 12, 3);
+}
+label,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: whitesmoke;
 }

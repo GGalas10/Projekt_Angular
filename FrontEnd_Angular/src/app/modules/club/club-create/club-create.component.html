@@ -1,0 +1,31 @@
+<h2>Dodaj swój klub do Naszej bazy</h2>
+<form (submit)="OnSubmit()" [formGroup]="createClubForm">
+    <div class="InuptContainer">
+
+        <input type="text" name="Name" formControlName="name" class="InputInsideContainer" (focus)='onFocus("name")'
+            (blur)="onBlur('name')">
+        <label for="floatingName" class="LabelInsideContainer" #floatingName>Nazwa klubu:</label>
+    </div>
+
+    <div class="InuptContainer" style="min-height: 54px;max-height: 254px; height: auto;margin-top: 0px !important;">
+        <label for="floatingDescription" class="LabelInsideContainer" #floatingDescription style="bottom: -27px;">Opis
+            klubu:</label>
+        <textarea [ariaMultiLine]="true" type="text" name="Name" formControlName="description"
+            class="InputInsideContainer" (focus)='onFocus("desc")' (blur)="onBlur('desc')"></textarea>
+
+    </div>
+
+    <div class="InuptContainer InuptContainer">
+        <label for="Name">Data powstania klubu:</label>
+        <input type="date" name="Name" formControlName="name" class="InputInsideContainer">
+    </div>
+
+    <div style="height: 55px;display: grid;">
+        <ng-container *ngIf="!IsClick;else loader">
+            <button type="submit" class="SubmitButton">Zapisz</button>
+        </ng-container>
+        <ng-template #loader>
+            <div class="loader" #loader></div>
+        </ng-template>
+    </div>
+</form>

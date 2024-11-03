@@ -76,5 +76,12 @@ namespace Infrastructure.Implementations
                 return ClubHomeDTO.GetListDTOFromModelList(result);
             return new List<ClubHomeDTO>();
         }
+        public async Task<Guid> GetClubIdByNameAsync(string clubName)
+        {
+            if (string.IsNullOrEmpty(clubName))
+                throw new Exception("ClubName_Cannot_Be_Empty_GetClubIdByName");
+            var result = await _clubRepository.GetClubByNameAsync(clubName);
+            return result.Id;
+        }
     }
 }

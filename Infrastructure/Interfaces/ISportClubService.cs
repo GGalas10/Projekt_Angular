@@ -12,5 +12,6 @@ namespace Infrastructure.Interfaces
         Task<ClubDetailsDTO> GetClubByName(string clubName);
         Task<List<ClubDetailsDTO>> GetAllUserClubs(Guid userId);
         Task<List<ClubHomeDTO>> GetClubForHomeList();
+        Task<Guid> GetClubIdByNameAsync(string clubName);
     }
 }
