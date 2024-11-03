@@ -5,12 +5,12 @@ import { ClubCreateComponent } from './club-create/club-create.component';
 
 const routes: Routes = [
   {
-    path: 'Club/Details/:clubId',
+    path: 'Details/:clubId',
     component: ClubDetailsComponent,
     title: 'Szczegóły',
   },
   {
-    path: 'Club/Create',
+    path: 'Create',
     component: ClubCreateComponent,
     title: 'Tworzenie klubu',
   },

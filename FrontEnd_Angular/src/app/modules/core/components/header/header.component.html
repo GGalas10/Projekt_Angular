@@ -7,7 +7,7 @@
   </li>
   <li class="d-flex">
     <ul>
-      <a href="/Club/Create" style="color: whitesmoke">Stwórz klub</a>
+      <a href="Club/Create" style="color: whitesmoke">Stwórz klub</a>
     </ul>
     <ul>
       <a routerLink="login" style="color: whitesmoke">Wszystkie zespoły</a>
@@ -18,7 +18,7 @@
   </li>
   <li class="d-flex" style="margin-right: 15px">
     <ul>
-      <a href="/login" style="color: whitesmoke" *ngIf="!isLogin; else LogOut">Login</a>
+      <a href="User/login" style="color: whitesmoke" *ngIf="!isLogin; else LogOut">Login</a>
     </ul>
     <ng-template #LogOut>
       <ul>

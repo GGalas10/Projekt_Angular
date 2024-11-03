@@ -1,7 +1,8 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ClubServices } from '../../core/Services/API/ClubServices';
 import { Router } from '@angular/router';
+import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-club-create',
@@ -12,12 +13,18 @@ export class ClubCreateComponent {
   @ViewChild('floatingName') nameLabel!: ElementRef;
   @ViewChild('floatingDescription') descriptionLabel!: ElementRef;
   createClubForm = new FormGroup({
-    name: new FormControl(''),
-    description: new FormControl(''),
-    rising: new FormControl<Date>(new Date()),
+    name: new FormControl('', [
+      Validators.minLength(10),
+      Validators.required,
+      Validators.maxLength(50),
+    ]),
+    description: new FormControl('', [Validators.maxLength(255)]),
+    rising: new FormControl<Date>(new Date(), [Validators.required]),
   });
   IsClick = false;
-
+  get formControls() {
+    return this.createClubForm.controls;
+  }
   constructor(
     private clubService: ClubServices,
     private router: Router,
@@ -26,20 +33,19 @@ export class ClubCreateComponent {
     this.IsClick = true;
     this.clubService
       .CreateClubCommand({
-        name: String(this.createClubForm.value.name),
-        description: String(this.createClubForm.value.description),
+        name: String(this.formControls.name),
+        description: String(this.formControls.description),
         rising: this.createClubForm.GetDate('rising'),
       })
+      .pipe(
+        switchMap(() =>
+          this.clubService.GetClubIdByName(String(this.formControls.name)),
+        ),
+      )
       .subscribe({
-        next: () => {
+        next: (value) => {
           this.IsClick = false;
-          this.clubService
-            .GetClubIdByName(String(this.createClubForm.value.name))
-            .subscribe({
-              next: (clubId) => {
-                this.router.navigate([`/Club/Details/${clubId}`]);
-              },
-            });
+          this.router.navigate([`/Club/Details/${value}`]);
         },
         error: (err) => {
           this.IsClick = false;

@@ -8,6 +8,6 @@ import { ClubCreateComponent } from './club-create/club-create.component';
 @NgModule({
   declarations: [ClubDetailsComponent, ClubCreateComponent],
   imports: [SharedModule, ClubRoutingModule],
-  exports: [ClubDetailsComponent, ClubCreateComponent],
+  exports: [],
 })
 export class ClubModule {}

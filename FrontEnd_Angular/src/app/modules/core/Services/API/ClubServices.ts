@@ -20,8 +20,8 @@ export class ClubServices {
       params,
     });
   }
-  CreateClubCommand(command: CreateCommand): Observable<any> {
-    return this.http.post(`${this.apiUrl}/Club/CreateClub`, command, {
+  CreateClubCommand(command: CreateCommand): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/Club/CreateClub`, command, {
       headers: this.headers,
     });
   }
