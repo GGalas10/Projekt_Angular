@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './modules/errors/not-found/not-found.component';
+import { authCanMatchGuard } from './modules/core/guards/Auth-CanMatch.guard';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
     path: 'Club',
     loadChildren: () =>
       import('../app/modules/club/club.module').then((m) => m.ClubModule),
+    canMatch: [authCanMatchGuard],
   },
   {
     path: 'User',

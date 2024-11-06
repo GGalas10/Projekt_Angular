@@ -49,7 +49,12 @@ builder.Services.AddAuthentication(options =>
     {
         OnMessageReceived = async context =>
         {
-            context.Token = context.Request.Cookies["Bearer"];
+            var authorizationHeader = context.Request.Headers["Authorization"].ToString();
+
+            if (!string.IsNullOrEmpty(authorizationHeader) && authorizationHeader.StartsWith("Bearer "))
+            {
+                context.Token = authorizationHeader.Substring("Bearer ".Length).Trim();
+            }
             await Task.CompletedTask;
         }
     };

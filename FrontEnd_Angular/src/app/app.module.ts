@@ -13,7 +13,5 @@ import { HealthCheckService } from './modules/core/Services/API/HealthCheckServi
   bootstrap: [AppComponent],
 })
 export class AppModule {
-  IsLogin = false;
-
   constructor(private _service: HealthCheckService) {}
 }

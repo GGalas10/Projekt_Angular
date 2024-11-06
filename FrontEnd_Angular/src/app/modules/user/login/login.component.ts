@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { BaseAlert } from '../../../shared/Component/base-alert/BaseAlertInterface';
 import { Router } from '@angular/router';
 import { LoginService } from '../../core/Services/API/LoginService';
+import { AuthService } from '../../core/Services/AuthService';
 
 @Component({
   selector: 'app-login',
@@ -21,6 +22,7 @@ export class LoginComponent {
   constructor(
     private _apiService: LoginService,
     private route: Router,
+    private authService: AuthService,
   ) {}
 
   onSubmit() {
@@ -32,13 +34,14 @@ export class LoginComponent {
       })
       .subscribe({
         next: (token) => {
-          console.log(token);
+          this.authService.LoginUser(token);
           this.ShowAlertFunction('Sukces', 'Udało się zalogować');
-          this.route.navigateByUrl('/home');
+          this.route.navigateByUrl('/');
           this.IsClick = false;
         },
         error: (err) => {
           this.IsClick = false;
+          console.log(err);
           if (err.status == 0) {
             this.ShowAlertFunction(
               'Błąd aplikacji',

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AppModule } from '../../../../app.module';
+import { AuthService } from '../../Services/AuthService';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +9,16 @@ import { AppModule } from '../../../../app.module';
 })
 export class HeaderComponent {
   isLogin = false;
-  constructor(private module: AppModule) {
-    this.isLogin = this.module.IsLogin;
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+  ) {
+    this.authService.IsLogin.subscribe({
+      next: (value) => (this.isLogin = Boolean(value)),
+    });
+  }
+  Logout() {
+    this.authService.LogoutUser();
+    this.router.navigate(['/']);
   }
 }

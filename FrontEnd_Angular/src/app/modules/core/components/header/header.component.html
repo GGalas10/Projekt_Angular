@@ -1,11 +1,13 @@
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <nav class="navbar customNavbar">
-  <li class="d-flex">
+  <li class="d-flex leftBar">
     <ul>
       <a href="/">
         <img src="Logo.png" height="40px" alt="Website logo" /></a>
     </ul>
   </li>
-  <li class="d-flex">
+  <li class="d-flex centerBar">
     <ul>
       <a href="Club/Create" style="color: whitesmoke">Stwórz klub</a>
     </ul>
@@ -16,14 +18,16 @@
       <a routerLink="login" style="color: whitesmoke">Najbliższe mecze</a>
     </ul>
   </li>
-  <li class="d-flex" style="margin-right: 15px">
+  <li class="d-flex rightBar" *ngIf="!isLogin; else LogOut">
     <ul>
-      <a href="User/login" style="color: whitesmoke" *ngIf="!isLogin; else LogOut">Login</a>
+      <a href="User/login" style="color: whitesmoke">Login</a>
     </ul>
-    <ng-template #LogOut>
-      <ul>
-        <a style="color: whitesmoke">Wyloguj</a>
-      </ul>
-    </ng-template>
   </li>
+  <ng-template #LogOut>
+    <li class="d-flex rightBar">
+      <ul><a href="User/Details" style="color: whitesmoke">Szczegóły</a></ul>
+      <ul><a (click)="Logout()" style="color: whitesmoke;cursor: pointer;">Wyloguj</a></ul>
+    </li>
+  </ng-template>
+
 </nav>
