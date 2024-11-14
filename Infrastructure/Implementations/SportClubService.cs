@@ -71,6 +71,13 @@ namespace Infrastructure.Implementations
 
         public async Task<List<ClubHomeDTO>> GetClubForHomeList()
         {
+            var result = await _clubRepository.GetAllClubsWithoutRelationDataAsyncTake3();
+            if(result.Count >= 0)
+                return ClubHomeDTO.GetListDTOFromModelList(result);
+            return new List<ClubHomeDTO>();
+        }
+        public async Task<List<ClubHomeDTO>> GetAllClubs()
+        {
             var result = await _clubRepository.GetAllClubsWithoutRelationDataAsync();
             if(result.Count >= 0)
                 return ClubHomeDTO.GetListDTOFromModelList(result);

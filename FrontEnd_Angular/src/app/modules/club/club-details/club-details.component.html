@@ -1,2 +1,14 @@
-<p>club-details works!</p>
-<!-- <app-base-alert *ngIf="!this.baseModal" [baseAlert]="this.baseAlert"></app-base-alert> -->
+<!-- eslint-disable @angular-eslint/template/eqeqeq -->
+<div *ngIf="club != null;else Error">
+    <p>{{club.name}}</p>
+    <p>{{club.rising}}</p>
+    <p>{{club.description}}</p>
+</div>
+<ng-template #Error>
+    <section class="errorSection">
+        <h1>Wystąpił błąd</h1>
+        <p>Niestety nie udało się wczytać danych klubu.</p>
+        <p>Spróbuj ponownie później</p>
+    </section>
+</ng-template>
+<app-base-alert *ngIf="!this.baseModal" [baseAlert]="this.baseAlert"></app-base-alert>

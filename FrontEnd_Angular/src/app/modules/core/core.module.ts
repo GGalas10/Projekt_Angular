@@ -11,6 +11,7 @@ import {
 } from '@angular/common/http';
 import { AuthService } from './Services/AuthService';
 import { authInterceptor } from './interceptors/auth-interceptor.interceptor';
+import { errorCatchInterceptor } from './interceptors/error-catch.interceptor';
 
 @NgModule({
   declarations: [HeaderComponent],
@@ -22,11 +23,18 @@ import { authInterceptor } from './interceptors/auth-interceptor.interceptor';
     HealthCheckService,
     LoginService,
     provideHttpClient(withInterceptorsFromDi()),
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: authInterceptor,
-      multi: true,
-    },
+    [
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: authInterceptor,
+        multi: true,
+      },
+      {
+        provide: HTTP_INTERCEPTORS,
+        useClass: errorCatchInterceptor,
+        multi: true,
+      },
+    ],
   ],
 })
 export class CoreModule {}

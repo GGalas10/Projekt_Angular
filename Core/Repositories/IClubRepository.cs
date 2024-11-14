@@ -16,6 +16,7 @@ namespace Core.Repositories
         Task DeletePlayerFromClubAsync(Guid clubId,Guid playerId);
         Task DeleteCoachFromClubAsync(Guid clubId,Guid coachId);
         Task<List<SportsClub>> GetAllClubsWithoutRelationDataAsync();
+        Task<List<SportsClub>> GetAllClubsWithoutRelationDataAsyncTake3();
         Task<List<SportsClub>> GetAllClubsWithRelationDataAsync();
     }
 }

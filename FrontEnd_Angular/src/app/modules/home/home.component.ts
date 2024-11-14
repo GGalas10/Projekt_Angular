@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClubServices } from '../core/Services/API/ClubServices';
+import { HomeClubDTO } from '../../shared/Interfaces/Club';
 
 @Component({
   selector: 'app-home',
@@ -8,10 +9,10 @@ import { ClubServices } from '../core/Services/API/ClubServices';
 })
 export class HomeComponent implements OnInit {
   constructor(private clubService: ClubServices) {}
-
+  homeClubs!: HomeClubDTO[];
   ngOnInit(): void {
-    this.clubService.GetAllClub().subscribe({
-      next: (data) => console.log(data),
+    this.clubService.GetAllClubsForHome().subscribe({
+      next: (data) => (this.homeClubs = data),
       error: (err) => console.log(err),
     });
   }

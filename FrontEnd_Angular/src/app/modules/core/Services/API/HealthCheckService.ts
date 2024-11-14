@@ -8,6 +8,7 @@ import { environment } from '../../../../../environments/environment.development
 export class HealthCheckService implements OnDestroy {
   public ApiIsHealth = false;
   apiURL = environment.baseUrl;
+  private counter = 0;
   constructor(private http: HttpClient) {
     this.healthCheckAPI();
   }
@@ -25,7 +26,13 @@ export class HealthCheckService implements OnDestroy {
           next: (response) => {
             this.ApiIsHealth = response;
           },
-          error: () => (this.ApiIsHealth = false),
+          error: () => {
+            this.ApiIsHealth = false;
+            this.counter++;
+            if (this.counter == 20) {
+              this.unSub();
+            }
+          },
         });
       },
     });
@@ -34,6 +41,9 @@ export class HealthCheckService implements OnDestroy {
     return interval(30 * 60 * 1000);
   }
   ngOnDestroy(): void {
+    this.unSub();
+  }
+  private unSub(): void {
     this.Inter().subscribe().unsubscribe();
   }
 }

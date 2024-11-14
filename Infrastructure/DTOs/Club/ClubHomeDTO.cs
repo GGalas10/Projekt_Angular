@@ -6,6 +6,7 @@ namespace Infrastructure.DTOs.Club
     {
         public Guid clubId { get; set; }
         public string clubName { get; set; }
+        public DateTime rising { get; set; }
         public ClubHomeDTO() { }
         public static ClubHomeDTO GetDTOFromModel(SportsClub model)
         {
@@ -13,6 +14,7 @@ namespace Infrastructure.DTOs.Club
             {
                 clubId = model.Id,
                 clubName = model.Name,
+                rising = model.Rising
             };
         }
         public static List<ClubHomeDTO> GetListDTOFromModelList(List<SportsClub> modelList)

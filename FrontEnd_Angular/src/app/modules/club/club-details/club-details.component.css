@@ -1,0 +1,22 @@
+.errorSection {
+  text-align: center;
+  margin-top: 20px;
+  height: 200px;
+  width: 50%;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(11.1px);
+  -webkit-backdrop-filter: blur(11.1px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.errorSection p,
+h1 {
+  color: #640808;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
+}
+.errorSection p {
+  font-size: 1.4rem;
+}

@@ -2,8 +2,11 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../../environments/environment.development';
-import { ClubDetails } from '../../../../shared/Interfaces/ClubDetailsDTO';
-import { CreateCommand } from '../../../../shared/Interfaces/ClubCommand';
+import {
+  ClubDetails,
+  CreateCommand,
+  HomeClubDTO,
+} from '../../../../shared/Interfaces/Club';
 
 @Injectable({
   providedIn: 'root',
@@ -35,8 +38,16 @@ export class ClubServices {
       },
     );
   }
-  GetAllClub(): Observable<ClubDetails[]> {
-    return this.http.get<ClubDetails[]>(`${this.apiUrl}/Club/GetAllClubs`, {
+  GetAllClubsForHome(): Observable<HomeClubDTO[]> {
+    return this.http.get<HomeClubDTO[]>(
+      `${this.apiUrl}/Club/GetAllClubsForHome`,
+      {
+        headers: this.headers,
+      },
+    );
+  }
+  GetAllClub(): Observable<HomeClubDTO[]> {
+    return this.http.get<HomeClubDTO[]>(`${this.apiUrl}/Club/GetAllClubs`, {
       headers: this.headers,
     });
   }

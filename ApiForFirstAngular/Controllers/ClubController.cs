@@ -41,8 +41,14 @@ namespace ApiForFirstAngular.Controllers
         }
         
         [HttpGet]
-        [BindUserId]
         public async Task<IActionResult> GetAllClubs()
+        {
+            var result = await _sportClubService.GetAllClubs();
+            return Ok(result);
+        }
+        
+        [HttpGet]
+        public async Task<IActionResult> GetAllClubsForHome()
         {
             var result = await _sportClubService.GetClubForHomeList();
             return Ok(result);

@@ -25,7 +25,7 @@ namespace ApiForFirstAngular.Middlewares
                     await _errorService.AddErrorToDatabaseAsync(new string($"Controller: {context.Request.Path} Message: {ex.Message}"));
                     context.Response.StatusCode = StatusCodes.Status500InternalServerError;
                     context.Response.ContentType = "application/json";
-                    await context.Response.WriteAsJsonAsync($"ApplicationError:{ex.Message}");
+                    await context.Response.WriteAsJsonAsync($"ApplicationError: {ex.Message}");
                     return;
                 }
             }
