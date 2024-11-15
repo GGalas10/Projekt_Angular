@@ -1,0 +1,8 @@
+.BaseContainer {
+  width: 70%;
+  margin: auto;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.6);
+  border-radius: 15px;
+  padding: 15px 25px;
+}

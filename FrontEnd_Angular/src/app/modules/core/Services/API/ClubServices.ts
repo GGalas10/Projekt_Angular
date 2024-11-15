@@ -51,4 +51,9 @@ export class ClubServices {
       headers: this.headers,
     });
   }
+  GetAllUserClubs(): Observable<ClubDetails[]> {
+    return this.http.get<ClubDetails[]>(`${this.apiUrl}/Club/GetAllUserClub`, {
+      headers: this.headers,
+    });
+  }
 }

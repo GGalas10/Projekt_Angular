@@ -1,8 +1,22 @@
 <!-- eslint-disable @angular-eslint/template/eqeqeq -->
-<div *ngIf="club != null;else Error">
-    <p>{{club.name}}</p>
-    <p>{{club.rising}}</p>
+<div *ngIf="club != null;else Error" class="MainContainer">
+    <h2>Szczegóły klubu {{club.name}}</h2>
+    <p>Klub stworzony {{club.rising | date:"dd-mm-yyyy"}}</p>
+    <h3>Opis klubu:</h3>
     <p>{{club.description}}</p>
+    <div class="ButtonContainer">
+        <button [className]="this.PlayerActive? 'ActiveBtn':'InActiveBtn' " class="InActiveBtn"
+            (click)="changeActiveBtn('Player')">Piłkarze</button>
+        <button [className]="this.CoachActive? 'ActiveBtn':'InActiveBtn'"
+            (click)="changeActiveBtn('Coach')">Trenerzy</button>
+        <button [className]="this.StaffActive? 'ActiveBtn':'InActiveBtn'" class="InActiveBtn"
+            (click)="changeActiveBtn('Staff')">Personel</button>
+    </div>
+    <section id="">
+        <app-players *ngIf="this.PlayerActive" [players]="this.club.playerList"></app-players>
+        <app-coaches *ngIf="this.CoachActive" [coaches]="this.club.coachList"></app-coaches>
+        <app-staffs *ngIf="this.StaffActive" [staffs]="this.club.staffList"></app-staffs>
+    </section>
 </div>
 <ng-template #Error>
     <section class="errorSection">

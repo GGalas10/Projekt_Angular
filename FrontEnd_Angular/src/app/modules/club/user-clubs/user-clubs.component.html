@@ -1,0 +1,13 @@
+<section>
+    <div *ngIf="this.userClubs !== undefined">
+        <div *ngIf="this.userClubs.length>0;else empty">
+        </div>
+        <ng-container *ngFor="let item of this.userClubs">
+            {{item.name}}
+            <button>Edytuj</button>
+        </ng-container>
+    </div>
+    <ng-template #empty>
+        <h1>Nie dodałeś jeszcze żadnego klubu</h1>
+    </ng-template>
+</section>

@@ -1,0 +1,14 @@
+<div class="BaseContainer">
+    <section *ngIf="this.coaches.length>0;else empty">
+        <ng-container *ngFor="let coach of this.coaches">
+            <p>Imię: {{coach.FirstName}}</p>
+            <p>Nazwisko: {{coach.LastName}}</p>
+            <p>Trener od: {{coach.WhatTrains}}</p>
+            <p>Kontrakt od {{coach.ContractFrom|date:"dd-mm-yyyy"}}</p>
+            <p>Kontrakt do {{coach.ContractTo|date:"dd-mm-yyyy"}}</p>
+        </ng-container>
+    </section>
+    <ng-template #empty>
+        <h3>Jeszcze nie ma żadnego trenera</h3>
+    </ng-template>
+</div>

@@ -16,7 +16,9 @@ export class ClubDetailsComponent implements OnInit, OnDestroy {
   baseModal = true;
   baseAlert: BaseAlert = { Title: '', Message: '' };
   id!: string;
-
+  PlayerActive = false;
+  CoachActive = false;
+  StaffActive = false;
   constructor(
     private clubService: ClubServices,
     private router: Router,
@@ -51,6 +53,30 @@ export class ClubDetailsComponent implements OnInit, OnDestroy {
         }
       },
     });
+  }
+  changeActiveBtn(btnName: string) {
+    switch (btnName) {
+      case 'Player':
+        this.PlayerActive = true;
+        this.CoachActive = false;
+        this.StaffActive = false;
+        break;
+      case 'Staff':
+        this.PlayerActive = false;
+        this.CoachActive = false;
+        this.StaffActive = true;
+        break;
+      case 'Coach':
+        this.PlayerActive = false;
+        this.CoachActive = true;
+        this.StaffActive = false;
+        break;
+      default:
+        this.PlayerActive = false;
+        this.CoachActive = false;
+        this.StaffActive = false;
+        break;
+    }
   }
   ngOnDestroy(): void {
     this.observable.unsubscribe();

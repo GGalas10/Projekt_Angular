@@ -1,0 +1,14 @@
+<div class="BaseContainer">
+    <section *ngIf="this.staffs.length>0;else empty">
+        <ng-container *ngFor="let staff of this.staffs">
+            <p>Imię: {{staff.FirstName}}</p>
+            <p>Nazwisko: {{staff.LastName}}</p>
+            <p>Zawód: {{staff.JobPosition}}</p>
+            <p>Kontrakt od {{staff.ContractFrom|date:"dd-mm-yyyy"}}</p>
+            <p>Kontrakt do {{staff.ContractTo|date:"dd-mm-yyyy"}}</p>
+        </ng-container>
+    </section>
+    <ng-template #empty>
+        <h3>Jeszcze nie ma żadnej osoby z personelu</h3>
+    </ng-template>
+</div>

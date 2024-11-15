@@ -20,3 +20,33 @@ h1 {
 .errorSection p {
   font-size: 1.4rem;
 }
+.MainContainer {
+  display: grid;
+  margin: auto;
+  width: 80%;
+  text-align: center;
+  margin-top: 25px;
+}
+.ButtonContainer {
+  margin: 20px auto;
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+}
+.InActiveBtn {
+  border-radius: 15px 15px 5px 5px;
+  color: whitesmoke;
+  padding: 5px 15px;
+  background: transparent;
+}
+.InActiveBtn:hover {
+  opacity: 0.8;
+  transition-duration: 0.5s;
+}
+.ActiveBtn {
+  border-radius: 15px 15px 5px 5px;
+  color: whitesmoke;
+  padding: 5px 15px;
+  background: transparent;
+  font-weight: bolder;
+}

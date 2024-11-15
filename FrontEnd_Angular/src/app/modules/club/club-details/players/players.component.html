@@ -1,0 +1,24 @@
+<div class="BaseContainer">
+    <section *ngIf="this.players.length>0;else empty">
+        <ng-container *ngFor="let player of this.players">
+            <p>Imię: {{player.FirstName}}</p>
+            <p>Nazwisko: {{player.LastName}}</p>
+            <p>Kontrakt od {{player.ContractFrom|date:"dd-mm-yyyy"}}</p>
+            <p>Kontrakt do {{player.ContractTo|date:"dd-mm-yyyy"}}</p>
+            <p>Pozycja {{playerPosition(player.position)}}</p>
+            <p>Czy ma kontuzje {{player.hasInjury}}</p>
+            <div>
+                <h4>Statystyki</h4>
+                <p>Rozegrane mecze: {{player.PlayedMatches}}</p>
+                <p>Rozegrane minuty: {{player.PlayedMinutes}}</p>
+                <p>Gole: {{player.Goals}}</p>
+                <p>Asysty: {{player.Assists}}</p>
+                <p>Zółte kartki: {{player.YellowCards}}</p>
+                <p>Czerwone kartki: {{player.RedCards}}</p>
+            </div>
+        </ng-container>
+    </section>
+    <ng-template #empty>
+        <h3>Jeszcze nie ma żadnego piłkarza</h3>
+    </ng-template>
+</div>
