@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^18.2.12",
     "@angular/router": "^18.2.12",
     "bootstrap": "^5.3.3",
+    "cross-spawn": "^7.0.5",
     "engine.io": "^6.6.2",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
