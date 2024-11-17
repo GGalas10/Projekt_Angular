@@ -25,12 +25,6 @@ namespace ApiForFirstAngular.Controllers
             await _userService.CreateUserAsync(command);
             return Created();
         }
-        [BindUserId]
-        [HttpGet]
-        public async Task<IActionResult> GetUserDetails()
-        {
-            var result = await _userService.GetUserByIdAsync(UserId);
-            return Ok(result);
-        }
+        
     }
 }

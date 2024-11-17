@@ -61,6 +61,14 @@ namespace Infrastructure.Implementations
             return new UserDTO() { name = result.Login};
         }
 
-        
+        public Task UpdateUserLogin(Guid userId, string newLogin)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task UpdateUserPassword(Guid userId, string newPassword)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

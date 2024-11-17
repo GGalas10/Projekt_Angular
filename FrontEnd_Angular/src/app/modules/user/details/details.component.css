@@ -1,0 +1,10 @@
+.changeBtn {
+  width: 15%;
+  padding: 10px 5px;
+  margin: 5px auto;
+  color: whitesmoke;
+  background: transparent;
+}
+.changeBtn:hover {
+  opacity: 0.8;
+}

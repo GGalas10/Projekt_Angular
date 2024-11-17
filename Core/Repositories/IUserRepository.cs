@@ -9,5 +9,7 @@ namespace Core.Repositories
         Task<List<User>> GetAllUsersAsync();
         Task<User> GetUserByIdAsync(Guid userId);
         Task<User> GetUserByLoginAsync(string login);
+        Task ChangeUserLogin(Guid userId, string newLogin);
+        Task ChangeUserPassword(Guid userId, string newPassword);
     }
 }

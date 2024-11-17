@@ -1,4 +1,5 @@
-﻿using Core.Models;
+﻿using Core.Exceptions;
+using Core.Models;
 using Core.Repositories;
 using DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +17,7 @@ namespace DataAccess.Repositories
         {
             var error = await _context.ErrorModels.FirstOrDefaultAsync(x=>x.Id == id);
             if (error == null)
-                throw new Exception("Error_Doesnt_Exist");
+                throw new InternalServerException("Error_Doesnt_Exist");
             return error;
         }       
 
@@ -26,7 +27,7 @@ namespace DataAccess.Repositories
         public async Task AddError(ErrorModel error)
         {
             if (error == null)
-                throw new Exception("Error_Cannot_Be_Null_AddError");
+                throw new InternalServerException("Error_Cannot_Be_Null_AddError");
             _context.ErrorModels.Add(error);
             await _context.SaveChangesAsync();
         }

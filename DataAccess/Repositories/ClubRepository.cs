@@ -1,4 +1,5 @@
-﻿using Core.Models;
+﻿using Core.Exceptions;
+using Core.Models;
 using Core.Repositories;
 using DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
@@ -16,9 +17,9 @@ namespace DataAccess.Repositories
         public async Task<Guid> CreateClubAsync(SportsClub model)
         {
             if (model == null)
-                throw new Exception("Model_Cannot_Be_Null_CreateClub");
+                throw new BadRequestException("Model_Cannot_Be_Null_CreateClub");
             if (_context.SportsClubs.AsNoTracking().Any(x => x.Name == model.Name))
-                throw new Exception("Club_With_This_Name_Is_Already_Exist_CreateClub");
+                throw new BadRequestException("Club_With_This_Name_Is_Already_Exist_CreateClub");
             _context.SportsClubs.Add(model);
             await _context.SaveChangesAsync();
             return model.Id;
@@ -26,10 +27,10 @@ namespace DataAccess.Repositories
         public async Task UpdateClubAsync(SportsClub model, Guid clubId)
         {
             if (model == null)
-                throw new Exception("Model_Cannot_Be_Null_CreateClub");
+                throw new BadRequestException("Model_Cannot_Be_Null_CreateClub");
             var sportClub = await _context.SportsClubs.FirstOrDefaultAsync(x=>x.Id == clubId);
             if (sportClub == null)
-                throw new Exception("Cannot_Find_Club_With_Id_UpdateClub");
+                throw new BadRequestException("Cannot_Find_Club_With_Id_UpdateClub");
             sportClub.UpdateFromModel(model);
             _context.Entry(sportClub).State = EntityState.Modified;
             _context.Update(sportClub);
@@ -39,7 +40,7 @@ namespace DataAccess.Repositories
         {
             var sportClub = await _context.SportsClubs.FirstOrDefaultAsync(x => x.Id == clubId);
             if (sportClub == null)
-                throw new Exception("Cannot_Find_Club_With_Id_UpdateClub");
+                throw new BadRequestException("Cannot_Find_Club_With_Id_UpdateClub");
             _context.SportsClubs.Remove(sportClub);
             await _context.SaveChangesAsync();
         }
@@ -52,9 +53,9 @@ namespace DataAccess.Repositories
         {
             var sportClub = await _context.SportsClubs.Include(x=>x.StaffList).FirstOrDefaultAsync(x => x.Id == clubId);
             if (sportClub == null)
-                throw new Exception("Cannot_Find_Club_With_Id_AddStaffToClub");
+                throw new BadRequestException("Cannot_Find_Club_With_Id_AddStaffToClub");
             if (staff == null)
-                throw new Exception("Model_Cannot_Be_Null_AddStaffToClub");
+                throw new BadRequestException("Model_Cannot_Be_Null_AddStaffToClub");
             
             _context.Add(staff);
             sportClub.AddStaff(staff);
@@ -65,9 +66,9 @@ namespace DataAccess.Repositories
         {
             var sportClub = await _context.SportsClubs.Include(x=>x.PlayerList).FirstOrDefaultAsync(x => x.Id == clubId);
             if (sportClub == null)
-                throw new Exception("Cannot_Find_Club_With_Id_AddPlayerToClub");
+                throw new BadRequestException("Cannot_Find_Club_With_Id_AddPlayerToClub");
             if (player == null)
-                throw new Exception("Model_Cannot_Be_Null_AddPlayerToClub");
+                throw new BadRequestException("Model_Cannot_Be_Null_AddPlayerToClub");
 
             _context.Add(player);
             sportClub.AddPlayer(player);
@@ -79,9 +80,9 @@ namespace DataAccess.Repositories
         {
             var sportClub = await _context.SportsClubs.Include(x=>x.CoachList).FirstOrDefaultAsync(x => x.Id == clubId);
             if (sportClub == null)
-                throw new Exception("Cannot_Find_Club_With_Id_AddCoachToClub");
+                throw new BadRequestException("Cannot_Find_Club_With_Id_AddCoachToClub");
             if (coach == null)
-                throw new Exception("Model_Cannot_Be_Null_AddCoachToClub");
+                throw new BadRequestException("Model_Cannot_Be_Null_AddCoachToClub");
 
             _context.Add(coach);
             sportClub.AddCoach(coach);
@@ -93,10 +94,10 @@ namespace DataAccess.Repositories
         {
             var sportClub = await _context.SportsClubs.Include(x => x.StaffList).FirstOrDefaultAsync(x => x.Id == clubId);
             if (sportClub == null)
-                throw new Exception("Cannot_Find_Club_With_Id_DeleteStaffToClub");
+                throw new BadRequestException("Cannot_Find_Club_With_Id_DeleteStaffToClub");
             var staffToDelete = sportClub.StaffList.FirstOrDefault(x=>x.Id == staffId);
             if(staffToDelete == null)
-                throw new Exception("Cannot_Find_Staff_To_Delete_DeleteStaffFromClub");
+                throw new BadRequestException("Cannot_Find_Staff_To_Delete_DeleteStaffFromClub");
             sportClub.RemoveStaff(staffToDelete);
             _context.Update(sportClub);
             await _context.SaveChangesAsync();
@@ -106,10 +107,10 @@ namespace DataAccess.Repositories
         {
             var sportClub = await _context.SportsClubs.Include(x => x.PlayerList).FirstOrDefaultAsync(x => x.Id == clubId);
             if (sportClub == null)
-                throw new Exception("Cannot_Find_Club_With_Id_DeletePlayerToClub");
+                throw new BadRequestException("Cannot_Find_Club_With_Id_DeletePlayerToClub");
             var playerToDelete = sportClub.PlayerList.FirstOrDefault(x => x.Id == playerId);
             if (playerToDelete == null)
-                throw new Exception("Cannot_Find_Staff_To_Delete_DeletePlayerToClub");
+                throw new BadRequestException("Cannot_Find_Staff_To_Delete_DeletePlayerToClub");
             sportClub.RemovePlayer(playerToDelete); 
             _context.Update(sportClub); 
             await _context.SaveChangesAsync();
@@ -119,10 +120,10 @@ namespace DataAccess.Repositories
         {
             var sportClub = await _context.SportsClubs.Include(x => x.CoachList).FirstOrDefaultAsync(x => x.Id == clubId);
             if (sportClub == null)
-                throw new Exception("Cannot_Find_Club_With_Id_DeleteCoachToClub");
+                throw new BadRequestException("Cannot_Find_Club_With_Id_DeleteCoachToClub");
             var coachToDelete = sportClub.CoachList.FirstOrDefault(x => x.Id == coachId);
             if (coachToDelete == null)
-                throw new Exception("Cannot_Find_Staff_To_Delete_DeleteCoachToClub");
+                throw new BadRequestException("Cannot_Find_Staff_To_Delete_DeleteCoachToClub");
             sportClub.RemoveCoach(coachToDelete);
             _context.Update(sportClub);
             await _context.SaveChangesAsync();
