@@ -1,5 +1,6 @@
 ﻿using ApiForFirstAngular.Controllers.Base;
 using ApiForFirstAngular.Filters;
+using Infrastructure.Commands.User;
 using Infrastructure.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,12 +21,15 @@ namespace ApiForFirstAngular.Controllers
             return Ok(result);
         }    
         [HttpPost]
-        public async Task<IActionResult> ChangeLogin()
+        public async Task<IActionResult> ChangeLogin([FromBody]ChangeLoginCommand command)
         {
+            await _userService.UpdateUserLogin(UserId,command.newLogin);
             return Ok();
         }
-        public async Task<IActionResult> ChangePassword()
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword([FromBody]ChangePasswordCommand command)
         {
+            await _userService.UpdateUserPassword(UserId, command.newPassword);
             return Ok();
         }
 

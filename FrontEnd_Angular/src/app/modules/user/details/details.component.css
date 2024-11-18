@@ -8,3 +8,12 @@
 .changeBtn:hover {
   opacity: 0.8;
 }
+.customInput {
+  width: 30%;
+  background-color: #fff3;
+  border: none;
+  border-radius: 15px;
+  color: whitesmoke;
+  margin: 15px auto;
+  text-align: center;
+}

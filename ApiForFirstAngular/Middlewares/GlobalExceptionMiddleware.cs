@@ -12,7 +12,7 @@ namespace ApiForFirstAngular.Middlewares
             _next = requestDelegate;
             _scopeFactory = scopeFactory;
         }
-        public async Task InvokeAsync(HttpContext context, Type type)
+        public async Task InvokeAsync(HttpContext context)
         {
             try
             {

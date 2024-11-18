@@ -1,4 +1,5 @@
-﻿using Core.Models;
+﻿using Core.Exceptions;
+using Core.Models;
 using Core.Repositories;
 using Infrastructure.Comands.User;
 using Infrastructure.DTOs.Token;
@@ -61,14 +62,20 @@ namespace Infrastructure.Implementations
             return new UserDTO() { name = result.Login};
         }
 
-        public Task UpdateUserLogin(Guid userId, string newLogin)
+        public async Task UpdateUserLogin(Guid userId, string newLogin)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(newLogin))
+                throw new BadRequestException("NewLogin_Cannot_Be_Null");
+            await _userRepository.ChangeUserLogin(userId, newLogin);
+            await Task.CompletedTask;
         }
 
-        public Task UpdateUserPassword(Guid userId, string newPassword)
+        public async Task UpdateUserPassword(Guid userId, string newPassword)
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(newPassword))
+                throw new BadRequestException("NewPassword_Cannot_Be_Null");
+            await _userRepository.ChangeUserPassword(userId, newPassword);
+            await Task.CompletedTask;
         }
     }
 }

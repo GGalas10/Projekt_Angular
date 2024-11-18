@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../../core/Services/API/LoginService';
+import { UserService } from '../../core/Services/API/UserService';
 
 @Component({
   selector: 'app-details',
@@ -8,12 +8,57 @@ import { LoginService } from '../../core/Services/API/LoginService';
 })
 export class DetailsComponent implements OnInit {
   userName!: string;
+  newLogin = '';
+  newPassword = '';
+  changePassword = false;
+  changeLogin = false;
 
-  constructor(private loginService: LoginService) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.loginService
+    this.userService
       .DetailsUser()
       .subscribe({ next: (value) => (this.userName = value.name) });
+  }
+  clickLoginChange() {
+    this.changeLogin = !this.changeLogin;
+  }
+  clickPasswordChange() {
+    this.changePassword = !this.changePassword;
+  }
+  changeLoginAPI() {
+    if (this.newLogin == '') {
+      alert('Uzupełnij pole nowego loginu');
+      return;
+    }
+    this.userService.ChangeLogin(this.newLogin).subscribe({
+      next: () => {
+        alert('Login zmieniony');
+        window.location.reload();
+      },
+      error: (error) => {
+        alert('Coś poszło nie tak');
+        console.log(error);
+      },
+    });
+    this.changeLogin = false;
+  }
+
+  changePasswordAPI() {
+    if (this.newPassword == '') {
+      alert('Uzupełnij pole nowego hasła');
+      return;
+    }
+    this.userService.ChangePassword(this.newPassword).subscribe({
+      next: () => {
+        alert('Hasło zmienione');
+        window.location.reload();
+      },
+      error: (error) => {
+        alert('Coś poszło nie tak');
+        console.log(error);
+      },
+    });
+    this.changePassword = false;
   }
 }

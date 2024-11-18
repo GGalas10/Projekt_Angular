@@ -6,7 +6,6 @@ import {
   LoginCommand,
   LoginToken,
   RegisterUser,
-  UserDetails,
 } from '../../../../shared/Interfaces/User';
 
 @Injectable({
@@ -21,8 +20,5 @@ export class LoginService {
   }
   LoginUser(command: LoginCommand): Observable<LoginToken> {
     return this.http.post<LoginToken>(`${this.apiUrl}/Login/Login`, command);
-  }
-  DetailsUser(): Observable<UserDetails> {
-    return this.http.get<UserDetails>(`${this.apiUrl}/Login/GetUserDetails`);
   }
 }
