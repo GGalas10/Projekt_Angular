@@ -16,7 +16,10 @@ export class LoginService {
   constructor(private http: HttpClient) {}
 
   RegisterUser(command: RegisterUser): Observable<HttpStatusCode> {
-    return this.http.post<HttpStatusCode>('Login/Register', command);
+    return this.http.post<HttpStatusCode>(
+      `${this.apiUrl}/Login/Register`,
+      command,
+    );
   }
   LoginUser(command: LoginCommand): Observable<LoginToken> {
     return this.http.post<LoginToken>(`${this.apiUrl}/Login/Login`, command);

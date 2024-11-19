@@ -41,11 +41,17 @@ export class LoginComponent {
         },
         error: (err) => {
           this.IsClick = false;
-          console.log(err);
           if (err.status == 0) {
             this.ShowAlertFunction(
               'Błąd aplikacji',
               'Spróbuj ponownie później',
+            );
+            return;
+          }
+          if (err.error.includes('UserError')) {
+            this.ShowAlertFunction(
+              'Błąd logowania',
+              'Podano błędne dane logowania',
             );
             return;
           }

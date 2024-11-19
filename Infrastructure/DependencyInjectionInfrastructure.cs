@@ -15,6 +15,7 @@ namespace Infrastructure
             services.AddScoped<IErrorService, ErrorService>();
             services.AddScoped<ISportClubService, SportClubService>();
             services.AddScoped<IPlayerService, PlayerService>();
+            services.AddScoped<IPasswordService, PasswordService>();
             return services;
         }
     }

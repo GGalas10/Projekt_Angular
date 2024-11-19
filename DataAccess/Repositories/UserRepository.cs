@@ -60,14 +60,21 @@ namespace DataAccess.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task ChangeUserPassword(Guid userId, string newPassword)
+        public async Task ChangeUserPassword(Guid userId, UserPassword newPassword)
         {
             var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == userId);
             if (user == null)
                 throw new BadRequestException("Cannot_Find_User_FindById");
-            user.Password = newPassword;
+            user.UserPassword = newPassword;
             _context.Update(user);
             await _context.SaveChangesAsync();
+        }
+        public async Task<User> GetUserByLoginWithPasswordAsync(string login)
+        {
+            var user = await _context.Users.Include(x=>x.UserPassword).AsNoTracking().FirstOrDefaultAsync(x => x.Login == login);
+            if (user == null)
+                throw new BadRequestException("Cannot_Find_User_FindById");
+            return user;
         }
     }
 }

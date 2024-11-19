@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { BaseAlert } from '../../../shared/Component/base-alert/BaseAlertInterface';
 import { LoginService } from '../../core/Services/API/LoginService';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,19 +13,31 @@ export class RegisterComponent {
   registerUser = new FormGroup({
     login: new FormControl(''),
     password: new FormControl(''),
+    secondPassword: new FormControl(''),
   });
   ShowAlert = false;
   baseAlert: BaseAlert = { Title: '', Message: '' };
   IsClick = false;
-
-  constructor(private _apiService: LoginService) {}
+  GetValue() {
+    return this.registerUser.value;
+  }
+  constructor(
+    private _apiService: LoginService,
+    private router: Router,
+  ) {}
 
   onSubmit() {
     this.IsClick = true;
+    console.log(this.GetValue().password);
+    console.log(this.GetValue().secondPassword);
+    if (this.GetValue().password != this.GetValue().secondPassword) {
+      this.ShowAlertFunction('Błąd', 'Hasłą muszą być identyczne');
+      return;
+    }
     this._apiService
       .RegisterUser({
-        Name: String(this.registerUser.value.login),
-        Password: String(this.registerUser.value.password),
+        Name: String(this.GetValue().login),
+        Password: String(this.GetValue().password),
       })
       .subscribe({
         next: () => {
@@ -33,6 +46,7 @@ export class RegisterComponent {
             'WSZYSTKO SIĘ UDAŁO',
             'Udało się stworzyć konto. Teraz możesz się do niego zalogować',
           );
+          this.router.navigateByUrl('/');
         },
         error: (err) => {
           this.IsClick = false;

@@ -8,8 +8,9 @@ namespace Core.Repositories
         Task DeleteUserAsync(Guid userId);
         Task<List<User>> GetAllUsersAsync();
         Task<User> GetUserByIdAsync(Guid userId);
-        Task<User> GetUserByLoginAsync(string login);
+        Task<User> GetUserByLoginAsync(string login);       
         Task ChangeUserLogin(Guid userId, string newLogin);
-        Task ChangeUserPassword(Guid userId, string newPassword);
+        Task ChangeUserPassword(Guid userId, UserPassword newPassword);
+        Task<User> GetUserByLoginWithPasswordAsync(string login);
     }
 }

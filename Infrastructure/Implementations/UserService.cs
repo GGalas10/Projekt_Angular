@@ -12,21 +12,23 @@ namespace Infrastructure.Implementations
     {
         private readonly IUserRepository _userRepository;
         private readonly IJwtHandler _jwtHandler;
-        public UserService(IUserRepository userRepository, IJwtHandler jwtHandler)
+        private readonly IPasswordService _passwordService;
+        public UserService(IUserRepository userRepository, IJwtHandler jwtHandler, IPasswordService password)
         {
             _userRepository = userRepository;
             _jwtHandler = jwtHandler;
+            _passwordService = password;
         }
 
         public async Task<LoginToken> LoginUserAsync(LoginUser command)
         {
             if (command == null)
-                throw new Exception("Wrong_Credentials_Login");
-            var user = await _userRepository.GetUserByLoginAsync(command.login);
+                throw new BadRequestException("Wrong_Credentials_Login");
+            var user = await _userRepository.GetUserByLoginWithPasswordAsync(command.login);
             if (user == null)
-                throw new Exception("Wrong_Credentials_Login");
-            if (user.Password != command.password)
-                throw new Exception("Wrong_Credentials_Login");
+                throw new BadRequestException("Wrong_Credentials_Login");
+            if (!_passwordService.ComparePassword(user.UserPassword.HashedPassword,user.UserPassword.Salt,command.password))
+                throw new BadRequestException("Wrong_Credentials_Login");
 
             var token = _jwtHandler.CreateToken(user.Id);
 
@@ -42,7 +44,7 @@ namespace Infrastructure.Implementations
         {
             if (command == null || command.Name == null || command.Password == null)
                 throw new Exception("Command_Cannot_Be_Null_CreateUser");
-            var newUser = new User(command.Name,command.Password);
+            var newUser = new User(command.Name,_passwordService.CreatePassword(command.Password));
             await _userRepository.CreateUserAsync(newUser);
         }
 
@@ -74,7 +76,7 @@ namespace Infrastructure.Implementations
         {
             if (string.IsNullOrEmpty(newPassword))
                 throw new BadRequestException("NewPassword_Cannot_Be_Null");
-            await _userRepository.ChangeUserPassword(userId, newPassword);
+            await _userRepository.ChangeUserPassword(userId, _passwordService.CreatePassword(newPassword));
             await Task.CompletedTask;
         }
     }

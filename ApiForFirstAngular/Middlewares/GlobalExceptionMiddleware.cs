@@ -48,8 +48,6 @@ namespace ApiForFirstAngular.Middlewares
                         context.Response.StatusCode = StatusCodes.Status500InternalServerError;
                         await context.Response.WriteAsJsonAsync($"UnknownError: {ex.Message}");
                     }
-
-                    context.Response.ContentType = "application/json";
                     
                     return;
                 }

@@ -7,5 +7,6 @@ namespace DataAccess.Contexts
     {
         public UserDbContext(DbContextOptions<UserDbContext> options):base(options) { }
         internal DbSet<User> Users { get; set; }
+        internal DbSet<UserPassword> Passwords { get; set; }
     }
 }
