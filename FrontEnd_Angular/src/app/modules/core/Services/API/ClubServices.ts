@@ -30,13 +30,10 @@ export class ClubServices {
   }
   GetClubIdByName(clubName: string): Observable<ClubDetails> {
     const params: HttpParams = new HttpParams().set('clubName', clubName);
-    return this.http.get<ClubDetails>(
-      `${this.apiUrl}/Club/GetClubIdByNameAsync`,
-      {
-        headers: this.headers,
-        params,
-      },
-    );
+    return this.http.get<ClubDetails>(`${this.apiUrl}/Club/GetClubIdByName`, {
+      headers: this.headers,
+      params,
+    });
   }
   GetAllClubsForHome(): Observable<HomeClubDTO[]> {
     return this.http.get<HomeClubDTO[]>(

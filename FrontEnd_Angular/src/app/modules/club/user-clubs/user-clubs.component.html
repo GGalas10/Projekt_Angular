@@ -1,13 +1,20 @@
-<section>
+<section class="MainContainer">
     <div *ngIf="this.userClubs !== undefined">
         <div *ngIf="this.userClubs.length>0;else empty">
+            <h1>Lista dodanych przez Ciebie klubów</h1>
+            <div class="glassEfect clubContainer">
+                <ng-container *ngFor="let item of this.userClubs">
+
+                    <section class="oneClub glassEfect">
+                        <p>{{item.name}}</p>
+                        <button class="editBtn">Edytuj</button>
+                    </section>
+                </ng-container>
+            </div>
         </div>
-        <ng-container *ngFor="let item of this.userClubs">
-            {{item.name}}
-            <button>Edytuj</button>
-        </ng-container>
     </div>
     <ng-template #empty>
         <h1>Nie dodałeś jeszcze żadnego klubu</h1>
+        <p>Zrób to jak najszybciej i wróć na stronę :)</p>
     </ng-template>
 </section>

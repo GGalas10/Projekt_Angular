@@ -18,7 +18,7 @@ namespace DataAccess.Repositories
                 throw new Exception("UserId_Cannot_Be_Empty_AddClubAccess");
             if (clubId == Guid.Empty)
                 throw new Exception("ClubId_Cannot_Be_Empty_AddClubAccess");
-            var club = _dbContext.SportsClubs.FirstOrDefault(x=>x.Id == userId);
+            var club = _dbContext.SportsClubs.FirstOrDefault(x=>x.Id == clubId);
             if (club == null)
                 throw new Exception("Cannot_Find_Club_AddClubAccess");
             var newAccess = new UserClubAccess()

@@ -33,23 +33,32 @@ export class ClubCreateComponent {
     this.IsClick = true;
     this.clubService
       .CreateClubCommand({
-        name: String(this.formControls.name),
-        description: String(this.formControls.description),
+        name: String(this.formControls.name.value),
+        description: String(this.formControls.description.value),
         rising: this.createClubForm.GetDate('rising'),
       })
       .pipe(
         switchMap(() =>
-          this.clubService.GetClubIdByName(String(this.formControls.name)),
+          this.clubService.GetClubIdByName(
+            String(this.formControls.name.value),
+          ),
         ),
       )
       .subscribe({
         next: (value) => {
+          console.log(value);
           this.IsClick = false;
           this.router.navigate([`/Club/Details/${value}`]);
         },
         error: (err) => {
           this.IsClick = false;
-          console.log(err);
+          if (
+            err.error.includes(
+              'Club_With_This_Name_Is_Already_Exist_CreateClub',
+            )
+          ) {
+            alert('Klub o takiej nazwie już istnieje');
+          }
         },
       });
   }

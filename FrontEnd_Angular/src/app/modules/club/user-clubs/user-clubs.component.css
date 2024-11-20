@@ -1,0 +1,29 @@
+.oneClub {
+  width: 30%;
+  display: grid;
+  text-align: center;
+  padding: 15px 10px;
+  margin: 10px;
+}
+.clubContainer {
+  margin: auto;
+  width: 90%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 25px 15px;
+  justify-content: space-around;
+}
+.editBtn {
+  border-radius: 15px;
+  background-color: #39caa8bf;
+  border: none;
+  color: white;
+  font-weight: bolder;
+}
+.editBtn:hover {
+  opacity: 0.8;
+  transition-duration: 0.4s;
+}
+.editBtn:active {
+  opacity: 0.5;
+}
