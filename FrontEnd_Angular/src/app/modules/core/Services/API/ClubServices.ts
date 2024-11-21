@@ -48,8 +48,8 @@ export class ClubServices {
       headers: this.headers,
     });
   }
-  GetAllUserClubs(): Observable<ClubDetails[]> {
-    return this.http.get<ClubDetails[]>(`${this.apiUrl}/Club/GetAllUserClub`, {
+  GetAllUserClubs(): Observable<HomeClubDTO[]> {
+    return this.http.get<HomeClubDTO[]>(`${this.apiUrl}/Club/GetAllUserClub`, {
       headers: this.headers,
     });
   }

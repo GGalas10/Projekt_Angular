@@ -18,7 +18,7 @@
       <a routerLink="login" style="color: whitesmoke">Najbliższe mecze</a>
     </ul>
     <ul>
-      <a href="/Club/UserClubs" style="color: whitesmoke" *ngIf="isLogin">Twoje dodane zespoły</a>
+      <a href="/User/Clubs" style="color: whitesmoke" *ngIf="isLogin">Twoje dodane zespoły</a>
     </ul>
   </li>
   <li class="d-flex rightBar" *ngIf="!isLogin; else LogOut">

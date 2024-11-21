@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ClubServices } from '../../core/Services/API/ClubServices';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { ClubDetails } from '../../../shared/Interfaces/Club';
+import { HomeClubDTO } from '../../../shared/Interfaces/Club';
 
 @Component({
   selector: 'app-user-clubs',
@@ -11,7 +11,7 @@ import { ClubDetails } from '../../../shared/Interfaces/Club';
 })
 export class UserClubsComponent implements OnInit, OnDestroy {
   serviceObservable!: Subscription;
-  userClubs!: ClubDetails[];
+  userClubs!: HomeClubDTO[];
   constructor(
     private clubService: ClubServices,
     private router: Router,

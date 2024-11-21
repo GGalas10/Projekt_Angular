@@ -1,28 +1,33 @@
 <!-- eslint-disable @angular-eslint/template/eqeqeq -->
-<div *ngIf="club != null;else Error" class="MainContainer">
-    <h2>Szczegóły klubu {{club.name}}</h2>
-    <p>Klub stworzony {{club.rising | date:"dd-mm-yyyy"}}</p>
-    <h3>Opis klubu:</h3>
-    <p>{{club.description}}</p>
-    <div class="ButtonContainer">
-        <button [className]="this.PlayerActive? 'ActiveBtn':'InActiveBtn' " class="InActiveBtn"
-            (click)="changeActiveBtn('Player')">Piłkarze</button>
-        <button [className]="this.CoachActive? 'ActiveBtn':'InActiveBtn'"
-            (click)="changeActiveBtn('Coach')">Trenerzy</button>
-        <button [className]="this.StaffActive? 'ActiveBtn':'InActiveBtn'" class="InActiveBtn"
-            (click)="changeActiveBtn('Staff')">Personel</button>
+<div *ngIf="!IsLoading;else IsLoadingDisplay">
+    <div *ngIf="club != null;else Error" class="MainContainer">
+        <h2>Szczegóły klubu {{club.name}}</h2>
+        <p>Klub stworzony {{club.rising | date:"dd-mm-yyyy"}}</p>
+        <h3>Opis klubu:</h3>
+        <p>{{club.description}}</p>
+        <div class="ButtonContainer">
+            <button [className]="this.PlayerActive? 'ActiveBtn':'InActiveBtn' " class="InActiveBtn"
+                (click)="changeActiveBtn('Player')">Piłkarze</button>
+            <button [className]="this.CoachActive? 'ActiveBtn':'InActiveBtn'"
+                (click)="changeActiveBtn('Coach')">Trenerzy</button>
+            <button [className]="this.StaffActive? 'ActiveBtn':'InActiveBtn'" class="InActiveBtn"
+                (click)="changeActiveBtn('Staff')">Personel</button>
+        </div>
+        <section id="">
+            <app-players *ngIf="this.PlayerActive" [players]="this.club.playerList"></app-players>
+            <app-coaches *ngIf="this.CoachActive" [coaches]="this.club.coachList"></app-coaches>
+            <app-staffs *ngIf="this.StaffActive" [staffs]="this.club.staffList"></app-staffs>
+        </section>
     </div>
-    <section id="">
-        <app-players *ngIf="this.PlayerActive" [players]="this.club.playerList"></app-players>
-        <app-coaches *ngIf="this.CoachActive" [coaches]="this.club.coachList"></app-coaches>
-        <app-staffs *ngIf="this.StaffActive" [staffs]="this.club.staffList"></app-staffs>
-    </section>
+    <ng-template #Error>
+        <section class="errorSection">
+            <h1>Wystąpił błąd</h1>
+            <p>Niestety nie udało się wczytać danych klubu.</p>
+            <p>Spróbuj ponownie później</p>
+        </section>
+    </ng-template>
+    <app-base-alert *ngIf="!this.baseModal" [baseAlert]="this.baseAlert"></app-base-alert>
 </div>
-<ng-template #Error>
-    <section class="errorSection">
-        <h1>Wystąpił błąd</h1>
-        <p>Niestety nie udało się wczytać danych klubu.</p>
-        <p>Spróbuj ponownie później</p>
-    </section>
+<ng-template #IsLoadingDisplay>
+    <app-loading-page></app-loading-page>
 </ng-template>
-<app-base-alert *ngIf="!this.baseModal" [baseAlert]="this.baseAlert"></app-base-alert>

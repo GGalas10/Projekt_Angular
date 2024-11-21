@@ -56,7 +56,7 @@ namespace Infrastructure.Implementations
                 throw new Exception("Cannot_Find_Club_By_Name_GetClubByName");
             return new ClubDetailsDTO(result);
         }
-		public async Task<List<ClubDetailsDTO>> GetAllUserClubs(Guid userId)
+		public async Task<List<ClubHomeDTO>> GetAllUserClubs(Guid userId)
         {
             if (userId == Guid.Empty)
                 throw new Exception("UserId_Cannot_Be_Null");
@@ -66,7 +66,7 @@ namespace Infrastructure.Implementations
             {
                 newList.Add(await _clubRepository.GetClubByIdAsync(item));
             }
-            return ClubDetailsDTO.GetFromModelList(newList);
+            return ClubHomeDTO.GetListDTOFromModelList(newList);
         }
 
         public async Task<List<ClubHomeDTO>> GetClubForHomeList()

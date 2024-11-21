@@ -1,0 +1,7 @@
+<section class="MainContainer">
+    <app-loading-page *ngIf="IsLoading;else load"></app-loading-page>
+    <ng-template #load>
+        {{this.club.name}}
+        {{this.club.description}}
+    </ng-template>
+</section>

@@ -10,7 +10,7 @@ namespace Infrastructure.Interfaces
         Task DeleteClub(Guid clubId);
         Task<ClubDetailsDTO> GetClubById(Guid clubId);
         Task<ClubDetailsDTO> GetClubByName(string clubName);
-        Task<List<ClubDetailsDTO>> GetAllUserClubs(Guid userId);
+        Task<List<ClubHomeDTO>> GetAllUserClubs(Guid userId);
         Task<List<ClubHomeDTO>> GetClubForHomeList();
         Task<List<ClubHomeDTO>> GetAllClubs();
         Task<Guid> GetClubIdByNameAsync(string clubName);

@@ -14,6 +14,7 @@ export class ClubDetailsComponent implements OnInit, OnDestroy {
   observable: Subscription = new Subscription();
   club!: ClubDetails;
   baseModal = true;
+  IsLoading = true;
   baseAlert: BaseAlert = { Title: '', Message: '' };
   id!: string;
   PlayerActive = false;
@@ -32,7 +33,10 @@ export class ClubDetailsComponent implements OnInit, OnDestroy {
       },
     });
     this.observable = this.clubService.GetClubDetails(this.id).subscribe({
-      next: (club) => (this.club = club),
+      next: (club) => {
+        this.club = club;
+        this.IsLoading = false;
+      },
       error: (err) => {
         console.log(err.error.includes('Cannot_Find_Club_GetClubById'));
         if (err.status == 0) {

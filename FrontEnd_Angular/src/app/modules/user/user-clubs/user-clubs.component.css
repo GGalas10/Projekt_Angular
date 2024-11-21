@@ -4,6 +4,7 @@
   text-align: center;
   padding: 15px 10px;
   margin: 10px;
+  background: #5cff0038;
 }
 .clubContainer {
   margin: auto;
@@ -14,6 +15,7 @@
   justify-content: space-around;
 }
 .editBtn {
+  margin-top: 5px;
   border-radius: 15px;
   background-color: #39caa8bf;
   border: none;

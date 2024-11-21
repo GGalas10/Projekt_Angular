@@ -8,10 +8,20 @@ import { WholeClubsComponent } from './whole-clubs/whole-clubs.component';
 import { PlayersComponent } from './club-details/players/players.component';
 import { CoachesComponent } from './club-details/coaches/coaches.component';
 import { StaffsComponent } from './club-details/staffs/staffs.component';
-import { UserClubsComponent } from './user-clubs/user-clubs.component';
+import { UserClubsComponent } from '../user/user-clubs/user-clubs.component';
+import { ClubEditComponent } from './club-edit/club-edit.component';
 
 @NgModule({
-  declarations: [ClubDetailsComponent, ClubCreateComponent, WholeClubsComponent, PlayersComponent, CoachesComponent, StaffsComponent, UserClubsComponent],
+  declarations: [
+    ClubDetailsComponent,
+    ClubCreateComponent,
+    WholeClubsComponent,
+    PlayersComponent,
+    CoachesComponent,
+    StaffsComponent,
+    UserClubsComponent,
+    ClubEditComponent,
+  ],
   imports: [SharedModule, ClubRoutingModule],
   exports: [],
 })
