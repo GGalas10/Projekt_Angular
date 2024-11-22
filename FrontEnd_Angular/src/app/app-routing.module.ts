@@ -20,6 +20,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('../app/modules/user/user.module').then((m) => m.UserModule),
   },
+  {
+    path: 'User/Club',
+    loadChildren: () =>
+      import('../app/modules/userClub/userclub.module').then(
+        (m) => m.UserclubModule,
+      ),
+  },
   { path: '**', component: NotFoundComponent, title: 'Error 404' },
 ];
 

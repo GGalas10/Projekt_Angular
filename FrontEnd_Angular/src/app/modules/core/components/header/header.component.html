@@ -9,7 +9,7 @@
   </li>
   <li class="d-flex centerBar">
     <ul>
-      <a href="Club/Create" style="color: whitesmoke" *ngIf="isLogin">Stwórz klub</a>
+      <a href="User/Club/Create" style="color: whitesmoke" *ngIf="isLogin">Stwórz klub</a>
     </ul>
     <ul>
       <a routerLink="login" style="color: whitesmoke">Wszystkie zespoły</a>
@@ -18,7 +18,7 @@
       <a routerLink="login" style="color: whitesmoke">Najbliższe mecze</a>
     </ul>
     <ul>
-      <a href="/User/Clubs" style="color: whitesmoke" *ngIf="isLogin">Twoje dodane zespoły</a>
+      <a href="/User/Club" style="color: whitesmoke" *ngIf="isLogin">Twoje dodane zespoły</a>
     </ul>
   </li>
   <li class="d-flex rightBar" *ngIf="!isLogin; else LogOut">

@@ -1,8 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ClubServices } from '../../core/Services/API/ClubServices';
 import { Router } from '@angular/router';
-import { switchMap } from 'rxjs';
+import { UserClubService } from '../../core/Services/API/UserClubService';
 
 @Component({
   selector: 'app-club-create',
@@ -26,24 +25,17 @@ export class ClubCreateComponent {
     return this.createClubForm.controls;
   }
   constructor(
-    private clubService: ClubServices,
+    private userClubService: UserClubService,
     private router: Router,
   ) {}
   async OnSubmit() {
     this.IsClick = true;
-    this.clubService
+    this.userClubService
       .CreateClubCommand({
         name: String(this.formControls.name.value),
         description: String(this.formControls.description.value),
         rising: this.createClubForm.GetDate('rising'),
       })
-      .pipe(
-        switchMap(() =>
-          this.clubService.GetClubIdByName(
-            String(this.formControls.name.value),
-          ),
-        ),
-      )
       .subscribe({
         next: (value) => {
           console.log(value);

@@ -1,0 +1,11 @@
+<section class="MainContainer">
+    <app-loading-page *ngIf="IsLoading;else load"></app-loading-page>
+    <ng-template #load>
+        <p>{{this.club.name}}</p>
+        <button>Edytuj nazwę klubu</button>
+        <p>{{this.club.description}}</p>
+        <button>Edytuj opis klubu</button>
+        <p>{{this.club.rising | date:"yyyy-mm-dd"}}</p>
+        <button>Edytuj date powstania klubu</button>
+    </ng-template>
+</section>

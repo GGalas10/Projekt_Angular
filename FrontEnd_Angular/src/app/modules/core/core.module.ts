@@ -13,6 +13,7 @@ import { AuthService } from './Services/AuthService';
 import { authInterceptor } from './interceptors/auth-interceptor.interceptor';
 import { errorCatchInterceptor } from './interceptors/error-catch.interceptor';
 import { UserService } from './Services/API/UserService';
+import { UserClubService } from './Services/API/UserClubService';
 
 @NgModule({
   declarations: [HeaderComponent],
@@ -21,6 +22,7 @@ import { UserService } from './Services/API/UserService';
   providers: [
     AuthService,
     ClubServices,
+    UserClubService,
     HealthCheckService,
     LoginService,
     UserService,
