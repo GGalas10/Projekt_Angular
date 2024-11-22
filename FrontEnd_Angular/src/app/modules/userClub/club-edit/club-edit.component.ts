@@ -12,6 +12,9 @@ export class ClubEditComponent implements OnInit {
   IsLoading = true;
   clubId!: string;
   club!: ClubDetails;
+  nameEdit = false;
+  descEdit = false;
+  risingEdit = false;
   constructor(
     private clubService: ClubServices,
     private route: ActivatedRoute,
