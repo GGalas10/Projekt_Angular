@@ -131,7 +131,7 @@ h6 {
 .MainContainer {
   display: grid;
   margin: auto;
-  width: 80%;
+  width: 100%;
   text-align: center;
   margin-top: 25px;
   padding: 25px;
@@ -142,4 +142,14 @@ h6 {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(13.9px);
   -webkit-backdrop-filter: blur(13.9px);
+}
+.editBtn {
+  background-color: #4e8fe1;
+  color: whitesmoke;
+  border: none;
+  padding: 5px 15px;
+  border-radius: 10px;
+}
+.editBtn:hover {
+  opacity: 0.8;
 }

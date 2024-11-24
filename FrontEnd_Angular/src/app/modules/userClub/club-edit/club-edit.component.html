@@ -1,14 +1,20 @@
 <section class="MainContainer">
     <app-loading-page *ngIf="IsLoading;else load"></app-loading-page>
     <ng-template #load>
-        <p>{{this.club.name}}</p>
-        <button>Edytuj nazwę klubu</button>
-        <p>{{this.club.description}}</p>
-        <button>Edytuj opis klubu</button>
-        <p>{{this.club.rising | date:"yyyy-mm-dd"}}</p>
-        <button>Edytuj date powstania klubu</button>
+        <div class="EditContainer">
+            <section class="ButtonColumn">
+                <button (click)="changeContainer('primary')" class="navBtn" [ngClass]="{active:primary}">Podstawowe
+                    informacje</button>
+                <button (click)="changeContainer('players')" class="navBtn"
+                    [ngClass]="{active:players}">Piłkarze</button>
+                <button (click)="changeContainer('coaches')" class="navBtn"
+                    [ngClass]="{active:coaches}">Trenerzy</button>
+                <button (click)="changeContainer('staffs')" class="navBtn" [ngClass]="{active:staffs}">Personel</button>
+            </section>
+            <section class="DateContainer">
+                <app-primary-date [club]="this.club" *ngIf="primary"></app-primary-date>
+            </section>
+        </div>
     </ng-template>
+
 </section>
-<app-name-edit *ngIf="nameEdit"></app-name-edit>
-<app-description-edit *ngif="descEdit"></app-description-edit>
-<app-rising-edit *ngIf="risingEdit"></app-rising-edit>

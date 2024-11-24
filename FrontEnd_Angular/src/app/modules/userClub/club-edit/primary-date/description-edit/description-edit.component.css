@@ -1,0 +1,4 @@
+@import '../../../../../../Assets/EditStyle.css';
+textarea {
+  max-height: 200px;
+}

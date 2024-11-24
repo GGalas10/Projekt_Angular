@@ -1,0 +1,37 @@
+.EditContainer {
+  display: grid;
+  grid-template-columns: 20% 85%;
+  gap: 30px;
+  width: 100%;
+}
+.ButtonColumn {
+  display: grid;
+  max-height: 170px;
+}
+.navBtn {
+  margin: 5px 0;
+  border-radius: 15px;
+  font-weight: 700;
+  background-color: #ac9bff;
+  border: none;
+  color: whitesmoke;
+  padding: 5px 10px;
+  box-sizing: border-box;
+  height: 36.5px;
+}
+.active {
+  color: #646161;
+  background-color: #bdb1f5;
+  font-weight: bolder;
+}
+.navBtn:hover {
+  opacity: 0.8;
+}
+.DateContainer {
+  background: #40373745;
+  border-radius: 16px;
+  box-shadow: 0 4px 30px #02000082;
+  backdrop-filter: blur(21.9px);
+  -webkit-backdrop-filter: blur(13.9px);
+  padding: 25px 15px;
+}

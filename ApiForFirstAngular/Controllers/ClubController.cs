@@ -1,6 +1,4 @@
 ﻿using ApiForFirstAngular.Controllers.Base;
-using ApiForFirstAngular.Filters;
-using Infrastructure.Commands.SportClub;
 using Infrastructure.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 

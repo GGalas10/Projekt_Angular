@@ -4,10 +4,10 @@
     </h1>
     <label for="Name">Nazwa:</label>
     <p id="Name">{{this.userName}}</p>
-    <button class="changeBtn glassEfect" (click)="clickLoginChange()">
+    <button class="editBtn editBtnHere" (click)="clickLoginChange()">
         Zmień login
     </button>
-    <button class="changeBtn glassEfect" (click)="clickPasswordChange()">
+    <button class="editBtn editBtnHere" (click)="clickPasswordChange()">
         Zmień hasło
     </button>
     <section class="glassEfect" style="margin: 25px;display: grid;" *ngIf="changeLogin">

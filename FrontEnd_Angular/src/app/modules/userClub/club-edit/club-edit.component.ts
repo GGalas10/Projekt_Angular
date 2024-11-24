@@ -12,9 +12,10 @@ export class ClubEditComponent implements OnInit {
   IsLoading = true;
   clubId!: string;
   club!: ClubDetails;
-  nameEdit = false;
-  descEdit = false;
-  risingEdit = false;
+  primary = false;
+  players = false;
+  coaches = false;
+  staffs = false;
   constructor(
     private clubService: ClubServices,
     private route: ActivatedRoute,
@@ -35,5 +36,25 @@ export class ClubEditComponent implements OnInit {
         this.IsLoading = false;
       },
     });
+  }
+  changeContainer(name: string) {
+    this.primary = false;
+    this.players = false;
+    this.coaches = false;
+    this.staffs = false;
+    switch (name) {
+      case 'primary':
+        this.primary = !this.primary;
+        break;
+      case 'players':
+        this.players = !this.primary;
+        break;
+      case 'coaches':
+        this.coaches = !this.primary;
+        break;
+      case 'staffs':
+        this.staffs = !this.primary;
+        break;
+    }
   }
 }

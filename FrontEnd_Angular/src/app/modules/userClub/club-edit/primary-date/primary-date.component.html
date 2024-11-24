@@ -1,0 +1,16 @@
+<h3>Podstawowe dane Klubu</h3>
+<div class="OneElement">
+    <p>{{this.club.name}}</p>
+    <button class="editBtn" (click)="this.nameEdit=true">Edytuj nazwę klubu</button>
+</div>
+<div class="OneElement">
+    <p>{{this.club.description}}</p>
+    <button class="editBtn" (click)="this.descEdit=true;">Edytuj opis klubu</button>
+</div>
+<div class="OneElement">
+    <p>{{this.club.rising | date:"yyyy-mm-dd"}}</p>
+    <button class="editBtn">Edytuj date powstania klubu</button>
+</div>
+<app-name-edit *ngIf="nameEdit" (closeEmit)="nameEdit = false"></app-name-edit>
+<app-description-edit *ngIf="descEdit" (closeEmit)="descEdit = false"></app-description-edit>
+<app-rising-edit *ngIf="risingEdit"></app-rising-edit>
