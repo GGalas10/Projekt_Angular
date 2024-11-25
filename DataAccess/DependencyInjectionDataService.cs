@@ -13,6 +13,7 @@ namespace DataAccess
             services.AddScoped<IClubRepository, ClubRepository>();
             services.AddScoped<IUserClubAceessRepository, UserClubAceessRepository>();
             services.AddScoped<IPlayerRepository, PlayerRepository>();
+            services.AddScoped<IClubEditRepository, ClubEditRepository>();
             return services;
         }
     }

@@ -1,4 +1,6 @@
-﻿namespace Core.Models
+﻿using Core.Exceptions;
+
+namespace Core.Models
 {
     public class SportsClub
     {
@@ -58,6 +60,24 @@
             Description = string.IsNullOrEmpty(model.Description) ? Description : model.Description;
             if(model.Rising != DateTime.MinValue && model.Rising != Rising)
                 Rising = model.Rising;
+        }
+        public void UpdateName(string name)
+        {
+            if(string.IsNullOrEmpty(name))
+                throw new BadRequestException("NewClubName_Cannot_Be_Null_Or_Empty");
+            Name = name;
+        }
+        public void UpdateDescription(string description)
+        {
+            if(string.IsNullOrEmpty(description))
+                throw new BadRequestException("Description_Cannot_Be_Null_Or_Empty");
+            Description = description;
+        }
+        public void UpdateRising(DateTime rising)
+        {
+            if (rising >= DateTime.Now)
+                throw new BadRequestException("Rising_Cannot_Be_Greater_Than_Today");
+            Rising = rising;
         }
     }
 }

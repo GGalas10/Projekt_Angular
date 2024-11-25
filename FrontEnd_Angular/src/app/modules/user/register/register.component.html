@@ -25,5 +25,5 @@
     </form>
 </div>
 <ng-container *ngIf="ShowAlert">
-    <app-base-alert [baseAlert]="baseAlert"></app-base-alert>
+    <app-base-alert [baseAlert]="baseAlert" (CloseEmit)="this.ShowAlert = false"></app-base-alert>
 </ng-container>

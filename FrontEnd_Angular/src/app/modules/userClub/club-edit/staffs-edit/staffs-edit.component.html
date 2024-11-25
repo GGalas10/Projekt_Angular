@@ -1,0 +1,9 @@
+<div *ngIf="staffs.length>0;else emptyList">
+    <ng-container *ngFor="let item of staffs">
+        <p>{{item.FirstName}} {{item.LastName}} {{item.JobPosition}}</p>
+    </ng-container>
+</div>
+<ng-template #emptyList>
+    <h1>Brak personelu w klubie</h1>
+    <button>Dodaj pierwszego</button>
+</ng-template>

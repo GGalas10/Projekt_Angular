@@ -1,1 +1,14 @@
-<p>rising-edit works!</p>
+<div class="overlay">
+    <div class="modal">
+        <button class="close-btn" (click)="this.closeModal()">&times;</button>
+        <h2 class="changeHeader">Zmiana daty powstania klubu</h2>
+        <div class="changeContainer">
+            <label for="newName" class="changeLabel">Podaj nową date powstania klubu</label>
+            <input type="date" class="changeInput" placeholder="Opis klubu" [(ngModel)]="newRising" />
+            <button class="acceptBtn" (click)="submit()">Zapisz</button>
+        </div>
+    </div>
+</div>
+<ng-container *ngIf="ShowAlert">
+    <app-base-alert [baseAlert]="baseAlert" (CloseEmit)="this.ShowAlert = false"></app-base-alert>
+</ng-container>

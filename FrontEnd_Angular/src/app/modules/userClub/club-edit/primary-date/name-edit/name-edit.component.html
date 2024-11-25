@@ -4,8 +4,12 @@
         <h2 class="changeHeader">Zmiana nazwy klubu</h2>
         <div class="changeContainer">
             <label for="newName" class="changeLabel">Podaj nową nazwę klubu</label>
-            <input type="text" name="newName" id="newName" class="changeInput" placeholder="Nazwa klubu">
-            <button class="acceptBtn">Zapisz</button>
+            <input required type="text" name="newName" id="newName" class="changeInput" placeholder="Nazwa klubu"
+                [(ngModel)]="newName">
+            <button class="acceptBtn" (click)="submit()">Zapisz</button>
         </div>
     </div>
 </div>
+<ng-container *ngIf="ShowAlert">
+    <app-base-alert [baseAlert]="baseAlert" (CloseEmit)="this.ShowAlert = false"></app-base-alert>
+</ng-container>

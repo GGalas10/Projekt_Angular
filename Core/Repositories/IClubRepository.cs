@@ -5,7 +5,6 @@ namespace Core.Repositories
     public interface IClubRepository
     {
         Task<Guid> CreateClubAsync(SportsClub model);
-        Task UpdateClubAsync(SportsClub model,Guid clubId);
         Task DeleteClubAsync(Guid clubId);
         Task<SportsClub> GetClubByIdAsync(Guid clubId);
         Task<SportsClub> GetClubByNameAsync(string clubName);

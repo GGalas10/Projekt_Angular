@@ -24,13 +24,6 @@ namespace Infrastructure.Implementations
             await _userClubAceessRepository.AddClubAccessToUserAsync(userId,result);
             return result;
         }
-        public async Task UpdateClub(UpdateClub command,Guid clubId)
-        {
-            if (command == null)
-                throw new Exception("Command_Cannot_Be_Null_UpdateClub");
-            await _clubRepository.UpdateClubAsync(new SportsClub(command.name, command.description, (DateTime)command.rising), clubId);
-        }
-
         public async Task DeleteClub(Guid clubId)
         {
             if (clubId == Guid.Empty)

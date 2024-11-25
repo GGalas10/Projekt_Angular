@@ -14,6 +14,7 @@ import { authInterceptor } from './interceptors/auth-interceptor.interceptor';
 import { errorCatchInterceptor } from './interceptors/error-catch.interceptor';
 import { UserService } from './Services/API/UserService';
 import { UserClubService } from './Services/API/UserClubService';
+import { ClubEditService } from './Services/API/ClubEditServices';
 
 @NgModule({
   declarations: [HeaderComponent],
@@ -26,6 +27,7 @@ import { UserClubService } from './Services/API/UserClubService';
     HealthCheckService,
     LoginService,
     UserService,
+    ClubEditService,
     provideHttpClient(withInterceptorsFromDi()),
     [
       {

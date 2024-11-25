@@ -16,6 +16,7 @@ namespace Infrastructure
             services.AddScoped<ISportClubService, SportClubService>();
             services.AddScoped<IPlayerService, PlayerService>();
             services.AddScoped<IPasswordService, PasswordService>();
+            services.AddScoped<IClubEditService, ClubEditService>();
             return services;
         }
     }

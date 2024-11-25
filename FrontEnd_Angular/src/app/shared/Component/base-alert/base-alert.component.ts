@@ -1,15 +1,16 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { BaseAlert } from './BaseAlertInterface';
 
 @Component({
   selector: 'app-base-alert',
   templateUrl: './base-alert.component.html',
-  styleUrl: './base-alert.component.css'
+  styleUrl: './base-alert.component.css',
 })
 export class BaseAlertComponent {
-  @Input() baseAlert!:BaseAlert;
+  @Output() CloseEmit = new EventEmitter<void>();
+  @Input() baseAlert!: BaseAlert;
 
-  CloseModal(){
-    document.getElementById("BaseModal")?.remove();
+  CloseModal() {
+    this.CloseEmit.emit();
   }
 }

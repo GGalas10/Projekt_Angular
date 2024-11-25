@@ -24,18 +24,6 @@ namespace DataAccess.Repositories
             await _context.SaveChangesAsync();
             return model.Id;
         }
-        public async Task UpdateClubAsync(SportsClub model, Guid clubId)
-        {
-            if (model == null)
-                throw new BadRequestException("Model_Cannot_Be_Null_CreateClub");
-            var sportClub = await _context.SportsClubs.FirstOrDefaultAsync(x=>x.Id == clubId);
-            if (sportClub == null)
-                throw new BadRequestException("Cannot_Find_Club_With_Id_UpdateClub");
-            sportClub.UpdateFromModel(model);
-            _context.Entry(sportClub).State = EntityState.Modified;
-            _context.Update(sportClub);
-            await _context.SaveChangesAsync();
-        }
         public async Task DeleteClubAsync(Guid clubId)
         {
             var sportClub = await _context.SportsClubs.FirstOrDefaultAsync(x => x.Id == clubId);
