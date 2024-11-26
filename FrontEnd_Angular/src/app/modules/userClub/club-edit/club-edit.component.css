@@ -3,6 +3,7 @@
   grid-template-columns: 20% 85%;
   gap: 30px;
   width: 100%;
+  min-height: 450px;
 }
 .ButtonColumn {
   display: grid;

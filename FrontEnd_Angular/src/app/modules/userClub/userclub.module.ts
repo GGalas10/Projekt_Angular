@@ -13,6 +13,8 @@ import { PrimaryDateComponent } from './club-edit/primary-date/primary-date.comp
 import { PlayersEditComponent } from './club-edit/players-edit/players-edit.component';
 import { CoachesEditComponent } from './club-edit/coaches-edit/coaches-edit.component';
 import { StaffsEditComponent } from './club-edit/staffs-edit/staffs-edit.component';
+import { EditPlayerComponent } from './club-edit/players-edit/edit-player/edit-player.component';
+import { AddPlayerComponent } from './club-edit/players-edit/add-player/add-player.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { StaffsEditComponent } from './club-edit/staffs-edit/staffs-edit.compone
     PlayersEditComponent,
     CoachesEditComponent,
     StaffsEditComponent,
+    AddPlayerComponent,
+    EditPlayerComponent,
   ],
   imports: [SharedModule, CommonModule, UserclubRoutingModule, FormsModule],
 })

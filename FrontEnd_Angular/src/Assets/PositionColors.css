@@ -1,0 +1,55 @@
+/* Goalkeeper */
+.goalkeeperNormal {
+  background-color: #4a4a4a;
+  color: whitesmoke;
+}
+.goalkeeperNormal:hover {
+  background-color: #1b5e20;
+  color: whitesmoke;
+}
+.goalkeeperActive {
+  background-color: #0d3d12;
+  color: whitesmoke;
+}
+
+/* Defenders */
+.defenderNormal {
+  background-color: #525252;
+  color: whitesmoke;
+}
+.defenderNormal:hover {
+  background-color: #1565c0;
+  color: whitesmoke;
+}
+.defenderActive {
+  background-color: #0d47a1;
+  color: whitesmoke;
+}
+
+/* Midfielders */
+.midfielderNormal {
+  background-color: #646464;
+  color: whitesmoke;
+}
+.midfielderNormal:hover {
+  background-color: #8e24aa;
+  color: whitesmoke;
+}
+.midfielderActive {
+  background-color: #6a1b9a;
+  color: whitesmoke;
+}
+
+/* Forwards */
+.forwardNormal {
+  background-color: #535353;
+  color: whitesmoke;
+}
+.forwardNormal:hover {
+  background-color: #d32f2f;
+  color: whitesmoke;
+}
+.forwardActive {
+  background-color: #b71c1c;
+  color: whitesmoke;
+}

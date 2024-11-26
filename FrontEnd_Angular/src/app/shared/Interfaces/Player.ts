@@ -16,7 +16,7 @@ export interface Player {
   Goals: number;
   Assists: number;
   PlayedMatches: number;
-  CoachClubId: string;
+  PlayerClubId: string;
 }
 export function GetPlayerPosition(position: number): string {
   switch (position) {

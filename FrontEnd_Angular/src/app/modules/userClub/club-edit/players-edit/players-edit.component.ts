@@ -7,6 +7,8 @@ import { Player } from '../../../../shared/Interfaces/Player';
   styleUrl: './players-edit.component.css',
 })
 export class PlayersEditComponent {
+  addPlayer = false;
+  editPlayer = false;
   @Input() ClubId!: string;
   @Input() players!: Player[];
 }

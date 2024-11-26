@@ -5,5 +5,7 @@
 </div>
 <ng-template #emptyList>
     <h1>Brak piłkarzy w klubie</h1>
-    <button>Dodaj pierwszego</button>
+    <button class="AddingBtn" (click)="addPlayer = true">Dodaj pierwszego piłkarza</button>
 </ng-template>
+<app-add-player *ngIf="addPlayer" [clubId]="this.ClubId" (closeEvent)="addPlayer = false"></app-add-player>
+<app-edit-player *ngIf="editPlayer"></app-edit-player>

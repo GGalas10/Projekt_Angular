@@ -1,0 +1,11 @@
+.AddingBtn {
+  margin: 15px;
+  background-color: #3f0388;
+  color: whitesmoke;
+  border-radius: 15px;
+  border: none;
+  padding: 5px 15px;
+}
+.AddingBtn:hover {
+  opacity: 0.8;
+}
