@@ -1,0 +1,20 @@
+services:
+  apiforfirstangular:
+    image: ${DOCKER_REGISTRY-}apiforfirstangular
+    build:
+      context: .
+      dockerfile: ApiForFirstAngular/Dockerfile
+    ports:
+        - "127.0.0.1:7137:80"
+    container_name: API_ASP_NET
+  angular-app:
+    build:
+      context: .
+      dockerfile: FrontEnd_Angular/Dockerfile
+    ports:
+      - "127.0.0.1:4200:80"
+    volumes:
+      - ./FrontEnd_Angular:/app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    container_name: Angular

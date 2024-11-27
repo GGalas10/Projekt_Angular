@@ -5,5 +5,6 @@
         Task UpdateClubName(string newClubName, Guid clubId);
         Task UpdateClubDescription(string newClubDescription, Guid clubId);
         Task UpdateClubRising(DateTime newRising, Guid clubId);
+        Task<bool> CheckUserHasAccess(Guid userId, Guid clubId);
     }
 }

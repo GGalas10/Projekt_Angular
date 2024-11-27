@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ClubServices } from '../../core/Services/API/ClubServices';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ClubDetails } from '../../../shared/Interfaces/Club';
+import { ClubEditService } from '../../core/Services/API/ClubEditServices';
+import { BaseAlert } from '../../../shared/Component/base-alert/BaseAlertInterface';
 
 @Component({
   selector: 'app-club-edit',
@@ -10,6 +11,8 @@ import { ClubDetails } from '../../../shared/Interfaces/Club';
 })
 export class ClubEditComponent implements OnInit {
   IsLoading = true;
+  ShowAlert = false;
+  baseAlert: BaseAlert = { Title: '', Message: '' };
   clubId!: string;
   club!: ClubDetails;
   primary = false;
@@ -17,8 +20,9 @@ export class ClubEditComponent implements OnInit {
   coaches = false;
   staffs = false;
   constructor(
-    private clubService: ClubServices,
+    private clubService: ClubEditService,
     private route: ActivatedRoute,
+    private router: Router,
   ) {}
   ngOnInit(): void {
     this.route.paramMap.subscribe({
@@ -32,8 +36,17 @@ export class ClubEditComponent implements OnInit {
         this.IsLoading = false;
       },
       error: (err) => {
-        console.log(err);
-        this.IsLoading = false;
+        if (err.error == 'Unauthorized') {
+          this.ShowAlert = true;
+          this.baseAlert.Title = 'Brak autoryzacji';
+          this.baseAlert.Message =
+            'Zaloguj się żeby uzyskać dostęp do tej treści';
+        }
+        if (err.error == 'Forbidden') {
+          this.ShowAlert = true;
+          this.baseAlert.Title = 'Brak dostępu';
+          this.baseAlert.Message = 'Nie masz dostępu do tej treści.';
+        }
       },
     });
   }
@@ -56,5 +69,13 @@ export class ClubEditComponent implements OnInit {
         this.staffs = !this.primary;
         break;
     }
+  }
+  CloseAlert() {
+    console.log(this.baseAlert);
+    if (this.baseAlert.Title == 'Brak autoryzacji')
+      this.router.navigateByUrl('/User/login');
+
+    if (this.baseAlert.Title == 'Brak dostępu')
+      this.router.navigateByUrl('/User/Club');
   }
 }

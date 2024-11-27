@@ -8,29 +8,28 @@
     </ul>
   </li>
   <li class="d-flex centerBar">
-    <ul>
-      <a href="User/Club/Create" style="color: whitesmoke" *ngIf="isLogin">Stwórz klub</a>
+    <ul *ngIf="isLogin">
+      <a href="User/Club/Create">Stwórz klub</a>
     </ul>
     <ul>
-      <a routerLink="login" style="color: whitesmoke">Wszystkie zespoły</a>
+      <a href="Club">Wszystkie zespoły</a>
     </ul>
     <ul>
-      <a routerLink="login" style="color: whitesmoke">Najbliższe mecze</a>
+      <a routerLink="login">Najbliższe mecze</a>
     </ul>
-    <ul>
-      <a href="/User/Club" style="color: whitesmoke" *ngIf="isLogin">Twoje dodane zespoły</a>
+    <ul *ngIf="isLogin">
+      <a href="User/Club">Twoje dodane zespoły</a>
     </ul>
   </li>
   <li class="d-flex rightBar" *ngIf="!isLogin; else LogOut">
     <ul>
-      <a href="User/login" style="color: whitesmoke">Login</a>
+      <a href="User/login">Login</a>
     </ul>
   </li>
   <ng-template #LogOut>
     <li class="d-flex rightBar">
-      <ul><a href="User/Details" style="color: whitesmoke">Szczegóły</a></ul>
-      <ul><a (click)="Logout()" style="color: whitesmoke;cursor: pointer;">Wyloguj</a></ul>
+      <ul><a href="User/Details">Szczegóły</a></ul>
+      <ul><a (click)="Logout()">Wyloguj</a></ul>
     </li>
   </ng-template>
-
 </nav>

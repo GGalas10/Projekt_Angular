@@ -38,10 +38,19 @@ namespace ApiForFirstAngular.Middlewares
                     }
                     if(ex is InternalServerException)
                     {
-                        context.Response.StatusCode = StatusCodes.Status400BadRequest;
+                        context.Response.StatusCode = StatusCodes.Status500InternalServerError;
                         await context.Response.WriteAsJsonAsync($"ApplicationError: {ex.Message}");
                     }
-
+                    if (ex is UnauthorizedAccessException)
+                    {
+                        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                        await context.Response.WriteAsJsonAsync("Unauthorized");
+                    }
+                    if(ex is ForbiddenException)
+                    {
+                        context.Response.StatusCode = StatusCodes.Status403Forbidden;
+                        await context.Response.WriteAsJsonAsync("Forbidden");
+                    }
 
                     if (context.Response.StatusCode == -100)
                     {

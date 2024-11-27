@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
   homeClubs!: HomeClubDTO[];
   ngOnInit(): void {
     this.clubService.GetAllClubsForHome().subscribe({
-      next: (data) => (this.homeClubs = data),
+      next: (data) => (this.homeClubs = data.slice(0, 3)),
       error: (err) => console.log(err),
     });
   }

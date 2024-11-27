@@ -23,3 +23,11 @@
 a:hover {
   opacity: 70%;
 }
+.centerBar ul {
+  margin: auto;
+}
+
+ul a {
+  color: whitesmoke;
+  cursor: pointer;
+}

@@ -45,5 +45,8 @@ namespace DataAccess.Repositories
             _context.Entry(club).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
+
+        public async Task<bool> CheckUserHasAccess(Guid userId, Guid clubId)
+        => await _context.UserClubAccesses.AnyAsync(x=>x.UserId == userId && x.SportsClubId == clubId);
     }
 }
