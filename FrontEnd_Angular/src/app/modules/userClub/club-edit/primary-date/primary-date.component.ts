@@ -3,9 +3,10 @@ import { ClubDetails } from '../../../../shared/Interfaces/Club';
 import { BaseAlert } from '../../../../shared/Component/base-alert/BaseAlertInterface';
 
 @Component({
-  selector: 'app-primary-date',
-  templateUrl: './primary-date.component.html',
-  styleUrl: './primary-date.component.css',
+    selector: 'app-primary-date',
+    templateUrl: './primary-date.component.html',
+    styleUrl: './primary-date.component.css',
+    standalone: false
 })
 export class PrimaryDateComponent {
   ShowAlert = false;

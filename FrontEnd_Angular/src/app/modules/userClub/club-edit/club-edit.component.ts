@@ -5,9 +5,10 @@ import { ClubEditService } from '../../core/Services/API/ClubEditServices';
 import { BaseAlert } from '../../../shared/Component/base-alert/BaseAlertInterface';
 
 @Component({
-  selector: 'app-club-edit',
-  templateUrl: './club-edit.component.html',
-  styleUrl: './club-edit.component.css',
+    selector: 'app-club-edit',
+    templateUrl: './club-edit.component.html',
+    styleUrl: './club-edit.component.css',
+    standalone: false
 })
 export class ClubEditComponent implements OnInit {
   IsLoading = true;

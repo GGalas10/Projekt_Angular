@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-add-player',
-  templateUrl: './add-player.component.html',
-  styleUrl: './add-player.component.css',
+    selector: 'app-add-player',
+    templateUrl: './add-player.component.html',
+    styleUrl: './add-player.component.css',
+    standalone: false
 })
 export class AddPlayerComponent {
   @Input() clubId!: string;

@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { UserClubService } from '../../core/Services/API/UserClubService';
 
 @Component({
-  selector: 'app-club-create',
-  templateUrl: './club-create.component.html',
-  styleUrl: './club-create.component.css',
+    selector: 'app-club-create',
+    templateUrl: './club-create.component.html',
+    styleUrl: './club-create.component.css',
+    standalone: false
 })
 export class ClubCreateComponent {
   @ViewChild('floatingName') nameLabel!: ElementRef;

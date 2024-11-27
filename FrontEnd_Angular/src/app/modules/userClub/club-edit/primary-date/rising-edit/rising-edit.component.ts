@@ -3,9 +3,10 @@ import { BaseAlert } from '../../../../../shared/Component/base-alert/BaseAlertI
 import { ClubEditService } from '../../../../core/Services/API/ClubEditServices';
 
 @Component({
-  selector: 'app-rising-edit',
-  templateUrl: './rising-edit.component.html',
-  styleUrl: './rising-edit.component.css',
+    selector: 'app-rising-edit',
+    templateUrl: './rising-edit.component.html',
+    styleUrl: './rising-edit.component.css',
+    standalone: false
 })
 export class RisingEditComponent {
   @Output() closeEmit = new EventEmitter<void>();

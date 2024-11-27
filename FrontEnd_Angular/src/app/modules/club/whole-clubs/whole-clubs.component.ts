@@ -3,9 +3,10 @@ import { ClubServices } from '../../core/Services/API/ClubServices';
 import { HomeClubDTO } from '../../../shared/Interfaces/Club';
 
 @Component({
-  selector: 'app-whole-clubs',
-  templateUrl: './whole-clubs.component.html',
-  styleUrl: './whole-clubs.component.css',
+    selector: 'app-whole-clubs',
+    templateUrl: './whole-clubs.component.html',
+    styleUrl: './whole-clubs.component.css',
+    standalone: false
 })
 export class WholeClubsComponent implements OnInit {
   homeClubs!: HomeClubDTO[];

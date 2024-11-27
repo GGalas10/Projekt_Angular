@@ -1,12 +1,12 @@
 services:
   apiforfirstangular:
-    image: ${DOCKER_REGISTRY-}apiforfirstangular
+    image: apiforfirstangular
     build:
       context: .
       dockerfile: ApiForFirstAngular/Dockerfile
     ports:
         - "127.0.0.1:7137:80"
-    container_name: API_ASP_NET
+    container_name: Api
   angular-app:
     build:
       context: .

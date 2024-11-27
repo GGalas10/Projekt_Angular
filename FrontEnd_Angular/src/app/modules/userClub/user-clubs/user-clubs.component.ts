@@ -5,9 +5,10 @@ import { HomeClubDTO } from '../../../shared/Interfaces/Club';
 import { UserClubService } from '../../core/Services/API/UserClubService';
 
 @Component({
-  selector: 'app-user-clubs',
-  templateUrl: './user-clubs.component.html',
-  styleUrl: './user-clubs.component.css',
+    selector: 'app-user-clubs',
+    templateUrl: './user-clubs.component.html',
+    styleUrl: './user-clubs.component.css',
+    standalone: false
 })
 export class UserClubsComponent implements OnInit, OnDestroy {
   serviceObservable!: Subscription;

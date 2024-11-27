@@ -5,9 +5,10 @@ import {
 } from '../../../../shared/Interfaces/Player';
 
 @Component({
-  selector: 'app-players',
-  templateUrl: './players.component.html',
-  styleUrl: './players.component.css',
+    selector: 'app-players',
+    templateUrl: './players.component.html',
+    styleUrl: './players.component.css',
+    standalone: false
 })
 export class PlayersComponent {
   @Input() players!: Player[];

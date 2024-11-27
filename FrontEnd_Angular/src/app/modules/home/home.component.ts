@@ -3,9 +3,10 @@ import { ClubServices } from '../core/Services/API/ClubServices';
 import { HomeClubDTO } from '../../shared/Interfaces/Club';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrl: './home.component.css',
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrl: './home.component.css',
+    standalone: false
 })
 export class HomeComponent implements OnInit {
   constructor(private clubService: ClubServices) {}

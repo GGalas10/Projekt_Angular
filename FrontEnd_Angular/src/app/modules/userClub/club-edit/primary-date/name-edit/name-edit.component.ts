@@ -3,9 +3,10 @@ import { BaseAlert } from '../../../../../shared/Component/base-alert/BaseAlertI
 import { ClubEditService } from '../../../../core/Services/API/ClubEditServices';
 
 @Component({
-  selector: 'app-name-edit',
-  templateUrl: './name-edit.component.html',
-  styleUrl: './name-edit.component.css',
+    selector: 'app-name-edit',
+    templateUrl: './name-edit.component.html',
+    styleUrl: './name-edit.component.css',
+    standalone: false
 })
 export class NameEditComponent {
   @Output() closeEmit = new EventEmitter<void>();

@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../core/Services/API/UserService';
 
 @Component({
-  selector: 'app-details',
-  templateUrl: './details.component.html',
-  styleUrl: './details.component.css',
+    selector: 'app-details',
+    templateUrl: './details.component.html',
+    styleUrl: './details.component.css',
+    standalone: false
 })
 export class DetailsComponent implements OnInit {
   userName!: string;

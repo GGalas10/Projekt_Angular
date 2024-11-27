@@ -6,9 +6,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ClubDetails } from '../../../shared/Interfaces/Club';
 
 @Component({
-  selector: 'app-club-details',
-  templateUrl: './club-details.component.html',
-  styleUrl: './club-details.component.css',
+    selector: 'app-club-details',
+    templateUrl: './club-details.component.html',
+    styleUrl: './club-details.component.css',
+    standalone: false
 })
 export class ClubDetailsComponent implements OnInit, OnDestroy {
   observable: Subscription = new Subscription();

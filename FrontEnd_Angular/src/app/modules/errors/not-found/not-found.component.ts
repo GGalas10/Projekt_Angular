@@ -2,9 +2,10 @@ import { Component, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'app-not-found',
-  templateUrl: './not-found.component.html',
-  styleUrl: './not-found.component.css',
+    selector: 'app-not-found',
+    templateUrl: './not-found.component.html',
+    styleUrl: './not-found.component.css',
+    standalone: false
 })
 export class NotFoundComponent implements OnInit, OnDestroy {
   constructor(

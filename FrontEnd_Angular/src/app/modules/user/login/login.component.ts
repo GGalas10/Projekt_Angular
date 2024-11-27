@@ -6,9 +6,10 @@ import { LoginService } from '../../core/Services/API/LoginService';
 import { AuthService } from '../../core/Services/AuthService';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css',
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.css',
+    standalone: false
 })
 export class LoginComponent {
   userLogin = new FormGroup({
