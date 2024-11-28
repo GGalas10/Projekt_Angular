@@ -5,16 +5,24 @@ services:
       context: .
       dockerfile: ApiForFirstAngular/Dockerfile
     ports:
-        - "127.0.0.1:7137:80"
+        - "7137:8080"
     container_name: Api
-  angular-app:
+  angular:
+    image: frontimage
     build:
-      context: .
-      dockerfile: FrontEnd_Angular/Dockerfile
+        context: .
+        dockerfile: FrontEnd_Angular/Dockerfile
     ports:
-      - "127.0.0.1:4200:80"
+        - "4200:4200"
     volumes:
-      - ./FrontEnd_Angular:/app
+          - ./FrontEnd_Angular:/app
+          - /app/node_modules
+    container_name: Front
+  db:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    container_name: sqlserver
     environment:
-      - CHOKIDAR_USEPOLLING=true
-    container_name: Angular
+      - SA_PASSWORD=admin
+      - ACCEPT_EULA=Y
+    ports:
+      - "5434:1433"

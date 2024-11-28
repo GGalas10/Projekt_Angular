@@ -5,10 +5,10 @@ import { ClubEditService } from '../../core/Services/API/ClubEditServices';
 import { BaseAlert } from '../../../shared/Component/base-alert/BaseAlertInterface';
 
 @Component({
-    selector: 'app-club-edit',
-    templateUrl: './club-edit.component.html',
-    styleUrl: './club-edit.component.css',
-    standalone: false
+  selector: 'app-club-edit',
+  templateUrl: './club-edit.component.html',
+  styleUrl: './club-edit.component.css',
+  standalone: false,
 })
 export class ClubEditComponent implements OnInit {
   IsLoading = true;
@@ -34,6 +34,17 @@ export class ClubEditComponent implements OnInit {
     this.clubService.GetClubDetails(this.clubId).subscribe({
       next: (respond) => {
         this.club = respond;
+        this.club.playerList = this.club.playerList.sort(
+          (a, b) => a.playerNumber - b.playerNumber,
+        );
+        var newList = this.club.playerList.concat(this.club.playerList);
+        newList = this.club.playerList.concat(newList);
+        newList = this.club.playerList.concat(newList);
+        newList = this.club.playerList.concat(newList);
+        newList = this.club.playerList.concat(newList);
+        newList = this.club.playerList.concat(newList);
+        this.club.playerList = newList;
+        console.log(newList);
         this.IsLoading = false;
       },
       error: (err) => {

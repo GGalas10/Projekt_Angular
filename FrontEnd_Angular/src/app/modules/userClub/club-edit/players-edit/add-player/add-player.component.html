@@ -6,8 +6,14 @@
         <h2 class="changeHeader" style="top: 2%;">Dodanie nowego zawodnika</h2>
         <div class="changeContainer" style="width: 90%;">
             <form [formGroup]="newPlayerForm" style="display: flex;flex-flow: wrap;">
-                <section style="width: 50%;">
+                <section style="width: 50%; padding-top: 50px;">
                     <div style="display: grid;">
+
+                        <label for="played-matches" style="font-size: 1.1rem;font-weight: bolder;">Numer na koszulce
+                            :</label>
+                        <input max="99" min="1" type="number" id="played-number" formControlName="playerNumber"
+                            style="font-size: 1.1rem;font-weight: bolder;">
+
                         <label for="first-name">Imię zawodnika</label>
                         <input type="text" id="first-name" formControlName="firstName">
 
@@ -20,69 +26,81 @@
                         <label for="contract-to">Kontrakt do</label>
                         <input min="1979-12-31" type="date" id="contract-to" formControlName="contractTo">
 
-                        <label for="has-injur" class="customCheckbox">
-                            Czy kontuzjowany?
-                            <input type="checkbox" id="has-injur" formControlName="hasInjur" />
-                            <span class="checkmark"></span>
-                        </label>
-
-                        <label for="played-minute">Rozegrane minuty</label>
-                        <input max="9999" min="0" type="number" id="played-minute" formControlName="playedMinute">
-
-                        <label for="yellow-cards">Żółte kartki</label>
-                        <input max="99" min="0" type="number" id="yellow-cards" formControlName="yellowCards">
-
-                        <label for="red-cards">Czerwone kartki</label>
-                        <input max="99" min="0" type="number" id="red-cards" formControlName="redCards">
-
-                        <label for="goals">Strzelone gole</label>
-                        <input max="99" min="0" type="number" id="goals" formControlName="goals">
-
-                        <label for="assists">Asysty</label>
-                        <input max="99" min="0" type="number" id="assists" formControlName="assists">
-
-                        <label for="played-matches">Rozegrane mecze</label>
-                        <input max="999" min="0" type="number" id="played-matches" formControlName="playedMatches">
+                        <section>
+                            <div style="margin: 10px auto;">
+                                <label for="has-injury" class="customCheckbox">
+                                    <span>Czy kontuzjowany?</span>
+                                    <input type="checkbox" id="has-injury" formControlName="hasInjury" />
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="InputWithLabel">
+                                <label for="played-minute">Rozegrane minuty:</label>
+                                <input max="9999" min="0" type="number" id="played-minute"
+                                    formControlName="playedMinute">
+                            </div>
+                            <div class="InputWithLabel">
+                                <label for="played-matches">Rozegrane mecze:</label>
+                                <input max="999" min="0" type="number" id="played-matches"
+                                    formControlName="playedMatches">
+                            </div>
+                            <div class="InputWithLabel">
+                                <label for="yellow-cards">Żółte kartki:</label>
+                                <input max="99" min="0" type="number" id="yellow-cards" formControlName="yellowCards">
+                            </div>
+                            <div class="InputWithLabel">
+                                <label for="red-cards">Czerwone kartki:</label>
+                                <input max="99" min="0" type="number" id="red-cards" formControlName="redCards">
+                            </div>
+                            <div class="InputWithLabel">
+                                <label for="assists">Asysty:</label>
+                                <input max="99" min="0" type="number" id="assists" formControlName="assists">
+                            </div>
+                            <div class="InputWithLabel">
+                                <label for="goals">Strzelone gole:</label>
+                                <input max="99" min="0" type="number" id="goals" formControlName="goals">
+                            </div>
+                        </section>
                     </div>
                 </section>
                 <section style="width: 50%;">
-                    <img src="/Playground.png" height="490px" alt="playground">
+                    <img src="/Playground.png" height="490px" alt="playground" style="margin-top: 50px;">
                     <a class="positionBtn goalkeeperNormal" (click)="setPosition(0)"
                         [ngClass]="{'goalkeeperActive': newPlayerForm.value.playerPosition === 0}"
-                        style="bottom: 140px;right: 211px;">BR</a>
+                        style="bottom: 115px;right: 211px;">BR</a>
 
                     <a class="positionBtn defenderNormal" (click)="setPosition(3)"
                         [ngClass]="{'defenderActive': newPlayerForm.value.playerPosition === 3}"
-                        style="bottom: 240px;right: 300px;">LO</a>
+                        style="bottom: 215px;right: 300px;">LO</a>
                     <a class="positionBtn defenderNormal" (click)="setPosition(1)"
                         [ngClass]="{'defenderActive': newPlayerForm.value.playerPosition === 1}"
-                        style="bottom: 240px;right: 211px;">ŚO</a>
+                        style="bottom: 215px;right: 211px;">ŚO</a>
                     <a class="positionBtn defenderNormal" (click)="setPosition(2)"
                         [ngClass]="{'defenderActive': newPlayerForm.value.playerPosition === 2}"
-                        style="bottom: 240px;right: 120px;">PO</a>
+                        style="bottom: 215px;right: 120px;">PO</a>
 
                     <a class="positionBtn midfielderNormal" (click)="setPosition(6)"
                         [ngClass]="{'midfielderActive': newPlayerForm.value.playerPosition === 6}"
-                        style="bottom: 355px;right: 300px;">LP</a>
+                        style="bottom: 327px;right: 300px;">LP</a>
                     <a class="positionBtn midfielderNormal" (click)="setPosition(4)"
                         [ngClass]="{'midfielderActive': newPlayerForm.value.playerPosition === 4}"
-                        style="bottom: 355px;right: 211px;">ŚP</a>
+                        style="bottom: 327px;right: 211px;">ŚP</a>
                     <a class="positionBtn midfielderNormal" (click)="setPosition(5)"
                         [ngClass]="{'midfielderActive': newPlayerForm.value.playerPosition === 5}"
-                        style="bottom: 355px;right: 120px;">PP</a>
+                        style="bottom: 327px;right: 120px;">PP</a>
 
                     <a class="positionBtn forwardNormal" (click)="setPosition(9)"
                         [ngClass]="{'forwardActive': newPlayerForm.value.playerPosition === 9}"
-                        style="bottom: 500px;right: 300px;">LN</a>
+                        style="bottom: 475px;right: 300px;">LN</a>
                     <a class="positionBtn forwardNormal" (click)="setPosition(7)"
                         [ngClass]="{'forwardActive': newPlayerForm.value.playerPosition === 7}"
-                        style="bottom: 500px;right: 211px;">ŚN</a>
+                        style="bottom: 475px;right: 211px;">ŚN</a>
                     <a class="positionBtn forwardNormal" (click)="setPosition(8)"
                         [ngClass]="{'forwardActive': newPlayerForm.value.playerPosition === 8}"
-                        style="bottom: 500px;right: 120px;">PN</a>
+                        style="bottom: 475px;right: 120px;">PN</a>
                 </section>
-                <button type="submit" [disabled]="newPlayerForm.invalid" style="margin: 15px auto;"
-                    class="saveButton">Zapisz</button>
+                <button type="submit" [disabled]="newPlayerForm.invalid" style="margin: 15px auto;" class="saveButton"
+                    (click)="createPlayer()">Zapisz</button>
             </form>
 
         </div>

@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { ModalComponent } from './shared/Component/modal/modal.component';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from './modules/core/core.module';
-import { HealthCheckService } from './modules/core/Services/API/HealthCheckService';
 
 @NgModule({
   declarations: [AppComponent, ModalComponent],
@@ -13,5 +12,5 @@ import { HealthCheckService } from './modules/core/Services/API/HealthCheckServi
   bootstrap: [AppComponent],
 })
 export class AppModule {
-  constructor(private _service: HealthCheckService) {}
+  constructor() {}
 }

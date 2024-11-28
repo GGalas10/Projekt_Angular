@@ -17,6 +17,40 @@ export interface Player {
   Assists: number;
   PlayedMatches: number;
   PlayerClubId: string;
+  PlayerNumber: number;
+}
+export interface PlayerDetailsDTO {
+  firstName: string;
+  lastName: string;
+  contractFrom: Date;
+  contractTo: Date;
+  clubName: string;
+  hasInjury: boolean;
+  playedMinutes: number;
+  yellowCards: number;
+  redCards: number;
+  goals: number;
+  assists: number;
+  playedMatches: number;
+  position: number;
+  playerNumber: number;
+}
+export interface CreateCommand {
+  clubId: string;
+  contractFrom: Date;
+  contractTo: Date;
+  firstName: string;
+  lastName: string;
+
+  position: number;
+  hasInjury: boolean;
+  playedMinutes: number;
+  yellowCards: number;
+  redCards: number;
+  goals: number;
+  assists: number;
+  playedMatches: number;
+  playerNumber: number;
 }
 export function GetPlayerPosition(position: number): string {
   switch (position) {

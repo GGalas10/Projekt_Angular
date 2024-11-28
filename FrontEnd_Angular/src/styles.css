@@ -11,7 +11,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+* {
   color: whitesmoke;
 }
 .Button-Modal {
@@ -36,36 +37,7 @@ a {
   background-position: center;
 }
 .normalBgBody {
-  background-image: linear-gradient(
-    5deg,
-    hsl(93deg 96% 18%) 0%,
-    hsl(94deg 94% 18%) 12%,
-    hsl(96deg 93% 19%) 18%,
-    hsl(98deg 92% 19%) 22%,
-    hsl(100deg 90% 20%) 26%,
-    hsl(102deg 88% 21%) 29%,
-    hsl(104deg 86% 21%) 33%,
-    hsl(107deg 84% 22%) 36%,
-    hsl(109deg 82% 23%) 39%,
-    hsl(113deg 79% 24%) 42%,
-    hsl(116deg 77% 24%) 44%,
-    hsl(121deg 77% 25%) 47%,
-    hsl(126deg 89% 24%) 50%,
-    hsl(124deg 77% 26%) 53%,
-    hsl(122deg 70% 27%) 56%,
-    hsl(121deg 64% 28%) 58%,
-    hsl(119deg 61% 29%) 61%,
-    hsl(118deg 58% 30%) 64%,
-    hsl(118deg 56% 30%) 67%,
-    hsl(117deg 54% 31%) 71%,
-    hsl(116deg 52% 31%) 74%,
-    hsl(115deg 50% 32%) 78%,
-    hsl(115deg 49% 33%) 82%,
-    hsl(114deg 47% 33%) 88%,
-    hsl(114deg 45% 34%) 100%
-  );
-  background-repeat: no-repeat;
-  background-position: cover;
+  background: #1e9f64;
   margin: 0px;
   min-height: 100%;
   width: 100%;
@@ -149,9 +121,15 @@ h6 {
   border: none;
   padding: 5px 15px;
   border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition-duration: 0.4s;
 }
 .editBtn:hover {
   opacity: 0.8;
+}
+.editBtn:active {
+  opacity: 0.6;
 }
 .saveButton {
   background-color: #4caf50;
@@ -193,9 +171,7 @@ h6 {
   display: flex;
   align-items: center;
   cursor: pointer;
-  font-size: 16px;
   color: whitesmoke;
-  flex-direction: column;
 }
 
 .customCheckbox .checkmark {
@@ -229,4 +205,21 @@ h6 {
 .customCheckbox .checkmark:hover {
   background-color: #e6e6e6;
   border-color: #999;
+}
+.detailsBtn {
+  padding: 5px 12px;
+  background: #424242;
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  user-select: none;
+  color: whitesmoke;
+  transition-duration: 0.4s;
+}
+.detailsBtn:hover {
+  opacity: 0.8;
+}
+.detailsBtn:active {
+  opacity: 0.6;
 }

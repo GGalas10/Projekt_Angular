@@ -51,3 +51,13 @@ input[type='date'] {
 input {
   margin-bottom: 10px;
 }
+.InputWithLabel {
+  margin: 10px auto;
+}
+.InputWithLabel label {
+  width: 40%;
+  text-align: left;
+}
+.customCheckbox {
+  padding: 0 65px 0 76px;
+}

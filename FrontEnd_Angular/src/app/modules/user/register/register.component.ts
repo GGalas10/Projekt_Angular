@@ -5,10 +5,10 @@ import { LoginService } from '../../core/Services/API/LoginService';
 import { Router } from '@angular/router';
 
 @Component({
-    selector: 'app-register',
-    templateUrl: './register.component.html',
-    styleUrl: './register.component.css',
-    standalone: false
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.css',
+  standalone: false,
 })
 export class RegisterComponent {
   registerUser = new FormGroup({
@@ -29,8 +29,6 @@ export class RegisterComponent {
 
   onSubmit() {
     this.IsClick = true;
-    console.log(this.GetValue().password);
-    console.log(this.GetValue().secondPassword);
     if (this.GetValue().password != this.GetValue().secondPassword) {
       this.ShowAlertFunction('Błąd', 'Hasłą muszą być identyczne');
       return;

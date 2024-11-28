@@ -1,4 +1,5 @@
 ﻿using ApiForFirstAngular.Controllers.Base;
+using Infrastructure.Commands.SportClub.Player;
 using Infrastructure.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,12 @@ namespace ApiForFirstAngular.Controllers
         {
             var result = await _playerService.GetPlayerDetailsByIdAsync(playerId);
             return Ok(result);
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddPlayerToClub([FromBody]AddPlayerCommand command)
+        {
+            await _playerService.AddPlayerToClub(command);
+            return Ok();
         }
     }
 }

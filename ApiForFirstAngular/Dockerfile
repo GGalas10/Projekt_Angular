@@ -1,16 +1,13 @@
 # Zobacz https://aka.ms/customizecontainer, aby dowiedzieć się, jak dostosować kontener debugowania i jak program Visual Studio używa tego pliku Dockerfile do kompilowania obrazów w celu szybszego debugowania.
 
 # Ten etap jest używany podczas uruchamiania z programu VS w trybie szybkim (domyślnie dla konfiguracji debugowania)
-FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS base
-USER $APP_UID
+FROM mcr.microsoft.com/dotnet/aspnet:9.0-noble AS base
 WORKDIR /app
 EXPOSE 80
-EXPOSE 443
 
 
 # Ten etap służy do kompilowania projektu usługi
-FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
-ARG BUILD_CONFIGURATION=Release
+FROM mcr.microsoft.com/dotnet/sdk:9.0-noble AS build
 WORKDIR /src
 COPY ["ApiForFirstAngular/ApiForFirstAngular.csproj", "ApiForFirstAngular/"]
 COPY ["DataAccess/DataAccess.csproj", "DataAccess/"]

@@ -1,7 +1,27 @@
 <div *ngIf="players.length>0;else emptyList">
-    <ng-container *ngFor="let item of players">
-        <p>{{item.FirstName}} {{item.LastName}} {{item.position}}</p>
-    </ng-container>
+
+    <table style="margin: auto;">
+        <thead>
+            <th>Numer zawodnika</th>
+            <th>Imię zawodnika</th>
+            <th>Nazwisko zawodnika</th>
+            <th>Pozycja na boisku</th>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let item of players">
+                <tr>
+                    <td>{{item.playerNumber}}</td>
+                    <td>{{item.firstName}}</td>
+                    <td>{{item.lastName}}</td>
+                    <td>{{this.GetPlayerPosition(item.position)}}</td>
+                    <td style="background-color: transparent"><a class="detailsBtn">Szczegóły</a></td>
+                    <td style="background-color: transparent"><a class="editBtn">Edytuj</a></td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+    <button class="AddingBtn" (click)="addPlayer = true">Dodaj kolejnego piłkarza</button>
+
 </div>
 <ng-template #emptyList>
     <h1>Brak piłkarzy w klubie</h1>

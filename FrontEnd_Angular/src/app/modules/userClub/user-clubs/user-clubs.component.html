@@ -2,7 +2,7 @@
     <div *ngIf="this.userClubs !== undefined">
         <div *ngIf="this.userClubs.length>0;else empty">
             <h1>Lista dodanych przez Ciebie klubów</h1>
-            <div class="glassEfect clubContainer">
+            <div class="clubContainer">
                 <ng-container *ngFor="let item of this.userClubs">
 
                     <section class="oneClub glassEfect">

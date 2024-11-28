@@ -3,9 +3,9 @@
     "Docker Compose": {
       "commandName": "DockerCompose",
       "commandVersion": "1.0",
+      "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}",
       "serviceActions": {
-        "apiforfirstangular": "StartDebugging",
-        "angular-app" :  "StartDebugging"
+        "apiforfirstangular": "StartDebugging"
       }
     }
   }

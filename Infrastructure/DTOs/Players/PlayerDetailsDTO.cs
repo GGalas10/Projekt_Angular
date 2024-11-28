@@ -18,6 +18,7 @@ namespace Infrastructure.DTOs.Players
         public int assists { get; set; }
         public int playedMatches { get; set; }
         public PositionEnum position { get; set; }
+        public int playerNumber { get; set; }
         public PlayerDetailsDTO() { }
         public static PlayerDetailsDTO GetFromModel(Player model)
         {
@@ -36,7 +37,17 @@ namespace Infrastructure.DTOs.Players
                 assists = model.Assists,
                 playedMatches = model.PlayedMatches,
                 position = model.Position,
+                playerNumber = model.PlayerNumber,
             };
+        }
+        public static List<PlayerDetailsDTO> GetFromModelList(List<Player> list)
+        {
+            var newList = new List<PlayerDetailsDTO>();
+            foreach (var item in list)
+            {
+                newList.Add(GetFromModel(item));
+            }
+            return newList;
         }
     }
 }

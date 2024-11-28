@@ -1,11 +1,10 @@
-FROM node:20 AS build
+FROM node:20.12.2 as build
+
 WORKDIR /app
 
-COPY FrontEnd_Angular/package*.json ./
+RUN npm install -g @angular/cli
 
-RUN rm -rf node_modules package-lock.json
 
-COPY FrontEnd_Angular/ .
-EXPOSE 80
+EXPOSE 4200
 
-CMD ["npm", "run", "start"]
+CMD npm install && ng serve --host 0.0.0.0 --poll 2000

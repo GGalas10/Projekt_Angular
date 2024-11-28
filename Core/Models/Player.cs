@@ -13,6 +13,7 @@ namespace Core.Models
         public int Goals { get; set; }
         public int Assists { get; set; }
         public int PlayedMatches { get; set; }
+        public int PlayerNumber { get; set; }
         [ForeignKey("PlayerClub")]
         public Guid PlayerClubId { get; set; }
         public SportsClub? PlayerClub { get; set; }
@@ -20,7 +21,7 @@ namespace Core.Models
         public Player(
             PositionEnum position,DateTime contractFrom, DateTime contractTo, string firstName, string lastName, 
             bool hasInjury = false, int playedMinutes = 0 ,int yellowCard = 0, int redCard = 0, int goals = 0, int assit = 0, int playedMatches = 0
-            ):base(contractFrom, contractTo, firstName, lastName)
+            , int playerNumber = -1):base(contractFrom, contractTo, firstName, lastName)
         {
             Position = position;
             HasInjury = hasInjury;
@@ -30,6 +31,7 @@ namespace Core.Models
             Goals = goals;
             Assists = assit;
             PlayedMatches = playedMatches;
+            PlayerNumber = playerNumber;
         }
     }
 }

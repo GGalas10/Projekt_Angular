@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <DockerComposeProjectPath>..\BKlasa-composer.dcproj</DockerComposeProjectPath>
     <UserSecretsId>ca2db1b6-472e-4d40-8fa7-16ee573c31b4</UserSecretsId>
   </PropertyGroup>
 
