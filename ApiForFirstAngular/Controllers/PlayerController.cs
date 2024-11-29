@@ -22,7 +22,13 @@ namespace ApiForFirstAngular.Controllers
         [HttpPost]
         public async Task<IActionResult> AddPlayerToClub([FromBody]AddPlayerCommand command)
         {
-            await _playerService.AddPlayerToClub(command);
+            var result = await _playerService.AddPlayerToClub(command);
+            return Ok(result);
+        }
+        [HttpPost]
+        public async Task<IActionResult> EditPlayer([FromBody]EditPlayerCommand command)
+        {
+            await _playerService.EditPlayer(command);
             return Ok();
         }
     }

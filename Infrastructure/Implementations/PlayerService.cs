@@ -21,12 +21,20 @@ namespace Infrastructure.Implementations
                 throw new Exception("Cannot_Find_Player_GetPlayerDetails");
             return PlayerDetailsDTO.GetFromModel(result);
         }
-        public async Task AddPlayerToClub(AddPlayerCommand command)
+        public async Task<Guid> AddPlayerToClub(AddPlayerCommand command)
         {
             if (command == null)
                 throw new BadRequestException("Cannot_Create_Player_With_Null_Command");
             command.IsValid();
-            await _playerRepository.AddPlayerToClub(AddPlayerCommand.GetFromCommand(command));
+            var result = await _playerRepository.AddPlayerToClub(AddPlayerCommand.GetFromCommand(command));
+            return result;
+        }
+        public async Task EditPlayer(EditPlayerCommand command)
+        {
+            if (command == null)
+                throw new BadRequestException("Cannot_Create_Player_With_Null_Command");
+            command.IsValid();
+            await _playerRepository.EditPlayer(EditPlayerCommand.GetFromCommand(command));
             await Task.CompletedTask;
         }
     }

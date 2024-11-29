@@ -13,9 +13,28 @@ import {
 export class PlayersEditComponent {
   addPlayer = false;
   editPlayer = false;
+  selectPlayer!: PlayerDetailsDTO;
   @Input() ClubId!: string;
   @Input() players!: PlayerDetailsDTO[];
   GetPlayerPosition(position: number): string {
     return GetPlayerPosition(position);
+  }
+  GetNewPlayer(player: PlayerDetailsDTO) {
+    this.pushAndSortPlayerList(player);
+    this.addPlayer = false;
+  }
+  ShowEdit(player: PlayerDetailsDTO) {
+    this.selectPlayer = player;
+    this.editPlayer = true;
+  }
+  GetEditPlayer(player: PlayerDetailsDTO) {
+    var oldPlayer = this.players.findIndex((x) => x.id == player.id);
+    this.players.splice(oldPlayer, 1);
+    this.pushAndSortPlayerList(player);
+    this.editPlayer = false;
+  }
+  private pushAndSortPlayerList(player: PlayerDetailsDTO) {
+    this.players.push(player);
+    this.players = this.players.sort((a, b) => a.playerNumber - b.playerNumber);
   }
 }

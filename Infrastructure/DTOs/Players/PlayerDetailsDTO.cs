@@ -5,6 +5,7 @@ namespace Infrastructure.DTOs.Players
 {
     public sealed class PlayerDetailsDTO
     {
+        public Guid id { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
         public DateTime contractFrom { get; set; }
@@ -24,6 +25,7 @@ namespace Infrastructure.DTOs.Players
         {
             return new PlayerDetailsDTO()
             {
+                id = model.Id,
                 firstName = model.FirstName,
                 lastName = model.LastName,
                 contractFrom = model.ContractFrom,

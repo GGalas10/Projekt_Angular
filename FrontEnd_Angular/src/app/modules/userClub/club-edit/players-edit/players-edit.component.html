@@ -15,7 +15,8 @@
                     <td>{{item.lastName}}</td>
                     <td>{{this.GetPlayerPosition(item.position)}}</td>
                     <td style="background-color: transparent"><a class="detailsBtn">Szczegóły</a></td>
-                    <td style="background-color: transparent"><a class="editBtn">Edytuj</a></td>
+                    <td style="background-color: transparent"><input type="button" class="editBtn"
+                            (click)="ShowEdit(item)" value="Edytuj" /></td>
                 </tr>
             </ng-container>
         </tbody>
@@ -27,5 +28,7 @@
     <h1>Brak piłkarzy w klubie</h1>
     <button class="AddingBtn" (click)="addPlayer = true">Dodaj pierwszego piłkarza</button>
 </ng-template>
-<app-add-player *ngIf="addPlayer" [clubId]="this.ClubId" (closeEvent)="addPlayer = false"></app-add-player>
-<app-edit-player *ngIf="editPlayer"></app-edit-player>
+<app-add-player *ngIf="addPlayer" [clubId]="this.ClubId" (closeEvent)="addPlayer = false"
+    (newPlayerEvent)="GetNewPlayer($event)"></app-add-player>
+<app-edit-player *ngIf="editPlayer" (closeEvent)="editPlayer = false" [OldPlayers]="selectPlayer"
+    (editlayerEvent)="GetEditPlayer($event)"></app-edit-player>

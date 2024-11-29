@@ -21,7 +21,7 @@ namespace DataAccess.Repositories
             var result = await _dbContext.Players.FirstOrDefaultAsync(x=>x.Id == playerId);
             return result;
         }
-        public async Task AddPlayerToClub(Player player)
+        public async Task<Guid> AddPlayerToClub(Player player)
         {
             if (player == null)
                 throw new InternalServerException("Cannot_Add_Null_Player");
@@ -32,6 +32,22 @@ namespace DataAccess.Repositories
 
             player.PlayerClub = club;
             _dbContext.Add(player);
+            await _dbContext.SaveChangesAsync();
+            return player.Id;
+        }
+
+        public async Task EditPlayer(Player player)
+        {
+            if (player == null)
+                throw new InternalServerException("Cannot_Edit_Null_Player");
+
+            var oldPlayer = await _dbContext.Players.FirstOrDefaultAsync(x => x.Id == player.Id);
+            if (oldPlayer == null)
+                throw new BadRequestException("Player_Doesnt_Exist");
+
+            oldPlayer.updateByModel(player);
+            _dbContext.Update(oldPlayer);
+            _dbContext.Entry(oldPlayer).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
         }
     }

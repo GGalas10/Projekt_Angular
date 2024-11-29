@@ -33,5 +33,22 @@ namespace Core.Models
             PlayedMatches = playedMatches;
             PlayerNumber = playerNumber;
         }
+        public void updateByModel(Player player)
+        {
+            this.ContractFrom = player.ContractFrom;
+            this.ContractTo = player.ContractTo;
+            this.FirstName = player.FirstName;
+            this.LastName = player.LastName;
+            this.Position = player.Position;
+            this.HasInjury = player.HasInjury;
+            this.PlayedMinutes = player.PlayedMinutes;
+            this.YellowCards = player.YellowCards;
+            this.RedCards = player.RedCards;
+            this.Goals = player.Goals;
+            this.Assists = player.Assists;
+            this.PlayedMatches = player.PlayedMatches;
+            this.PlayerNumber = player.PlayerNumber;
+            this.UpdateAt = DateTime.Now;
+        }
     }
 }

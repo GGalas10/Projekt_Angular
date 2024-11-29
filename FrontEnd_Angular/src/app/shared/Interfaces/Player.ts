@@ -20,6 +20,7 @@ export interface Player {
   PlayerNumber: number;
 }
 export interface PlayerDetailsDTO {
+  id: string;
   firstName: string;
   lastName: string;
   contractFrom: Date;
@@ -35,7 +36,24 @@ export interface PlayerDetailsDTO {
   position: number;
   playerNumber: number;
 }
-export interface CreateCommand {
+export interface EditPlayerCommand {
+  playerId: string;
+  contractFrom: Date;
+  contractTo: Date;
+  firstName: string;
+  lastName: string;
+
+  position: number;
+  hasInjury: boolean;
+  playedMinutes: number;
+  yellowCards: number;
+  redCards: number;
+  goals: number;
+  assists: number;
+  playedMatches: number;
+  playerNumber: number;
+}
+export interface CreatePlayerCommand {
   clubId: string;
   contractFrom: Date;
   contractTo: Date;
@@ -77,4 +95,45 @@ export function GetPlayerPosition(position: number): string {
     default:
       return 'Nieustalona';
   }
+}
+export function mapPlayerDetailsToEditPlayerCommand(
+  dto: PlayerDetailsDTO,
+): EditPlayerCommand {
+  return {
+    playerId: dto.id,
+    contractFrom: dto.contractFrom,
+    contractTo: dto.contractTo,
+    firstName: dto.firstName,
+    lastName: dto.lastName,
+    position: dto.position,
+    hasInjury: dto.hasInjury,
+    playedMinutes: dto.playedMinutes,
+    yellowCards: dto.yellowCards,
+    redCards: dto.redCards,
+    goals: dto.goals,
+    assists: dto.assists,
+    playedMatches: dto.playedMatches,
+    playerNumber: dto.playerNumber,
+  };
+}
+export function mapEditPlayerCommandToPlayerDetails(
+  dto: EditPlayerCommand,
+): PlayerDetailsDTO {
+  return {
+    id: dto.playerId,
+    clubName: '',
+    contractFrom: dto.contractFrom,
+    contractTo: dto.contractTo,
+    firstName: dto.firstName,
+    lastName: dto.lastName,
+    position: dto.position,
+    hasInjury: dto.hasInjury,
+    playedMinutes: dto.playedMinutes,
+    yellowCards: dto.yellowCards,
+    redCards: dto.redCards,
+    goals: dto.goals,
+    assists: dto.assists,
+    playedMatches: dto.playedMatches,
+    playerNumber: dto.playerNumber,
+  };
 }

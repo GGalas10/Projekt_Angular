@@ -5,6 +5,7 @@ namespace Core.Repositories
     public interface IPlayerRepository
     {
         Task<Player> GetPlayerByIdAsync(Guid playerId);
-        Task AddPlayerToClub(Player player);
+        Task<Guid> AddPlayerToClub(Player player);
+        Task EditPlayer(Player player);
     }
 }

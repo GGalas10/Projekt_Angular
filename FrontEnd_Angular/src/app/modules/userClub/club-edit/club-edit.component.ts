@@ -37,14 +37,6 @@ export class ClubEditComponent implements OnInit {
         this.club.playerList = this.club.playerList.sort(
           (a, b) => a.playerNumber - b.playerNumber,
         );
-        var newList = this.club.playerList.concat(this.club.playerList);
-        newList = this.club.playerList.concat(newList);
-        newList = this.club.playerList.concat(newList);
-        newList = this.club.playerList.concat(newList);
-        newList = this.club.playerList.concat(newList);
-        newList = this.club.playerList.concat(newList);
-        this.club.playerList = newList;
-        console.log(newList);
         this.IsLoading = false;
       },
       error: (err) => {

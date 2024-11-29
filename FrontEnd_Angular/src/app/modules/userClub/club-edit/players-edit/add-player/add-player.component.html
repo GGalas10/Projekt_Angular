@@ -21,10 +21,10 @@
                         <input type="text" id="last-name" formControlName="lastName">
 
                         <label for="contract-from">Kontrakt od</label>
-                        <input min="1979-12-31" type="date" id="contract-from" formControlName="contractFrom">
+                        <input [min]="'1979-12-31'" type="date" id="contract-from" formControlName="contractFrom">
 
                         <label for="contract-to">Kontrakt do</label>
-                        <input min="1979-12-31" type="date" id="contract-to" formControlName="contractTo">
+                        <input [min]="'1979-12-31'" type="date" id="contract-to" formControlName="contractTo">
 
                         <section>
                             <div style="margin: 10px auto;">

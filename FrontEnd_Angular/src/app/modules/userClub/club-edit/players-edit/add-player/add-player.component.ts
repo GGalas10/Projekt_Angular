@@ -1,7 +1,10 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PlayerService } from '../../../../core/Services/API/PlayerService';
-import { CreateCommand } from '../../../../../shared/Interfaces/Player';
+import {
+  CreatePlayerCommand,
+  PlayerDetailsDTO,
+} from '../../../../../shared/Interfaces/Player';
 
 @Component({
   selector: 'app-add-player',
@@ -13,6 +16,7 @@ export class AddPlayerComponent {
   constructor(private playerService: PlayerService) {}
   @Input() clubId!: string;
   @Output() closeEvent = new EventEmitter<void>();
+  @Output() newPlayerEvent = new EventEmitter<PlayerDetailsDTO>();
   newPlayerForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
@@ -35,10 +39,10 @@ export class AddPlayerComponent {
     this.closeEvent.emit();
   }
   createPlayer() {
-    console.log(this.getPlayerData());
-    this.playerService.AddPlayerToClub(this.getPlayerData()).subscribe({
-      next: () => {
-        console.log('Tak!!!');
+    var player = this.getPlayerData();
+    this.playerService.AddPlayerToClub(player).subscribe({
+      next: (value) => {
+        this.newPlayerEvent.emit(this.getPlayerDTO(player, value));
       },
       error: (err) => {
         console.log(err);
@@ -48,7 +52,7 @@ export class AddPlayerComponent {
   setPosition(number: number) {
     this.newPlayerForm.value.playerPosition = number;
   }
-  getPlayerData(): CreateCommand {
+  getPlayerData(): CreatePlayerCommand {
     const formValues = this.newPlayerForm.value;
 
     return {
@@ -66,6 +70,28 @@ export class AddPlayerComponent {
       assists: formValues.assists ?? 0,
       playedMatches: formValues.playedMatches ?? 0,
       playerNumber: formValues.playerNumber ?? 0,
+    };
+  }
+  getPlayerDTO(
+    player: CreatePlayerCommand,
+    newPlayerId: string,
+  ): PlayerDetailsDTO {
+    return {
+      id: newPlayerId,
+      clubName: '',
+      firstName: player.firstName,
+      lastName: player.lastName,
+      contractFrom: player.contractFrom,
+      contractTo: player.contractTo,
+      hasInjury: player.hasInjury,
+      playedMinutes: player.playedMinutes,
+      yellowCards: player.yellowCards,
+      redCards: player.redCards,
+      goals: player.goals,
+      assists: player.assists,
+      playedMatches: player.playedMatches,
+      position: player.position,
+      playerNumber: player.playerNumber,
     };
   }
 }
