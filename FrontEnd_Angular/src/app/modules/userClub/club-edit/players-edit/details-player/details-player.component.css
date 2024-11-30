@@ -1,0 +1,63 @@
+@import '../../../../../../Assets/AddOnePerson.css';
+@import '../../../../../../Assets/EditStyle.css';
+@import '../../../../../../Assets/PositionColors.css';
+input[type='number'] {
+  background: #57aa874f;
+  width: 50px;
+  text-align: center;
+  border-radius: 15px;
+  color: whitesmoke;
+  border: none;
+  margin: auto;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+input[type='text'] {
+  background-color: #57aa874f;
+  border-radius: 15px;
+  color: whitesmoke;
+  text-align: center;
+  border: none;
+  width: 60%;
+  margin: auto;
+}
+.positionBtn {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  border-radius: 50%;
+  color: whitesmoke;
+  border: 1px solid black;
+  align-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition-duration: 0.3s;
+}
+input[type='date'] {
+  width: 50%;
+  margin: auto;
+  background-color: #57aa874f;
+  border: none;
+  border-radius: 15px;
+  text-align: center;
+  color: whitesmoke;
+}
+input {
+  margin-bottom: 10px;
+}
+.InputWithLabel {
+  margin: 10px auto;
+}
+.InputWithLabel label {
+  width: 40%;
+  text-align: left;
+}
+.customCheckbox {
+  padding: 0 65px 0 76px;
+}

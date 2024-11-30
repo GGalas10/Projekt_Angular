@@ -15,6 +15,7 @@ import { CoachesEditComponent } from './club-edit/coaches-edit/coaches-edit.comp
 import { StaffsEditComponent } from './club-edit/staffs-edit/staffs-edit.component';
 import { EditPlayerComponent } from './club-edit/players-edit/edit-player/edit-player.component';
 import { AddPlayerComponent } from './club-edit/players-edit/add-player/add-player.component';
+import { DetailsPlayerComponent } from './club-edit/players-edit/details-player/details-player.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { AddPlayerComponent } from './club-edit/players-edit/add-player/add-play
     StaffsEditComponent,
     AddPlayerComponent,
     EditPlayerComponent,
+    DetailsPlayerComponent,
   ],
   imports: [SharedModule, CommonModule, UserclubRoutingModule, FormsModule],
 })

@@ -216,6 +216,7 @@ h6 {
   user-select: none;
   color: whitesmoke;
   transition-duration: 0.4s;
+  border: none;
 }
 .detailsBtn:hover {
   opacity: 0.8;

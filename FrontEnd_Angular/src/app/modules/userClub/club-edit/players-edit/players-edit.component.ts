@@ -13,6 +13,7 @@ import {
 export class PlayersEditComponent {
   addPlayer = false;
   editPlayer = false;
+  detailsPlayer = false;
   selectPlayer!: PlayerDetailsDTO;
   @Input() ClubId!: string;
   @Input() players!: PlayerDetailsDTO[];
@@ -36,5 +37,9 @@ export class PlayersEditComponent {
   private pushAndSortPlayerList(player: PlayerDetailsDTO) {
     this.players.push(player);
     this.players = this.players.sort((a, b) => a.playerNumber - b.playerNumber);
+  }
+  ShowDetails(player: PlayerDetailsDTO) {
+    this.selectPlayer = player;
+    this.detailsPlayer = true;
   }
 }
