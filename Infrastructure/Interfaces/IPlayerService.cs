@@ -6,6 +6,7 @@ namespace Infrastructure.Interfaces
     public interface IPlayerService
     {
         Task<PlayerDetailsDTO> GetPlayerDetailsByIdAsync(Guid playerId);
+        Task<List<PlayerDetailsDTO>> GetAllPlayersFromClub(Guid clubId);
         Task<Guid> AddPlayerToClub(AddPlayerCommand command);
         Task EditPlayer(EditPlayerCommand command);
     }

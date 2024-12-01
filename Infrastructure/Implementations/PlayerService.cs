@@ -21,6 +21,13 @@ namespace Infrastructure.Implementations
                 throw new Exception("Cannot_Find_Player_GetPlayerDetails");
             return PlayerDetailsDTO.GetFromModel(result);
         }
+        public async Task<List<PlayerDetailsDTO>> GetAllPlayersFromClub(Guid clubId)
+        {
+            if (clubId == Guid.Empty)
+                throw new BadRequestException("ClubId_Cannot_Be_Empty");
+            var result = await _playerRepository.GetAllPlayersFromClubAsync(clubId);
+            return PlayerDetailsDTO.GetFromModelList(result);
+        }
         public async Task<Guid> AddPlayerToClub(AddPlayerCommand command)
         {
             if (command == null)

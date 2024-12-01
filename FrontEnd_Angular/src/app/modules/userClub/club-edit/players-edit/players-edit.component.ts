@@ -1,8 +1,10 @@
+/* eslint-disable @angular-eslint/prefer-standalone */
 import { Component, Input, OnInit } from '@angular/core';
 import {
   GetPlayerPosition,
   PlayerDetailsDTO,
 } from '../../../../shared/Interfaces/Player';
+import { PlayerService } from '../../../core/Services/API/PlayerService';
 
 @Component({
   selector: 'app-players-edit',
@@ -10,13 +12,25 @@ import {
   styleUrl: './players-edit.component.css',
   standalone: false,
 })
-export class PlayersEditComponent {
+export class PlayersEditComponent implements OnInit {
   addPlayer = false;
   editPlayer = false;
   detailsPlayer = false;
   selectPlayer!: PlayerDetailsDTO;
+  playerList!: PlayerDetailsDTO[];
   @Input() ClubId!: string;
-  @Input() players!: PlayerDetailsDTO[];
+
+  constructor(private _playerService: PlayerService) {}
+
+  ngOnInit(): void {
+    this._playerService.GetAllPlayersFromClub(this.ClubId).subscribe({
+      next: (list) => (this.playerList = list),
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+
   GetPlayerPosition(position: number): string {
     return GetPlayerPosition(position);
   }
@@ -29,14 +43,16 @@ export class PlayersEditComponent {
     this.editPlayer = true;
   }
   GetEditPlayer(player: PlayerDetailsDTO) {
-    var oldPlayer = this.players.findIndex((x) => x.id == player.id);
-    this.players.splice(oldPlayer, 1);
+    const oldPlayer = this.playerList.findIndex((x) => x.id == player.id);
+    this.playerList.splice(oldPlayer, 1);
     this.pushAndSortPlayerList(player);
     this.editPlayer = false;
   }
   private pushAndSortPlayerList(player: PlayerDetailsDTO) {
-    this.players.push(player);
-    this.players = this.players.sort((a, b) => a.playerNumber - b.playerNumber);
+    this.playerList.push(player);
+    this.playerList = this.playerList.sort(
+      (a, b) => a.playerNumber - b.playerNumber,
+    );
   }
   ShowDetails(player: PlayerDetailsDTO) {
     this.selectPlayer = player;

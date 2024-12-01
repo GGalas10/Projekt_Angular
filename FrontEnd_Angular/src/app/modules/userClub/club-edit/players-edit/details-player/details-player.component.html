@@ -1,121 +1,124 @@
-<section class="overlay" style="height: 150%;">
-    <section class="modal" style="height: 100%;">
-        <button class="close-btn" (click)="this.closeEvent.emit()">&times;</button>
-        <h2 class="changeHeader" style="top: 2%;">Edycja zawodnika</h2>
-        <div class="changeContainer" style="width: 90%;">
-            <form style="display: flex;flex-flow: wrap;">
-                <section style="width: 50%; padding-top: 50px;">
-                    <div style="display: grid;">
+<div *ngIf="player">
+    <section class="overlay" style="height: 150%;">
+        <section class="modal" style="height: 100%;">
+            <button class="close-btn" (click)="this.closeEvent.emit()">&times;</button>
+            <h2 class="changeHeader" style="top: 2%;">Edycja zawodnika</h2>
+            <div class="changeContainer" style="width: 90%;">
+                <form style="display: flex;flex-flow: wrap;">
+                    <section style="width: 50%; padding-top: 50px;">
+                        <div style="display: grid;">
 
-                        <label for="played-matches" style="font-size: 1.1rem;font-weight: bolder;">Numer na koszulce
-                            :</label>
-                        <input max="99" min="1" type="number" [(ngModel)]="player.playerNumber"
-                            [ngModelOptions]="{standalone: true}" style="font-size: 1.1rem;font-weight: bolder;"
-                            [disabled]="true">
+                            <label for="played-matches" style="font-size: 1.1rem;font-weight: bolder;">Numer na koszulce
+                                :</label>
+                            <input max="99" min="1" type="number" [(ngModel)]="player.playerNumber"
+                                [ngModelOptions]="{standalone: true}" style="font-size: 1.1rem;font-weight: bolder;"
+                                [disabled]="true">
 
-                        <label for="first-name">Imię zawodnika</label>
-                        <input type="text" [(ngModel)]="player.firstName" [ngModelOptions]="{standalone: true}"
-                            [disabled]="true">
+                            <label for="first-name">Imię zawodnika</label>
+                            <input type="text" [(ngModel)]="player.firstName" [ngModelOptions]="{standalone: true}"
+                                [disabled]="true">
 
-                        <label for="last-name">Nazwisko zawodnika</label>
-                        <input type="text" [(ngModel)]="player.lastName" [ngModelOptions]="{standalone: true}"
-                            [disabled]="true">
+                            <label for="last-name">Nazwisko zawodnika</label>
+                            <input type="text" [(ngModel)]="player.lastName" [ngModelOptions]="{standalone: true}"
+                                [disabled]="true">
 
-                        <label for="contract-from">Kontrakt od</label>
-                        <input type="date" [min]="'1979-12-31'" [(ngModel)]="contractFromString"
-                            [ngModelOptions]="{standalone: true}" [disabled]="true">
+                            <label for="contract-from">Kontrakt od</label>
+                            <input type="date" [min]="'1979-12-31'" [(ngModel)]="contractFromString"
+                                [ngModelOptions]="{standalone: true}" [disabled]="true">
 
-                        <label for="contract-to">Kontrakt do</label>
-                        <input type="date" [min]="'1979-12-31'" [(ngModel)]="contractToString"
-                            [ngModelOptions]="{standalone: true}" [disabled]="true">
-                        <section>
-                            <div style="margin: 10px auto;">
-                                <label for="has-injury" class="customCheckbox">
-                                    <span>Czy kontuzjowany?</span>
-                                    <input type="checkbox" id="has-injury" [(ngModel)]="player.hasInjury"
-                                        [ngModelOptions]="{standalone: true}" [disabled]="true" />
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
-                            <div class="InputWithLabel">
-                                <label for="played-minute">Rozegrane minuty:</label>
-                                <input max="9999" min="0" type="number" id="played-minute"
-                                    [(ngModel)]="player.playedMinutes" [ngModelOptions]="{standalone: true}"
-                                    [disabled]="true">
-                            </div>
-                            <div class="InputWithLabel">
-                                <label for="played-matches">Rozegrane mecze:</label>
-                                <input max="999" min="0" type="number" id="played-matches"
-                                    [(ngModel)]="player.playedMatches" [ngModelOptions]="{standalone: true}"
-                                    [disabled]="true">
-                            </div>
-                            <div class="InputWithLabel">
-                                <label for="yellow-cards">Żółte kartki:</label>
-                                <input max="99" min="0" type="number" id="yellow-cards" [(ngModel)]="player.yellowCards"
-                                    [ngModelOptions]="{standalone: true}" [disabled]="true">
-                            </div>
-                            <div class="InputWithLabel">
-                                <label for="red-cards">Czerwone kartki:</label>
-                                <input max="99" min="0" type="number" id="red-cards" [(ngModel)]="player.redCards"
-                                    [ngModelOptions]="{standalone: true}" [disabled]="true">
-                            </div>
-                            <div class="InputWithLabel">
-                                <label for="assists">Asysty:</label>
-                                <input max="99" min="0" type="number" id="assists" [(ngModel)]="player.assists"
-                                    [ngModelOptions]="{standalone: true}" [disabled]="true">
-                            </div>
-                            <div class="InputWithLabel">
-                                <label for="goals">Strzelone gole:</label>
-                                <input max="99" min="0" type="number" id="goals" [(ngModel)]="player.goals"
-                                    [ngModelOptions]="{standalone: true}" [disabled]="true">
-                            </div>
-                        </section>
-                    </div>
-                </section>
-                <section style="width: 50%;">
-                    <img src="/Playground.png" height="490px" alt="playground" style="margin-top: 50px;">
-                    <input type="button" class="positionBtn goalkeeperNormal"
-                        [ngClass]="{'goalkeeperActive': player.position === 0}" style="bottom: 65px;right: 211px;"
-                        [value]="'BR'">
+                            <label for="contract-to">Kontrakt do</label>
+                            <input type="date" [min]="'1979-12-31'" [(ngModel)]="contractToString"
+                                [ngModelOptions]="{standalone: true}" [disabled]="true">
+                            <section>
+                                <div style="margin: 10px auto;">
+                                    <label for="has-injury" class="customCheckbox">
+                                        <span>Czy kontuzjowany?</span>
+                                        <input type="checkbox" id="has-injury" [(ngModel)]="player.hasInjury"
+                                            [ngModelOptions]="{standalone: true}" [disabled]="true" />
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="InputWithLabel">
+                                    <label for="played-minute">Rozegrane minuty:</label>
+                                    <input max="9999" min="0" type="number" id="played-minute"
+                                        [(ngModel)]="player.playedMinutes" [ngModelOptions]="{standalone: true}"
+                                        [disabled]="true">
+                                </div>
+                                <div class="InputWithLabel">
+                                    <label for="played-matches">Rozegrane mecze:</label>
+                                    <input max="999" min="0" type="number" id="played-matches"
+                                        [(ngModel)]="player.playedMatches" [ngModelOptions]="{standalone: true}"
+                                        [disabled]="true">
+                                </div>
+                                <div class="InputWithLabel">
+                                    <label for="yellow-cards">Żółte kartki:</label>
+                                    <input max="99" min="0" type="number" id="yellow-cards"
+                                        [(ngModel)]="player.yellowCards" [ngModelOptions]="{standalone: true}"
+                                        [disabled]="true">
+                                </div>
+                                <div class="InputWithLabel">
+                                    <label for="red-cards">Czerwone kartki:</label>
+                                    <input max="99" min="0" type="number" id="red-cards" [(ngModel)]="player.redCards"
+                                        [ngModelOptions]="{standalone: true}" [disabled]="true">
+                                </div>
+                                <div class="InputWithLabel">
+                                    <label for="assists">Asysty:</label>
+                                    <input max="99" min="0" type="number" id="assists" [(ngModel)]="player.assists"
+                                        [ngModelOptions]="{standalone: true}" [disabled]="true">
+                                </div>
+                                <div class="InputWithLabel">
+                                    <label for="goals">Strzelone gole:</label>
+                                    <input max="99" min="0" type="number" id="goals" [(ngModel)]="player.goals"
+                                        [ngModelOptions]="{standalone: true}" [disabled]="true">
+                                </div>
+                            </section>
+                        </div>
+                    </section>
+                    <section style="width: 50%;">
+                        <img src="/Playground.png" height="490px" alt="playground" style="margin-top: 50px;">
+                        <input type="button" class="positionBtn goalkeeperNormal"
+                            [ngClass]="{'goalkeeperActive': player.position === 0}" style="bottom: 65px;right: 211px;"
+                            [value]="'BR'">
 
-                    <input type="button" class="positionBtn defenderNormal"
-                        [ngClass]="{'defenderActive': player.position === 3}" style="bottom: 150px;right: 300px;"
-                        [value]="'LO'">
+                        <input type="button" class="positionBtn defenderNormal"
+                            [ngClass]="{'defenderActive': player.position === 3}" style="bottom: 150px;right: 300px;"
+                            [value]="'LO'">
 
-                    <input type="button" class="positionBtn defenderNormal"
-                        [ngClass]="{'defenderActive': player.position === 1}" style="bottom: 150px;right: 211px;"
-                        [value]="'ŚO'">
+                        <input type="button" class="positionBtn defenderNormal"
+                            [ngClass]="{'defenderActive': player.position === 1}" style="bottom: 150px;right: 211px;"
+                            [value]="'ŚO'">
 
-                    <input type="button" class="positionBtn defenderNormal"
-                        [ngClass]="{'defenderActive': player.position === 2}" style="bottom: 150px;right: 120px;"
-                        [value]="'PO'">
+                        <input type="button" class="positionBtn defenderNormal"
+                            [ngClass]="{'defenderActive': player.position === 2}" style="bottom: 150px;right: 120px;"
+                            [value]="'PO'">
 
-                    <input type="button" class="positionBtn midfielderNormal"
-                        [ngClass]="{'midfielderActive': player.position === 6}" style="bottom: 285px;right: 300px;"
-                        [value]="'LP'">
+                        <input type="button" class="positionBtn midfielderNormal"
+                            [ngClass]="{'midfielderActive': player.position === 6}" style="bottom: 285px;right: 300px;"
+                            [value]="'LP'">
 
-                    <input type="button" class="positionBtn midfielderNormal"
-                        [ngClass]="{'midfielderActive': player.position === 4}" style="bottom: 285px;right: 211px;"
-                        [value]="'ŚP'">
+                        <input type="button" class="positionBtn midfielderNormal"
+                            [ngClass]="{'midfielderActive': player.position === 4}" style="bottom: 285px;right: 211px;"
+                            [value]="'ŚP'">
 
-                    <input type="button" class="positionBtn midfielderNormal"
-                        [ngClass]="{'midfielderActive': player.position === 5}" style="bottom: 285px;right: 120px;"
-                        [value]="'PP'">
+                        <input type="button" class="positionBtn midfielderNormal"
+                            [ngClass]="{'midfielderActive': player.position === 5}" style="bottom: 285px;right: 120px;"
+                            [value]="'PP'">
 
-                    <input type="button" class="positionBtn forwardNormal"
-                        [ngClass]="{'forwardActive': player.position === 9}" style="bottom: 425px;right: 300px;"
-                        [value]="'LN'">
+                        <input type="button" class="positionBtn forwardNormal"
+                            [ngClass]="{'forwardActive': player.position === 9}" style="bottom: 425px;right: 300px;"
+                            [value]="'LN'">
 
-                    <input type="button" class="positionBtn forwardNormal"
-                        [ngClass]="{'forwardActive': player.position === 7}" style="bottom: 425px;right: 211px;"
-                        [value]="'ŚN'">
+                        <input type="button" class="positionBtn forwardNormal"
+                            [ngClass]="{'forwardActive': player.position === 7}" style="bottom: 425px;right: 211px;"
+                            [value]="'ŚN'">
 
-                    <input type="button" class="positionBtn forwardNormal"
-                        [ngClass]="{'forwardActive': player.position === 8}" style="bottom: 425px;right: 120px;"
-                        [value]="'PN'">
-                </section>
-            </form>
+                        <input type="button" class="positionBtn forwardNormal"
+                            [ngClass]="{'forwardActive': player.position === 8}" style="bottom: 425px;right: 120px;"
+                            [value]="'PN'">
+                    </section>
+                </form>
 
-        </div>
+            </div>
+        </section>
     </section>
-</section>
+</div>

@@ -3,6 +3,7 @@ using Core.Models;
 using Core.Repositories;
 using DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
+using System.Numerics;
 
 namespace DataAccess.Repositories
 {
@@ -20,6 +21,13 @@ namespace DataAccess.Repositories
                 throw new Exception("PlayerId_Cannot_Be_Empty");
             var result = await _dbContext.Players.FirstOrDefaultAsync(x=>x.Id == playerId);
             return result;
+        }
+        public async Task<List<Player>> GetAllPlayersFromClubAsync(Guid clubId)
+        {
+            var club = await _dbContext.SportsClubs.Include(x=>x.PlayerList).FirstOrDefaultAsync(x => x.Id == clubId);
+            if (club == null)
+                throw new BadRequestException("The_Club_Doesnt_Exist");
+            return club.PlayerList.ToList();
         }
         public async Task<Guid> AddPlayerToClub(Player player)
         {

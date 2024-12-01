@@ -13,8 +13,7 @@
             </section>
             <section class="DateContainer">
                 <app-primary-date [club]="this.club" [clubId]="this.clubId" *ngIf="primary"></app-primary-date>
-                <app-players-edit [ClubId]="this.clubId" [players]="this.club.playerList"
-                    *ngIf="players"></app-players-edit>
+                <app-players-edit [ClubId]="this.clubId" *ngIf="players"></app-players-edit>
                 <app-coaches-edit [ClubId]="this.clubId" [coeaches]="this.club.coachList"
                     *ngIf="coaches"></app-coaches-edit>
                 <app-staffs-edit [ClubId]="this.clubId" [staffs]="this.club.staffList" *ngIf="staffs"></app-staffs-edit>
