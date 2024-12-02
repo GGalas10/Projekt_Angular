@@ -42,14 +42,5 @@ namespace Infrastructure.DTOs.Players
                 playerNumber = model.PlayerNumber,
             };
         }
-        public static List<PlayerDetailsDTO> GetFromModelList(List<Player> list)
-        {
-            var newList = new List<PlayerDetailsDTO>();
-            foreach (var item in list)
-            {
-                newList.Add(GetFromModel(item));
-            }
-            return newList;
-        }
     }
 }

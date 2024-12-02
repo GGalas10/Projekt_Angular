@@ -17,20 +17,9 @@ namespace Infrastructure.DTOs.Club
             name = model.Name;
             description = model.Description;
             rising = model.Rising;
-            playerList = PlayerDetailsDTO.GetFromModelList(model.PlayerList.ToList());
+            playerList = model.PlayerList.Select(x=>PlayerDetailsDTO.GetFromModel(x)).ToList();
             coachList = model.CoachList.ToList();
             staffList = model.StaffList.ToList();
-        }
-        public static List<ClubDetailsDTO> GetFromModelList(List<SportsClub> modelList)
-        {
-            List<ClubDetailsDTO> resultList = new();
-            foreach(SportsClub model in modelList)
-            {
-                if(model == null)
-                    continue;
-                resultList.Add(new ClubDetailsDTO(model));
-            }
-            return resultList;
         }
     }
 }

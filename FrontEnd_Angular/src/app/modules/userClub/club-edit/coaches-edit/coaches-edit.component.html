@@ -1,9 +1,14 @@
-<div *ngIf="coeaches.length>0;else emptyList">
-    <ng-container *ngFor="let item of coeaches">
-        <p>{{item.FirstName}} {{item.LastName}} {{item.WhatTrains}}</p>
-    </ng-container>
+<div *ngIf="coeaches;else loader">
+    <div *ngIf="coeaches.length>0;else emptyList">
+        <ng-container *ngFor="let item of coeaches">
+            <p>{{item.FirstName}} {{item.LastName}} {{item.WhatTrains}}</p>
+        </ng-container>
+    </div>
 </div>
 <ng-template #emptyList>
     <h1>Brak trenerów w klubie</h1>
     <button class="AddingBtn">Dodaj pierwszego trenera</button>
+</ng-template>
+<ng-template #loader>
+    <div class="loader" style="position: inherit;"></div>
 </ng-template>

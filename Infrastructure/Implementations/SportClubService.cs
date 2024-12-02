@@ -59,21 +59,21 @@ namespace Infrastructure.Implementations
             {
                 newList.Add(await _clubRepository.GetClubByIdAsync(item));
             }
-            return ClubHomeDTO.GetListDTOFromModelList(newList);
+            return newList.Select(x => ClubHomeDTO.GetDTOFromModel(x)).ToList();
         }
 
         public async Task<List<ClubHomeDTO>> GetClubForHomeList()
         {
             var result = await _clubRepository.GetAllClubsWithoutRelationDataAsyncTake3();
             if(result.Count >= 0)
-                return ClubHomeDTO.GetListDTOFromModelList(result);
+                return result.Select(x => ClubHomeDTO.GetDTOFromModel(x)).ToList();
             return new List<ClubHomeDTO>();
         }
         public async Task<List<ClubHomeDTO>> GetAllClubs()
         {
             var result = await _clubRepository.GetAllClubsWithoutRelationDataAsync();
             if(result.Count >= 0)
-                return ClubHomeDTO.GetListDTOFromModelList(result);
+                return result.Select(x => ClubHomeDTO.GetDTOFromModel(x)).ToList();
             return new List<ClubHomeDTO>();
         }
         public async Task<Guid> GetClubIdByNameAsync(string clubName)

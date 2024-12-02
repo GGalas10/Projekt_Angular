@@ -26,7 +26,7 @@ namespace Infrastructure.Implementations
             if (clubId == Guid.Empty)
                 throw new BadRequestException("ClubId_Cannot_Be_Empty");
             var result = await _playerRepository.GetAllPlayersFromClubAsync(clubId);
-            return PlayerDetailsDTO.GetFromModelList(result);
+            return result.Select(x=> PlayerDetailsDTO.GetFromModel(x)).ToList();
         }
         public async Task<Guid> AddPlayerToClub(AddPlayerCommand command)
         {

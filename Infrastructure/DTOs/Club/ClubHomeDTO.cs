@@ -17,14 +17,5 @@ namespace Infrastructure.DTOs.Club
                 rising = model.Rising
             };
         }
-        public static List<ClubHomeDTO> GetListDTOFromModelList(List<SportsClub> modelList)
-        {
-            var result = new List<ClubHomeDTO>();
-            foreach (var model in modelList)
-            {
-                result.Add(GetDTOFromModel(model));
-            }
-            return result;
-        }
     }
 }

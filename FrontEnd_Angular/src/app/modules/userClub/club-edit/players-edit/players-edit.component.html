@@ -1,33 +1,36 @@
-<div *ngIf="playerList;else emptyList">
-
-    <table style="margin: auto;">
-        <thead>
-            <th>Numer zawodnika</th>
-            <th>Imię zawodnika</th>
-            <th>Nazwisko zawodnika</th>
-            <th>Pozycja na boisku</th>
-        </thead>
-        <tbody>
-            <ng-container *ngFor="let item of playerList">
-                <tr>
-                    <td>{{item.playerNumber}}</td>
-                    <td>{{item.firstName}}</td>
-                    <td>{{item.lastName}}</td>
-                    <td>{{this.GetPlayerPosition(item.position)}}</td>
-                    <td style="background-color: transparent"><input type="button" class="detailsBtn"
-                            (click)="ShowDetails(item)" value="Szczegóły"></td>
-                    <td style="background-color: transparent"><input type="button" class="editBtn"
-                            (click)="ShowEdit(item)" value="Edytuj" /></td>
-                </tr>
-            </ng-container>
-        </tbody>
-    </table>
-    <button class="AddingBtn" (click)="addPlayer = true">Dodaj kolejnego piłkarza</button>
-
+<div *ngIf="playerList;else loader">
+    <div *ngIf="playerList.length>0;else emptyList">
+        <table style="margin: auto;">
+            <thead>
+                <th>Numer zawodnika</th>
+                <th>Imię zawodnika</th>
+                <th>Nazwisko zawodnika</th>
+                <th>Pozycja na boisku</th>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let item of playerList">
+                    <tr>
+                        <td>{{item.playerNumber}}</td>
+                        <td>{{item.firstName}}</td>
+                        <td>{{item.lastName}}</td>
+                        <td>{{this.GetPlayerPosition(item.position)}}</td>
+                        <td style="background-color: transparent"><input type="button" class="detailsBtn"
+                                (click)="ShowDetails(item)" value="Szczegóły"></td>
+                        <td style="background-color: transparent"><input type="button" class="editBtn"
+                                (click)="ShowEdit(item)" value="Edytuj" /></td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+        <button class="AddingBtn" (click)="addPlayer = true">Dodaj kolejnego piłkarza</button>
+    </div>
 </div>
 <ng-template #emptyList>
     <h1>Brak piłkarzy w klubie</h1>
     <button class="AddingBtn" (click)="addPlayer = true">Dodaj pierwszego piłkarza</button>
+</ng-template>
+<ng-template #loader>
+    <div class="loader"></div>
 </ng-template>
 <app-add-player *ngIf="addPlayer" [clubId]="this.ClubId" (closeEvent)="addPlayer = false"
     (newPlayerEvent)="GetNewPlayer($event)"></app-add-player>
