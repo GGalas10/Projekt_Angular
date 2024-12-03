@@ -20,5 +20,15 @@ namespace DataAccess.Repositories
                 throw new BadRequestException("Club_Doesnt_Exist");
             return club.CoachList.ToList();
         }
+        public async Task<Guid> AddCoachToClub(Coach coach, Guid clubId)
+        {
+            var club = await _context.SportsClubs.AsNoTracking().Include(x => x.CoachList).Where(x => x.Id == clubId).FirstOrDefaultAsync();
+            if (club == null)
+                throw new BadRequestException("Club_Doesnt_Exist");
+            coach.CoachClub = club;
+            _context.Add(coach);
+            await _context.SaveChangesAsync();
+            return coach.Id;
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using ApiForFirstAngular.Controllers.Base;
-using Infrastructure.Implementations;
+using Infrastructure.Commands.Coach;
+using Infrastructure.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ApiForFirstAngular.Controllers
@@ -15,6 +16,12 @@ namespace ApiForFirstAngular.Controllers
         public async Task<IActionResult> GetAllClubCoaches(Guid clubId)
         {
             var result = await _coachService.GetAllClubCoaches(clubId);
+            return Ok(result);
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddCoachToClub(CoachCreate command)
+        {
+            var result = await _coachService.AddCoachToClub(command);
             return Ok(result);
         }
 

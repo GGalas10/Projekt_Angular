@@ -1,0 +1,21 @@
+<section class="overlay" style="height: 100%;">
+    <section class="modal" style="height: 90%;">
+        <button class="close-btn" (click)="this.closeEvent.emit()">&times;</button>
+        <form [formGroup]="coach" style="width: 85%;">
+            <h3>Dodawanie trenera</h3>
+            <div style="width: 50%;display: flex;flex-direction: column;margin: auto;">
+                <label for="firstName">Imię trenera:</label>
+                <input name="firstName" id="firstName" type="text" formControlName="firstName">
+                <label for="lastName">Nazwisko trenera:</label>
+                <input name="lastName" id="lastName" type="text" formControlName="lastName">
+                <label for="whatsTrain">Rola trenera:</label>
+                <input type="text" name="whatTrains" id="whatTrains" formControlName="whatTrains">
+                <label for="from">Kontrakt od:</label>
+                <input type="date" name="from" id="from" formControlName="contractFrom">
+                <label for="to">Kontrakt od:</label>
+                <input type="date" name="to" id="to" formControlName="contractto">
+                <button type="submit" class="saveButton" (click)="SendAddRequest()">Zapisz</button>
+            </div>
+        </form>
+    </section>
+</section>

@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../../../environments/environment.development';
 import { Observable } from 'rxjs';
-import { CoachDTO } from '../../../../shared/Interfaces/Coach';
+import { CoachAddCommand, CoachDTO } from '../../../../shared/Interfaces/Coach';
 
 @Injectable({
   providedIn: 'root',
@@ -16,5 +16,10 @@ export class CoachService {
       `${this.apiUrl}/GetAllClubCoaches?clubId=${clubId}`,
       { headers: this.headers },
     );
+  }
+  AddCoachToClub(command: CoachAddCommand): Observable<string> {
+    return this.http.post<string>(`${this.apiUrl}/AddCoachToClub`, command, {
+      headers: this.headers,
+    });
   }
 }

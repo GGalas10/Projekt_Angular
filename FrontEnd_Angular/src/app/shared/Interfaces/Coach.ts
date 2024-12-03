@@ -19,3 +19,11 @@ export interface CoachDTO {
   LastName: string;
   WhatTrains: string;
 }
+export interface CoachAddCommand {
+  ClubId: string;
+  ContractFrom: Date;
+  ContractTo: Date;
+  FirstName: string;
+  LastName: string;
+  WhatTrains: string;
+}

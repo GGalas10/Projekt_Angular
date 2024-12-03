@@ -5,5 +5,6 @@ namespace Core.Repositories
     public interface ICoachRepository
     {
         Task<List<Coach>> GetAllClubCoaches(Guid clubId);
+        Task<Guid> AddCoachToClub(Coach coach,Guid clubId);
     }
 }

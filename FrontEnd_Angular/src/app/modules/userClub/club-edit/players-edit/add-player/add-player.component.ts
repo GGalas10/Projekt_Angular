@@ -39,7 +39,7 @@ export class AddPlayerComponent {
     this.closeEvent.emit();
   }
   createPlayer() {
-    var player = this.getPlayerData();
+    const player = this.getPlayerData();
     this.playerService.AddPlayerToClub(player).subscribe({
       next: (value) => {
         this.newPlayerEvent.emit(this.getPlayerDTO(player, value));

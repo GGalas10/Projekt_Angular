@@ -10,6 +10,9 @@ import { CoachService } from '../../../core/Services/API/CoachService';
   standalone: false,
 })
 export class CoachesEditComponent implements OnInit {
+  addForm = false;
+  editForm = false;
+  details = false;
   @Input() ClubId!: string;
   @Input() coeaches!: CoachDTO[];
   constructor(private _coachService: CoachService) {}
@@ -20,8 +23,24 @@ export class CoachesEditComponent implements OnInit {
         this.coeaches = coaches;
       },
       error: (err) => {
-        console.log(err);
+        console.log('Coś poszło nie tak', err);
       },
+    });
+  }
+  GetNewCoach(coach: CoachDTO) {
+    this.pushAndSortCoachList(coach);
+    this.addForm = false;
+  }
+  private pushAndSortCoachList(coach: CoachDTO) {
+    this.coeaches.push(coach);
+    this.coeaches = this.coeaches.sort((a, b) => {
+      if (a.LastName.toLowerCase() < b.LastName.toLowerCase()) {
+        return -1;
+      }
+      if (a.LastName.toLowerCase() > b.LastName.toLowerCase()) {
+        return 1;
+      }
+      return 0;
     });
   }
 }

@@ -7,8 +7,12 @@
 </div>
 <ng-template #emptyList>
     <h1>Brak trenerów w klubie</h1>
-    <button class="AddingBtn">Dodaj pierwszego trenera</button>
+    <button class="AddingBtn" (click)="addForm = true">Dodaj pierwszego trenera</button>
 </ng-template>
 <ng-template #loader>
     <div class="loader" style="position: inherit;"></div>
 </ng-template>
+<app-add-coach *ngIf="addForm" [clubId]="ClubId" (closeEvent)="addForm = false"
+    (saveEvent)="GetNewCoach($event)"></app-add-coach>
+<app-edit-coach *ngIf="editForm"></app-edit-coach>
+<app-details-coach *ngIf="details"></app-details-coach>
