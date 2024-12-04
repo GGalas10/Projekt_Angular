@@ -14,13 +14,14 @@ export class CoachesEditComponent implements OnInit {
   editForm = false;
   details = false;
   @Input() ClubId!: string;
-  @Input() coeaches!: CoachDTO[];
+  @Input() coaches!: CoachDTO[];
   constructor(private _coachService: CoachService) {}
 
   ngOnInit(): void {
     this._coachService.GetAllCoachesFromClub(this.ClubId).subscribe({
-      next: (coaches) => {
-        this.coeaches = coaches;
+      next: (result) => {
+        this.coaches = result;
+        console.log(this.coaches);
       },
       error: (err) => {
         console.log('Coś poszło nie tak', err);
@@ -28,16 +29,16 @@ export class CoachesEditComponent implements OnInit {
     });
   }
   GetNewCoach(coach: CoachDTO) {
-    this.pushAndSortCoachList(coach);
+    if (coach) this.pushAndSortCoachList(coach);
     this.addForm = false;
   }
   private pushAndSortCoachList(coach: CoachDTO) {
-    this.coeaches.push(coach);
-    this.coeaches = this.coeaches.sort((a, b) => {
-      if (a.LastName.toLowerCase() < b.LastName.toLowerCase()) {
+    this.coaches.push(coach);
+    this.coaches = this.coaches.sort((a, b) => {
+      if (a.lastName.toLowerCase() < b.lastName.toLowerCase()) {
         return -1;
       }
-      if (a.LastName.toLowerCase() > b.LastName.toLowerCase()) {
+      if (a.lastName.toLowerCase() > b.lastName.toLowerCase()) {
         return 1;
       }
       return 0;

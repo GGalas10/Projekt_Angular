@@ -49,12 +49,12 @@ export class AddCoachComponent {
   }
   private GetDetailsFromForm(coachId: string): CoachDTO {
     return {
-      Id: coachId,
-      FirstName: this.GetControlls.firstName.value || '',
-      LastName: this.GetControlls.lastName.value || '',
-      ContractFrom: this.GetControlls.contractFrom.value || new Date(),
-      ContractTo: this.GetControlls.contractTo.value || new Date(),
-      WhatTrains: this.GetControlls.whatTrains.value || '',
+      id: coachId,
+      firstName: this.GetControlls.firstName.value || '',
+      lastName: this.GetControlls.lastName.value || '',
+      contractFrom: this.GetControlls.contractFrom.value || new Date(),
+      contractTo: this.GetControlls.contractTo.value || new Date(),
+      whatTrains: this.GetControlls.whatTrains.value || '',
     };
   }
 }

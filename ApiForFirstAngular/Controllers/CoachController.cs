@@ -19,7 +19,7 @@ namespace ApiForFirstAngular.Controllers
             return Ok(result);
         }
         [HttpPost]
-        public async Task<IActionResult> AddCoachToClub(CoachCreate command)
+        public async Task<IActionResult> AddCoachToClub([FromBody]CoachCreate command)
         {
             var result = await _coachService.AddCoachToClub(command);
             return Ok(result);
