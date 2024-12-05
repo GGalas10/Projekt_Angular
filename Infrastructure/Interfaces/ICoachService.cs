@@ -5,7 +5,8 @@ namespace Infrastructure.Interfaces
 {
     public interface ICoachService
     {
-        public Task<List<CoachDTO>> GetAllClubCoaches(Guid clubId);
-        public Task<Guid> AddCoachToClub(CoachCreate command);
+        Task<List<CoachDTO>> GetAllClubCoaches(Guid clubId);
+        Task<Guid> AddCoachToClub(CoachCreate command);
+        Task<CoachDTO> GetCoachById(Guid coachId);
     }
 }

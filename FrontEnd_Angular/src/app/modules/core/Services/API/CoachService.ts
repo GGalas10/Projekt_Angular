@@ -22,4 +22,10 @@ export class CoachService {
       headers: this.headers,
     });
   }
+  GetCoachById(coachId: string): Observable<CoachDTO> {
+    return this.http.get<CoachDTO>(
+      `${this.apiUrl}/GetCoachById?coachId=${coachId}`,
+      { headers: this.headers },
+    );
+  }
 }

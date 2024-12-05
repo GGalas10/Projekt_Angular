@@ -15,7 +15,7 @@ namespace DataAccess.Repositories
         }
         public async Task<List<Coach>> GetAllClubCoaches(Guid clubId)
         {
-            var club = await _context.SportsClubs.AsNoTracking().Include(x=>x.CoachList).Where(x=>x.Id == clubId).FirstOrDefaultAsync();
+            var club = await _context.SportsClubs.AsNoTracking().Include(x => x.CoachList).Where(x => x.Id == clubId).FirstOrDefaultAsync();
             if (club == null)
                 throw new BadRequestException("Club_Doesnt_Exist");
             return club.CoachList.ToList();
@@ -29,6 +29,13 @@ namespace DataAccess.Repositories
             _context.Add(coach);
             await _context.SaveChangesAsync();
             return coach.Id;
+        }
+        public async Task<Coach> GetCoachById(Guid coachId)
+        {
+            var coach = await _context.Coaches.FirstOrDefaultAsync(x => x.Id == coachId);
+            if (coach == null)
+                throw new BadRequestException("Coach_Doesnt_Exist");
+            return coach;
         }
     }
 }

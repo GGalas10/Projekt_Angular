@@ -1,6 +1,6 @@
 <div *ngIf="coaches;else loader">
     <div *ngIf="coaches.length > 0;else emptyList">
-        <table style="margin: auto;">
+        <table>
             <thead>
                 <th>Imię trenera</th>
                 <th>Nazwisko trenera</th>
@@ -14,7 +14,8 @@
                         <td>{{item.whatTrains}}</td>
                         <td style="background-color: transparent"><input type="button" class="detailsBtn"
                                 value="Szczegóły"></td>
-                        <td style="background-color: transparent"><input type="button" class="editBtn" value="Edytuj" />
+                        <td style="background-color: transparent"><input type="button" class="editBtn" value="Edytuj"
+                                (click)="SelectCoach(item.id)" />
                         </td>
                     </tr>
                 </ng-container>
@@ -32,5 +33,5 @@
 </ng-template>
 <app-add-coach *ngIf="addForm" [clubId]="ClubId" (closeEvent)="addForm = false"
     (saveEvent)="GetNewCoach($event)"></app-add-coach>
-<app-edit-coach *ngIf="editForm"></app-edit-coach>
+<app-edit-coach *ngIf="editForm" [coachId]="this.SelectedCoachId" (closeEvent)="editForm = false"></app-edit-coach>
 <app-details-coach *ngIf="details"></app-details-coach>

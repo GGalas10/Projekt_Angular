@@ -16,3 +16,6 @@ tr:nth-child(2n) td {
   font-weight: 600 !important;
   font-size: 0.9rem !important;
 }
+table {
+  margin: auto 15% auto auto;
+}

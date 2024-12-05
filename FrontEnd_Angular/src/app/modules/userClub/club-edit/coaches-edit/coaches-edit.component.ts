@@ -1,4 +1,3 @@
-/* eslint-disable @angular-eslint/prefer-standalone */
 import { Component, Input, OnInit } from '@angular/core';
 import { CoachDTO } from '../../../../shared/Interfaces/Coach';
 import { CoachService } from '../../../core/Services/API/CoachService';
@@ -13,6 +12,7 @@ export class CoachesEditComponent implements OnInit {
   addForm = false;
   editForm = false;
   details = false;
+  SelectedCoachId = '';
   @Input() ClubId!: string;
   @Input() coaches!: CoachDTO[];
   constructor(private _coachService: CoachService) {}
@@ -43,5 +43,10 @@ export class CoachesEditComponent implements OnInit {
       }
       return 0;
     });
+  }
+  SelectCoach(coachId: string) {
+    this.SelectedCoachId = coachId;
+    console.log(this.SelectedCoachId);
+    this.editForm = true;
   }
 }

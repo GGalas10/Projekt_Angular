@@ -6,5 +6,6 @@ namespace Core.Repositories
     {
         Task<List<Coach>> GetAllClubCoaches(Guid clubId);
         Task<Guid> AddCoachToClub(Coach coach,Guid clubId);
+        Task<Coach> GetCoachById(Guid coachId);
     }
 }
