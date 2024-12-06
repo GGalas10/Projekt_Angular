@@ -37,5 +37,15 @@ namespace DataAccess.Repositories
                 throw new BadRequestException("Coach_Doesnt_Exist");
             return coach;
         }
+        public async Task EditCoach(Coach model)
+        {
+            var oldCoach = await _context.Coaches.FirstOrDefaultAsync(x => x.Id == model.Id);
+            if (oldCoach == null)
+                throw new BadRequestException("Cannot_Find_Coach_To_Exist");
+            oldCoach.Update(model);
+            _context.Update(oldCoach);
+            _context.Entry(oldCoach).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+        }
     }
 }

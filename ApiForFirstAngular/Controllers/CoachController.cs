@@ -21,15 +21,23 @@ namespace ApiForFirstAngular.Controllers
         }
         [BindUserId]
         [HttpPost]
-        public async Task<IActionResult> AddCoachToClub([FromBody]CoachCreate command)
+        public async Task<IActionResult> AddCoachToClub([FromBody] CoachCreate command)
         {
             var result = await _coachService.AddCoachToClub(command);
             return Ok(result);
         }
+        [HttpGet]
         public async Task<IActionResult> GetCoachById(Guid coachId)
         {
             var result = await _coachService.GetCoachById(coachId);
             return Ok(result);
+        }
+        [BindUserId]
+        [HttpPost]
+        public async Task<IActionResult> EditCoach(CoachEdit command)
+        {
+            await _coachService.EditCoach(command);
+            return Ok();
         }
 
     }

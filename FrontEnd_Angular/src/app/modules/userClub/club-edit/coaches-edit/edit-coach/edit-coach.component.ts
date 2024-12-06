@@ -1,5 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { CoachDTO } from '../../../../../shared/Interfaces/Coach';
+import {
+  CoachDTO,
+  CoachEditCommand,
+} from '../../../../../shared/Interfaces/Coach';
 import { CoachService } from '../../../../core/Services/API/CoachService';
 import { DatePipe } from '@angular/common';
 
@@ -17,6 +20,7 @@ export class EditCoachComponent implements OnInit {
   contractToString = '';
   @Input() coachId!: string;
   @Output() closeEvent = new EventEmitter<void>();
+  @Output() saveEvent = new EventEmitter<CoachDTO>();
   constructor(
     private _coachService: CoachService,
     private datePipe: DatePipe,
@@ -35,6 +39,20 @@ export class EditCoachComponent implements OnInit {
       error: (err) => {
         console.log(err);
       },
+    });
+  }
+  SendRequest() {
+    const model: CoachEditCommand = {
+      CoachId: this.coachId || '',
+      ContractFrom: this.coach.contractFrom || new Date(),
+      ContractTo: this.coach.contractTo || new Date(),
+      FirstName: this.coach.firstName || '',
+      LastName: this.coach.lastName || '',
+      WhatTrains: this.coach.whatTrains || '',
+    };
+    this._coachService.EditCoach(model).subscribe({
+      next: () => this.saveEvent.emit(this.coach),
+      error: (err) => console.log(err),
     });
   }
 }

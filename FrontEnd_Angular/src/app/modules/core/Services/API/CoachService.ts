@@ -2,7 +2,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../../../environments/environment.development';
 import { Observable } from 'rxjs';
-import { CoachAddCommand, CoachDTO } from '../../../../shared/Interfaces/Coach';
+import {
+  CoachAddCommand,
+  CoachDTO,
+  CoachEditCommand,
+} from '../../../../shared/Interfaces/Coach';
 
 @Injectable({
   providedIn: 'root',
@@ -27,5 +31,10 @@ export class CoachService {
       `${this.apiUrl}/GetCoachById?coachId=${coachId}`,
       { headers: this.headers },
     );
+  }
+  EditCoach(command: CoachEditCommand): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/EditCoach`, command, {
+      headers: this.headers,
+    });
   }
 }

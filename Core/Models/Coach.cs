@@ -15,5 +15,13 @@ namespace Core.Models
                 throw new Exception("CoachRole_Cannot_Be_Null_CoachCtor");
             WhatTrains = coachRole;
         }
+        public void Update(Coach model)
+        {
+            this.FirstName = model.FirstName;
+            this.LastName = model.LastName;
+            this.ContractFrom = model.ContractFrom;
+            this.ContractTo = model.ContractTo;
+            this.WhatTrains = model.WhatTrains;
+        }
     }
 }

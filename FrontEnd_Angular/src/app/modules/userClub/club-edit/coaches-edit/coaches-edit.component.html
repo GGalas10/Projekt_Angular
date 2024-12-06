@@ -33,5 +33,6 @@
 </ng-template>
 <app-add-coach *ngIf="addForm" [clubId]="ClubId" (closeEvent)="addForm = false"
     (saveEvent)="GetNewCoach($event)"></app-add-coach>
-<app-edit-coach *ngIf="editForm" [coachId]="this.SelectedCoachId" (closeEvent)="editForm = false"></app-edit-coach>
+<app-edit-coach *ngIf="editForm" [coachId]="this.SelectedCoachId" (closeEvent)="editForm = false"
+    (saveEvent)="GetEditCoach($event)"></app-edit-coach>
 <app-details-coach *ngIf="details"></app-details-coach>

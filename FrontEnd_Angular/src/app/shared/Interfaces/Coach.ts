@@ -27,3 +27,11 @@ export interface CoachAddCommand {
   LastName: string;
   WhatTrains: string;
 }
+export interface CoachEditCommand {
+  CoachId: string;
+  ContractFrom: Date;
+  ContractTo: Date;
+  FirstName: string;
+  LastName: string;
+  WhatTrains: string;
+}

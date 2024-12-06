@@ -8,5 +8,6 @@ namespace Infrastructure.Interfaces
         Task<List<CoachDTO>> GetAllClubCoaches(Guid clubId);
         Task<Guid> AddCoachToClub(CoachCreate command);
         Task<CoachDTO> GetCoachById(Guid coachId);
+        Task EditCoach(CoachEdit command);
     }
 }

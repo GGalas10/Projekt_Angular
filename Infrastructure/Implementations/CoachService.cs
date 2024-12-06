@@ -34,5 +34,11 @@ namespace Infrastructure.Implementations
             var result = await _coachRepository.GetCoachById(coachId);
             return CoachDTO.GetFromModel(result);
         }
+        public async Task EditCoach(CoachEdit command)
+        {
+            if (command == null)
+                throw new BadRequestException("Edit_Command_Cannot_Be_Null");
+            await _coachRepository.EditCoach(new Core.Models.Coach(command.WhatTrains, command.ContractFrom, command.ContractTo, command.FirstName, command.LastName) { Id = command.CoachId });
+        }
     }
 }

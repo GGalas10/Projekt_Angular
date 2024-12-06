@@ -44,6 +44,10 @@ export class CoachesEditComponent implements OnInit {
       return 0;
     });
   }
+  GetEditCoach(coach: CoachDTO) {
+    this.editForm = false;
+    this.pushAndSortCoachList(coach);
+  }
   SelectCoach(coachId: string) {
     this.SelectedCoachId = coachId;
     console.log(this.SelectedCoachId);
