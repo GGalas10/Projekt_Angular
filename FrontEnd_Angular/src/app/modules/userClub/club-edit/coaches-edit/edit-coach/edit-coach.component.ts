@@ -5,6 +5,7 @@ import {
 } from '../../../../../shared/Interfaces/Coach';
 import { CoachService } from '../../../../core/Services/API/CoachService';
 import { DatePipe } from '@angular/common';
+import { BaseAlert } from '../../../../../shared/Component/base-alert/BaseAlertInterface';
 
 @Component({
   selector: 'app-edit-coach',
@@ -14,6 +15,11 @@ import { DatePipe } from '@angular/common';
   providers: [DatePipe],
 })
 export class EditCoachComponent implements OnInit {
+  showAlert = false;
+  baseAlert: BaseAlert = {
+    Title: '',
+    Message: '',
+  };
   coach!: CoachDTO;
   oldCoach!: CoachDTO;
   contractFromString = '';
@@ -52,7 +58,29 @@ export class EditCoachComponent implements OnInit {
     };
     this._coachService.EditCoach(model).subscribe({
       next: () => this.saveEvent.emit(this.coach),
-      error: (err) => console.log(err),
+      error: (err) => {
+        if (err.error.includes('Edit_Command_Cannot_Be_Null')) {
+          this.ShowAlert('Błąd', 'Uzupełnij prawidłowo wszystkie pola');
+        }
+        if (err.error.includes('Cannot_Find_Coach_To_Exist')) {
+          this.ShowAlert(
+            'Coś poszło nie tak',
+            'Odśwież stronę i spróbuj ponownie później.',
+          );
+        }
+        if (err.error.includes('CoachRole_Cannot_Be_Null_CoachCtor')) {
+          this.ShowAlert('Błąd', 'Uzupełnij role trenera');
+        }
+        console.log(err);
+      },
     });
+  }
+  CloseAlert() {
+    this.showAlert = false;
+  }
+  ShowAlert(title: string, message: string) {
+    this.baseAlert.Title = title;
+    this.baseAlert.Message = message;
+    this.showAlert = true;
   }
 }

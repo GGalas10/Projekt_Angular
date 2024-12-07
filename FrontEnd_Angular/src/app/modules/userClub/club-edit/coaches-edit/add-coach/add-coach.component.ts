@@ -5,6 +5,7 @@ import {
   CoachDTO,
 } from '../../../../../shared/Interfaces/Coach';
 import { CoachService } from '../../../../core/Services/API/CoachService';
+import { BaseAlert } from '../../../../../shared/Component/base-alert/BaseAlertInterface';
 
 @Component({
   selector: 'app-add-coach',
@@ -13,6 +14,11 @@ import { CoachService } from '../../../../core/Services/API/CoachService';
   styleUrl: './add-coach.component.css',
 })
 export class AddCoachComponent {
+  showAlert = false;
+  baseAlert: BaseAlert = {
+    Title: '',
+    Message: '',
+  };
   coach = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
@@ -33,6 +39,18 @@ export class AddCoachComponent {
         this.saveEvent.emit(this.GetDetailsFromForm(result));
       },
       error: (err) => {
+        if (err.error.includes('Coach_Add_Cannot_Be_Null')) {
+          this.ShowAlert('Błąd', 'Uzupełnij prawidłowo wszystkie pola');
+        }
+        if (err.error.includes('Club_Doesnt_Exist')) {
+          this.ShowAlert(
+            'Coś poszło nie tak',
+            'Odśwież stronę i spróbuj ponownie później.',
+          );
+        }
+        if (err.error.includes('CoachRole_Cannot_Be_Null_CoachCtor')) {
+          this.ShowAlert('Błąd', 'Uzupełnij role trenera');
+        }
         console.log(err);
       },
     });
@@ -56,5 +74,13 @@ export class AddCoachComponent {
       contractTo: this.GetControlls.contractTo.value || new Date(),
       whatTrains: this.GetControlls.whatTrains.value || '',
     };
+  }
+  CloseAlert() {
+    this.showAlert = false;
+  }
+  ShowAlert(title: string, message: string) {
+    this.baseAlert.Title = title;
+    this.baseAlert.Message = message;
+    this.showAlert = true;
   }
 }
