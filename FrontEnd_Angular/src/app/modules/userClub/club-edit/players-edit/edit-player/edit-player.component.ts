@@ -7,6 +7,7 @@ import {
 } from '../../../../../shared/Interfaces/Player';
 import { DatePipe } from '@angular/common';
 import { PlayerService } from '../../../../core/Services/API/PlayerService';
+import { BaseAlert } from '../../../../../shared/Component/base-alert/BaseAlertInterface';
 
 @Component({
   selector: 'app-edit-player',
@@ -16,6 +17,11 @@ import { PlayerService } from '../../../../core/Services/API/PlayerService';
   providers: [DatePipe],
 })
 export class EditPlayerComponent implements OnInit {
+  showAlert = false;
+  baseAlert: BaseAlert = {
+    Title: '',
+    Message: '',
+  };
   contractFromString: string = '';
   contractToString: string = '';
   player!: PlayerDetailsDTO;
@@ -42,6 +48,18 @@ export class EditPlayerComponent implements OnInit {
           '';
       },
       error: (err) => {
+        if (err.error.includes('Cannot_Edit_Player_With_Null_Command')) {
+          this.ShowAlert('Błąd', 'Dodaj wszystkie pola prawidłowo');
+        }
+        if (err.error.includes('Cannot_Edit_Null_Player')) {
+          this.ShowAlert('Błąd', 'Odśwież stronę i spróbuj ponownie później.');
+        }
+        if (err.error.includes('Player_Doesnt_Exist')) {
+          this.ShowAlert(
+            'Błąd',
+            'Coś poszło nie tak, spróbuj ponownie później',
+          );
+        }
         console.log(err);
       },
     });
@@ -61,5 +79,13 @@ export class EditPlayerComponent implements OnInit {
           console.log(err);
         },
       });
+  }
+  CloseAlert() {
+    this.showAlert = false;
+  }
+  ShowAlert(title: string, message: string) {
+    this.baseAlert.Title = title;
+    this.baseAlert.Message = message;
+    this.showAlert = true;
   }
 }

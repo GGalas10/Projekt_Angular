@@ -5,6 +5,7 @@ import {
   CreatePlayerCommand,
   PlayerDetailsDTO,
 } from '../../../../../shared/Interfaces/Player';
+import { BaseAlert } from '../../../../../shared/Component/base-alert/BaseAlertInterface';
 
 @Component({
   selector: 'app-add-player',
@@ -13,6 +14,11 @@ import {
   standalone: false,
 })
 export class AddPlayerComponent {
+  showAlert = false;
+  baseAlert: BaseAlert = {
+    Title: '',
+    Message: '',
+  };
   constructor(private playerService: PlayerService) {}
   @Input() clubId!: string;
   @Output() closeEvent = new EventEmitter<void>();
@@ -45,6 +51,18 @@ export class AddPlayerComponent {
         this.newPlayerEvent.emit(this.getPlayerDTO(player, value));
       },
       error: (err) => {
+        if (err.error.includes('Cannot_Create_Player_With_Null_Command')) {
+          this.ShowAlert('Błąd', 'Dodaj wszystkie pola prawidłowo');
+        }
+        if (err.error.includes('Cannot_Add_Null_Player')) {
+          this.ShowAlert('Błąd', 'Odśwież stronę i spróbuj ponownie później.');
+        }
+        if (err.error.includes('The_Club_Doesnt_Exist')) {
+          this.ShowAlert(
+            'Błąd',
+            'Coś poszło nie tak, spróbuj ponownie później',
+          );
+        }
         console.log(err);
       },
     });
@@ -93,5 +111,13 @@ export class AddPlayerComponent {
       position: player.position,
       playerNumber: player.playerNumber,
     };
+  }
+  CloseAlert() {
+    this.showAlert = false;
+  }
+  ShowAlert(title: string, message: string) {
+    this.baseAlert.Title = title;
+    this.baseAlert.Message = message;
+    this.showAlert = true;
   }
 }

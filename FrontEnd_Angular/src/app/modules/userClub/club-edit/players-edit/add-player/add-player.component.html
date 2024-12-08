@@ -106,3 +106,4 @@
         </div>
     </section>
 </section>
+<app-base-alert *ngIf="this.showAlert" [baseAlert]="this.baseAlert" (CloseEmit)="CloseAlert()"></app-base-alert>
