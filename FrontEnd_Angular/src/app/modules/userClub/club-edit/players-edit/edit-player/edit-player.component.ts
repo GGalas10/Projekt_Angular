@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-inferrable-types */
-/* eslint-disable @angular-eslint/prefer-standalone */
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {
   mapPlayerDetailsToEditPlayerCommand,
@@ -22,8 +20,8 @@ export class EditPlayerComponent implements OnInit {
     Title: '',
     Message: '',
   };
-  contractFromString: string = '';
-  contractToString: string = '';
+  contractFromString = '';
+  contractToString = '';
   player!: PlayerDetailsDTO;
   OldPlayers!: PlayerDetailsDTO;
   @Input() playerId!: string;
