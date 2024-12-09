@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CoachDTO } from '../../../../shared/Interfaces/Coach';
 import { CoachService } from '../../../core/Services/API/CoachService';
+import { BaseAlert } from '../../../../shared/Component/base-alert/BaseAlertInterface';
 
 @Component({
   selector: 'app-coaches-edit',
@@ -9,6 +10,11 @@ import { CoachService } from '../../../core/Services/API/CoachService';
   standalone: false,
 })
 export class CoachesEditComponent implements OnInit {
+  showAlert = false;
+  baseAlert: BaseAlert = {
+    Title: '',
+    Message: '',
+  };
   addForm = false;
   editForm = false;
   details = false;
@@ -24,7 +30,16 @@ export class CoachesEditComponent implements OnInit {
         console.log(this.coaches);
       },
       error: (err) => {
-        console.log('Coś poszło nie tak', err);
+        if (err.error.includes('ClubId_Cannot_Be_Empty')) {
+          this.ShowAlert(
+            'Błąd',
+            'Coś poszło nie tak. Spróbuj ponownie później',
+          );
+        }
+        this.ShowAlert(
+          'Coś poszło nie tak',
+          'Odśwież stronę i spróbuj ponownie',
+        );
       },
     });
   }
@@ -52,5 +67,13 @@ export class CoachesEditComponent implements OnInit {
     this.SelectedCoachId = coachId;
     console.log(this.SelectedCoachId);
     this.editForm = true;
+  }
+  CloseAlert() {
+    this.showAlert = false;
+  }
+  ShowAlert(title: string, message: string) {
+    this.baseAlert.Title = title;
+    this.baseAlert.Message = message;
+    this.showAlert = true;
   }
 }

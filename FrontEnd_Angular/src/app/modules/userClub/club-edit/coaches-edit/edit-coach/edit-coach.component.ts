@@ -71,7 +71,10 @@ export class EditCoachComponent implements OnInit {
         if (err.error.includes('CoachRole_Cannot_Be_Null_CoachCtor')) {
           this.ShowAlert('Błąd', 'Uzupełnij role trenera');
         }
-        console.log(err);
+        this.ShowAlert(
+          'Coś poszło nie tak',
+          'Odśwież stronę i spróbuj ponownie',
+        );
       },
     });
   }

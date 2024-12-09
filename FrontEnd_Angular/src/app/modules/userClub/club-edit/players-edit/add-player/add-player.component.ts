@@ -63,7 +63,10 @@ export class AddPlayerComponent {
             'Coś poszło nie tak, spróbuj ponownie później',
           );
         }
-        console.log(err);
+        this.ShowAlert(
+          'Coś poszło nie tak',
+          'Odśwież stronę i spróbuj ponownie',
+        );
       },
     });
   }

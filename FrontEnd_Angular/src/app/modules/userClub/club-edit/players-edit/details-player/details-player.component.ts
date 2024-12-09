@@ -1,9 +1,8 @@
-/* eslint-disable @typescript-eslint/no-inferrable-types */
-/* eslint-disable @angular-eslint/prefer-standalone */
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PlayerDetailsDTO } from '../../../../../shared/Interfaces/Player';
 import { DatePipe } from '@angular/common';
 import { PlayerService } from '../../../../core/Services/API/PlayerService';
+import { BaseAlert } from '../../../../../shared/Component/base-alert/BaseAlertInterface';
 
 @Component({
   selector: 'app-details-player',
@@ -13,12 +12,17 @@ import { PlayerService } from '../../../../core/Services/API/PlayerService';
   providers: [DatePipe],
 })
 export class DetailsPlayerComponent implements OnInit {
+  showAlert = false;
+  baseAlert: BaseAlert = {
+    Title: '',
+    Message: '',
+  };
   constructor(
     private datePipe: DatePipe,
     private _playerService: PlayerService,
   ) {}
-  contractFromString: string = '';
-  contractToString: string = '';
+  contractFromString = '';
+  contractToString = '';
   player!: PlayerDetailsDTO;
   OldPlayers!: PlayerDetailsDTO;
   @Input() playerId!: string;
@@ -36,8 +40,28 @@ export class DetailsPlayerComponent implements OnInit {
           '';
       },
       error: (err) => {
-        console.log(err);
+        if (err.error.includes('PlayerId_Cannot_Be_Empty')) {
+          this.ShowAlert('Błąd', 'Odśwież stronę i spróbuj ponownie');
+        }
+        if (err.error.includes('Cannot_Find_Player_GetPlayerDetails')) {
+          this.ShowAlert(
+            'Błąd',
+            'Coś poszło nie tak. Spróbuj ponownie później',
+          );
+        }
+        this.ShowAlert(
+          'Błąd aplikacji',
+          'Spróbuj ponownie później. Jeśli nadal problem będzie występował napisz do administratora',
+        );
       },
     });
+  }
+  CloseAlert() {
+    this.showAlert = false;
+  }
+  ShowAlert(title: string, message: string) {
+    this.baseAlert.Title = title;
+    this.baseAlert.Message = message;
+    this.showAlert = true;
   }
 }

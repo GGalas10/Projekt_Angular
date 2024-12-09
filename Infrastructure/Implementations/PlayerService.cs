@@ -39,7 +39,7 @@ namespace Infrastructure.Implementations
         public async Task EditPlayer(EditPlayerCommand command)
         {
             if (command == null)
-                throw new BadRequestException("Cannot_Create_Player_With_Null_Command");
+                throw new BadRequestException("Cannot_Edit_Player_With_Null_Command");
             command.IsValid();
             await _playerRepository.EditPlayer(EditPlayerCommand.GetFromCommand(command));
             await Task.CompletedTask;

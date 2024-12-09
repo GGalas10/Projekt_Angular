@@ -58,7 +58,10 @@ export class EditPlayerComponent implements OnInit {
             'Coś poszło nie tak, spróbuj ponownie później',
           );
         }
-        console.log(err);
+        this.ShowAlert(
+          'Coś poszło nie tak',
+          'Odśwież stronę i spróbuj ponownie',
+        );
       },
     });
   }

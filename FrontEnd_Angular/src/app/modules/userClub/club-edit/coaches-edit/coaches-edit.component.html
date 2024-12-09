@@ -36,3 +36,4 @@
 <app-edit-coach *ngIf="editForm" [coachId]="this.SelectedCoachId" (closeEvent)="editForm = false"
     (saveEvent)="GetEditCoach($event)"></app-edit-coach>
 <app-details-coach *ngIf="details"></app-details-coach>
+<app-base-alert *ngIf="this.showAlert" [baseAlert]="this.baseAlert" (CloseEmit)="CloseAlert()"></app-base-alert>
