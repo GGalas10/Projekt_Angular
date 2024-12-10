@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import {
-  Player,
   GetPlayerPosition,
   PlayerDetailsDTO,
 } from '../../../../shared/Interfaces/Player';
@@ -15,5 +14,9 @@ export class PlayersComponent {
   @Input() players!: PlayerDetailsDTO[];
   playerPosition(position: number): string {
     return GetPlayerPosition(position);
+  }
+  InjuryInfo(hasInjury: boolean): string {
+    if (hasInjury) return 'Tak';
+    return 'Nie';
   }
 }
