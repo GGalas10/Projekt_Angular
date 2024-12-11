@@ -15,7 +15,7 @@
         </div>
         <section id="">
             <app-players *ngIf="this.PlayerActive" [players]="this.club.playerList"></app-players>
-            <app-coaches *ngIf="this.CoachActive" [coaches]="this.club.coachList"></app-coaches>
+            <app-coaches *ngIf="this.CoachActive" [clubId]="this.club.id"></app-coaches>
             <app-staffs *ngIf="this.StaffActive" [staffs]="this.club.staffList"></app-staffs>
         </section>
     </div>

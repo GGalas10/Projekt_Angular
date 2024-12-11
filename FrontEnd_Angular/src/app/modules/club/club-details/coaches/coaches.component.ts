@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Coach } from '../../../../shared/Interfaces/Coach';
+import { CoachDTO } from '../../../../shared/Interfaces/Coach';
+import { CoachService } from '../../../core/Services/API/CoachService';
 
 @Component({
   selector: 'app-coaches',
@@ -8,8 +9,13 @@ import { Coach } from '../../../../shared/Interfaces/Coach';
   standalone: false,
 })
 export class CoachesComponent implements OnInit {
+  constructor(private coachService: CoachService) {}
   ngOnInit(): void {
-    console.log(this.coaches);
+    this.coachService.GetAllCoachesFromClub(this.clubId).subscribe({
+      next: (responde) => (this.coaches = responde),
+      error: (err) => console.log(err),
+    });
   }
-  @Input() coaches!: Coach[];
+  coaches!: CoachDTO[];
+  @Input() clubId!: string;
 }

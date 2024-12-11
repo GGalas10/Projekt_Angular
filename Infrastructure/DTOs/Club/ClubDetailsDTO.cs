@@ -6,6 +6,7 @@ namespace Infrastructure.DTOs.Club
 {
     public class ClubDetailsDTO
     {
+        public Guid id { get; set; }
         public string name { get; set; }
         public string description { get; set; }
         public DateTime rising { get; set; }
@@ -15,6 +16,7 @@ namespace Infrastructure.DTOs.Club
         public ClubDetailsDTO() { }
         public ClubDetailsDTO(SportsClub model)
         {
+            id = model.Id;
             name = model.Name;
             description = model.Description;
             rising = model.Rising;

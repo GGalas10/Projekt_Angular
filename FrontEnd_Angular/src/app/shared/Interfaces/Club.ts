@@ -8,6 +8,7 @@ import { PlayerDetailsDTO } from './Player';
 import { Staff } from './Staff';
 
 export interface ClubDetails {
+  id: string;
   name: string;
   description: string;
   rising: Date;
