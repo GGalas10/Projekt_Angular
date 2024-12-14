@@ -19,6 +19,9 @@ import { DetailsPlayerComponent } from './club-edit/players-edit/details-player/
 import { EditCoachComponent } from './club-edit/coaches-edit/edit-coach/edit-coach.component';
 import { AddCoachComponent } from './club-edit/coaches-edit/add-coach/add-coach.component';
 import { DetailsCoachComponent } from './club-edit/coaches-edit/details-coach/details-coach.component';
+import { AddStaffComponent } from './club-edit/staffs-edit/add-staff/add-staff.component';
+import { DetailsStaffComponent } from './club-edit/staffs-edit/details-staff/details-staff.component';
+import { EditStaffComponent } from './club-edit/staffs-edit/edit-staff/edit-staff.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,9 @@ import { DetailsCoachComponent } from './club-edit/coaches-edit/details-coach/de
     EditCoachComponent,
     AddCoachComponent,
     DetailsCoachComponent,
+    AddStaffComponent,
+    DetailsStaffComponent,
+    EditStaffComponent,
   ],
   imports: [SharedModule, CommonModule, UserclubRoutingModule, FormsModule],
 })

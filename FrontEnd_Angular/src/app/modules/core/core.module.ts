@@ -17,6 +17,7 @@ import { UserClubService } from './Services/API/UserClubService';
 import { ClubEditService } from './Services/API/ClubEditServices';
 import { PlayerService } from './Services/API/PlayerService';
 import { CoachService } from './Services/API/CoachService';
+import { StaffService } from './Services/API/StaffService';
 
 @NgModule({
   declarations: [HeaderComponent],
@@ -32,6 +33,7 @@ import { CoachService } from './Services/API/CoachService';
     ClubEditService,
     PlayerService,
     CoachService,
+    StaffService,
     provideHttpClient(withInterceptorsFromDi()),
     [
       {

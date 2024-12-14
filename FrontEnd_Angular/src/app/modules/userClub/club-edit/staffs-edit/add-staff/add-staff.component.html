@@ -1,1 +1,27 @@
-<p>add-staff works!</p>
+<section class="overlay" style="height: 100%;">
+    <section class="modal" style="height: 90%;">
+        <button class="close-btn" (click)="this.closeEvent.emit()">&times;</button>
+        <form [formGroup]="staff" style="width: 85%;" (ngSubmit)="SendRequest()">
+            <h3>Dodawanie trenera</h3>
+            <div style="width: 50%;display: flex;flex-direction: column;margin: auto;">
+                <label for="first-Name">Imię trenera:</label>
+                <input name="first-Name" id="first-Name" type="text" formControlName="firstName">
+
+                <label for="last-Name">Nazwisko trenera:</label>
+                <input name="last-Name" id="last-Name" type="text" formControlName="lastName">
+
+                <label for="what-Trains">Rola trenera:</label>
+                <input type="text" name="what-Trains" id="what-Trains" formControlName="jobPosition">
+
+                <label for="from">Kontrakt od:</label>
+                <input type="date" name="from" id="from" formControlName="contractFrom">
+
+                <label for="to">Kontrakt do:</label>
+                <input type="date" name="to" id="to" formControlName="contractTo">
+
+                <button type="submit" class="saveButton">Zapisz</button>
+            </div>
+        </form>
+    </section>
+</section>
+<app-base-alert *ngIf="this.showAlert" [baseAlert]="this.baseAlert" (CloseEmit)="CloseAlert()"></app-base-alert>
