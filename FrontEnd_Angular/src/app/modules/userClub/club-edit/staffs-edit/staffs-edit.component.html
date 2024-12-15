@@ -1,9 +1,10 @@
 <div *ngIf="staffs.length>0;else emptyList">
     <ng-container *ngFor="let item of staffs">
-        <p>{{item.FirstName}} {{item.LastName}} {{item.JobPosition}}</p>
+        <p>{{item.firstName}} {{item.lastName}} {{item.jobPosition}}</p>
     </ng-container>
 </div>
 <ng-template #emptyList>
     <h1>Brak personelu w klubie</h1>
     <button class="AddingBtn">Dodaj pierwszy personel</button>
 </ng-template>
+<app-base-alert [baseAlert]="baseAlert" *ngIf="ShowAlert" (CloseEmit)="ShowAlert = false"></app-base-alert>
