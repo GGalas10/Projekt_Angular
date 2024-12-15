@@ -23,5 +23,13 @@ namespace DataAccess.Repositories
             await _context.SaveChangesAsync();
             return model.Id;
         }
+
+        public async Task<List<Staff>> GetAllStaffFromClub(Guid clubId)
+        {
+            var club = await _context.SportsClubs.AsNoTracking().Include(x=>x.StaffList).FirstOrDefaultAsync(x => x.Id == clubId);
+            if (club == null)
+                throw new BadRequestException("Cannot_Find_Club_To_Add_Staff");
+            return club.StaffList.ToList();
+        }
     }
 }
