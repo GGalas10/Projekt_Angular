@@ -1,1 +1,27 @@
-<p>details-staff works!</p>
+<section class="overlay" style="height: 100%;">
+    <section class="modal" style="height: 90%;">
+        <button class="close-btn" (click)="this.closeEvent.emit()">&times;</button>
+        <section style="width: 85%;">
+            <h3>Dodawanie trenera</h3>
+            <div style="width: 50%;display: flex;flex-direction: column;margin: auto;">
+                <label for="first-Name">Imię trenera:</label>
+                <input name="first-Name" id="first-Name" type="text" [(ngModel)]="coach.firstName">
+
+                <label for="last-Name">Nazwisko trenera:</label>
+                <input name="last-Name" id="last-Name" type="text" [(ngModel)]="coach.lastName">
+
+                <label for="what-Trains">Rola trenera:</label>
+                <input type="text" name="what-Trains" id="what-Trains" [(ngModel)]="coach.jobPosition">
+
+                <label for="from">Kontrakt od:</label>
+                <input type="date" name="from" id="from" [(ngModel)]="contractFromString">
+
+                <label for="to">Kontrakt do:</label>
+                <input type="date" name="to" id="to" [(ngModel)]="contractToString">
+
+                <button type="button" class="saveButton" (click)="this.closeEvent.emit()">Wróć</button>
+            </div>
+        </section>
+    </section>
+</section>
+<app-base-alert *ngIf="this.showAlert" [baseAlert]="this.baseAlert" (CloseEmit)="showAlert = false"></app-base-alert>

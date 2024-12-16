@@ -38,7 +38,14 @@ export class AddStaffComponent {
         console.log(result);
       },
       error: (err) => {
-        console.log(err);
+        if (err.error.includes('Command_Cannot_Be_Null')) {
+          this.ShowAlert('Błąd', 'Odśwież stronę i spróbuj ponownie');
+          return;
+        }
+        this.ShowAlert(
+          'Wystąpił błąd',
+          'Coś poszło nie tak. Spróbuj ponownie później',
+        );
       },
     });
   }
