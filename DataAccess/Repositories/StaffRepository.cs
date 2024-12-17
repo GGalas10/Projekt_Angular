@@ -31,5 +31,13 @@ namespace DataAccess.Repositories
                 throw new BadRequestException("Cannot_Find_Club_To_Add_Staff");
             return club.StaffList.ToList();
         }
+
+        public async Task<Staff> GetStaffById(Guid staffId)
+        {
+            var result = await _context.Staffs.AsNoTracking().FirstOrDefaultAsync(x=>x.Id==staffId);
+            if (result == null)
+                throw new BadRequestException("Cannot_Find_Staff");
+            return result;
+        }
     }
 }

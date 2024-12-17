@@ -29,5 +29,13 @@ namespace Infrastructure.Implementations
             var result = await _staffRepository.GetAllStaffFromClub(clubId);
             return result.Select(x=>StaffDTO.GetFromModel(x)).ToList();
         }
+
+        public async Task<StaffDTO> GetStaffById(Guid staffId)
+        {
+            if (staffId == Guid.Empty)
+                throw new BadRequestException("StaffId_Cannot_Be_Empty");
+            var result = await _staffRepository.GetStaffById(staffId);
+            return StaffDTO.GetFromModel(result);
+        }
     }
 }

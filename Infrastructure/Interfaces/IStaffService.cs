@@ -7,5 +7,6 @@ namespace Infrastructure.Interfaces
     {
         Task<Guid> AddStaffToClub(AddStaffCommand command);
         Task<List<StaffDTO>> GetAllStaffFromClub(Guid clubId);
+        Task<StaffDTO> GetStaffById(Guid staffId);
     }
 }

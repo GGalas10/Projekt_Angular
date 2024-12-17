@@ -24,4 +24,12 @@ export class StaffService {
       },
     );
   }
+  GettaffsById(staffId: string): Observable<StaffDTO> {
+    return this.http.get<StaffDTO>(
+      `${this.apiUrl}/GetStaffById?staffId=${staffId}`,
+      {
+        headers: this.headers,
+      },
+    );
+  }
 }

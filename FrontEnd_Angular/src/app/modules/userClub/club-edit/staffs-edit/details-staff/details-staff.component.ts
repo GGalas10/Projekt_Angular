@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BaseAlert } from '../../../../../shared/Component/base-alert/BaseAlertInterface';
 import { StaffDTO } from '../../../../../shared/Interfaces/Staff';
+import { StaffService } from '../../../../core/Services/API/StaffService';
 
 @Component({
   selector: 'app-details-staff',
@@ -9,16 +10,34 @@ import { StaffDTO } from '../../../../../shared/Interfaces/Staff';
   templateUrl: './details-staff.component.html',
   styleUrl: './details-staff.component.css',
 })
-export class DetailsStaffComponent {
+export class DetailsStaffComponent implements OnInit {
+  constructor(private staffService: StaffService) {}
   showAlert = false;
   baseAlert: BaseAlert = {
     Title: '',
     Message: '',
   };
-  coach!: StaffDTO;
-  oldCoach!: StaffDTO;
+  staff!: StaffDTO;
   contractFromString = '';
   contractToString = '';
-  @Input() coachId!: string;
+  @Input() staffId!: string;
   @Output() closeEvent = new EventEmitter<void>();
+  ngOnInit(): void {
+    this.staffService.GettaffsById(this.staffId).subscribe({
+      next: (result) => {
+        this.staff = result;
+      },
+      error: () => {
+        this.ShowAlert(
+          'Wystąpił nieoczekiwany błąd',
+          'Spróbuj ponownie później',
+        );
+      },
+    });
+  }
+  ShowAlert(title: string, message: string) {
+    this.baseAlert.Title = title;
+    this.baseAlert.Message = message;
+    this.showAlert = true;
+  }
 }

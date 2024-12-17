@@ -26,5 +26,11 @@ namespace ApiForFirstAngular.Controllers
             var result = await _staffService.GetAllStaffFromClub(clubId);
             return Ok(result);
         }
+        [HttpGet]
+        public async Task<IActionResult> GetStaffById(Guid staffId)
+        {
+            var result = await _staffService.GetStaffById(staffId);
+            return Ok(result);
+        }
     }
 }

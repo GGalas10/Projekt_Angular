@@ -10,6 +10,9 @@ import { BaseAlert } from '../../../../shared/Component/base-alert/BaseAlertInte
   standalone: false,
 })
 export class StaffsEditComponent implements OnInit {
+  addStaff = false;
+  editStaff = false;
+  detailsStaff = false;
   constructor(private staffService: StaffService) {}
   ShowAlert = false;
   baseAlert: BaseAlert = { Title: '', Message: '' };

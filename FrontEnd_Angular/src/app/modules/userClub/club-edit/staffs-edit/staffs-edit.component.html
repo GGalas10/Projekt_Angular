@@ -7,4 +7,5 @@
     <h1>Brak personelu w klubie</h1>
     <button class="AddingBtn">Dodaj pierwszy personel</button>
 </ng-template>
+<app-add-staff [ClubId]="this.ClubId" *ngIf="addStaff" (closeEvent)="addStaff = false"></app-add-staff>
 <app-base-alert [baseAlert]="baseAlert" *ngIf="ShowAlert" (CloseEmit)="ShowAlert = false"></app-base-alert>
