@@ -18,6 +18,7 @@ namespace Infrastructure
             services.AddScoped<IPasswordService, PasswordService>();
             services.AddScoped<IClubEditService, ClubEditService>();
             services.AddScoped<ICoachService, CoachService>();
+            services.AddScoped<IStaffService, StaffService>();
             return services;
         }
     }

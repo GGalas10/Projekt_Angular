@@ -1,11 +1,37 @@
-<div *ngIf="staffs.length>0;else emptyList">
-    <ng-container *ngFor="let item of staffs">
-        <p>{{item.firstName}} {{item.lastName}} {{item.jobPosition}}</p>
-    </ng-container>
+<div *ngIf="staffs;else loader">
+    <div *ngIf="staffs.length>0;else emptyList">
+        <table>
+            <thead>
+                <th>Imię trenera</th>
+                <th>Nazwisko trenera</th>
+                <th>Rola trenera</th>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let item of staffs; let i = index">
+                    <tr>
+                        <td>{{item.firstName}}</td>
+                        <td>{{item.lastName}}</td>
+                        <td>{{item.jobPosition}}</td>
+                        <td style="background-color: transparent"><input type="button" class="detailsBtn"
+                                value="Szczegóły" (click)="ChoseStaffForDetails(item.id)"></td>
+                        <td style="background-color: transparent"><input type="button" class="editBtn" value="Edytuj" />
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+        <button class="AddingBtn" (click)="addStaff = true">Dodaj kolejny personel</button>
+    </div>
+    <ng-template #emptyList>
+        <h1>Brak personelu w klubie</h1>
+        <button class="AddingBtn" (click)="addStaff = true">Dodaj pierwszy personel</button>
+    </ng-template>
 </div>
-<ng-template #emptyList>
-    <h1>Brak personelu w klubie</h1>
-    <button class="AddingBtn">Dodaj pierwszy personel</button>
+<ng-template #loader>
+    <div class="loader" style="position: inherit;"></div>
 </ng-template>
-<app-add-staff [ClubId]="this.ClubId" *ngIf="addStaff" (closeEvent)="addStaff = false"></app-add-staff>
+<app-details-staff *ngIf="detailsStaff" (closeEvent)="detailsStaff = false"
+    [staffId]="ChosenStaffId"></app-details-staff>
+<app-add-staff [ClubId]="this.ClubId" *ngIf="addStaff" (closeEvent)="addStaff = false"
+    (saveEvent)="GetNewCoach($event)"></app-add-staff>
 <app-base-alert [baseAlert]="baseAlert" *ngIf="ShowAlert" (CloseEmit)="ShowAlert = false"></app-base-alert>

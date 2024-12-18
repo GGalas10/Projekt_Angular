@@ -2,15 +2,15 @@
     <section class="modal" style="height: 90%;">
         <button class="close-btn" (click)="this.closeEvent.emit()">&times;</button>
         <form [formGroup]="staff" style="width: 85%;" (ngSubmit)="SendRequest()">
-            <h3>Dodawanie trenera</h3>
+            <h3>Dodawanie personelu</h3>
             <div style="width: 50%;display: flex;flex-direction: column;margin: auto;">
-                <label for="first-Name">Imię trenera:</label>
+                <label for="first-Name">Imię pracownika:</label>
                 <input name="first-Name" id="first-Name" type="text" formControlName="firstName">
 
-                <label for="last-Name">Nazwisko trenera:</label>
+                <label for="last-Name">Nazwisko pracownika:</label>
                 <input name="last-Name" id="last-Name" type="text" formControlName="lastName">
 
-                <label for="what-Trains">Rola trenera:</label>
+                <label for="what-Trains">Rola pracownika:</label>
                 <input type="text" name="what-Trains" id="what-Trains" formControlName="jobPosition">
 
                 <label for="from">Kontrakt od:</label>

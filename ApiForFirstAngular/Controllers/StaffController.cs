@@ -15,7 +15,7 @@ namespace ApiForFirstAngular.Controllers
         }
         [BindUserId]
         [HttpPost]
-        public async Task<IActionResult> AddStaffToClub(AddStaffCommand command)
+        public async Task<IActionResult> AddStaffToClub([FromBody]AddStaffCommand command)
         {
             var result = await _staffService.AddStaffToClub(command);
             return Ok(result);

@@ -13,7 +13,7 @@
                         <td>{{item.lastName}}</td>
                         <td>{{item.whatTrains}}</td>
                         <td style="background-color: transparent"><input type="button" class="detailsBtn"
-                                value="Szczegóły"></td>
+                                value="Szczegóły" (click)="SelectCoachForDetails(item.id)"></td>
                         <td style="background-color: transparent"><input type="button" class="editBtn" value="Edytuj"
                                 (click)="SelectCoach(item.id)" />
                         </td>
@@ -21,7 +21,7 @@
                 </ng-container>
             </tbody>
         </table>
-        <input type="button" class="AddingBtn" (click)="addForm = true" value="Dodaj pierwszego trenera">
+        <input type="button" class="AddingBtn" (click)="addForm = true" value="Dodaj kolejnego trenera">
     </div>
 </div>
 <ng-template #loader>
@@ -35,5 +35,5 @@
     (saveEvent)="GetNewCoach($event)"></app-add-coach>
 <app-edit-coach *ngIf="editForm" [coachId]="this.SelectedCoachId" (closeEvent)="editForm = false"
     (saveEvent)="GetEditCoach($event)"></app-edit-coach>
-<app-details-coach *ngIf="details"></app-details-coach>
+<app-details-coach *ngIf="details" [coachId]="this.SelectedCoachId" (closeEvent)="details = false"></app-details-coach>
 <app-base-alert *ngIf="this.showAlert" [baseAlert]="this.baseAlert" (CloseEmit)="CloseAlert()"></app-base-alert>

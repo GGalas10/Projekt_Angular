@@ -1,0 +1,27 @@
+@import '../../../../../../Assets/AddOnePerson.css';
+@import '../../../../../../Assets/EditStyle.css';
+input[type='text'] {
+  background-color: #57aa874f;
+  border-radius: 15px;
+  color: whitesmoke;
+  text-align: center;
+  border: none;
+  width: 60%;
+  margin: auto;
+}
+input[type='date'] {
+  width: 50%;
+  margin: auto;
+  background-color: #57aa874f;
+  border: none;
+  border-radius: 15px;
+  text-align: center;
+  color: whitesmoke;
+}
+.saveButton {
+  width: 50%;
+  margin: 15px auto 0;
+}
+label {
+  margin-top: 5px;
+}

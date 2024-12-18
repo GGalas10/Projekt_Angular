@@ -1,6 +1,7 @@
 ﻿using Core.Models;
 using Infrastructure.DTOs.Coaches;
 using Infrastructure.DTOs.Players;
+using Infrastructure.DTOs.Staffs;
 
 namespace Infrastructure.DTOs.Club
 {
@@ -12,7 +13,7 @@ namespace Infrastructure.DTOs.Club
         public DateTime rising { get; set; }
         public List<PlayerDetailsDTO> playerList { get; set; }
         public List<CoachDTO> coachList { get; set; }
-        public List<Staff> staffList { get; set; }
+        public List<StaffDTO> staffList { get; set; }
         public ClubDetailsDTO() { }
         public ClubDetailsDTO(SportsClub model)
         {
@@ -22,7 +23,7 @@ namespace Infrastructure.DTOs.Club
             rising = model.Rising;
             playerList = model.PlayerList.Select(x=>PlayerDetailsDTO.GetFromModel(x)).ToList();
             coachList =  model.CoachList.Select(x=> CoachDTO.GetFromModel(x)).ToList();
-            staffList = model.StaffList.ToList();
+            staffList = model.StaffList.Select(x=>StaffDTO.GetFromModel(x)).ToList();
         }
     }
 }

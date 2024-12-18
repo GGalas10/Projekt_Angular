@@ -5,13 +5,13 @@
             <h3>Dodawanie trenera</h3>
             <div style="width: 50%;display: flex;flex-direction: column;margin: auto;">
                 <label for="first-Name">Imię trenera:</label>
-                <input name="first-Name" id="first-Name" type="text" [(ngModel)]="coach.firstName">
+                <input name="first-Name" id="first-Name" type="text" [(ngModel)]="staff.firstName">
 
                 <label for="last-Name">Nazwisko trenera:</label>
-                <input name="last-Name" id="last-Name" type="text" [(ngModel)]="coach.lastName">
+                <input name="last-Name" id="last-Name" type="text" [(ngModel)]="staff.lastName">
 
                 <label for="what-Trains">Rola trenera:</label>
-                <input type="text" name="what-Trains" id="what-Trains" [(ngModel)]="coach.jobPosition">
+                <input type="text" name="what-Trains" id="what-Trains" [(ngModel)]="staff.jobPosition">
 
                 <label for="from">Kontrakt od:</label>
                 <input type="date" name="from" id="from" [(ngModel)]="contractFromString">

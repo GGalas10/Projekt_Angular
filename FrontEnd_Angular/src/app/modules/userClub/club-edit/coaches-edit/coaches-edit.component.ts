@@ -27,7 +27,6 @@ export class CoachesEditComponent implements OnInit {
     this._coachService.GetAllCoachesFromClub(this.ClubId).subscribe({
       next: (result) => {
         this.coaches = result;
-        console.log(this.coaches);
       },
       error: (err) => {
         if (err.error.includes('ClubId_Cannot_Be_Empty')) {
@@ -65,7 +64,6 @@ export class CoachesEditComponent implements OnInit {
   }
   SelectCoach(coachId: string) {
     this.SelectedCoachId = coachId;
-    console.log(this.SelectedCoachId);
     this.editForm = true;
   }
   CloseAlert() {
@@ -75,5 +73,9 @@ export class CoachesEditComponent implements OnInit {
     this.baseAlert.Title = title;
     this.baseAlert.Message = message;
     this.showAlert = true;
+  }
+  SelectCoachForDetails(coachId: string) {
+    this.SelectedCoachId = coachId;
+    this.details = true;
   }
 }

@@ -12,6 +12,7 @@ export class StaffService {
   apiUrl = `${environment.baseUrl}/Staff`;
   constructor(private http: HttpClient) {}
   AddStaffToClub(command: StaffAddCommand): Observable<string> {
+    console.log(command);
     return this.http.post<string>(`${this.apiUrl}/AddStaffToClub`, command, {
       headers: this.headers,
     });

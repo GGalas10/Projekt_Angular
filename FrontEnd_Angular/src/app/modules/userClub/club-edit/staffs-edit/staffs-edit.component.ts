@@ -13,6 +13,7 @@ export class StaffsEditComponent implements OnInit {
   addStaff = false;
   editStaff = false;
   detailsStaff = false;
+  ChosenStaffId = '';
   constructor(private staffService: StaffService) {}
   ShowAlert = false;
   baseAlert: BaseAlert = { Title: '', Message: '' };
@@ -35,5 +36,25 @@ export class StaffsEditComponent implements OnInit {
     this.ShowAlert = true;
     this.baseAlert.Title = title;
     this.baseAlert.Message = message;
+  }
+  GetNewCoach(staff: StaffDTO) {
+    if (staff) this.pushAndSortCoachList(staff);
+    this.addStaff = false;
+  }
+  ChoseStaffForDetails(staffId: string) {
+    this.ChosenStaffId = staffId;
+    this.detailsStaff = true;
+  }
+  private pushAndSortCoachList(staff: StaffDTO) {
+    this.staffs.push(staff);
+    this.staffs = this.staffs.sort((a, b) => {
+      if (a.lastName.toLowerCase() < b.lastName.toLowerCase()) {
+        return -1;
+      }
+      if (a.lastName.toLowerCase() > b.lastName.toLowerCase()) {
+        return 1;
+      }
+      return 0;
+    });
   }
 }

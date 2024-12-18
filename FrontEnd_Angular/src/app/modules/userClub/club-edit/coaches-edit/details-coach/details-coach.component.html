@@ -1,25 +1,30 @@
-<section class="overlay" style="height: 100%;">
-    <section class="modal" style="height: 90%;">
-        <button class="close-btn" (click)="this.closeEvent.emit()">&times;</button>
-        <h3>Dodawanie trenera</h3>
-        <div style="width: 50%;display: flex;flex-direction: column;margin: auto;">
-            <label for="first-Name">Imię trenera:</label>
-            <input name="first-Name" id="first-Name" type="text" [(ngModel)]="coach.firstName" [disabled]="true">
+<div *ngIf="coach;loader">
+    <section class="overlay" style="height: 100%;">
+        <section class="modal" style="height: 90%;">
+            <button class="close-btn" (click)="this.closeEvent.emit()">&times;</button>
+            <h3>Dodawanie trenera</h3>
+            <div style="width: 50%;display: flex;flex-direction: column;margin: auto;">
+                <label for="first-Name">Imię trenera:</label>
+                <input name="first-Name" id="first-Name" type="text" [(ngModel)]="coach.firstName" [disabled]="true">
 
-            <label for="last-Name">Nazwisko trenera:</label>
-            <input name="last-Name" id="last-Name" type="text" [(ngModel)]="coach.lastName" [disabled]="true">
+                <label for="last-Name">Nazwisko trenera:</label>
+                <input name="last-Name" id="last-Name" type="text" [(ngModel)]="coach.lastName" [disabled]="true">
 
-            <label for="what-Trains">Rola trenera:</label>
-            <input type="text" name="what-Trains" id="what-Trains" [(ngModel)]="coach.whatTrains" [disabled]="true">
+                <label for="what-Trains">Rola trenera:</label>
+                <input type="text" name="what-Trains" id="what-Trains" [(ngModel)]="coach.whatTrains" [disabled]="true">
 
-            <label for="from">Kontrakt od:</label>
-            <input type="date" name="from" id="from" [(ngModel)]="contractFromString" [disabled]="true">
+                <label for="from">Kontrakt od:</label>
+                <input type="date" name="from" id="from" [(ngModel)]="contractFromString" [disabled]="true">
 
-            <label for="to">Kontrakt do:</label>
-            <input type="date" name="to" id="to" [(ngModel)]="contractToString" [disabled]="true">
+                <label for="to">Kontrakt do:</label>
+                <input type="date" name="to" id="to" [(ngModel)]="contractToString" [disabled]="true">
 
-            <button type="submit" class="saveButton">Wróć</button>
-        </div>
+                <button type="submit" class="saveButton">Wróć</button>
+            </div>
+        </section>
     </section>
-</section>
+</div>
+<ng-template #loader>
+    <div class="loader" style="position: inherit;"></div>
+</ng-template>
 <app-base-alert *ngIf="this.showAlert" [baseAlert]="this.baseAlert" (CloseEmit)="CloseAlert()"></app-base-alert>
