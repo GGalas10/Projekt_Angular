@@ -1,1 +1,32 @@
-<p>edit-staff works!</p>
+<div *ngIf="staff;loader">
+    <section class="overlay" style="height: 100%;">
+        <section class="modal" style="height: 90%;">
+            <button class="close-btn" (click)="this.closeEvent.emit()">&times;</button>
+            <form style="width: 85%;">
+                <h3>Edycja pracownika</h3>
+                <div style="width: 50%;display: flex;flex-direction: column;margin: auto;">
+                    <label for="first-Name">Imię pracownika:</label>
+                    <input name="first-Name" id="first-Name" type="text" [(ngModel)]="staff.firstName">
+
+                    <label for="last-Name">Nazwisko pracownika:</label>
+                    <input name="last-Name" id="last-Name" type="text" [(ngModel)]="staff.lastName">
+
+                    <label for="what-Trains">Rola pracownika:</label>
+                    <input type="text" name="what-Trains" id="what-Trains" [(ngModel)]="staff.jobPosition">
+
+                    <label for="from">Kontrakt od:</label>
+                    <input type="date" name="from" id="from" [(ngModel)]="contractFromString">
+
+                    <label for="to">Kontrakt do:</label>
+                    <input type="date" name="to" id="to" [(ngModel)]="contractToString">
+
+                    <button type="submit" class="saveButton">Zapisz</button>
+                </div>
+            </form>
+        </section>
+    </section>
+</div>
+<ng-template #loader>
+    <div class="loader" style="position: inherit;"></div>
+</ng-template>
+<app-base-alert *ngIf="this.showAlert" [baseAlert]="this.baseAlert" (CloseEmit)="showAlert = false"></app-base-alert>
