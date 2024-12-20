@@ -37,5 +37,13 @@ namespace Infrastructure.Implementations
             var result = await _staffRepository.GetStaffById(staffId);
             return StaffDTO.GetFromModel(result);
         }
+
+        public async Task EditStaff(EditStaffCommand command)
+        {
+            if (command == null)
+                throw new BadRequestException("Command_Cannot_Be_Null");
+            await _staffRepository.EditStaff(new Core.Models.Staff(command.JobPosition,command.ContractFrom,command.ContractTo,command.FirstName,command.LastName),command.StaffId);
+            await Task.CompletedTask;
+        }
     }
 }

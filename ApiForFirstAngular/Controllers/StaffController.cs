@@ -32,5 +32,12 @@ namespace ApiForFirstAngular.Controllers
             var result = await _staffService.GetStaffById(staffId);
             return Ok(result);
         }
+        [BindUserId]
+        [HttpPost]
+        public async Task<IActionResult> EditStaff(EditStaffCommand command)
+        {
+            await _staffService.EditStaff(command);
+            return Ok();
+        }
     }
 }

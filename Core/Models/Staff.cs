@@ -15,5 +15,22 @@ namespace Core.Models
                 throw new Exception("JobPosition_Cannot_Be_Null_StaffCtor");
             JobPosition = jobPosition;
         }
+        public void UpdateModel(Staff newModel)
+        {
+            if(newModel.FirstName != null)
+                FirstName = newModel.FirstName;
+
+            if (newModel.LastName != null)
+                LastName = newModel.LastName;
+
+            if(newModel.JobPosition != null)
+                JobPosition = newModel.JobPosition;
+            
+            if(newModel.ContractFrom >= new DateTime(1900,01,01))
+                ContractFrom = newModel.ContractFrom;
+
+            if (newModel.ContractTo >= new DateTime(1900, 01, 01))
+                ContractTo = newModel.ContractTo;
+        }
     }
 }

@@ -2,7 +2,7 @@
     <section class="overlay" style="height: 100%;">
         <section class="modal" style="height: 90%;">
             <button class="close-btn" (click)="this.closeEvent.emit()">&times;</button>
-            <form style="width: 85%;">
+            <form style="width: 85%;" (ngSubmit)="SendRequest()">
                 <h3>Edycja trenera</h3>
                 <div style="width: 50%;display: flex;flex-direction: column;margin: auto;">
                     <label for="first-Name">Imię trenera:</label>

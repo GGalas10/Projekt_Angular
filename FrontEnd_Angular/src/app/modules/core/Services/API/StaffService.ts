@@ -2,7 +2,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../../../environments/environment.development';
 import { Observable } from 'rxjs';
-import { StaffAddCommand, StaffDTO } from '../../../../shared/Interfaces/Staff';
+import {
+  StaffAddCommand,
+  StaffDTO,
+  StaffEditommand,
+} from '../../../../shared/Interfaces/Staff';
 
 @Injectable({
   providedIn: 'root',
@@ -32,5 +36,10 @@ export class StaffService {
         headers: this.headers,
       },
     );
+  }
+  EditStaff(editCommand: StaffEditommand): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/EditStaff`, editCommand, {
+      headers: this.headers,
+    });
   }
 }

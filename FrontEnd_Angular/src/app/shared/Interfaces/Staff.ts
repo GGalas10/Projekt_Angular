@@ -27,3 +27,11 @@ export interface StaffDTO {
   lastName: string;
   jobPosition: string;
 }
+export interface StaffEditommand {
+  StaffId: string;
+  ContractFrom: Date;
+  ContractTo: Date;
+  FirstName: string;
+  LastName: string;
+  JobPosition: string;
+}

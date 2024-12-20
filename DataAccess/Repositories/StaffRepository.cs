@@ -39,5 +39,17 @@ namespace DataAccess.Repositories
                 throw new BadRequestException("Cannot_Find_Staff");
             return result;
         }
+
+        public async Task EditStaff(Staff newModel,Guid staffId)
+        {
+            var oldStaff = await _context.Staffs.FirstOrDefaultAsync(x=>x.Id == staffId);
+            if (oldStaff == null)
+                throw new BadRequestException("Cannot_Find_Staff_To_Edit");
+            oldStaff.UpdateAt = DateTime.Now;
+            oldStaff.UpdateModel(newModel);
+            _context.Entry(oldStaff).State = EntityState.Modified;
+            _context.Update(oldStaff);
+            await _context.SaveChangesAsync();
+        }
     }
 }

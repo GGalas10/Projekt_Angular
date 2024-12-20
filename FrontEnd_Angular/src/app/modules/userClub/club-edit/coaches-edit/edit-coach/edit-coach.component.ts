@@ -50,8 +50,8 @@ export class EditCoachComponent implements OnInit {
   SendRequest() {
     const model: CoachEditCommand = {
       CoachId: this.coachId || '',
-      ContractFrom: this.coach.contractFrom || new Date(),
-      ContractTo: this.coach.contractTo || new Date(),
+      ContractFrom: new Date(this.contractFromString),
+      ContractTo: new Date(this.contractToString),
       FirstName: this.coach.firstName || '',
       LastName: this.coach.lastName || '',
       WhatTrains: this.coach.whatTrains || '',
