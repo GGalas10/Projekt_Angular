@@ -1,4 +1,4 @@
-<div *ngIf="player">
+<div *ngIf="player" (escPressed)="onEscKeydown()">
     <section class="overlay" style="height: 150%;">
         <section class="modal" style="height: 100%;">
             <button class="close-btn" (click)="this.closeEvent.emit()">&times;</button>

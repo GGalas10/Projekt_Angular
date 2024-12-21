@@ -14,7 +14,8 @@
                         <td>{{item.jobPosition}}</td>
                         <td style="background-color: transparent"><input type="button" class="detailsBtn"
                                 value="Szczegóły" (click)="ChoseStaffForDetails(item.id)"></td>
-                        <td style="background-color: transparent"><input type="button" class="editBtn" value="Edytuj" />
+                        <td style="background-color: transparent"><input type="button" class="editBtn" value="Edytuj"
+                                (click)="ChoseStaffForEdit(item.id)" />
                         </td>
                     </tr>
                 </ng-container>
@@ -34,4 +35,6 @@
     [staffId]="ChosenStaffId"></app-details-staff>
 <app-add-staff [ClubId]="this.ClubId" *ngIf="addStaff" (closeEvent)="addStaff = false"
     (saveEvent)="GetNewCoach($event)"></app-add-staff>
+<app-edit-staff *ngIf="editStaff" [staffId]="ChosenStaffId" (closeEvent)="editStaff = false"
+    (saveEvent)="GetNewCoach($event)"></app-edit-staff>
 <app-base-alert [baseAlert]="baseAlert" *ngIf="ShowAlert" (CloseEmit)="ShowAlert = false"></app-base-alert>

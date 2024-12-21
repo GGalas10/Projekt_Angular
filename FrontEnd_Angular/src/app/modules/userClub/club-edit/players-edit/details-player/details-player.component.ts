@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { PlayerDetailsDTO } from '../../../../../shared/Interfaces/Player';
 import { DatePipe } from '@angular/common';
 import { PlayerService } from '../../../../core/Services/API/PlayerService';
@@ -63,5 +70,9 @@ export class DetailsPlayerComponent implements OnInit {
     this.baseAlert.Title = title;
     this.baseAlert.Message = message;
     this.showAlert = true;
+  }
+  @HostListener('document:keydown.escape', ['$event'])
+  onEscKeydown(): void {
+    this.closeEvent.emit();
   }
 }

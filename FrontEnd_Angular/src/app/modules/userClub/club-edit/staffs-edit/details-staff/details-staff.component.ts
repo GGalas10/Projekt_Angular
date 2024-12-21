@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { BaseAlert } from '../../../../../shared/Component/base-alert/BaseAlertInterface';
 import { StaffDTO } from '../../../../../shared/Interfaces/Staff';
 import { StaffService } from '../../../../core/Services/API/StaffService';
@@ -48,5 +55,9 @@ export class DetailsStaffComponent implements OnInit {
     this.baseAlert.Title = title;
     this.baseAlert.Message = message;
     this.showAlert = true;
+  }
+  @HostListener('document:keydown.escape', ['$event'])
+  onEscKeydown(): void {
+    this.closeEvent.emit();
   }
 }

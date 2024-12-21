@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import {
   mapPlayerDetailsToEditPlayerCommand,
   PlayerDetailsDTO,
@@ -88,5 +95,9 @@ export class EditPlayerComponent implements OnInit {
     this.baseAlert.Title = title;
     this.baseAlert.Message = message;
     this.showAlert = true;
+  }
+  @HostListener('document:keydown.escape', ['$event'])
+  onEscKeydown(): void {
+    this.closeEvent.emit();
   }
 }

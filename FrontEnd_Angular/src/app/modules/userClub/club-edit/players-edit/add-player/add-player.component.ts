@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  Output,
+} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { PlayerService } from '../../../../core/Services/API/PlayerService';
 import {
@@ -122,5 +128,9 @@ export class AddPlayerComponent {
     this.baseAlert.Title = title;
     this.baseAlert.Message = message;
     this.showAlert = true;
+  }
+  @HostListener('document:keydown.escape', ['$event'])
+  onEscKeydown(): void {
+    this.closeEvent.emit();
   }
 }

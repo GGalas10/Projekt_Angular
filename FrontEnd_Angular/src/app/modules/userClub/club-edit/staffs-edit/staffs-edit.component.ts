@@ -45,6 +45,10 @@ export class StaffsEditComponent implements OnInit {
     this.ChosenStaffId = staffId;
     this.detailsStaff = true;
   }
+  ChoseStaffForEdit(staffId: string) {
+    this.ChosenStaffId = staffId;
+    this.editStaff = true;
+  }
   private pushAndSortCoachList(staff: StaffDTO) {
     this.staffs.push(staff);
     this.staffs = this.staffs.sort((a, b) => {

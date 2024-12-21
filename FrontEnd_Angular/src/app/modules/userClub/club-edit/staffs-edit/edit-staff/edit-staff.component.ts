@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import {
   StaffDTO,
   StaffEditommand,
@@ -84,5 +91,9 @@ export class EditStaffComponent implements OnInit {
         );
       },
     });
+  }
+  @HostListener('document:keydown.escape', ['$event'])
+  onEscKeydown(): void {
+    this.closeEvent.emit();
   }
 }

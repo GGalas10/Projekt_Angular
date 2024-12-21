@@ -1,6 +1,6 @@
 <!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
 <!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
-<section class="overlay" style="height: 150%;">
+<section class="overlay" style="height: 150%;" (escPressed)="onEscKeydown()">
     <section class="modal" style="height: 100%;">
         <button class="close-btn" (click)="this.closeModal()">&times;</button>
         <h2 class="changeHeader" style="top: 2%;">Dodanie nowego zawodnika</h2>

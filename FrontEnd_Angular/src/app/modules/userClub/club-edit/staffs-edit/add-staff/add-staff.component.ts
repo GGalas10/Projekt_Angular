@@ -1,4 +1,10 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  HostListener,
+  Input,
+  Output,
+} from '@angular/core';
 import { BaseAlert } from '../../../../../shared/Component/base-alert/BaseAlertInterface';
 import { FormControl, FormGroup } from '@angular/forms';
 import { StaffService } from '../../../../core/Services/API/StaffService';
@@ -77,5 +83,9 @@ export class AddStaffComponent {
     this.baseAlert.Title = title;
     this.baseAlert.Message = message;
     this.showAlert = true;
+  }
+  @HostListener('document:keydown.escape', ['$event'])
+  onEscKeydown(): void {
+    this.closeEvent.emit();
   }
 }
