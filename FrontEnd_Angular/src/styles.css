@@ -224,3 +224,21 @@ h6 {
 .detailsBtn:active {
   opacity: 0.6;
 }
+.deleteBtn {
+  padding: 5px 12px;
+  background: #cc4f4f;
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  user-select: none;
+  color: whitesmoke;
+  transition-duration: 0.4s;
+  border: none;
+}
+.deleteBtn:hover {
+  opacity: 0.8;
+}
+.deleteBtn:active {
+  opacity: 0.6;
+}
