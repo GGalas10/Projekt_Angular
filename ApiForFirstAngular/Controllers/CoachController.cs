@@ -39,6 +39,13 @@ namespace ApiForFirstAngular.Controllers
             await _coachService.EditCoach(command);
             return Ok();
         }
+        [BindUserId]
+        [HttpDelete]
+        public async Task<IActionResult> DeleteCoach(Guid coachId)
+        {
+            await _coachService.DeleteCoach(coachId);
+            return Ok();
+        }
 
     }
 }

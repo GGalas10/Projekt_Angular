@@ -40,5 +40,13 @@ namespace Infrastructure.Implementations
                 throw new BadRequestException("Edit_Command_Cannot_Be_Null");
             await _coachRepository.EditCoach(new Core.Models.Coach(command.WhatTrains, command.ContractFrom, command.ContractTo, command.FirstName, command.LastName) { Id = command.CoachId });
         }
+
+        public async Task DeleteCoach(Guid coachId)
+        {
+            if (coachId == Guid.Empty)
+                throw new BadRequestException("CoachId_Cannot_Be_Empty");
+            await _coachRepository.DeleteCoach(coachId);
+            await Task.CompletedTask;
+        }
     }
 }

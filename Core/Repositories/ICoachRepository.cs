@@ -8,5 +8,6 @@ namespace Core.Repositories
         Task<Guid> AddCoachToClub(Coach coach,Guid clubId);
         Task<Coach> GetCoachById(Guid coachId);
         Task EditCoach(Coach model);
+        Task DeleteCoach(Guid coachId);
     }
 }

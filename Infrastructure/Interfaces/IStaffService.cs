@@ -9,5 +9,6 @@ namespace Infrastructure.Interfaces
         Task<List<StaffDTO>> GetAllStaffFromClub(Guid clubId);
         Task<StaffDTO> GetStaffById(Guid staffId);
         Task EditStaff(EditStaffCommand command);
+        Task DeleteStaff(Guid staffId);
     }
 }

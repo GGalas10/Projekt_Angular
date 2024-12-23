@@ -47,5 +47,15 @@ namespace DataAccess.Repositories
             _context.Entry(oldCoach).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
+
+        public async Task DeleteCoach(Guid coachId)
+        {
+            var oldCoach = await _context.Coaches.FirstOrDefaultAsync(x => x.Id == coachId);
+            if (oldCoach == null)
+                throw new BadRequestException("Cannot_Find_Coach_To_Exist");
+            _context.Entry(oldCoach).State = EntityState.Deleted;
+            _context.Coaches.Remove(oldCoach);
+            await _context.SaveChangesAsync();
+        }
     }
 }

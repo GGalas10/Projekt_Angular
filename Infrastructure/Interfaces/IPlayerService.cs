@@ -9,5 +9,6 @@ namespace Infrastructure.Interfaces
         Task<List<PlayerDetailsDTO>> GetAllPlayersFromClub(Guid clubId);
         Task<Guid> AddPlayerToClub(AddPlayerCommand command);
         Task EditPlayer(EditPlayerCommand command);
+        Task DeletePlayer(Guid playerId);
     }
 }

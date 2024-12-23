@@ -8,5 +8,6 @@ namespace Core.Repositories
         Task<List<Player>> GetAllPlayersFromClubAsync(Guid clubId);
         Task<Guid> AddPlayerToClub(Player player);
         Task EditPlayer(Player player);
+        Task DeletePlayer(Guid playerId);
     }
 }

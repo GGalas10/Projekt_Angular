@@ -8,5 +8,6 @@ namespace Core.Repositories
         Task<List<Staff>> GetAllStaffFromClub(Guid clubId);
         Task<Staff> GetStaffById(Guid staffId);
         Task EditStaff(Staff newModel,Guid staffId);
+        Task DeleteStaff(Guid staffId);
     }
 }

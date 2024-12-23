@@ -44,5 +44,12 @@ namespace Infrastructure.Implementations
             await _playerRepository.EditPlayer(EditPlayerCommand.GetFromCommand(command));
             await Task.CompletedTask;
         }
+        public async Task DeletePlayer(Guid playerId)
+        {
+            if (playerId == Guid.Empty)
+                throw new BadRequestException("PlayerId_Cannot_Be_Empty");
+            await _playerRepository.DeletePlayer(playerId);
+            await Task.CompletedTask;
+        }
     }
 }

@@ -45,5 +45,12 @@ namespace Infrastructure.Implementations
             await _staffRepository.EditStaff(new Core.Models.Staff(command.JobPosition,command.ContractFrom,command.ContractTo,command.FirstName,command.LastName),command.StaffId);
             await Task.CompletedTask;
         }
+        public async Task DeleteStaff(Guid staffId)
+        {
+            if (staffId == Guid.Empty)
+                throw new BadRequestException("StaffId_Cannot_Be_Null");
+            await _staffRepository.DeleteStaff(staffId);
+            await Task.CompletedTask;
+        }
     }
 }

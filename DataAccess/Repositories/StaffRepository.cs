@@ -51,5 +51,14 @@ namespace DataAccess.Repositories
             _context.Update(oldStaff);
             await _context.SaveChangesAsync();
         }
+        public async Task DeleteStaff(Guid staffId)
+        {
+            var oldStaff = await _context.Staffs.FirstOrDefaultAsync(x => x.Id == staffId);
+            if (oldStaff == null)
+                throw new BadRequestException("Cannot_Find_Staff_To_Delete");
+            _context.Entry(oldStaff).State= EntityState.Deleted;
+            _context.Staffs.Remove(oldStaff);
+            await _context.SaveChangesAsync();
+        }
     }
 }

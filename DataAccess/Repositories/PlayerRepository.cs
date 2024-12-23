@@ -58,5 +58,15 @@ namespace DataAccess.Repositories
             _dbContext.Entry(oldPlayer).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
         }
+        public async Task DeletePlayer(Guid playerId)
+        {
+            var oldPlayer = await _dbContext.Players.FirstOrDefaultAsync(x => x.Id == playerId);
+            if (oldPlayer == null)
+                throw new BadRequestException("Player_Doesnt_Exist");
+            _dbContext.Entry(oldPlayer).State = EntityState.Deleted;
+            _dbContext.Players.Remove(oldPlayer);
+            await _dbContext.SaveChangesAsync();
+
+        }
     }
 }

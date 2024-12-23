@@ -39,5 +39,12 @@ namespace ApiForFirstAngular.Controllers
             await _staffService.EditStaff(command);
             return Ok();
         }
+        [BindUserId]
+        [HttpDelete]
+        public async Task<IActionResult> DeleteStaff(Guid staffId)
+        {
+            await _staffService.DeleteStaff(staffId);
+            return Ok();
+        }
     }
 }

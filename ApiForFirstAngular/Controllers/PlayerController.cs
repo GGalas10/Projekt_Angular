@@ -40,5 +40,12 @@ namespace ApiForFirstAngular.Controllers
             await _playerService.EditPlayer(command);
             return Ok();
         }
+        [BindUserId]
+        [HttpDelete]
+        public async Task<IActionResult> DeletePlayer(Guid playerId)
+        {
+            await _playerService.DeletePlayer(playerId);
+            return Ok();
+        }
     }
 }
