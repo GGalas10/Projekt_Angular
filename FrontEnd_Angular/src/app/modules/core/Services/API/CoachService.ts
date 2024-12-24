@@ -37,4 +37,10 @@ export class CoachService {
       headers: this.headers,
     });
   }
+  DeleteCoach(coachId:string):Observable<void>{
+    return this.http.delete<void>(
+      `${this.apiUrl}/DeleteCoach?coachId=${coachId}`,
+      { headers: this.headers },
+  );
+  }
 }

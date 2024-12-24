@@ -39,4 +39,10 @@ export class PlayerService {
       headers: this.headers,
     });
   }
+  DeletePlayer(playerId:string):Observable<void>{
+    return this.http.delete<void>(
+      `${this.apiUrl}/DeletePlayer?playerId=${playerId}`,
+      { headers: this.headers },
+  );
+  }
 }

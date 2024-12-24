@@ -42,4 +42,10 @@ export class StaffService {
       headers: this.headers,
     });
   }
+  DeleteStaff(staffId:string):Observable<void>{
+    return this.http.delete<void>(
+      `${this.apiUrl}/DeleteStaff?staffId=${staffId}`,
+      { headers: this.headers },
+  );
+  }
 }
