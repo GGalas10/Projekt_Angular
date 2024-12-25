@@ -17,7 +17,8 @@
                         <td style="background-color: transparent"><input type="button" class="editBtn" value="Edytuj"
                                 (click)="SelectCoach(item.id)" />
                         </td>
-                        <td style="background-color: transparent"><input type="button" class="deleteBtn" value="Usuń" />
+                        <td style="background-color: transparent"><input type="button" class="deleteBtn" value="Usuń"
+                                (click)="DeleteSelectedCoach(item.id)" />
                         </td>
                     </tr>
                 </ng-container>
@@ -38,4 +39,4 @@
 <app-edit-coach *ngIf="editForm" [coachId]="this.SelectedCoachId" (closeEvent)="editForm = false"
     (saveEvent)="GetEditCoach($event)"></app-edit-coach>
 <app-details-coach *ngIf="details" [coachId]="this.SelectedCoachId" (closeEvent)="details = false"></app-details-coach>
-<app-base-alert *ngIf="this.showAlert" [baseAlert]="this.baseAlert" (CloseEmit)="CloseAlert()"></app-base-alert>
+<app-base-alert *ngIf="this.showAlert" [baseAlert]="this.baseAlert" (CloseEmit)="showAlert=false"></app-base-alert>

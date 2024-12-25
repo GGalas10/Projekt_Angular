@@ -66,9 +66,6 @@ export class CoachesEditComponent implements OnInit {
     this.SelectedCoachId = coachId;
     this.editForm = true;
   }
-  CloseAlert() {
-    this.showAlert = false;
-  }
   ShowAlert(title: string, message: string) {
     this.baseAlert.Title = title;
     this.baseAlert.Message = message;
@@ -77,5 +74,15 @@ export class CoachesEditComponent implements OnInit {
   SelectCoachForDetails(coachId: string) {
     this.SelectedCoachId = coachId;
     this.details = true;
+  }
+  DeleteSelectedCoach(coachId: string) {
+    this._coachService.DeleteCoach(coachId).subscribe({
+      next: () => {
+        this.ShowAlert('Powodzenie', 'Udało się usunąć trenera');
+      },
+      error: () => {
+        this.ShowAlert('Błąd', 'Coś poszło nie tak. Spróbuj ponownie później');
+      },
+    });
   }
 }

@@ -61,4 +61,20 @@ export class StaffsEditComponent implements OnInit {
       return 0;
     });
   }
+  DeleteSelectedStaff(staffId: string) {
+    this.staffService.DeleteStaff(staffId).subscribe({
+      next: () => {
+        this.ShowAlertWithMessage(
+          'Powodzenie',
+          'Udało się usunąć osobę z personelu',
+        );
+      },
+      error: () => {
+        this.ShowAlertWithMessage(
+          'Błąd',
+          'Coś poszło nie tak. Spróbuj ponownie później',
+        );
+      },
+    });
+  }
 }

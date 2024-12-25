@@ -18,7 +18,8 @@
                                 (click)="ShowDetails(item)" value="Szczegóły"></td>
                         <td style="background-color: transparent"><input type="button" class="editBtn"
                                 (click)="ShowEdit(item)" value="Edytuj" /></td>
-                        <td style="background-color: transparent"><input type="button" class="deleteBtn" value="Usuń" />
+                        <td style="background-color: transparent"><input type="button" class="deleteBtn" value="Usuń"
+                                (click)="DeleteSelectedPlayer(item.id)" />
                         </td>
                     </tr>
                 </ng-container>
@@ -40,3 +41,4 @@
     (editlayerEvent)="GetEditPlayer($event)"></app-edit-player>
 <app-details-player *ngIf="detailsPlayer" [playerId]="selectPlayer.id"
     (closeEvent)="detailsPlayer=false"></app-details-player>
+<app-base-alert *ngIf="this.showAlert" [baseAlert]="this.baseAlert" (CloseEmit)="showAlert = false"></app-base-alert>

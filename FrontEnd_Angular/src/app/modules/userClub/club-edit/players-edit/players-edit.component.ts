@@ -5,6 +5,7 @@ import {
   PlayerDetailsDTO,
 } from '../../../../shared/Interfaces/Player';
 import { PlayerService } from '../../../core/Services/API/PlayerService';
+import { BaseAlert } from '../../../../shared/Component/base-alert/BaseAlertInterface';
 
 @Component({
   selector: 'app-players-edit',
@@ -13,6 +14,11 @@ import { PlayerService } from '../../../core/Services/API/PlayerService';
   standalone: false,
 })
 export class PlayersEditComponent implements OnInit {
+  showAlert = false;
+  baseAlert: BaseAlert = {
+    Title: '',
+    Message: '',
+  };
   addPlayer = false;
   editPlayer = false;
   detailsPlayer = false;
@@ -57,5 +63,20 @@ export class PlayersEditComponent implements OnInit {
   ShowDetails(player: PlayerDetailsDTO) {
     this.selectPlayer = player;
     this.detailsPlayer = true;
+  }
+  ShowAlert(title: string, message: string) {
+    this.baseAlert.Title = title;
+    this.baseAlert.Message = message;
+    this.showAlert = true;
+  }
+  DeleteSelectedPlayer(playerId: string) {
+    this._playerService.DeletePlayer(playerId).subscribe({
+      next: () => {
+        this.ShowAlert('Powodzenie', 'Udało się usunąć piłkarza');
+      },
+      error: () => {
+        this.ShowAlert('Błąd', 'Coś poszło nie tak. Spróbuj ponownie później');
+      },
+    });
   }
 }
