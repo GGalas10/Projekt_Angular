@@ -5,7 +5,7 @@ export interface CreateCommand {
 }
 import { Coach } from './Coach';
 import { PlayerDetailsDTO } from './Player';
-import { Staff } from './Staff';
+import { StaffDTO } from './Staff';
 
 export interface ClubDetails {
   id: string;
@@ -14,7 +14,7 @@ export interface ClubDetails {
   rising: Date;
   playerList: PlayerDetailsDTO[];
   coachList: Coach[];
-  staffList: Staff[];
+  staffList: StaffDTO[];
 }
 export interface HomeClubDTO {
   clubId: string;

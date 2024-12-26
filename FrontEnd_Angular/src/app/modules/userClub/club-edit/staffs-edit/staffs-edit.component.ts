@@ -64,6 +64,8 @@ export class StaffsEditComponent implements OnInit {
   DeleteSelectedStaff(staffId: string) {
     this.staffService.DeleteStaff(staffId).subscribe({
       next: () => {
+        const removeIndex = this.staffs.findIndex((x) => x.id == staffId);
+        if (removeIndex != -1) this.staffs.splice(removeIndex, 1);
         this.ShowAlertWithMessage(
           'Powodzenie',
           'Udało się usunąć osobę z personelu',

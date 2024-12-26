@@ -78,6 +78,8 @@ export class CoachesEditComponent implements OnInit {
   DeleteSelectedCoach(coachId: string) {
     this._coachService.DeleteCoach(coachId).subscribe({
       next: () => {
+        const removeIndex = this.coaches.findIndex((x) => x.id == coachId);
+        if (removeIndex != -1) this.coaches.splice(removeIndex, 1);
         this.ShowAlert('Powodzenie', 'Udało się usunąć trenera');
       },
       error: () => {

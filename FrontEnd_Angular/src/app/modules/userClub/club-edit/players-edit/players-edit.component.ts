@@ -72,6 +72,8 @@ export class PlayersEditComponent implements OnInit {
   DeleteSelectedPlayer(playerId: string) {
     this._playerService.DeletePlayer(playerId).subscribe({
       next: () => {
+        const removeIndex = this.playerList.findIndex((x) => x.id == playerId);
+        if (removeIndex != -1) this.playerList.splice(removeIndex, 1);
         this.ShowAlert('Powodzenie', 'Udało się usunąć piłkarza');
       },
       error: () => {
