@@ -1,1 +1,18 @@
-<p>whole-clubs works!</p>
+<div *ngIf="homeClubs;else loader">
+    <div *ngIf="homeClubs.length > 0;else empty" class="ClubPresentation">
+        <ng-container *ngFor="let oneClub of homeClubs">
+            <div class="OneClub">
+                <h4>{{oneClub.clubName}}</h4>
+                <img src="/Logo.png" width="150px" style="margin: 15px auto" alt="Fc_Logo" />
+                <p>Założony w {{oneClub.rising | date:"yyyy"}} roku</p>
+                <p class="DetailsBtn" routerLink="Club/Details/{{oneClub.clubId}}">Szczegóły</p>
+            </div>
+        </ng-container>
+    </div>
+</div>
+<ng-template #loader>
+    <div class="loader" style="width: 100px;height: 100px;bottom: 80%;border-radius: 50%;"></div>
+</ng-template>
+<ng-template #empty>
+    <h1 style="text-align: center;">Brak klubów w bazie danych</h1>
+</ng-template>
