@@ -21,3 +21,7 @@ export interface HomeClubDTO {
   clubName: string;
   rising: Date;
 }
+export interface ClubListDTO {
+  IsAllLoading: boolean;
+  ClubList: HomeClubDTO[];
+}

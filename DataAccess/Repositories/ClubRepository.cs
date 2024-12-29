@@ -118,10 +118,12 @@ namespace DataAccess.Repositories
         }
 
         public async Task<List<SportsClub>> GetAllClubsWithoutRelationDataAsync()
-        => await _context.SportsClubs.AsNoTracking().OrderBy(x=>x.Id).Take(3).ToListAsync();
+            => await _context.SportsClubs.AsNoTracking().OrderBy(x=>x.Id).Take(3).ToListAsync();
         public async Task<List<SportsClub>> GetAllClubsWithoutRelationDataAsyncTake3()
-        => await _context.SportsClubs.AsNoTracking().OrderBy(x=>x.Id).ToListAsync();
+            => await _context.SportsClubs.AsNoTracking().OrderBy(x=>x.Id).ToListAsync();
         public async Task<List<SportsClub>> GetAllClubsWithRelationDataAsync()
-        => await _context.SportsClubs.AsNoTracking().AsSplitQuery().Include(x => x.PlayerList).Include(x => x.CoachList).Include(x => x.StaffList).ToListAsync();
+            => await _context.SportsClubs.AsNoTracking().AsSplitQuery().Include(x => x.PlayerList).Include(x => x.CoachList).Include(x => x.StaffList).ToListAsync();
+        public async Task<List<SportsClub>> GetAllClubs()
+            => await _context.SportsClubs.AsNoTracking().ToListAsync();
     }
 }

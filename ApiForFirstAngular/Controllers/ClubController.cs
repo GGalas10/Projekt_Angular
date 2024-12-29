@@ -37,6 +37,11 @@ namespace ApiForFirstAngular.Controllers
             var result = await _sportClubService.GetClubForHomeList();
             return Ok(result);
         }
-        
+        [HttpGet]
+        public async Task<IActionResult> GetAllClubsWithPagination(int howMuchClubs,int page)
+        {
+            var result = await _sportClubService.GetAllClubsWithPagination(howMuchClubs,page);
+            return Ok(result);
+        }
     }
 }

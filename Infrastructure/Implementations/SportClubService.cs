@@ -83,5 +83,17 @@ namespace Infrastructure.Implementations
             var result = await _clubRepository.GetClubByNameAsync(clubName);
             return result.Id;
         }
+        public async Task<ClubListDTO> GetAllClubsWithPagination(int howMuchClubs, int page)
+        {
+            var result = await _clubRepository.GetAllClubs();
+            if (result.Count <= 0)
+                return new ClubListDTO() { IsAllLoading = true, ClubList = new List<ClubHomeDTO>()};
+            var pagination = result.Skip(page*howMuchClubs).Take(howMuchClubs).ToList();
+            return new ClubListDTO()
+            {
+                IsAllLoading = result.Count <= page*howMuchClubs,
+                ClubList = pagination.Select(x=> ClubHomeDTO.GetDTOFromModel(x)).ToList(),
+            };
+        }
     }
 }
