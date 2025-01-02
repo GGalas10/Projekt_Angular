@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { ClubEditService } from '../../../../core/Services/API/ClubEditServices';
+import { ClubEditService } from '../../../../core/Services/API/ClubEditService';
 import { BaseAlert } from '../../../../../shared/Component/base-alert/BaseAlertInterface';
 
 @Component({
-    selector: 'app-description-edit',
-    templateUrl: './description-edit.component.html',
-    styleUrl: './description-edit.component.css',
-    standalone: false
+  selector: 'app-description-edit',
+  templateUrl: './description-edit.component.html',
+  styleUrl: './description-edit.component.css',
+  standalone: false,
 })
 export class DescriptionEditComponent {
   newDescirption = '';

@@ -8,7 +8,6 @@ import {
 } from '../../../../shared/Interfaces/ClubEdit';
 import { Observable } from 'rxjs';
 import { ClubDetails } from '../../../../shared/Interfaces/Club';
-import { Player } from '../../../../shared/Interfaces/Player';
 
 @Injectable({
   providedIn: 'root',

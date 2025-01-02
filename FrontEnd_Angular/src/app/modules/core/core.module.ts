@@ -14,7 +14,7 @@ import { authInterceptor } from './interceptors/auth-interceptor.interceptor';
 import { errorCatchInterceptor } from './interceptors/error-catch.interceptor';
 import { UserService } from './Services/API/UserService';
 import { UserClubService } from './Services/API/UserClubService';
-import { ClubEditService } from './Services/API/ClubEditServices';
+import { ClubEditService } from './Services/API/ClubEditService';
 import { PlayerService } from './Services/API/PlayerService';
 import { CoachService } from './Services/API/CoachService';
 import { StaffService } from './Services/API/StaffService';

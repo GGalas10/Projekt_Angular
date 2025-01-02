@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClubDetails } from '../../../shared/Interfaces/Club';
-import { ClubEditService } from '../../core/Services/API/ClubEditServices';
+import { ClubEditService } from '../../core/Services/API/ClubEditService';
 import { BaseAlert } from '../../../shared/Component/base-alert/BaseAlertInterface';
 
 @Component({

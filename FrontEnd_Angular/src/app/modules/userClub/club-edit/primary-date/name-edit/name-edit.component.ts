@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { BaseAlert } from '../../../../../shared/Component/base-alert/BaseAlertInterface';
-import { ClubEditService } from '../../../../core/Services/API/ClubEditServices';
+import { ClubEditService } from '../../../../core/Services/API/ClubEditService';
 
 @Component({
-    selector: 'app-name-edit',
-    templateUrl: './name-edit.component.html',
-    styleUrl: './name-edit.component.css',
-    standalone: false
+  selector: 'app-name-edit',
+  templateUrl: './name-edit.component.html',
+  styleUrl: './name-edit.component.css',
+  standalone: false,
 })
 export class NameEditComponent {
   @Output() closeEmit = new EventEmitter<void>();
