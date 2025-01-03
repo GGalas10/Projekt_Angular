@@ -15,6 +15,7 @@ namespace DataAccess.Contexts
         internal DbSet<UserClubAccess> UserClubAccesses { get; set; }
         internal DbSet<ErrorModel> ErrorModels { get; set; }
         internal DbSet<League> Leagues { get; set; }
-        internal DbSet<LeagueClubAccess> LeagueClubAccesses { get; set; }
+        internal DbSet<ClubStatistic> ClubStatistic { get; set; }
+        internal DbSet<Match> Matches { get; set; }
     }
 }

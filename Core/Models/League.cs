@@ -5,7 +5,8 @@ namespace Core.Models
 {
     public class League
     {
-        private HashSet<LeagueClubAccess> _clubs = new();
+        private HashSet<ClubStatistic> _clubs = new();
+        private HashSet<Match> _matches = new();
         public Guid Id { get; set; }
         public string Name { get; set; }
         public DateTime SezonStartDate { get; set; }
@@ -13,7 +14,8 @@ namespace Core.Models
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
         public LeagueStatus Status { get; set; }
-        public IEnumerable<LeagueClubAccess> clubs => _clubs.ToList();
+        public IEnumerable<ClubStatistic> clubs => _clubs.OrderBy(x => x.Points).ToList();
+        public IEnumerable<Match> matches => _matches.ToList();
         private League() { }
         public League(string name, DateTime sezonStart, DateTime sezonEnd)
         {
@@ -22,7 +24,7 @@ namespace Core.Models
             if (sezonEnd < sezonStart)
                 throw new BadRequestException("End_Cannot_Be_Less_Than_Start");
             if (sezonEnd < DateTime.Now.AddYears(-10))
-                throw new BadRequestException($"End_Cannot_Be_Less_Than_{DateTime.Now.Year-10}");
+                throw new BadRequestException($"End_Cannot_Be_Less_Than_{DateTime.Now.Year - 10}");
             Id = Guid.NewGuid();
             Name = name;
             SezonStartDate = sezonStart;
@@ -40,9 +42,9 @@ namespace Core.Models
         {
             if (club == null)
                 throw new BadRequestException("Cannot_Add_To_League_Empty_Club");
-            if (_clubs.Any(x=>x.ClubId == club.Id))
+            if (_clubs.Any(x => x.ClubId == club.Id))
                 throw new BadRequestException("Club_Is_Already_Exist_In_This_League");
-            _clubs.Add(new LeagueClubAccess(Id,club.Id));
+            _clubs.Add(new ClubStatistic(club, this));
         }
         public void RemoveClubFromLeague(SportsClub club)
         {
@@ -50,7 +52,7 @@ namespace Core.Models
                 throw new BadRequestException("Cannot_Add_To_League_Empty_Club");
             if (!_clubs.Any(x => x.ClubId == club.Id))
                 throw new BadRequestException("Club_Is_Doesn't_Exist_In_This_League");
-            _clubs.Remove(_clubs.FirstOrDefault(x=>x.ClubId == club.Id));
+            _clubs.Remove(_clubs.FirstOrDefault(x => x.ClubId == club.Id));
         }
     }
 }
