@@ -1,4 +1,5 @@
 ﻿using ApiForFirstAngular.Controllers.Base;
+using Infrastructure.Commands.Leagues;
 using Infrastructure.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,12 +15,19 @@ namespace ApiForFirstAngular.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllLeagues()
         {
-            return Ok();
+            var result = await _leagueService.GetAllLeague();
+            return Ok(result);
         }
         [HttpGet]
         public async Task<IActionResult> GetLeagueById(Guid leagueId)
         {
             var result = await _leagueService.GetLeagueById(leagueId);
+            return Ok(result);
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateLeague(LeagueCreate command)
+        {
+            var result = await _leagueService.CreateLeague(command);
             return Ok(result);
         }
     }

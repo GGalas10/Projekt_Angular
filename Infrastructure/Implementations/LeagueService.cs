@@ -28,5 +28,10 @@ namespace Infrastructure.Implementations
             var result = await _leagueRepository.GetLeagueById(leagueId);
             return LeagueDTO.GetFromModel(result);
         }
+        public async Task<List<LeagueHomeDTO>> GetAllLeague()
+        {
+            var result = await _leagueRepository.GetAllLeagues();
+            return result.Select(x=> LeagueHomeDTO.GetFromModel(x)).ToList();
+        }
     }
 }

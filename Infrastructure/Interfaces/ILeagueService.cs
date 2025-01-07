@@ -7,5 +7,6 @@ namespace Infrastructure.Interfaces
     {
         Task<Guid> CreateLeague(LeagueCreate command);
         Task<LeagueDTO> GetLeagueById(Guid leagueId);
+        Task<List<LeagueHomeDTO>> GetAllLeague();
     }
 }

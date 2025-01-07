@@ -61,5 +61,8 @@ namespace DataAccess.Repositories
             _dbContext.Entry(league).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
         }
+
+        public async Task<List<League>> GetAllLeagues()
+            => await _dbContext.Leagues.AsNoTracking().ToListAsync();
     }
 }
