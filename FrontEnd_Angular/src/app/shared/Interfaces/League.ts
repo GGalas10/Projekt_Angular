@@ -10,6 +10,11 @@ export interface LeagueDTO {
   matches: MatchDTO[];
   clubs: ClubStatisticDTO[];
 }
+export interface CreateLeagueCommand {
+  name: string;
+  startDate: Date;
+  endDate: Date;
+}
 export function GetStatusName(status: number) {
   switch (status) {
     case 0:

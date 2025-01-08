@@ -17,5 +17,6 @@ namespace DataAccess.Contexts
         internal DbSet<League> Leagues { get; set; }
         internal DbSet<ClubStatistic> ClubStatistic { get; set; }
         internal DbSet<Match> Matches { get; set; }
+        internal DbSet<UserLeagueAccess> UserLeagueAccesses { get; set; }
     }
 }

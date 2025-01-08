@@ -8,17 +8,11 @@
     </ul>
   </li>
   <li class="d-flex centerBar">
-    <ul *ngIf="isLogin">
-      <a href="User/Club/Create">Stwórz klub</a>
-    </ul>
     <ul>
       <a href="Club">Wszystkie zespoły</a>
     </ul>
     <ul>
       <a routerLink="login">Najbliższe mecze</a>
-    </ul>
-    <ul *ngIf="isLogin">
-      <a href="User/Club">Twoje dodane zespoły</a>
     </ul>
   </li>
   <li class="d-flex rightBar" *ngIf="!isLogin; else LogOut">
@@ -28,7 +22,7 @@
   </li>
   <ng-template #LogOut>
     <li class="d-flex rightBar">
-      <ul><a href="User/Details">Szczegóły</a></ul>
+      <ul><a href="User/Panel">Panel użytkownika</a></ul>
       <ul><a (click)="Logout()">Wyloguj</a></ul>
     </li>
   </ng-template>

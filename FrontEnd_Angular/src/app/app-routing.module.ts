@@ -27,6 +27,11 @@ const routes: Routes = [
         (m) => m.UserclubModule,
       ),
   },
+  {
+    path: 'League',
+    loadChildren: () =>
+      import('../app/modules/league/league.module').then((m) => m.LeagueModule),
+  },
   { path: '**', component: NotFoundComponent, title: 'Error 404' },
 ];
 

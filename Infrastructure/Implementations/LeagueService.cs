@@ -9,16 +9,19 @@ namespace Infrastructure.Implementations
     public class LeagueService : ILeagueService
     {
         private readonly ILeagueRepository _leagueRepository;
-        public LeagueService(ILeagueRepository leagueRepository)
+        private readonly IUserLeagueAccessRepository _userLeagueRepository;
+        public LeagueService(ILeagueRepository leagueRepository,IUserLeagueAccessRepository userLeagueRepository)
         {
             _leagueRepository = leagueRepository;
+            _userLeagueRepository = userLeagueRepository;
         }
 
-        public async Task<Guid> CreateLeague(LeagueCreate command)
+        public async Task<Guid> CreateLeague(LeagueCreate command,Guid userId)
         {
             if (command == null)
                 throw new BadRequestException("Command_Cannot_Be_Null");
             var result = await _leagueRepository.CreateLeague(command.CreateModel());
+            await _userLeagueRepository.AddLeagueAccessToUserAsync(userId, result);
             return result;
         }
         public async Task<LeagueDTO> GetLeagueById(Guid leagueId)
