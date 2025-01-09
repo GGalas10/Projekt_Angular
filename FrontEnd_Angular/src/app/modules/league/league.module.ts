@@ -6,18 +6,10 @@ import { IndexComponent } from './index/index.component';
 import { AddComponent } from './add/add.component';
 import { EditComponent } from './edit/edit.component';
 import { DetailsComponent } from './details/details.component';
-
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
-  declarations: [
-    IndexComponent,
-    AddComponent,
-    EditComponent,
-    DetailsComponent
-  ],
-  imports: [
-    CommonModule,
-    LeagueRoutingModule
-  ]
+  declarations: [IndexComponent, AddComponent, EditComponent, DetailsComponent],
+  imports: [CommonModule, LeagueRoutingModule, SharedModule],
 })
-export class LeagueModule { }
+export class LeagueModule {}

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Repositories
 {
-    internal class UserLeagueAccessRepository : IUserLeagueAccessRepository
+    public class UserLeagueAccessRepository : IUserLeagueAccessRepository
     {
         private readonly DataDbContext _dataDbContext;
         public UserLeagueAccessRepository(DataDbContext dataDbContext)

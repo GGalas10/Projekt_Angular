@@ -1,6 +1,9 @@
-<label for="name">Nazwa ligi:</label>
-<input type="text" name="" id="">
-<label for="startDate">Początek ligi:</label>
-<input type="date" name="" id="">
-<label for="endDate">Koniec ligi:</label>
-<input type="date" name="" id="">
+<form [formGroup]="createLeague" (submit)="OnSubmit()">
+    <label for="name">Nazwa ligi:</label>
+    <input type="text" formControlName="name" name="name">
+    <label for="startDate">Początek ligi:</label>
+    <input type="date" name="startDate" formControlName="startDate">
+    <label for="endDate">Koniec ligi:</label>
+    <input type="date" name="endDate" formControlName="endDate">
+    <button>Dodaj</button>
+</form>

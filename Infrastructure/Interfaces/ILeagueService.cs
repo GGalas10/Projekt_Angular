@@ -5,7 +5,7 @@ namespace Infrastructure.Interfaces
 {
     public interface ILeagueService
     {
-        Task<Guid> CreateLeague(LeagueCreate command);
+        Task<Guid> CreateLeague(LeagueCreate command, Guid userId);
         Task<LeagueDTO> GetLeagueById(Guid leagueId);
         Task<List<LeagueHomeDTO>> GetAllLeague();
     }
