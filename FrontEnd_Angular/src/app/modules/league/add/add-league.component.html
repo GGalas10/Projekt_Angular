@@ -1,0 +1,11 @@
+<form [formGroup]="createLeague" (submit)="OnSubmit()" class="glassEfect">
+    <h1>Dodawanie ligi</h1>
+    <label for="name">Nazwa ligi:</label>
+    <input type="text" formControlName="name" name="name" [required]="true">
+    <label for="startDate">Początek ligi:</label>
+    <input type="date" name="startDate" formControlName="startDate" [required]="true">
+    <label for="endDate">Koniec ligi:</label>
+    <input type="date" name="endDate" formControlName="endDate" [required]="true">
+    <button class="saveButton">Dodaj</button>
+</form>
+<app-base-alert *ngIf="this.showAlert" [baseAlert]="this.baseAlert" (CloseEmit)="showAlert = false"></app-base-alert>

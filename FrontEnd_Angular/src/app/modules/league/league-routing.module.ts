@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IndexComponent } from './index/index.component';
-import { AddComponent } from './add/add.component';
+import { AddLeagueComponent } from './add/add-league.component';
 import { authActivateGuard } from '../core/guards/auth-activate.guard';
+import { DetailsLeagueComponent } from './details/details-league.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent, pathMatch: 'full' },
   {
     path: 'Add',
-    component: AddComponent,
+    component: AddLeagueComponent,
     canActivate: [authActivateGuard],
   },
+  { path: 'Details/:LeagueId', component: DetailsLeagueComponent },
 ];
 
 @NgModule({
