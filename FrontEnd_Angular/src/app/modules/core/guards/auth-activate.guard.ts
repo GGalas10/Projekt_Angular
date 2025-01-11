@@ -4,7 +4,7 @@ import { AuthService } from '../Services/AuthService';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const authActivateGuard: CanActivateFn = (route, state) => {
-  return inject(AuthService).IsLogin
+  return inject(AuthService).IsLogin.value
     ? true
     : inject(Router).createUrlTree(['User/login']);
 };

@@ -27,6 +27,7 @@ export class LeagueService {
     );
   }
   CreateLeague(command: CreateLeagueCommand): Observable<string> {
+    console.log(command);
     return this.http.post<string>(
       `${this.apiURL}/League/CreateLeague`,
       command,

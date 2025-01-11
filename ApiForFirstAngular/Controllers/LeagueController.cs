@@ -27,7 +27,7 @@ namespace ApiForFirstAngular.Controllers
         }
         [BindUserId]
         [HttpPost]
-        public async Task<IActionResult> CreateLeague(LeagueCreate command)
+        public async Task<IActionResult> CreateLeague([FromBody]LeagueCreate command)
         {
             var result = await _leagueService.CreateLeague(command,UserId);
             return Ok(result);
