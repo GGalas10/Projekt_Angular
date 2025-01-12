@@ -15,6 +15,13 @@ export interface CreateLeagueCommand {
   startDate: Date;
   endDate: Date;
 }
+export interface LeagueListDTO {
+  id: string;
+  name: string;
+  startAt: Date;
+  endAt: Date;
+  status: number;
+}
 export function GetStatusName(status: number) {
   switch (status) {
     case 0:

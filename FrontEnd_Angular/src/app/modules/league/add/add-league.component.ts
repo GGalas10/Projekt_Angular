@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { LeagueService } from '../../core/Services/API/LeagueServoce';
+import { LeagueService } from '../../core/Services/API/LeagueService';
 import { BaseAlert } from '../../../shared/Component/base-alert/BaseAlertInterface';
 import { Router } from '@angular/router';
 

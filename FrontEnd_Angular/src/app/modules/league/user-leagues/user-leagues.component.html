@@ -1,1 +1,15 @@
-<p>user-leagues works!</p>
+<section *ngIf="leagues;else null">
+    <section *ngIf="leagues.length>0;else empty">
+        <ng-container *ngFor="let league of leagues">
+            <section class="OneLeague">
+                <h3>{{league.name}}</h3>
+                <p>Start sezonu {{league.startAt}}</p>
+                <p>Koniec sezonu {{league.endAt}}</p>
+                <p>Status {{GetLeagueStatus(league.status)}}</p>
+                <a href="/League/Details/{{league.id}}">Szczegóły</a>
+            </section>
+        </ng-container>
+    </section>
+</section>
+<ng-template #empty></ng-template>
+<ng-template #null></ng-template>

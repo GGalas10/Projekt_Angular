@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import {
   CreateLeagueCommand,
   LeagueDTO,
+  LeagueListDTO,
 } from '../../../../shared/Interfaces/League';
 
 @Injectable({
@@ -13,25 +14,27 @@ import {
 export class LeagueService {
   public ApiIsHealth = false;
   headers: HttpHeaders = new HttpHeaders({ FC_Header: '' });
-  apiURL = environment.baseUrl;
+  apiURL = environment.baseUrl + '/League';
   constructor(private http: HttpClient) {}
   GetAllLeagues(): Observable<LeagueDTO[]> {
-    return this.http.get<LeagueDTO[]>(`${this.apiURL}/League/GetAllLeagues`, {
+    return this.http.get<LeagueDTO[]>(`${this.apiURL}/GetAllLeagues`, {
       headers: this.headers,
     });
   }
   GetClubById(leagueId: string): Observable<LeagueDTO> {
     return this.http.get<LeagueDTO>(
-      `${this.apiURL}/League/GetLeagueById?leagueId=${leagueId}`,
+      `${this.apiURL}/GetLeagueById?leagueId=${leagueId}`,
       { headers: this.headers },
     );
   }
   CreateLeague(command: CreateLeagueCommand): Observable<string> {
-    console.log(command);
-    return this.http.post<string>(
-      `${this.apiURL}/League/CreateLeague`,
-      command,
-      { headers: this.headers },
-    );
+    return this.http.post<string>(`${this.apiURL}/CreateLeague`, command, {
+      headers: this.headers,
+    });
+  }
+  GetAllUserLeagues(): Observable<LeagueListDTO[]> {
+    return this.http.get<LeagueListDTO[]>(`${this.apiURL}/GetAllUserLeagues`, {
+      headers: this.headers,
+    });
   }
 }

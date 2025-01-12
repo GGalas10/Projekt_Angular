@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LeagueService } from '../../core/Services/API/LeagueServoce';
+import { LeagueService } from '../../core/Services/API/LeagueService';
 import { LeagueDTO } from '../../../shared/Interfaces/League';
 
 @Component({

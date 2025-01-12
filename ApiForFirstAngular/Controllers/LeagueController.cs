@@ -32,5 +32,12 @@ namespace ApiForFirstAngular.Controllers
             var result = await _leagueService.CreateLeague(command,UserId);
             return Ok(result);
         }
+        [BindUserId]
+        [HttpGet]
+        public async Task<IActionResult> GetAllUserLeagues()
+        {
+            var result = await _leagueService.GetAllUserLeagues(UserId);
+            return Ok(result);
+        }
     }
 }
