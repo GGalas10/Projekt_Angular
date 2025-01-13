@@ -1,0 +1,23 @@
+.OneLeague {
+  width: 30%;
+  text-align: center;
+  padding: 10px 15px;
+}
+.LeagueSection {
+  display: grid;
+  margin: 25px auto auto;
+  width: 100%;
+  text-align: center;
+  padding: 25px;
+}
+h1 {
+  margin-bottom: 25px;
+}
+.editBtn {
+  margin-top: 5px;
+  border-radius: 15px;
+  background-color: #39caa8bf;
+  border: none;
+  color: #fff;
+  font-weight: bolder;
+}

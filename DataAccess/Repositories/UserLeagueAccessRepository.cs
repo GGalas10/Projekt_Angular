@@ -49,6 +49,6 @@ namespace DataAccess.Repositories
             => await _dataDbContext.UserLeagueAccesses.AsNoTracking().Where(x => x.LeagueId == leagueId).Select(x => x.LeagueId).ToListAsync();
 
         public async Task<List<League>> GetAllUserLeagues(Guid userId)
-            => await _dataDbContext.UserLeagueAccesses.AsNoTracking().Include(x => x.LeagueId).Where(x=>x.UserId == userId).Select(x=>x.League).ToListAsync();
+            => await _dataDbContext.UserLeagueAccesses.AsNoTracking().Include(x => x.League).Where(x=>x.UserId == userId).Select(x=>x.League).ToListAsync();
     }
 }

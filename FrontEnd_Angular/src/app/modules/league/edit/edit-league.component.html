@@ -1,0 +1,11 @@
+<section *ngIf="league;else Null">
+    <section class="mainSection">
+        <h1>Liga: {{league.name}}</h1>
+        {{league.startAt | date:"dd-mm-yyyy"}}
+        {{league.endAt | date:"dd-mm-yyyy"}}
+        {{GetLeagueStatus(league.status)}}
+    </section>
+</section>
+<ng-template #Null>
+    <div class="loader"></div>
+</ng-template>

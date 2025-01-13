@@ -1,12 +1,16 @@
 <section *ngIf="leagues;else null">
-    <section *ngIf="leagues.length>0;else empty">
+    <section *ngIf="leagues.length>0;else empty" class="LeagueSection">
+        <h1>Twoje dodane Ligi</h1>
         <ng-container *ngFor="let league of leagues">
-            <section class="OneLeague">
+            <section class="OneLeague glassEfect">
                 <h3>{{league.name}}</h3>
-                <p>Start sezonu {{league.startAt}}</p>
-                <p>Koniec sezonu {{league.endAt}}</p>
+                <p>Start sezonu {{league.startAt | date:"dd-mm-yyyy"}}</p>
+                <p>Koniec sezonu {{league.endAt | date:"dd-mm-yyyy"}}</p>
                 <p>Status {{GetLeagueStatus(league.status)}}</p>
-                <a href="/League/Details/{{league.id}}">Szczegóły</a>
+                <section style="display: grid;">
+                    <a href="/League/Details/{{league.id}}" class="editBtn">Szczegóły</a>
+                    <a href="/League/Edit/{{league.id}}" class="editBtn">Edytuj</a>
+                </section>
             </section>
         </ng-container>
     </section>

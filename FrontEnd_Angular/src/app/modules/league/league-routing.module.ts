@@ -4,6 +4,8 @@ import { IndexComponent } from './index/index.component';
 import { AddLeagueComponent } from './add/add-league.component';
 import { authActivateGuard } from '../core/guards/auth-activate.guard';
 import { DetailsLeagueComponent } from './details/details-league.component';
+import { EditLeagueComponent } from './edit/edit-league.component';
+import { UserLeaguesComponent } from './user-leagues/user-leagues.component';
 
 const routes: Routes = [
   { path: '', component: IndexComponent, pathMatch: 'full' },
@@ -13,6 +15,8 @@ const routes: Routes = [
     canActivate: [authActivateGuard],
   },
   { path: 'Details/:LeagueId', component: DetailsLeagueComponent },
+  { path: 'Edit/:LeagueId', component: EditLeagueComponent },
+  { path: 'UserLeagues', component: UserLeaguesComponent },
 ];
 
 @NgModule({

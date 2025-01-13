@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LeagueDTO } from '../../../shared/Interfaces/League';
+import { LeagueDTO, GetStatusName } from '../../../shared/Interfaces/League';
 import { ActivatedRoute } from '@angular/router';
 import { LeagueService } from '../../core/Services/API/LeagueService';
 
@@ -7,10 +7,10 @@ import { LeagueService } from '../../core/Services/API/LeagueService';
   selector: 'app-edit',
   standalone: false,
 
-  templateUrl: './edit.component.html',
-  styleUrl: './edit.component.css',
+  templateUrl: './edit-league.component.html',
+  styleUrl: './edit-league.component.css',
 })
-export class EditComponent implements OnInit {
+export class EditLeagueComponent implements OnInit {
   leagueId = '';
   league!: LeagueDTO;
   constructor(
@@ -32,5 +32,9 @@ export class EditComponent implements OnInit {
         });
       },
     });
+  }
+
+  GetLeagueStatus(status: number) {
+    return GetStatusName(status);
   }
 }
