@@ -16,7 +16,11 @@ const routes: Routes = [
   },
   { path: 'Details/:LeagueId', component: DetailsLeagueComponent },
   { path: 'Edit/:LeagueId', component: EditLeagueComponent },
-  { path: 'UserLeagues', component: UserLeaguesComponent },
+  {
+    path: 'UserLeagues',
+    component: UserLeaguesComponent,
+    canActivate: [authActivateGuard],
+  },
 ];
 
 @NgModule({

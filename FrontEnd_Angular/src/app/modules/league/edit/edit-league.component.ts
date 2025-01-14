@@ -11,6 +11,7 @@ import { LeagueService } from '../../core/Services/API/LeagueService';
   styleUrl: './edit-league.component.css',
 })
 export class EditLeagueComponent implements OnInit {
+  editNameShow = false;
   leagueId = '';
   league!: LeagueDTO;
   constructor(

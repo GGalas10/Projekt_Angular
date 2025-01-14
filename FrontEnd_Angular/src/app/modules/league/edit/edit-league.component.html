@@ -1,11 +1,19 @@
 <section *ngIf="league;else Null">
-    <section class="mainSection">
-        <h1>Liga: {{league.name}}</h1>
-        {{league.startAt | date:"dd-mm-yyyy"}}
-        {{league.endAt | date:"dd-mm-yyyy"}}
-        {{GetLeagueStatus(league.status)}}
+    <section class="mainSection glassEfect">
+        <h1>{{league.name}}</h1>
+        <button class="EditBtn" (click)="editNameShow=true">Zmień nazwę</button>
+        <h3>{{GetLeagueStatus(league.status)}}</h3>
+        <section class="PrimaryDateSection">
+            <label for="startAt">Liga startuje:</label>
+            <p name="startAt">{{league.startAt | date:"dd-MM-yyyy"}}</p>
+            <button class="EditBtn">Zmień początek</button>
+            <label for="endAt">Liga startuje:</label>
+            <p name="endAt">{{league.endAt | date:"dd-MM-yyyy"}}</p>
+            <button class="EditBtn">Zmień koniec</button>
+        </section>
     </section>
 </section>
 <ng-template #Null>
     <div class="loader"></div>
 </ng-template>
+<app-edit-name *ngIf="editNameShow" (closeEvent)="editNameShow=false"></app-edit-name>

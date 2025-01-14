@@ -1,3 +1,23 @@
 .mainSection {
   text-align: center;
+  background-color: rgba(255, 255, 255, 0.212);
+  padding: 25px 15px;
+}
+.PrimaryDateSection {
+  display: grid;
+}
+.EditBtn {
+  width: 15%;
+  padding: 5px 15px;
+  border-radius: 15px;
+  background-color: #0000ff78;
+  border: none;
+  box-shadow: 4px 7px 4px 3px #00000057;
+  margin: 0 auto 15px auto;
+}
+.EditBtn:hover {
+  opacity: 0.8;
+}
+.EditBtn:active {
+  opacity: 0.6;
 }

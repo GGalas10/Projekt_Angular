@@ -8,6 +8,7 @@ import { EditLeagueComponent } from './edit/edit-league.component';
 import { DetailsLeagueComponent } from './details/details-league.component';
 import { SharedModule } from '../../shared/shared.module';
 import { UserLeaguesComponent } from './user-leagues/user-leagues.component';
+import { EditNameComponent } from './edit/edit-name/edit-name.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { UserLeaguesComponent } from './user-leagues/user-leagues.component';
     EditLeagueComponent,
     DetailsLeagueComponent,
     UserLeaguesComponent,
+    EditNameComponent,
   ],
   imports: [CommonModule, LeagueRoutingModule, SharedModule],
 })
