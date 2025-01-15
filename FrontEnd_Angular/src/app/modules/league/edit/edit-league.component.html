@@ -6,14 +6,14 @@
         <section class="PrimaryDateSection">
             <label for="startAt">Liga startuje:</label>
             <p name="startAt">{{league.startAt | date:"dd-MM-yyyy"}}</p>
-            <button class="EditBtn">Zmień początek</button>
             <label for="endAt">Liga startuje:</label>
             <p name="endAt">{{league.endAt | date:"dd-MM-yyyy"}}</p>
-            <button class="EditBtn">Zmień koniec</button>
+            <button class="EditBtn">Zmień daty</button>
         </section>
     </section>
 </section>
 <ng-template #Null>
     <div class="loader"></div>
 </ng-template>
-<app-edit-name *ngIf="editNameShow" (closeEvent)="editNameShow=false"></app-edit-name>
+<app-edit-name *ngIf="editNameShow" (closeEvent)="editNameShow=false" [LeagueId]="league.id" [oldName]="league.name"
+    (saveEvent)="SaveName($event)"></app-edit-name>

@@ -8,7 +8,7 @@ export const authCanMatchGuard: CanMatchFn = (
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   segments: UrlSegment[],
 ) => {
-  return inject(AuthService).IsLogin
+  return inject(AuthService).IsLogin.value
     ? true
     : inject(Router).createUrlTree(['User/login']);
 };

@@ -10,6 +10,7 @@ namespace Core.Repositories
         Task<League> GetLeagueById(Guid leagueId);
         Task AddClubeToLeague(SportsClub club, Guid leagueId);
         Task<List<League>> GetAllLeagues();
+        Task EditLeaguePrimaryDate(League newLeague);
 
     }
 }

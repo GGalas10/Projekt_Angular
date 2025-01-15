@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {
   CreateLeagueCommand,
+  EditLeagueCommand,
   LeagueDTO,
   LeagueListDTO,
 } from '../../../../shared/Interfaces/League';
@@ -34,6 +35,11 @@ export class LeagueService {
   }
   GetAllUserLeagues(): Observable<LeagueListDTO[]> {
     return this.http.get<LeagueListDTO[]>(`${this.apiURL}/GetAllUserLeagues`, {
+      headers: this.headers,
+    });
+  }
+  EditLeague(command: EditLeagueCommand): Observable<void> {
+    return this.http.post<void>(`${this.apiURL}/EditPrimaryDate`, command, {
       headers: this.headers,
     });
   }

@@ -38,6 +38,10 @@ namespace Core.Models
             else if (DateTime.Now > sezonEnd)
                 Status = LeagueStatus.After;
         }
+        public static League GetLeagueForEdit(Guid leagueId,string? name, DateTime startAt,DateTime endAt)
+        {
+            return new() { Id = leagueId, Name = name, SezonStartDate = startAt, SezonEndDate = endAt };
+        }
         public void AddClubToLeague(SportsClub club)
         {
             if (club == null)
@@ -53,6 +57,15 @@ namespace Core.Models
             if (!_clubs.Any(x => x.ClubId == club.Id))
                 throw new BadRequestException("Club_Is_Doesn't_Exist_In_This_League");
             _clubs.Remove(_clubs.FirstOrDefault(x => x.ClubId == club.Id));
+        }
+        public void EditLeaguePrimaryDate(League model)
+        {
+            if (!string.IsNullOrEmpty(model.Name) && model.Name != "$Test$")
+                this.Name = model.Name;
+            if (model.SezonStartDate != DateTime.MinValue)
+                this.SezonStartDate = model.SezonStartDate;           
+            if(model.SezonEndDate != DateTime.MinValue)
+                this.SezonEndDate = model.SezonEndDate;
         }
     }
 }

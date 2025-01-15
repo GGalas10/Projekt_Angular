@@ -20,6 +20,10 @@ namespace Infrastructure.Implementations
         {
             if (command == null)
                 throw new BadRequestException("Command_Cannot_Be_Null");
+            if (command.endDate <= command.startDate)
+                throw new BadRequestException("EndDate_Must_Be_Greater_Than_StartDate");
+            if (command.startDate <= new DateTime(1888, 1, 1))
+                throw new BadRequestException("Cannot_Start_Before_1888");
             var result = await _leagueRepository.CreateLeague(command.CreateModel());
             await _userLeagueRepository.AddLeagueAccessToUserAsync(userId, result);
             return result;
@@ -41,6 +45,15 @@ namespace Infrastructure.Implementations
         {
             var result = await _userLeagueRepository.GetAllUserLeagues(userId);
             return result.Select(x=>LeagueHomeDTO.GetFromModel(x)).ToList();
+        }
+        public async Task EditLeaguePrimaryDate(LeagueEdit command)
+        {
+            if (command.endDate <= command.startDate)
+                throw new BadRequestException("EndDate_Must_Be_Greater_Than_StartDate");
+            if (command.startDate <= new DateTime(1888, 1, 1))
+                throw new BadRequestException("Cannot_Start_Before_1888");
+            await _leagueRepository.EditLeaguePrimaryDate(command.GetFromModelCommand());
+            await Task.CompletedTask;
         }
     }
 }

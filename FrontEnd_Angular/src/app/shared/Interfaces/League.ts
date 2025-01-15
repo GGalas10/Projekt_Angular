@@ -22,6 +22,12 @@ export interface LeagueListDTO {
   endAt: Date;
   status: number;
 }
+export interface EditLeagueCommand {
+  leagueId: string;
+  name: string | null;
+  startAt: Date | null;
+  endAt: Date | null;
+}
 export function GetStatusName(status: number) {
   switch (status) {
     case 0:

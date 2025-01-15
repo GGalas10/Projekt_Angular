@@ -39,5 +39,12 @@ namespace ApiForFirstAngular.Controllers
             var result = await _leagueService.GetAllUserLeagues(UserId);
             return Ok(result);
         }
+        [BindUserId]
+        [HttpPost]
+        public async Task<IActionResult> EditPrimaryDate([FromBody]LeagueEdit command)
+        {
+            await _leagueService.EditLeaguePrimaryDate(command);
+            return Ok();
+        }
     }
 }

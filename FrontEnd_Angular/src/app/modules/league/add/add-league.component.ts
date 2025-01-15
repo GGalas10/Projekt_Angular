@@ -57,6 +57,18 @@ export class AddLeagueComponent {
                 'Błąd',
                 'Liga o takiej samej nazwie i takim samym starcie już istnieje',
               );
+            }
+            if (err.error.includes('EndDate_Must_Be_Greater_Than_StartDate')) {
+              this.ShowAlert(
+                'Błąd',
+                '<p>Koniec ligi musi być później niż rozpoczęcie</p>',
+              );
+            }
+            if (err.error.includes('Cannot_Start_Before_1888')) {
+              this.ShowAlert(
+                'Błąd',
+                '<p>W tych latach nie istniała profesjonalna piłka nożna</p>',
+              );
             } else {
               this.ShowAlert(
                 'Coś nie tak',

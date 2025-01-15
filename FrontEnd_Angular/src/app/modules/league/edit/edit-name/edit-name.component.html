@@ -1,6 +1,7 @@
 <section class="mainSection glassEfect">
     <button class="exit" (click)="closeEvent.emit()">X</button>
     <h1>Zmiana nazwy</h1>
-    <input type="text" name="name" id="name">
-    <button class="EditBtn">Zmień</button>
+    <input required type="text" name="name" id="name" [(ngModel)]="newName" [placeholder]="oldName">
+    <button class="EditBtn" (click)="OnSubmit()">Zmień</button>
 </section>
+<app-base-alert *ngIf="ShowAlert" (CloseEmit)="ShowAlert=false" [baseAlert]="baseAlert"></app-base-alert>

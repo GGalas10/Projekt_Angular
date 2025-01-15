@@ -64,5 +64,16 @@ namespace DataAccess.Repositories
 
         public async Task<List<League>> GetAllLeagues()
             => await _dbContext.Leagues.AsNoTracking().ToListAsync();
+        public async Task EditLeaguePrimaryDate(League newLeague)
+        {
+            var oldLeague = await _dbContext.Leagues.FirstOrDefaultAsync(x=>x.Id==newLeague.Id);
+            if (oldLeague == null)
+                throw new BadRequestException("Cannot_Find_The_League_For_Edit");
+            oldLeague.UpdatedAt = DateTime.Now;
+            oldLeague.EditLeaguePrimaryDate(newLeague);
+            _dbContext.Update(oldLeague);
+            _dbContext.Entry(oldLeague).State = EntityState.Modified;
+            await _dbContext.SaveChangesAsync();
+        }
     }
 }

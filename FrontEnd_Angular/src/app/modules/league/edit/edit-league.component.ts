@@ -38,4 +38,8 @@ export class EditLeagueComponent implements OnInit {
   GetLeagueStatus(status: number) {
     return GetStatusName(status);
   }
+  SaveName(newName: string) {
+    this.league.name = newName;
+    this.editNameShow = false;
+  }
 }
