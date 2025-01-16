@@ -8,12 +8,28 @@
             <p name="startAt">{{league.startAt | date:"dd-MM-yyyy"}}</p>
             <label for="endAt">Liga startuje:</label>
             <p name="endAt">{{league.endAt | date:"dd-MM-yyyy"}}</p>
-            <button class="EditBtn">Zmień daty</button>
+            <button class="EditBtn" (click)="editDateShow = true">Zmień daty</button>
+        </section>
+    </section>
+    <section class="mainSection glassEfect" style="margin-top: 25px;">
+        <h1>Zepoły w lidze</h1>
+        <section *ngIf="league.clubStatistics">
+            <ng-container *ngIf="league.clubStatistics.length >0;else empty">
+                <section></section>
+                <button class="EditBtn" style="width: 40%;">Dodaj kolejny zespół do ligi</button>
+            </ng-container>
+            <ng-template #empty>
+                <h2>Nie ma dodanych żadnych klubów do tej ligi</h2>
+                <button class="EditBtn" style="width: 40%;">Dodaj pierwsze zespoły do ligi</button>
+            </ng-template>
         </section>
     </section>
 </section>
 <ng-template #Null>
     <div class="loader"></div>
 </ng-template>
-<app-edit-name *ngIf="editNameShow" (closeEvent)="editNameShow=false" [LeagueId]="league.id" [oldName]="league.name"
+<app-edit-name *ngIf="editNameShow" (closeEvent)="editNameShow=false" [LeagueId]="league.id"
     (saveEvent)="SaveName($event)"></app-edit-name>
+<app-edit-date *ngIf="editDateShow" (closeEvent)="editDateShow=false" [LeagueId]="league.id"
+    (saveEvent)="SaveDate($event)"></app-edit-date>
+<app-base-alert *ngIf="ShowAlert" (CloseEmit)="ShowAlert=false" [baseAlert]="baseAlert"></app-base-alert>

@@ -1,8 +1,11 @@
 <ng-container *ngIf="league">
     <section class="mainSection glassEfect">
         <button class="exit" (click)="closeEvent.emit()">X</button>
-        <h1>Zmiana nazwy</h1>
-        <input required type="text" name="name" id="name" [(ngModel)]="newName" [placeholder]="league.name">
+        <h1>Zmiana daty ligi</h1>
+        <label for="startAt">Początek ligi</label>
+        <input required type="date" name="startAt" id="startAt" [(ngModel)]="newStartDate">
+        <label for="endAt">Koniec ligi</label>
+        <input required type="date" name="endAt" id="endAt" [(ngModel)]="newEndDate">
         <button class="EditBtn" (click)="OnSubmit()">Zmień</button>
     </section>
     <app-base-alert *ngIf="ShowAlert" (CloseEmit)="ShowAlert=false" [baseAlert]="baseAlert"></app-base-alert>

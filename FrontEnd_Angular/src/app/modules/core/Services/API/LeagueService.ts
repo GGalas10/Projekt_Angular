@@ -43,4 +43,10 @@ export class LeagueService {
       headers: this.headers,
     });
   }
+  GetLeagueForEdit(leagueId: string): Observable<LeagueListDTO> {
+    return this.http.get<LeagueDTO>(
+      `${this.apiURL}/GetLeagueForEditById?leagueId=${leagueId}`,
+      { headers: this.headers },
+    );
+  }
 }

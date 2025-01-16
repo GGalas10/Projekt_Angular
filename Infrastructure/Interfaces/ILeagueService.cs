@@ -10,5 +10,6 @@ namespace Infrastructure.Interfaces
         Task<List<LeagueHomeDTO>> GetAllLeague();
         Task<List<LeagueHomeDTO>> GetAllUserLeagues(Guid userId);
         Task EditLeaguePrimaryDate(LeagueEdit command);
+        Task<LeagueHomeDTO> GetLeagueForEditById(Guid leagueId);
     }
 }

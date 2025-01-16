@@ -9,8 +9,8 @@ import { DetailsLeagueComponent } from './details/details-league.component';
 import { SharedModule } from '../../shared/shared.module';
 import { UserLeaguesComponent } from './user-leagues/user-leagues.component';
 import { EditNameComponent } from './edit/edit-name/edit-name.component';
-import { CoreModule } from '../core/core.module';
 import { FormsModule } from '@angular/forms';
+import { EditDateComponent } from './edit/edit-date/edit-date.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +20,7 @@ import { FormsModule } from '@angular/forms';
     DetailsLeagueComponent,
     UserLeaguesComponent,
     EditNameComponent,
+    EditDateComponent,
   ],
   imports: [CommonModule, LeagueRoutingModule, SharedModule, FormsModule],
 })

@@ -25,6 +25,12 @@ namespace ApiForFirstAngular.Controllers
             var result = await _leagueService.GetLeagueById(leagueId);
             return Ok(result);
         }
+        [HttpGet]
+        public async Task<IActionResult> GetLeagueForEditById(Guid leagueId)
+        {
+            var result = await _leagueService.GetLeagueForEditById(leagueId);
+            return Ok(result);
+        }
         [BindUserId]
         [HttpPost]
         public async Task<IActionResult> CreateLeague([FromBody]LeagueCreate command)

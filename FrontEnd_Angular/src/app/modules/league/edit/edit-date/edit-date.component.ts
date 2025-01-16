@@ -2,27 +2,37 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BaseAlert } from '../../../../shared/Component/base-alert/BaseAlertInterface';
 import { LeagueService } from '../../../core/Services/API/LeagueService';
 import { LeagueListDTO } from '../../../../shared/Interfaces/League';
+import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-edit-name',
+  selector: 'app-edit-date',
   standalone: false,
 
-  templateUrl: './edit-name.component.html',
-  styleUrl: './edit-name.component.css',
+  templateUrl: './edit-date.component.html',
+  styleUrl: './edit-date.component.css',
+  providers: [DatePipe],
 })
-export class EditNameComponent implements OnInit {
-  newName = '';
+export class EditDateComponent implements OnInit {
+  newStartDate = '';
+  newEndDate = '';
   league!: LeagueListDTO;
   @Input() LeagueId!: string;
   @Output() closeEvent = new EventEmitter<void>();
-  @Output() saveEvent = new EventEmitter<string>();
+  @Output() saveEvent = new EventEmitter<LeagueListDTO>();
   baseAlert: BaseAlert = { Title: '', Message: '' };
   ShowAlert = false;
-  constructor(private leagueService: LeagueService) {}
+  constructor(
+    private leagueService: LeagueService,
+    private datePipe: DatePipe,
+  ) {}
   ngOnInit(): void {
     this.leagueService.GetLeagueForEdit(this.LeagueId).subscribe({
       next: (result) => {
         this.league = result;
+        this.newStartDate =
+          this.datePipe.transform(this.league.startAt, 'yyyy-MM-dd') || '';
+        this.newEndDate =
+          this.datePipe.transform(this.league.endAt, 'yyyy-MM-dd') || '';
       },
       error: () => {
         this.ShowAlertFunction(
@@ -32,21 +42,23 @@ export class EditNameComponent implements OnInit {
       },
     });
   }
-  OnSubmit() {
-    if (this.newName == '') {
-      this.ShowAlertFunction('Błąd', 'Uzupełnij pole nowej nazwy');
-      return;
-    }
+  OnSubmit(): void {
     this.leagueService
       .EditLeague({
         leagueId: this.LeagueId,
-        name: this.newName,
-        startAt: null,
-        endAt: null,
+        name: null,
+        startAt: new Date(this.newStartDate),
+        endAt: new Date(this.newEndDate),
       })
       .subscribe({
         next: () => {
-          this.saveEvent.emit(this.newName);
+          this.saveEvent.emit({
+            id: '',
+            name: '',
+            startAt: new Date(this.newStartDate),
+            endAt: new Date(this.newEndDate),
+            status: 0,
+          });
         },
         error: (err) => {
           if (err.error.includes('EndDate_Must_Be_Greater_Than_StartDate')) {

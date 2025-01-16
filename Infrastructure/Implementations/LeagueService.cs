@@ -55,5 +55,12 @@ namespace Infrastructure.Implementations
             await _leagueRepository.EditLeaguePrimaryDate(command.GetFromModelCommand());
             await Task.CompletedTask;
         }
+        public async Task<LeagueHomeDTO> GetLeagueForEditById(Guid leagueId)
+        {
+            if (leagueId == Guid.Empty)
+                throw new BadRequestException("LeagueId_Cannot_Be_Empty");
+            var result = await _leagueRepository.GetLeagueById(leagueId);
+            return LeagueHomeDTO.GetFromModel(result);
+        }
     }
 }

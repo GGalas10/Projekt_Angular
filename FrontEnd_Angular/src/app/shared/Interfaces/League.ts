@@ -8,7 +8,7 @@ export interface LeagueDTO {
   endAt: Date;
   status: number;
   matches: MatchDTO[];
-  clubs: ClubStatisticDTO[];
+  clubStatistics: ClubStatisticDTO[];
 }
 export interface CreateLeagueCommand {
   name: string;
