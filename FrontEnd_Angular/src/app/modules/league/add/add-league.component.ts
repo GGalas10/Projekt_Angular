@@ -19,6 +19,7 @@ export class AddLeagueComponent {
   };
   createLeague = new FormGroup({
     name: new FormControl('', [Validators.required]),
+    maxClubs: new FormControl(0, [Validators.required, Validators.min(0)]),
     startDate: new FormControl<Date>(new Date(), [Validators.required]),
     endDate: new FormControl<Date>(new Date(), [Validators.required]),
   });
@@ -34,6 +35,7 @@ export class AddLeagueComponent {
       this.leagueService
         .CreateLeague({
           name: this.formControls.name.value ?? '',
+          maxClubsInLeague: this.formControls.maxClubs.value ?? 1,
           startDate: this.formControls.startDate.value ?? new Date(),
           endDate: this.formControls.endDate.value ?? new Date(),
         })
@@ -91,7 +93,9 @@ export class AddLeagueComponent {
     const endDateValue = this.formControls.endDate.value ?? new Date();
     const startDateValue = this.formControls.startDate.value ?? new Date();
     if (this.formControls.name.invalid)
-      this.errors.push('<p>Uzupełnij Nazwę ligi</p>');
+      this.errors.push('<p>Uzupełnij nazwę ligi</p>');
+    if (this.formControls.maxClubs.invalid)
+      this.errors.push('<p>Uzupełnij ilość klubów ligi</p>');
     if (this.formControls.startDate.invalid == null)
       this.errors.push('<p>Uzupełnij Początek ligi</p>');
     if (this.formControls.endDate.invalid == null)
@@ -110,6 +114,11 @@ export class AddLeagueComponent {
       this.errors.push(
         '<p>W tych latach nie istniała profesjonalna piłka nożna</p>',
       );
+    if (
+      this.formControls.maxClubs.value &&
+      this.formControls.maxClubs.value <= 0
+    )
+      this.errors.push('<p>Ilość klubow musi być większa niż 0</p>');
     if (this.errors.length > 0) return false;
     else return true;
   }

@@ -4,6 +4,7 @@ import { MatchDTO } from './Match';
 export interface LeagueDTO {
   id: string;
   name: string;
+  maxClubsInLeague: number;
   startAt: Date;
   endAt: Date;
   status: number;
@@ -12,12 +13,14 @@ export interface LeagueDTO {
 }
 export interface CreateLeagueCommand {
   name: string;
+  maxClubsInLeague: number;
   startDate: Date;
   endDate: Date;
 }
 export interface LeagueListDTO {
   id: string;
   name: string;
+  maxClubsInLeague: number;
   startAt: Date;
   endAt: Date;
   status: number;
@@ -25,6 +28,7 @@ export interface LeagueListDTO {
 export interface EditLeagueCommand {
   leagueId: string;
   name: string | null;
+  maxClubsInLeague: number | null;
   startAt: Date | null;
   endAt: Date | null;
 }

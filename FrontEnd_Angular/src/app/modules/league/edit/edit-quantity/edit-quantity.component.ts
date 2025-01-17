@@ -1,21 +1,21 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { LeagueListDTO } from '../../../../shared/Interfaces/League';
 import { BaseAlert } from '../../../../shared/Component/base-alert/BaseAlertInterface';
 import { LeagueService } from '../../../core/Services/API/LeagueService';
-import { LeagueListDTO } from '../../../../shared/Interfaces/League';
 
 @Component({
-  selector: 'app-edit-name',
+  selector: 'app-edit-quantity',
   standalone: false,
 
-  templateUrl: './edit-name.component.html',
-  styleUrl: './edit-name.component.css',
+  templateUrl: './edit-quantity.component.html',
+  styleUrl: './edit-quantity.component.css',
 })
-export class EditNameComponent implements OnInit {
-  newName = '';
+export class EditQuantityComponent implements OnInit {
+  newQuantity = 0;
   league!: LeagueListDTO;
   @Input() LeagueId!: string;
   @Output() closeEvent = new EventEmitter<void>();
-  @Output() saveEvent = new EventEmitter<string>();
+  @Output() saveEvent = new EventEmitter<number>();
   baseAlert: BaseAlert = { Title: '', Message: '' };
   ShowAlert = false;
   constructor(private leagueService: LeagueService) {}
@@ -33,21 +33,21 @@ export class EditNameComponent implements OnInit {
     });
   }
   OnSubmit() {
-    if (this.newName == '') {
-      this.ShowAlertFunction('Błąd', 'Uzupełnij pole nowej nazwy');
+    if (this.newQuantity <= 0) {
+      this.ShowAlertFunction('Błąd', 'Uzupełnij poprawnie ilość klubów');
       return;
     }
     this.leagueService
       .EditLeague({
         leagueId: this.LeagueId,
-        name: this.newName,
-        maxClubsInLeague: null,
+        name: null,
+        maxClubsInLeague: this.newQuantity,
         startAt: null,
         endAt: null,
       })
       .subscribe({
         next: () => {
-          this.saveEvent.emit(this.newName);
+          this.saveEvent.emit(this.newQuantity);
         },
         error: (err) => {
           if (err.error.includes('EndDate_Must_Be_Greater_Than_StartDate')) {

@@ -9,6 +9,7 @@ namespace Core.Models
         private HashSet<Match> _matches = new();
         public Guid Id { get; set; }
         public string Name { get; set; }
+        public int MaxClubsInLeague { get; set; }
         public DateTime SezonStartDate { get; set; }
         public DateTime SezonEndDate { get; set; }
         public DateTime CreatedAt { get; set; }
@@ -17,7 +18,7 @@ namespace Core.Models
         public IEnumerable<ClubStatistic> clubs => _clubs.OrderBy(x => x.Points).ToList();
         public IEnumerable<Match> matches => _matches.ToList();
         private League() { }
-        public League(string name, DateTime sezonStart, DateTime sezonEnd)
+        public League(string name,int maxClubsInLeague, DateTime sezonStart, DateTime sezonEnd)
         {
             if (string.IsNullOrEmpty(name))
                 throw new BadRequestException("League_Name_Cannot_Be_Empty");
@@ -25,6 +26,8 @@ namespace Core.Models
                 throw new BadRequestException("End_Cannot_Be_Less_Than_Start");
             if (sezonEnd < DateTime.Now.AddYears(-10))
                 throw new BadRequestException($"End_Cannot_Be_Less_Than_{DateTime.Now.Year - 10}");
+            if (maxClubsInLeague <= 0)
+                throw new BadRequestException("MaxClubs_Cannnot_Be_Less_Than_1");
             Id = Guid.NewGuid();
             Name = name;
             SezonStartDate = sezonStart;
@@ -38,9 +41,9 @@ namespace Core.Models
             else if (DateTime.Now > sezonEnd)
                 Status = LeagueStatus.After;
         }
-        public static League GetLeagueForEdit(Guid leagueId,string? name, DateTime startAt,DateTime endAt)
+        public static League GetLeagueForEdit(Guid leagueId, int maxClubsInLeague,string? name, DateTime startAt,DateTime endAt)
         {
-            return new() { Id = leagueId, Name = name, SezonStartDate = startAt, SezonEndDate = endAt };
+            return new() { Id = leagueId, MaxClubsInLeague = maxClubsInLeague, Name = name, SezonStartDate = startAt, SezonEndDate = endAt };
         }
         public void AddClubToLeague(SportsClub club)
         {
@@ -62,6 +65,8 @@ namespace Core.Models
         {
             if (!string.IsNullOrEmpty(model.Name) && model.Name != "$Test$")
                 this.Name = model.Name;
+            if(model.MaxClubsInLeague > 0)
+                this.MaxClubsInLeague = model.MaxClubsInLeague;
             if (model.SezonStartDate != DateTime.MinValue)
                 this.SezonStartDate = model.SezonStartDate;           
             if(model.SezonEndDate != DateTime.MinValue)

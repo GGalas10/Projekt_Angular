@@ -18,6 +18,7 @@ import { BaseAlert } from '../../../shared/Component/base-alert/BaseAlertInterfa
 export class EditLeagueComponent implements OnInit {
   editNameShow = false;
   editDateShow = false;
+  editQuantityShow = false;
   leagueId = '';
   league!: LeagueDTO;
   baseAlert: BaseAlert = { Title: '', Message: '' };
@@ -55,6 +56,11 @@ export class EditLeagueComponent implements OnInit {
     this.league.endAt = editModel.endAt;
     this.editDateShow = false;
     this.ShowAlertFunction('Sukces!', 'Udało się zmienić datę ligi');
+  }
+  SaveQuantity(newQuantity: number) {
+    this.league.maxClubsInLeague = newQuantity;
+    this.editQuantityShow = false;
+    this.ShowAlertFunction('Sukces!', 'Udało się zmienić ilość klubów');
   }
   ShowAlertFunction(title: string, message: string) {
     this.baseAlert.Title = title;

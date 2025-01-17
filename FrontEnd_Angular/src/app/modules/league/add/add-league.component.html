@@ -6,6 +6,8 @@
     <input type="date" name="startDate" formControlName="startDate" [required]="true">
     <label for="endDate">Koniec ligi:</label>
     <input type="date" name="endDate" formControlName="endDate" [required]="true">
+    <label for="maxClubs">Ilość klubów:</label>
+    <input type="number" name="maxClubs" formControlName="maxClubs" [required]="true" min="1">
     <button class="saveButton">Dodaj</button>
 </form>
 <app-base-alert *ngIf="this.showAlert" [baseAlert]="this.baseAlert" (CloseEmit)="showAlert = false"></app-base-alert>

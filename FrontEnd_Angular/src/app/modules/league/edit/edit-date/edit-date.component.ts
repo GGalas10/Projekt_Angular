@@ -47,6 +47,7 @@ export class EditDateComponent implements OnInit {
       .EditLeague({
         leagueId: this.LeagueId,
         name: null,
+        maxClubsInLeague: null,
         startAt: new Date(this.newStartDate),
         endAt: new Date(this.newEndDate),
       })
@@ -55,6 +56,7 @@ export class EditDateComponent implements OnInit {
           this.saveEvent.emit({
             id: '',
             name: '',
+            maxClubsInLeague: this.league.maxClubsInLeague,
             startAt: new Date(this.newStartDate),
             endAt: new Date(this.newEndDate),
             status: 0,

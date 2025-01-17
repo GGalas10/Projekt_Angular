@@ -11,6 +11,8 @@ import { UserLeaguesComponent } from './user-leagues/user-leagues.component';
 import { EditNameComponent } from './edit/edit-name/edit-name.component';
 import { FormsModule } from '@angular/forms';
 import { EditDateComponent } from './edit/edit-date/edit-date.component';
+import { AddClubsComponent } from './edit/add-clubs/add-clubs.component';
+import { EditQuantityComponent } from './edit/edit-quantity/edit-quantity.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { EditDateComponent } from './edit/edit-date/edit-date.component';
     UserLeaguesComponent,
     EditNameComponent,
     EditDateComponent,
+    AddClubsComponent,
+    EditQuantityComponent,
   ],
   imports: [CommonModule, LeagueRoutingModule, SharedModule, FormsModule],
 })

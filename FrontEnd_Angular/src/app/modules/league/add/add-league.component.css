@@ -15,7 +15,8 @@ input[type='text'] {
   width: 50%;
   margin: auto;
 }
-input[type='date'] {
+input[type='date'],
+input[type='number'] {
   background-color: #00000026;
   border: none;
   padding: 0 10px;

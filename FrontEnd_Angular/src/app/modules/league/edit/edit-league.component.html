@@ -9,6 +9,9 @@
             <label for="endAt">Liga startuje:</label>
             <p name="endAt">{{league.endAt | date:"dd-MM-yyyy"}}</p>
             <button class="EditBtn" (click)="editDateShow = true">Zmień daty</button>
+            <label for="maxClubs">Ilość klubów w lidze:</label>
+            <p name="maxClubs">{{league.maxClubsInLeague}}</p>
+            <button class="EditBtn" (click)="editQuantityShow = true">Zmień ilość klubów</button>
         </section>
     </section>
     <section class="mainSection glassEfect" style="margin-top: 25px;">
@@ -32,4 +35,6 @@
     (saveEvent)="SaveName($event)"></app-edit-name>
 <app-edit-date *ngIf="editDateShow" (closeEvent)="editDateShow=false" [LeagueId]="league.id"
     (saveEvent)="SaveDate($event)"></app-edit-date>
+<app-edit-quantity *ngIf="editQuantityShow" (closeEvent)="editQuantityShow=false" [LeagueId]="league.id"
+    (saveEvent)="SaveQuantity($event)"></app-edit-quantity>
 <app-base-alert *ngIf="ShowAlert" (CloseEmit)="ShowAlert=false" [baseAlert]="baseAlert"></app-base-alert>

@@ -9,6 +9,7 @@ namespace Infrastructure.DTOs.Leagues
     {
         public Guid id { get; set; }
         public string name { get; set; }
+        public int maxClubsInLeague { get; set; }
         public DateTime startAt { get; set; }
         public DateTime endAt { get; set; }
         public LeagueStatus status { get; set; }
@@ -19,6 +20,7 @@ namespace Infrastructure.DTOs.Leagues
             return new LeagueDTO()
             {
                 id = model.Id,
+                maxClubsInLeague = model.MaxClubsInLeague,
                 name = model.Name,
                 startAt = model.SezonStartDate,
                 endAt = model.SezonEndDate,
