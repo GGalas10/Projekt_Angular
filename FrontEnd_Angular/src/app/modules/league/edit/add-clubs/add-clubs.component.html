@@ -1,1 +1,20 @@
-<p>add-clubs works!</p>
+<ng-container *ngIf="clubSelectList">
+    <section class="mainSection glassEfect">
+        <button class="exit" (click)="closeEvent.emit()">X</button>
+        <h1>Zmiana nazwy</h1>
+        <form [formGroup]="clubsForm">
+            <ng-container formArrayName="oneClub">
+                <div *ngFor="let item of oneClub.controls;index as i" style="display: grid;">
+                    <select [formControlName]="i">
+                        <option *ngFor="let club of clubSelectList" [value]="club.clubId">{{club.clubName}}</option>
+                    </select>
+                    <button class="EditBtn" type="button" (click)="removeClub(i)"
+                        *ngIf="oneClub.length > 1">Usuń</button>
+                </div>
+            </ng-container>
+            <button class="EditBtn" type="button" (click)="addClub()" style="margin-top: 30px;">Dodaj klub</button>
+        </form>
+    </section>
+</ng-container>
+
+<app-base-alert *ngIf="ShowAlert" (CloseEmit)="ShowAlert=false" [baseAlert]="baseAlert"></app-base-alert>

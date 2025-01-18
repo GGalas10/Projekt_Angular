@@ -1,4 +1,5 @@
 ﻿using ApiForFirstAngular.Controllers.Base;
+using ApiForFirstAngular.Filters;
 using Infrastructure.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -41,6 +42,13 @@ namespace ApiForFirstAngular.Controllers
         public async Task<IActionResult> GetAllClubsWithPagination(int howMuchClubs,int page)
         {
             var result = await _sportClubService.GetAllClubsWithPagination(howMuchClubs,page);
+            return Ok(result);
+        }
+        [BindUserId]
+        [HttpGet]
+        public async Task<IActionResult> GetClubsForSelectList()
+        {
+            var result = await _sportClubService.GetClubsForSelectList();
             return Ok(result);
         }
     }

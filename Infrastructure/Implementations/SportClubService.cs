@@ -95,5 +95,10 @@ namespace Infrastructure.Implementations
                 ClubList = pagination.Select(x=> ClubHomeDTO.GetDTOFromModel(x)).ToList(),
             };
         }
+        public async Task<List<ClubForSelectListDTO>> GetClubsForSelectList()
+        {
+            var result = await _clubRepository.GetAllClubs();
+            return result.Select(x=>ClubForSelectListDTO.GetFromModel(x)).ToList();
+        }
     }
 }

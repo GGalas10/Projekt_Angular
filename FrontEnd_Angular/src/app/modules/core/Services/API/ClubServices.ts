@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../../../../environments/environment.development';
 import {
   ClubDetails,
+  ClubForSelectList,
   ClubListDTO,
   HomeClubDTO,
 } from '../../../../shared/Interfaces/Club';
@@ -13,7 +14,7 @@ import {
 })
 export class ClubServices {
   headers: HttpHeaders = new HttpHeaders({ FC_Header: '' });
-  apiUrl = environment.baseUrl;
+  apiUrl = environment.baseUrl + '/Club';
   constructor(private http: HttpClient) {}
 
   GetClubDetails(clubId: string): Observable<ClubDetails> {
@@ -41,7 +42,15 @@ export class ClubServices {
     page: number,
   ): Observable<ClubListDTO> {
     return this.http.get<ClubListDTO>(
-      `${this.apiUrl}/Club/GetAllClubsWithPagination?howMuchClubs${howMuchClubs}&page=${page}`,
+      `${this.apiUrl}/GetAllClubsWithPagination?howMuchClubs${howMuchClubs}&page=${page}`,
+      {
+        headers: this.headers,
+      },
+    );
+  }
+  GetClubsForSelectList(): Observable<ClubForSelectList[]> {
+    return this.http.get<ClubForSelectList[]>(
+      `${this.apiUrl}/GetClubsForSelectList`,
       {
         headers: this.headers,
       },

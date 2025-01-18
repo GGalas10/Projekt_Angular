@@ -14,5 +14,6 @@ namespace Infrastructure.Interfaces
         Task<List<ClubHomeDTO>> GetAllClubs();
         Task<Guid> GetClubIdByNameAsync(string clubName);
         Task<ClubListDTO> GetAllClubsWithPagination(int howMuchClubs, int page);
+        Task<List<ClubForSelectListDTO>> GetClubsForSelectList();
     }
 }

@@ -25,3 +25,7 @@ export interface ClubListDTO {
   IsAllLoading: boolean;
   ClubList: HomeClubDTO[];
 }
+export interface ClubForSelectList {
+  clubId: string;
+  clubName: string;
+}

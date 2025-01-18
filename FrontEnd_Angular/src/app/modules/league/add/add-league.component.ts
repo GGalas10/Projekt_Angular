@@ -95,7 +95,7 @@ export class AddLeagueComponent {
     if (this.formControls.name.invalid)
       this.errors.push('<p>Uzupełnij nazwę ligi</p>');
     if (this.formControls.maxClubs.invalid)
-      this.errors.push('<p>Uzupełnij ilość klubów ligi</p>');
+      this.errors.push('<p>Uzupełnij ilość klubów w lidze</p>');
     if (this.formControls.startDate.invalid == null)
       this.errors.push('<p>Uzupełnij Początek ligi</p>');
     if (this.formControls.endDate.invalid == null)

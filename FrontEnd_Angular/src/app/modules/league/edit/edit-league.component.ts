@@ -19,6 +19,7 @@ export class EditLeagueComponent implements OnInit {
   editNameShow = false;
   editDateShow = false;
   editQuantityShow = false;
+  addClubsShow = false;
   leagueId = '';
   league!: LeagueDTO;
   baseAlert: BaseAlert = { Title: '', Message: '' };
