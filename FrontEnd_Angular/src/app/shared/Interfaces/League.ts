@@ -32,6 +32,10 @@ export interface EditLeagueCommand {
   startAt: Date | null;
   endAt: Date | null;
 }
+export interface ClubCountWithMaxDTO {
+  ClubsCount: number;
+  MaxClubs: number;
+}
 export function GetStatusName(status: number) {
   switch (status) {
     case 0:

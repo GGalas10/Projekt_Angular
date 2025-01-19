@@ -75,5 +75,12 @@ namespace DataAccess.Repositories
             _dbContext.Entry(oldLeague).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
         }
+        public async Task<League> GetLeagueWithClubsById(Guid leagueId)
+        {
+            var league = await _dbContext.Leagues.AsNoTracking().Include(x=>x.clubs).FirstOrDefaultAsync(x=>x.Id == leagueId);
+            if(league == null)
+                throw new BadRequestException("Cannot_Find_The_League_For_ClubCount");
+            return league;
+        }
     }
 }

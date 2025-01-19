@@ -3,6 +3,7 @@ import { environment } from '../../../../../environments/environment.development
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {
+  ClubCountWithMaxDTO,
   CreateLeagueCommand,
   EditLeagueCommand,
   LeagueDTO,
@@ -45,6 +46,12 @@ export class LeagueService {
   }
   GetLeagueForEdit(leagueId: string): Observable<LeagueListDTO> {
     return this.http.get<LeagueDTO>(
+      `${this.apiURL}/GetLeagueForEditById?leagueId=${leagueId}`,
+      { headers: this.headers },
+    );
+  }
+  GetClubsCount(leagueId: string): Observable<ClubCountWithMaxDTO> {
+    return this.http.get<ClubCountWithMaxDTO>(
       `${this.apiURL}/GetLeagueForEditById?leagueId=${leagueId}`,
       { headers: this.headers },
     );

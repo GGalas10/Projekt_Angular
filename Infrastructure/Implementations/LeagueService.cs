@@ -62,5 +62,12 @@ namespace Infrastructure.Implementations
             var result = await _leagueRepository.GetLeagueById(leagueId);
             return LeagueHomeDTO.GetFromModel(result);
         }
+        public async Task<ClubCountWithMaxDTO> GetClubsCountForLeague(Guid leagueId)
+        {
+            if (leagueId == Guid.Empty)
+                throw new BadRequestException("LeagueId_Cannot_Be_Empty");
+            var result = await _leagueRepository.GetLeagueWithClubsById(leagueId);
+            return new ClubCountWithMaxDTO() { ClubsCount = result.clubs.Count(), MaxClubs = result.MaxClubsInLeague };
+        }
     }
 }

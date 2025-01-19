@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { EditDateComponent } from './edit/edit-date/edit-date.component';
 import { AddClubsComponent } from './edit/add-clubs/add-clubs.component';
 import { EditQuantityComponent } from './edit/edit-quantity/edit-quantity.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,12 @@ import { EditQuantityComponent } from './edit/edit-quantity/edit-quantity.compon
     AddClubsComponent,
     EditQuantityComponent,
   ],
-  imports: [CommonModule, LeagueRoutingModule, SharedModule, FormsModule],
+  imports: [
+    CommonModule,
+    LeagueRoutingModule,
+    SharedModule,
+    FormsModule,
+    NgSelectModule,
+  ],
 })
 export class LeagueModule {}

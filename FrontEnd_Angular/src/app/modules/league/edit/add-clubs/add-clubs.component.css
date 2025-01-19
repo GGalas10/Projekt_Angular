@@ -2,7 +2,7 @@
   position: fixed;
   height: auto;
   max-height: 800px;
-  overflow-y: scroll;
+  overflow-y: auto;
   width: 25%;
   top: 10%;
   left: 38%;
@@ -12,18 +12,6 @@
   padding: 15px 25px;
   border-radius: 15px;
   backdrop-filter: blur(21px);
-}
-select {
-  height: 2.5rem;
-  width: 60%;
-  margin: auto;
-  background-color: #0000001c;
-  border: none;
-  border-radius: 15px;
-  text-align: center;
-}
-select option {
-  background-color: #0000001c;
 }
 .EditBtn {
   height: 2.5rem;
@@ -49,4 +37,27 @@ select option {
   font-size: 1.5rem;
   background: transparent;
   border: none;
+}
+.ng-select.custom {
+  padding: 3px 15px;
+  border-radius: 15px;
+  background-color: #9dfd8221;
+  color: whitesmoke;
+  backdrop-filter: blur(15px);
+}
+::ng-deep .ng-select .ng-dropdown-panel {
+  left: 0;
+  background-color: #6eae42db;
+  backdrop-filter: blur(15px);
+  border-radius: 15px;
+}
+::ng-deep .ng-select .ng-option.ng-option-marked {
+  opacity: 0.8;
+  background-color: #8080805e;
+}
+::ng-deep .ng-select .ng-option.ng-option-marked:last-child {
+  border-radius: 0 0 15px 15px;
+}
+::ng-deep .ng-select .ng-option.ng-option-marked:first-child {
+  border-radius: 15px 15px 0 0;
 }

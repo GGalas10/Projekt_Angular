@@ -52,5 +52,12 @@ namespace ApiForFirstAngular.Controllers
             await _leagueService.EditLeaguePrimaryDate(command);
             return Ok();
         }
+        [BindUserId]
+        [HttpGet]
+        public async Task<IActionResult> GetClubsCountForLeague(Guid leagueId)
+        {
+            var result = await _leagueService.GetClubsCountForLeague(leagueId);
+            return Ok(result);
+        }
     }
 }

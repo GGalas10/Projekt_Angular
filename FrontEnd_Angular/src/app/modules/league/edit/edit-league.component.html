@@ -39,5 +39,5 @@
     (saveEvent)="SaveDate($event)"></app-edit-date>
 <app-edit-quantity *ngIf="editQuantityShow" (closeEvent)="editQuantityShow=false" [LeagueId]="league.id"
     (saveEvent)="SaveQuantity($event)"></app-edit-quantity>
-<app-add-clubs *ngIf="addClubsShow" (closeEvent)="addClubsShow = false;"></app-add-clubs>
+<app-add-clubs *ngIf="addClubsShow" (closeEvent)="addClubsShow = false;" [leagueId]="league.id"></app-add-clubs>
 <app-base-alert *ngIf="ShowAlert" (CloseEmit)="ShowAlert=false" [baseAlert]="baseAlert"></app-base-alert>

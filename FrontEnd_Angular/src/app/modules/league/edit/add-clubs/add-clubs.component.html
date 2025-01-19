@@ -5,9 +5,10 @@
         <form [formGroup]="clubsForm">
             <ng-container formArrayName="oneClub">
                 <div *ngFor="let item of oneClub.controls;index as i" style="display: grid;">
-                    <select [formControlName]="i">
-                        <option *ngFor="let club of clubSelectList" [value]="club.clubId">{{club.clubName}}</option>
-                    </select>
+                    <ng-select class="custom" [formControlName]="i" [items]="filteredClubSelectList"
+                        bindLabel="clubName" notFoundText="Nie znaleziono klubu" bindValue="clubId" [multiple]="false"
+                        [searchable]="true" [virtualScroll]="true" (search)="onSearch($event.term)">
+                    </ng-select>
                     <button class="EditBtn" type="button" (click)="removeClub(i)"
                         *ngIf="oneClub.length > 1">Usuń</button>
                 </div>
