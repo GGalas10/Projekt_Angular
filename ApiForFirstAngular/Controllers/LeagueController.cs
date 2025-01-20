@@ -59,5 +59,12 @@ namespace ApiForFirstAngular.Controllers
             var result = await _leagueService.GetClubsCountForLeague(leagueId);
             return Ok(result);
         }
+        [HttpPost,BindUserId]
+        public async Task<IActionResult> AddClubsToLeague([FromQuery]Guid leagueId,[FromBody] List<Guid> clubsId)
+        {
+            var test = clubsId;
+            return Ok();
+        }
+
     }
 }

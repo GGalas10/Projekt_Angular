@@ -48,6 +48,12 @@ export class AddClubsComponent implements OnInit {
         console.log(err);
       },
     });
+    this.clubsForm.valueChanges.subscribe((value) => {
+      console.log(value.oneClub);
+      this.filteredClubSelectList = this.clubSelectList
+        .filter((club) => !value.oneClub?.includes(club.clubId))
+        .slice(0, 4);
+    });
   }
   get oneClub(): FormArray {
     return this.clubsForm.get('oneClub') as FormArray;
@@ -73,9 +79,16 @@ export class AddClubsComponent implements OnInit {
   removeClub(index: number): void {
     this.oneClub.removeAt(index);
   }
-
   onSubmit(): void {
-    console.log(this.clubsForm.value);
+    const clubsId = this.oneClub.value || '';
+    this.leagueService.AddClubsToLeague(this.leagueId, clubsId).subscribe({
+      next: () => {
+        console.log('done');
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
   ShowAlertFunction(title: string, message: string) {
     this.baseAlert.Title = title;

@@ -56,4 +56,11 @@ export class LeagueService {
       { headers: this.headers },
     );
   }
+  AddClubsToLeague(leagueId: string, clubsId: string[]): Observable<void> {
+    return this.http.post<void>(
+      `${this.apiURL}/AddClubsToLeague?leagueId=${leagueId}`,
+      clubsId,
+      { headers: this.headers },
+    );
+  }
 }

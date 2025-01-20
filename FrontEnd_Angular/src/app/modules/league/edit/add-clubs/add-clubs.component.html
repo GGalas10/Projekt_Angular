@@ -2,7 +2,7 @@
     <section class="mainSection glassEfect">
         <button class="exit" (click)="closeEvent.emit()">X</button>
         <h1>Zmiana nazwy</h1>
-        <form [formGroup]="clubsForm">
+        <form [formGroup]="clubsForm" (submit)="onSubmit()">
             <ng-container formArrayName="oneClub">
                 <div *ngFor="let item of oneClub.controls;index as i" style="display: grid;">
                     <ng-select class="custom" [formControlName]="i" [items]="filteredClubSelectList"
@@ -13,7 +13,10 @@
                         *ngIf="oneClub.length > 1">Usuń</button>
                 </div>
             </ng-container>
-            <button class="EditBtn" type="button" (click)="addClub()" style="margin-top: 30px;">Dodaj klub</button>
+            <section style="display: grid;">
+                <button class="EditBtn" type="button" (click)="addClub()" style="margin-top: 30px;">Dodaj klub</button>
+                <button class="saveButton" type="submit">Zapisz kluby</button>
+            </section>
         </form>
     </section>
 </ng-container>

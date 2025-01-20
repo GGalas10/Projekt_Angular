@@ -44,8 +44,10 @@
   background-color: #9dfd8221;
   color: whitesmoke;
   backdrop-filter: blur(15px);
+  z-index: 2;
 }
 ::ng-deep .ng-select .ng-dropdown-panel {
+  top: -20px;
   left: 0;
   background-color: #6eae42db;
   backdrop-filter: blur(15px);
