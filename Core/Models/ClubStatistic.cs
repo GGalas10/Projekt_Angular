@@ -3,7 +3,7 @@
     public class ClubStatistic
     {
         public Guid Id { get; set; }
-        public Guid ClubId { get; set; }
+        public Guid SportsClubId { get; set; }
         public virtual SportsClub SportsClub { get; set; }
         public Guid LeagueId { get; set; }
         public virtual League League { get; set; }
@@ -20,8 +20,8 @@
         public ClubStatistic(SportsClub club, League league)
         {
             Id = Guid.NewGuid();
-            ClubId = club.Id;
-            LeagueId = league.Id;
+            SportsClub = club;
+            League = league;
             GoalsFor = 0;
             GoalsAganist = 0;
             ClubAssist = 0;

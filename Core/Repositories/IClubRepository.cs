@@ -18,5 +18,6 @@ namespace Core.Repositories
         Task<List<SportsClub>> GetAllClubsWithoutRelationDataAsyncTake3();
         Task<List<SportsClub>> GetAllClubsWithRelationDataAsync();
         Task<List<SportsClub>> GetAllClubs();
+        Task<List<SportsClub>> GetClubsListFromIdList(List<Guid> clubsId);
     }
 }

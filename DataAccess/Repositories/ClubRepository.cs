@@ -125,5 +125,10 @@ namespace DataAccess.Repositories
             => await _context.SportsClubs.AsNoTracking().AsSplitQuery().Include(x => x.PlayerList).Include(x => x.CoachList).Include(x => x.StaffList).ToListAsync();
         public async Task<List<SportsClub>> GetAllClubs()
             => await _context.SportsClubs.AsNoTracking().ToListAsync();
+        public async Task<List<SportsClub>> GetClubsListFromIdList(List<Guid> clubsId)
+        {
+            var result = await _context.SportsClubs.Where(x=>clubsId.Contains(x.Id)).ToListAsync();
+            return result;
+        }
     }
 }

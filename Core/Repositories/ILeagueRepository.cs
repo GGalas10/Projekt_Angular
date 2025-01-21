@@ -8,10 +8,10 @@ namespace Core.Repositories
         Task UpdateLeague(League league,Guid leagueId);
         Task DeleteLeague(Guid leagueId);
         Task<League> GetLeagueById(Guid leagueId);
-        Task AddClubeToLeague(SportsClub club, Guid leagueId);
+        Task AddClubToLeague(SportsClub club, Guid leagueId);
         Task<List<League>> GetAllLeagues();
         Task EditLeaguePrimaryDate(League newLeague);
         Task<League> GetLeagueWithClubsById(Guid leagueId);
-
+        Task AddClubListToLeague(List<SportsClub> clubs, Guid leagueId);
     }
 }

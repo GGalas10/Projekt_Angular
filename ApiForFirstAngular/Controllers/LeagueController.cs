@@ -62,7 +62,7 @@ namespace ApiForFirstAngular.Controllers
         [HttpPost,BindUserId]
         public async Task<IActionResult> AddClubsToLeague([FromQuery]Guid leagueId,[FromBody] List<Guid> clubsId)
         {
-            var test = clubsId;
+            await _leagueService.AddClubsToLeague(clubsId, leagueId);
             return Ok();
         }
 

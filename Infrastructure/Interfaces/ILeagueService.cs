@@ -12,5 +12,6 @@ namespace Infrastructure.Interfaces
         Task EditLeaguePrimaryDate(LeagueEdit command);
         Task<LeagueHomeDTO> GetLeagueForEditById(Guid leagueId);
         Task<ClubCountWithMaxDTO> GetClubsCountForLeague(Guid leagueId);
+        Task AddClubsToLeague(List<Guid> clubsId, Guid leagueId);
     }
 }

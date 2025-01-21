@@ -10,10 +10,12 @@ namespace Infrastructure.Implementations
     {
         private readonly ILeagueRepository _leagueRepository;
         private readonly IUserLeagueAccessRepository _userLeagueRepository;
-        public LeagueService(ILeagueRepository leagueRepository,IUserLeagueAccessRepository userLeagueRepository)
+        private readonly IClubRepository _clubRepository;
+        public LeagueService(ILeagueRepository leagueRepository,IUserLeagueAccessRepository userLeagueRepository,IClubRepository clubRepository)
         {
             _leagueRepository = leagueRepository;
             _userLeagueRepository = userLeagueRepository;
+            _clubRepository = clubRepository;
         }
 
         public async Task<Guid> CreateLeague(LeagueCreate command,Guid userId)
@@ -68,6 +70,13 @@ namespace Infrastructure.Implementations
                 throw new BadRequestException("LeagueId_Cannot_Be_Empty");
             var result = await _leagueRepository.GetLeagueWithClubsById(leagueId);
             return new ClubCountWithMaxDTO() { ClubsCount = result.clubs.Count(), MaxClubs = result.MaxClubsInLeague };
+        }
+        public async Task AddClubsToLeague(List<Guid> clubsId,Guid leagueId)
+        {
+            if (clubsId == null || clubsId.Count() <= 0)
+                throw new BadRequestException("Cannot_Add_Empty_List");
+            var allClubs = await _clubRepository.GetClubsListFromIdList(clubsId);
+            await _leagueRepository.AddClubListToLeague(allClubs, leagueId);
         }
     }
 }

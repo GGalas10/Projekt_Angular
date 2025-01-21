@@ -49,7 +49,7 @@ namespace Core.Models
         {
             if (club == null)
                 throw new BadRequestException("Cannot_Add_To_League_Empty_Club");
-            if (_clubs.Any(x => x.ClubId == club.Id))
+            if (_clubs.Any(x => x.SportsClubId == club.Id))
                 throw new BadRequestException("Club_Is_Already_Exist_In_This_League");
             _clubs.Add(new ClubStatistic(club, this));
         }
@@ -57,9 +57,9 @@ namespace Core.Models
         {
             if (club == null)
                 throw new BadRequestException("Cannot_Add_To_League_Empty_Club");
-            if (!_clubs.Any(x => x.ClubId == club.Id))
+            if (!_clubs.Any(x => x.SportsClubId == club.Id))
                 throw new BadRequestException("Club_Is_Doesn't_Exist_In_This_League");
-            _clubs.Remove(_clubs.FirstOrDefault(x => x.ClubId == club.Id));
+            _clubs.Remove(_clubs.FirstOrDefault(x => x.SportsClubId == club.Id));
         }
         public void EditLeaguePrimaryDate(League model)
         {

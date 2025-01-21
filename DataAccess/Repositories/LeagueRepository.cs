@@ -2,6 +2,7 @@
 using Core.Models;
 using Core.Repositories;
 using DataAccess.Contexts;
+using DataAccess.Migrations.DataDb;
 using Microsoft.EntityFrameworkCore;
 
 namespace DataAccess.Repositories
@@ -47,8 +48,8 @@ namespace DataAccess.Repositories
         }
 
         public async Task<League> GetLeagueById(Guid leagueId)
-        => await _dbContext.Leagues.FirstOrDefaultAsync(x => x.Id == leagueId);
-        public async Task AddClubeToLeague(SportsClub club,Guid leagueId)
+        => await _dbContext.Leagues.AsNoTracking().Include(x=>x.clubs).Include(x=>x.matches).FirstOrDefaultAsync(x => x.Id == leagueId);
+        public async Task AddClubToLeague(SportsClub club,Guid leagueId)
         {
             var league = await _dbContext.Leagues.FirstOrDefaultAsync(x => x.Id == leagueId);
             if (league == null)
@@ -81,6 +82,17 @@ namespace DataAccess.Repositories
             if(league == null)
                 throw new BadRequestException("Cannot_Find_The_League_For_ClubCount");
             return league;
+        }
+        public async Task AddClubListToLeague(List<SportsClub> clubs, Guid leagueId)
+        {
+            var league = await _dbContext.Leagues.FirstOrDefaultAsync(x=>x.Id==leagueId);
+            if (league == null)
+                throw new BadRequestException("Cannot_Find_The_League");
+            foreach(var club in clubs)
+            {
+                _dbContext.ClubStatistic.Add(new ClubStatistic(club,league));
+            }            
+            await _dbContext.SaveChangesAsync();
         }
     }
 }
