@@ -18,9 +18,35 @@
         <h1>Zepoły w lidze</h1>
         <section *ngIf="league.clubStatistics">
             <ng-container *ngIf="league.clubStatistics.length >0;else empty">
-                <section></section>
                 <button class="EditBtn" style="width: 40%;" (click)="addClubsShow = true">Dodaj kolejny zespół do
                     ligi</button>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pozycja</th>
+                            <th>Nazwa klubu</th>
+                            <th>Punkty</th>
+                            <th>Zwycięsta</th>
+                            <th>Remisy</th>
+                            <th>Przegrane</th>
+                            <th>Bramki</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let oneClub of league.clubStatistics; index as i">
+                            <tr>
+                                <td>{{i+1}}</td>
+                                <td>{{oneClub.clubName}}</td>
+                                <td>{{oneClub.points}}</td>
+                                <td>{{oneClub.won}}</td>
+                                <td>{{oneClub.drawn}}</td>
+                                <td>{{oneClub.lost}}</td>
+                                <td>{{oneClub.goalsFor}}:{{oneClub.goalsAganist}}</td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+
             </ng-container>
             <ng-template #empty>
                 <h2>Nie ma dodanych żadnych klubów do tej ligi</h2>

@@ -1,8 +1,7 @@
-import { ClubListDTO } from './Club';
-
 export interface ClubStatisticDTO {
   id: string;
-  club: ClubListDTO;
+  clubId: string;
+  clubName: string;
   goalsFor: number;
   goalsAganist: number;
   goalsDifferences: number;

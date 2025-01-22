@@ -21,3 +21,23 @@
 .EditBtn:active {
   opacity: 0.6;
 }
+table {
+  width: 80%;
+  margin: 25px auto;
+}
+thead {
+  background-color: black;
+}
+tbody {
+  background-color: gray;
+
+  tr:nth-child(-n + 3) {
+    background-color: skyblue;
+  }
+  tr:first-child {
+    background-color: #d8df00b2;
+    td {
+      color: black;
+    }
+  }
+}

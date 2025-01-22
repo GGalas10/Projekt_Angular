@@ -48,7 +48,7 @@ namespace DataAccess.Repositories
         }
 
         public async Task<League> GetLeagueById(Guid leagueId)
-        => await _dbContext.Leagues.AsNoTracking().Include(x=>x.clubs).Include(x=>x.matches).FirstOrDefaultAsync(x => x.Id == leagueId);
+        => await _dbContext.Leagues.AsNoTracking().Include(x=>x.clubs).ThenInclude(x=>x.SportsClub).Include(x=>x.matches).FirstOrDefaultAsync(x => x.Id == leagueId);
         public async Task AddClubToLeague(SportsClub club,Guid leagueId)
         {
             var league = await _dbContext.Leagues.FirstOrDefaultAsync(x => x.Id == leagueId);
