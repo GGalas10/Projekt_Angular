@@ -83,15 +83,30 @@ namespace DataAccess.Repositories
                 throw new BadRequestException("Cannot_Find_The_League_For_ClubCount");
             return league;
         }
-        public async Task AddClubListToLeague(List<SportsClub> clubs, Guid leagueId)
+        public async Task<List<string>> AddClubListToLeague(List<SportsClub> clubs, Guid leagueId)
         {
+            List<string> errors = new();
             var league = await _dbContext.Leagues.FirstOrDefaultAsync(x=>x.Id==leagueId);
             if (league == null)
                 throw new BadRequestException("Cannot_Find_The_League");
+            var leagueClubs = await _dbContext.ClubStatistic.Where(x => x.LeagueId == leagueId).ToListAsync();
             foreach(var club in clubs)
             {
-                _dbContext.ClubStatistic.Add(new ClubStatistic(club,league));
+                if (!leagueClubs.Any(x => x.SportsClubId == club.Id))
+                    _dbContext.ClubStatistic.Add(new ClubStatistic(club, league));
+                else
+                    errors.Add($"Klub {club.Name} już jest dodany do ligi");
             }            
+            await _dbContext.SaveChangesAsync();
+            return errors;
+        }
+        public async Task RemoveClubFromLeague(Guid leagueId, Guid clubId)
+        {
+            var clubStatistic = await _dbContext.ClubStatistic.FirstOrDefaultAsync(x => x.SportsClubId == clubId && x.LeagueId == leagueId);
+            if (clubStatistic == null)
+                throw new BadRequestException("Cannot_Find_The_ClubStatictic");
+            _dbContext.ClubStatistic.Remove(clubStatistic);
+            _dbContext.Entry(clubStatistic).State = EntityState.Deleted;
             await _dbContext.SaveChangesAsync();
         }
     }

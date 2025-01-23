@@ -237,7 +237,7 @@ h6 {
   border: none;
 }
 .deleteBtn:hover {
-  opacity: 0.8;
+  background-color: #6d0f0f;
 }
 .deleteBtn:active {
   opacity: 0.6;

@@ -29,15 +29,30 @@ thead {
   background-color: black;
 }
 tbody {
-  background-color: gray;
-
-  tr:nth-child(-n + 3) {
-    background-color: skyblue;
+  td {
+    background-color: gray;
   }
-  tr:first-child {
-    background-color: #d8df00b2;
+  tr:nth-child(-n + 3) {
     td {
-      color: black;
+      background-color: skyblue;
     }
   }
+  tr:first-child {
+    td {
+      color: black;
+      background-color: #d8df00b2;
+    }
+  }
+  td:nth-last-child(1) {
+    background-color: transparent;
+  }
+}
+.deleteBtn {
+  margin: 5px 0;
+}
+.deleteColumn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent !important;
 }

@@ -71,12 +71,22 @@ namespace Infrastructure.Implementations
             var result = await _leagueRepository.GetLeagueWithClubsById(leagueId);
             return new ClubCountWithMaxDTO() { ClubsCount = result.clubs.Count(), MaxClubs = result.MaxClubsInLeague };
         }
-        public async Task AddClubsToLeague(List<Guid> clubsId,Guid leagueId)
+        public async Task<List<string>> AddClubsToLeague(List<Guid> clubsId,Guid leagueId)
         {
             if (clubsId == null || clubsId.Count() <= 0)
                 throw new BadRequestException("Cannot_Add_Empty_List");
             var allClubs = await _clubRepository.GetClubsListFromIdList(clubsId);
-            await _leagueRepository.AddClubListToLeague(allClubs, leagueId);
+            var result = await _leagueRepository.AddClubListToLeague(allClubs, leagueId);
+            return result;
+        }
+        public async Task RemoveClubFromLeague(Guid leagueId, Guid clubId)
+        {
+            if (leagueId == Guid.Empty)
+                throw new BadRequestException("LeagueId_Cannot_Be_Empty");
+            if (clubId == Guid.Empty)
+                throw new BadRequestException("ClubId_Cannot_Be_Empty");
+            await _leagueRepository.RemoveClubFromLeague(leagueId, clubId);
+            await Task.CompletedTask;
         }
     }
 }

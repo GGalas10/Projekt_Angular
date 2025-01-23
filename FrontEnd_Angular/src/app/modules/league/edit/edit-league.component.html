@@ -42,6 +42,10 @@
                                 <td>{{oneClub.drawn}}</td>
                                 <td>{{oneClub.lost}}</td>
                                 <td>{{oneClub.goalsFor}}:{{oneClub.goalsAganist}}</td>
+                                <td class="deleteColumn">
+                                    <button class="deleteBtn" (click)="DeleteClubFromLeague(oneClub.clubId)">Usuń
+                                        klub</button>
+                                </td>
                             </tr>
                         </ng-container>
                     </tbody>
@@ -65,5 +69,6 @@
     (saveEvent)="SaveDate($event)"></app-edit-date>
 <app-edit-quantity *ngIf="editQuantityShow" (closeEvent)="editQuantityShow=false" [LeagueId]="league.id"
     (saveEvent)="SaveQuantity($event)"></app-edit-quantity>
-<app-add-clubs *ngIf="addClubsShow" (closeEvent)="addClubsShow = false;" [leagueId]="league.id"></app-add-clubs>
+<app-add-clubs *ngIf="addClubsShow" (closeEvent)="addClubsShow = false;" [leagueId]="league.id"
+    (saveEvent)="SaveAddClubs($event)"></app-add-clubs>
 <app-base-alert *ngIf="ShowAlert" (CloseEmit)="ShowAlert=false" [baseAlert]="baseAlert"></app-base-alert>

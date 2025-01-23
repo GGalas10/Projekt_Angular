@@ -68,4 +68,41 @@ export class EditLeagueComponent implements OnInit {
     this.baseAlert.Message = message;
     this.ShowAlert = true;
   }
+  SaveAddClubs(errors: string[]) {
+    if (errors.length <= 0)
+      this.ShowAlertFunction('Sukces', 'Udało się zapisać wszystkie kluby');
+    else {
+      let message = '<p>Nie udało się zapisać wszystkich klubów:</p>';
+      errors.forEach((oneError) => {
+        message += `<p>${oneError}</p>`;
+      });
+      this.ShowAlertFunction('Błąd', message);
+    }
+    this.addClubsShow = false;
+    this.leagueService.GetClubById(this.leagueId).subscribe({
+      next: (result) => {
+        this.league = result;
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
+  DeleteClubFromLeague(clubId: string) {
+    this.leagueService.DeleteClubFromLeague(this.leagueId, clubId).subscribe({
+      next: () => {
+        this.league.clubStatistics = this.league.clubStatistics.filter(
+          (x) => x.clubId != clubId,
+        );
+        this.ShowAlertFunction('Sukces', 'Udało się usunąć klub z ligi');
+      },
+      error: (err) => {
+        this.ShowAlertFunction(
+          'Błąd',
+          'Coś poszło nie tak. Spróbuj ponownie później',
+        );
+        console.log(err.message);
+      },
+    });
+  }
 }

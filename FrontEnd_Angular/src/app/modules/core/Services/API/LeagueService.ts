@@ -56,10 +56,16 @@ export class LeagueService {
       { headers: this.headers },
     );
   }
-  AddClubsToLeague(leagueId: string, clubsId: string[]): Observable<void> {
-    return this.http.post<void>(
+  AddClubsToLeague(leagueId: string, clubsId: string[]): Observable<string[]> {
+    return this.http.post<string[]>(
       `${this.apiURL}/AddClubsToLeague?leagueId=${leagueId}`,
       clubsId,
+      { headers: this.headers },
+    );
+  }
+  DeleteClubFromLeague(leagueId: string, clubId: string): Observable<void> {
+    return this.http.delete<void>(
+      `${this.apiURL}/RemoveClubFromLeague?leagueId=${leagueId}&clubId=${clubId}`,
       { headers: this.headers },
     );
   }

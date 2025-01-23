@@ -45,3 +45,12 @@ input {
   background: transparent;
   border: none;
 }
+select {
+  width: 30%;
+  height: 2.5rem;
+  margin: auto;
+  background-color: #00000047;
+  text-align: center;
+  border-radius: 15px;
+  padding: 5px 15px;
+}

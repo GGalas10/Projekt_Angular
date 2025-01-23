@@ -7,7 +7,12 @@
     <label for="endDate">Koniec ligi:</label>
     <input type="date" name="endDate" formControlName="endDate" [required]="true">
     <label for="maxClubs">Ilość klubów:</label>
-    <input type="number" name="maxClubs" formControlName="maxClubs" [required]="true" min="1">
+    <select formControlName="maxClubs" name="maxClubs" id="maxClubs" [required]="true">
+        <option value="10">10</option>
+        <option value="12">12</option>
+        <option value="14">14</option>
+        <option value="16">16</option>
+    </select>
     <button class="saveButton">Dodaj</button>
 </form>
 <app-base-alert *ngIf="this.showAlert" [baseAlert]="this.baseAlert" (CloseEmit)="showAlert = false"></app-base-alert>

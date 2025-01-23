@@ -16,6 +16,7 @@ import {} from '@ng-select/ng-select';
 export class AddClubsComponent implements OnInit {
   @Input() leagueId!: string;
   @Output() closeEvent = new EventEmitter<void>();
+  @Output() saveEvent = new EventEmitter<string[]>();
   clubSelectList!: ClubForSelectList[];
   leagueClubsCount = 0;
   leagueMaxCount = 0;
@@ -49,7 +50,6 @@ export class AddClubsComponent implements OnInit {
       },
     });
     this.clubsForm.valueChanges.subscribe((value) => {
-      console.log(value.oneClub);
       this.filteredClubSelectList = this.clubSelectList
         .filter((club) => !value.oneClub?.includes(club.clubId))
         .slice(0, 4);
@@ -82,8 +82,8 @@ export class AddClubsComponent implements OnInit {
   onSubmit(): void {
     const clubsId = this.oneClub.value || '';
     this.leagueService.AddClubsToLeague(this.leagueId, clubsId).subscribe({
-      next: () => {
-        console.log('done');
+      next: (errors) => {
+        this.saveEvent.emit(errors);
       },
       error: (err) => {
         console.log(err);
