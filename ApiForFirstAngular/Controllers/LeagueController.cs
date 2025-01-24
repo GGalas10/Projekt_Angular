@@ -71,6 +71,11 @@ namespace ApiForFirstAngular.Controllers
             await _leagueService.RemoveClubFromLeague(leagueId, clubId);
             return Ok();
         }
+        [HttpGet,BindUserId]
+        public async Task<IActionResult> GenerateMatches(Guid leagueId)
+        {
+            return Ok();
+        } 
 
     }
 }
