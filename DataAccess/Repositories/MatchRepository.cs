@@ -29,6 +29,13 @@ namespace DataAccess.Repositories
             _dbContext.Matches.Add(match);
             await _dbContext.SaveChangesAsync();
         }
+        public async Task AddListOfMatches(List<Match> matches)
+        {
+            if(!matches.Any())
+                throw new BadRequestException("Match_Cannot_Be_Null");
+            _dbContext.Matches.AddRange(matches);
+            await _dbContext.SaveChangesAsync();
+        }
         public async Task<Match> GetMatchById(Guid matchId)
             => await _dbContext.Matches.FirstOrDefaultAsync(x => x.Id == matchId);
     }

@@ -11,18 +11,21 @@ namespace Core.Models
         public Guid AwayClubId { get; set; }
         public virtual SportsClub AwayClub { get; set; }
         public DateTime StartAt { get; set; }
+        public Guid LeagueId { get; set; }
+        public virtual League League { get; set; }
         public int HomeClubGoals { get; set; }
         public int AwayClubGoals { get; set; }
         public MatchStatusEnum Status { get; set; }
         private Match() { }
-        public Match(SportsClub homeClub,SportsClub awayClub,DateTime startAt)
+        public Match(Guid homeClubId, Guid awayClubId, DateTime startAt,Guid leagueId)
         {
             if (startAt < DateTime.Now)
                 throw new BadRequestException("Cannot_Add_Match_Played");
             Id = Guid.NewGuid();
-            HomeClubId = homeClub.Id;
+            LeagueId = leagueId;
+            HomeClubId = homeClubId;
             HomeClubGoals = 0;
-            AwayClubId = awayClub.Id;
+            AwayClubId = awayClubId;
             AwayClubGoals = 0;
             StartAt = startAt;
             Status = MatchStatusEnum.Before;
