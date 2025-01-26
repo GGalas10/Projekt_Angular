@@ -12,13 +12,16 @@
             <label for="maxClubs">Ilość klubów w lidze:</label>
             <p name="maxClubs">{{league.maxClubsInLeague}}</p>
             <button class="EditBtn" (click)="editQuantityShow = true">Zmień ilość klubów</button>
+            <button (click)="modalShow=true" class="EditBtn" style="width: 30%;">Akceptuję wszystkie zmiany i generuje
+                mecze</button>
         </section>
     </section>
     <section class="mainSection glassEfect" style="margin-top: 25px;">
         <h1>Zepoły w lidze</h1>
         <section *ngIf="league.clubStatistics">
             <ng-container *ngIf="league.clubStatistics.length >0;else empty">
-                <button class="EditBtn" style="width: 40%;" (click)="addClubsShow = true">Dodaj kolejny zespół do
+                <button *ngIf="canEditClub" class="EditBtn" style="width: 40%;" (click)="addClubsShow = true">Dodaj
+                    kolejny zespół do
                     ligi</button>
                 <table>
                     <thead>
@@ -54,7 +57,8 @@
             </ng-container>
             <ng-template #empty>
                 <h2>Nie ma dodanych żadnych klubów do tej ligi</h2>
-                <button class="EditBtn" style="width: 40%;" (click)="addClubsShow = true">Dodaj pierwsze zespoły do
+                <button *ngIf="canEditClub" class="EditBtn" style="width: 40%;" (click)="addClubsShow = true">Dodaj
+                    pierwsze zespoły do
                     ligi</button>
             </ng-template>
         </section>
@@ -72,3 +76,11 @@
 <app-add-clubs *ngIf="addClubsShow" (closeEvent)="addClubsShow = false;" [leagueId]="league.id"
     (saveEvent)="SaveAddClubs($event)"></app-add-clubs>
 <app-base-alert *ngIf="ShowAlert" (CloseEmit)="ShowAlert=false" [baseAlert]="baseAlert"></app-base-alert>
+<app-modal *ngIf="modalShow" Title="Czy jesteś pewny?"
+    Text="Akceptacja klubu sprawi, że nie będziesz mógł już zmienić klubu, a dla wybranych wygenerują się wszystkie mecze.<br /><b> Decyzji nie da się już cofnąć">
+    <div style="display: flex;justify-content: space-evenly;">
+        <button class="EditBtn" style="width: 30%;background-color: #0e7119;">Akceptuję zmiany</button>
+        <button (click)="modalShow = false" class="EditBtn"
+            style="width: 30%;background-color: #6a0e0e;">Anuluję</button>
+    </div>
+</app-modal>

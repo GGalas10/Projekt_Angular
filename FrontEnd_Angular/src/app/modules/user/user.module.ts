@@ -8,7 +8,12 @@ import { FormsModule } from '@angular/forms';
 import { UserPanelComponent } from './user-panel/user-panel.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegisterComponent, DetailsComponent, UserPanelComponent],
+  declarations: [
+    LoginComponent,
+    RegisterComponent,
+    DetailsComponent,
+    UserPanelComponent,
+  ],
   imports: [SharedModule, UserRoutingModule, FormsModule],
   exports: [],
 })

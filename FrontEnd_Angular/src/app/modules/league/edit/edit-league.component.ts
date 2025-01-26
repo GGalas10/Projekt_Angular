@@ -7,6 +7,7 @@ import {
 import { ActivatedRoute } from '@angular/router';
 import { LeagueService } from '../../core/Services/API/LeagueService';
 import { BaseAlert } from '../../../shared/Component/base-alert/BaseAlertInterface';
+import { MatchService } from '../../core/Services/API/MatchService';
 
 @Component({
   selector: 'app-edit',
@@ -20,6 +21,8 @@ export class EditLeagueComponent implements OnInit {
   editDateShow = false;
   editQuantityShow = false;
   addClubsShow = false;
+  modalShow = false;
+  canEditClub = true;
   leagueId = '';
   league!: LeagueDTO;
   baseAlert: BaseAlert = { Title: '', Message: '' };
@@ -27,6 +30,7 @@ export class EditLeagueComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private leagueService: LeagueService,
+    private matchService: MatchService,
   ) {}
   ngOnInit(): void {
     this.route.paramMap.subscribe({
@@ -35,6 +39,8 @@ export class EditLeagueComponent implements OnInit {
         this.leagueService.GetClubById(this.leagueId).subscribe({
           next: (result) => {
             this.league = result;
+            this.canEditClub = this.league.matches.length <= 0;
+            console.log(this.canEditClub);
           },
           error: (err) => {
             console.log(err);
@@ -102,6 +108,20 @@ export class EditLeagueComponent implements OnInit {
           'Coś poszło nie tak. Spróbuj ponownie później',
         );
         console.log(err.message);
+      },
+    });
+  }
+  GenerateAllMatches() {
+    this.matchService.GenerateAllMatches(this.leagueId).subscribe({
+      next: () => {
+        this.ShowAlertFunction(
+          'Sukces',
+          'Wszystkie mecze zostały wygenerowane, a klubów już nie można zmienić',
+        );
+        this.canEditClub = false;
+      },
+      error: (err) => {
+        console.log(err);
       },
     });
   }
