@@ -49,7 +49,6 @@ export class EditLeagueComponent implements OnInit {
       },
     });
   }
-
   GetLeagueStatus(status: number) {
     return GetStatusName(status);
   }

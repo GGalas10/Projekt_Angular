@@ -1,5 +1,53 @@
 <section *ngIf="league;else Null">
-    <p>Jest git</p>
+    <section class="mainSection glassEfect">
+        <h1>{{league.name}}</h1>
+        <h3>{{GetLeagueStatus(league.status)}}</h3>
+        <section class="PrimaryDateSection">
+            <label for="startAt">Liga startuje:</label>
+            <p name="startAt">{{league.startAt | date:"dd-MM-yyyy"}}</p>
+            <label for="endAt">Liga startuje:</label>
+            <p name="endAt">{{league.endAt | date:"dd-MM-yyyy"}}</p>
+            <label for="maxClubs">Ilość klubów w lidze:</label>
+            <p name="maxClubs">{{league.maxClubsInLeague}}</p>
+        </section>
+    </section>
+    <section class="mainSection glassEfect" style="margin-top: 25px;">
+        <h1>Zepoły w lidze</h1>
+        <section *ngIf="league.clubStatistics">
+            <ng-container *ngIf="league.clubStatistics.length >0;else empty">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pozycja</th>
+                            <th>Nazwa klubu</th>
+                            <th>Punkty</th>
+                            <th>Zwycięsta</th>
+                            <th>Remisy</th>
+                            <th>Przegrane</th>
+                            <th>Bramki</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <ng-container *ngFor="let oneClub of league.clubStatistics; index as i">
+                            <tr>
+                                <td>{{i+1}}</td>
+                                <td>{{oneClub.clubName}}</td>
+                                <td>{{oneClub.points}}</td>
+                                <td>{{oneClub.won}}</td>
+                                <td>{{oneClub.drawn}}</td>
+                                <td>{{oneClub.lost}}</td>
+                                <td>{{oneClub.goalsFor}}:{{oneClub.goalsAganist}}</td>
+                            </tr>
+                        </ng-container>
+                    </tbody>
+                </table>
+
+            </ng-container>
+            <ng-template #empty>
+                <h2>Nie ma dodanych żadnych klubów do tej ligi</h2>
+            </ng-template>
+        </section>
+    </section>
 </section>
 <ng-template #Null>
     <div class="loader"></div>

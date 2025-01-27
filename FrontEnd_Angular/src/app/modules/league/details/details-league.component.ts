@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { LeagueService } from '../../core/Services/API/LeagueService';
-import { LeagueDTO } from '../../../shared/Interfaces/League';
+import { GetStatusName, LeagueDTO } from '../../../shared/Interfaces/League';
 
 @Component({
   selector: 'app-details',
@@ -32,5 +32,8 @@ export class DetailsLeagueComponent implements OnInit {
         });
       },
     });
+  }
+  GetLeagueStatus(status: number) {
+    return GetStatusName(status);
   }
 }
