@@ -18,5 +18,11 @@ namespace ApiForFirstAngular.Controllers
             await _matchService.GenerateAllMatchesForLeague(leagueId);
             return Ok();
         }
+        [HttpGet]
+        public async Task<IActionResult> GetMatchById(Guid matchId)
+        {
+            var result = await _matchService.GetMatchById(matchId);
+            return Ok(result);
+        }
     }
 }

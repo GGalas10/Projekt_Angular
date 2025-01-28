@@ -37,6 +37,6 @@ namespace DataAccess.Repositories
             await _dbContext.SaveChangesAsync();
         }
         public async Task<Match> GetMatchById(Guid matchId)
-            => await _dbContext.Matches.FirstOrDefaultAsync(x => x.Id == matchId);
+            => await _dbContext.Matches.AsNoTracking().AsSplitQuery().Include(x=>x.HomeClubId).Include(x=>x.AwayClub).FirstOrDefaultAsync(x => x.Id == matchId);
     }
 }

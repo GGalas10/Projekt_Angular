@@ -9,6 +9,14 @@ export interface MatchDTO {
   awayClubGoals: number;
   status: number;
 }
+export interface MatchByIdDTO {
+  id: string;
+  HomeClub: ClubListDTO;
+  AwayClub: ClubListDTO;
+  homeClubGoals: number;
+  awayClubGoals: number;
+  status: number;
+}
 export function GetMatchStatus(status: number) {
   switch (status) {
     case 0:

@@ -1,5 +1,7 @@
-﻿using Core.Models;
+﻿using Core.Exceptions;
+using Core.Models;
 using Core.Repositories;
+using Infrastructure.DTOs.Matches;
 using Infrastructure.Interfaces;
 
 namespace Infrastructure.Implementations
@@ -38,6 +40,13 @@ namespace Infrastructure.Implementations
                 }
             }
             await _matchRepository.AddListOfMatches(matches);
+        }
+        public async Task<MatchDTO> GetMatchById(Guid matchId)
+        {
+            if (matchId == Guid.Empty)
+                throw new BadRequestException("MatchId_Cannot_Be_Empty");
+            var match = await _matchRepository.GetMatchById(matchId);
+            return MatchDTO.GetFromModel(match);
         }
         private List<Weekend> GetAllWeekendsWithMatchesTime(DateTime leagueStart,int clubsQuantity)
         {
