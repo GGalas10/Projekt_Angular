@@ -1,27 +1,29 @@
 <div class="BaseContainer">
-    <section *ngIf="this.players.length>0;else empty">
-        <table>
-            <thead>
-                <th>Imię:</th>
-                <th>Nazwisko:</th>
-                <th>Kontrakt od</th>
-                <th>Kontrakt do</th>
-                <th>Pozycja</th>
-                <th>Kontuzja</th>
-            </thead>
-            <tbody>
-                <ng-container *ngFor="let player of this.players">
-                    <tr>
-                        <td>{{player.firstName}}</td>
-                        <td>{{player.lastName}}</td>
-                        <td>{{player.contractFrom|date:"dd-mm-yyyy"}}</td>
-                        <td>{{player.contractTo|date:"dd-mm-yyyy"}}</td>
-                        <td>{{playerPosition(player.position)}}</td>
-                        <td>{{InjuryInfo(player.hasInjury)}}</td>
-                    </tr>
-                </ng-container>
-            </tbody>
-        </table>
+    <section *ngIf="this.players">
+        <section *ngIf="this.players.length>0;else empty">
+            <table>
+                <thead>
+                    <th>Imię:</th>
+                    <th>Nazwisko:</th>
+                    <th>Kontrakt od</th>
+                    <th>Kontrakt do</th>
+                    <th>Pozycja</th>
+                    <th>Kontuzja</th>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let player of this.players">
+                        <tr>
+                            <td>{{player.firstName}}</td>
+                            <td>{{player.lastName}}</td>
+                            <td>{{player.contractFrom|date:"dd-mm-yyyy"}}</td>
+                            <td>{{player.contractTo|date:"dd-mm-yyyy"}}</td>
+                            <td>{{playerPosition(player.position)}}</td>
+                            <td>{{InjuryInfo(player.hasInjury)}}</td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </section>
     </section>
     <ng-template #empty>
         <h3>Jeszcze nie ma żadnego piłkarza</h3>

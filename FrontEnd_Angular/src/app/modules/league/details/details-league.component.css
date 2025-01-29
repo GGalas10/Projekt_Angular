@@ -1,0 +1,76 @@
+.mainSection {
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.212);
+  padding: 25px 15px;
+}
+.PrimaryDateSection {
+  display: grid;
+}
+.EditBtn {
+  width: 15%;
+  padding: 5px 15px;
+  border-radius: 15px;
+  background-color: #0000ff78;
+  border: none;
+  box-shadow: 4px 7px 4px 3px #00000057;
+  margin: 0 auto 15px auto;
+}
+.EditBtn:hover {
+  opacity: 0.8;
+}
+.EditBtn:active {
+  opacity: 0.6;
+}
+table {
+  width: 80%;
+  margin: 25px auto;
+}
+thead {
+  background-color: black;
+}
+tbody {
+  td {
+    background-color: gray;
+  }
+  tr:nth-child(-n + 3) {
+    td {
+      background-color: skyblue;
+    }
+  }
+  tr:first-child {
+    td {
+      color: black;
+      background-color: #d8df00b2;
+    }
+  }
+  td:nth-last-child(1) {
+    background-color: transparent;
+  }
+}
+.deleteBtn {
+  margin: 5px 0;
+}
+.deleteColumn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent !important;
+}
+.Inactive {
+  padding: 5px 15px;
+  margin: 10px;
+  border: none;
+  background-color: #4d76acab;
+  border-radius: 9px;
+  box-shadow: 2px 2px 10px #000000c4;
+}
+.Inactive:hover {
+  background-color: #4a94f5ab;
+}
+.activeBtn {
+  padding: 5px 15px;
+  margin: 10px;
+  border: none;
+  background-color: #112948ab;
+  border-radius: 9px;
+}

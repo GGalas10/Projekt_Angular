@@ -12,6 +12,10 @@
         </section>
     </section>
     <section class="mainSection glassEfect" style="margin-top: 25px;">
+        <button [ngClass]="ShowTable ? 'activeBtn' : 'Inactive'" (click)="ChangeView('Table')">Tabela</button>
+        <button [ngClass]="ShowMatches ? 'activeBtn' : 'Inactive'" (click)="ChangeView('Matches')">Terminarz</button>
+    </section>
+    <section class="mainSection glassEfect" [ngClass]="{'hidden' : !ShowTable}" style="margin-top: 25px;">
         <h1>Zepoły w lidze</h1>
         <section *ngIf="league.clubStatistics">
             <ng-container *ngIf="league.clubStatistics.length >0;else empty">
@@ -47,6 +51,17 @@
                 <h2>Nie ma dodanych żadnych klubów do tej ligi</h2>
             </ng-template>
         </section>
+    </section>
+    <section class="mainSection glassEfect" [ngClass]="{'hidden' : !ShowMatches}" style="margin-top: 25px;">
+        <h1>Terminarz</h1>
+        <section *ngIf="this.league.matches.length>0;else EmptyMatches">
+            <div *ngFor="let oneMatch of this.league.matches">
+                <p>{{oneMatch.id}}</p>
+            </div>
+        </section>
+        <ng-template #EmptyMatches>
+            <h3>Terminarz jeszcze nie ustalony</h3>
+        </ng-template>
     </section>
 </section>
 <ng-template #Null>

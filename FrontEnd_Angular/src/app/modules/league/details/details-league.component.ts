@@ -11,6 +11,8 @@ import { GetStatusName, LeagueDTO } from '../../../shared/Interfaces/League';
   styleUrl: './details-league.component.css',
 })
 export class DetailsLeagueComponent implements OnInit {
+  ShowTable = false;
+  ShowMatches = false;
   leagueId = '';
   league!: LeagueDTO;
   constructor(
@@ -35,5 +37,14 @@ export class DetailsLeagueComponent implements OnInit {
   }
   GetLeagueStatus(status: number) {
     return GetStatusName(status);
+  }
+  ChangeView(buttonName: string) {
+    if (buttonName == 'Table') {
+      this.ShowTable = !this.ShowTable;
+      this.ShowMatches = false;
+    } else {
+      this.ShowTable = false;
+      this.ShowMatches = !this.ShowMatches;
+    }
   }
 }

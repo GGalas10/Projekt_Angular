@@ -1,25 +1,27 @@
 <div class="BaseContainer">
-    <section *ngIf="this.coaches.length>0;else empty">
-        <table>
-            <thead>
-                <th>Imię:</th>
-                <th>Nazwisko:</th>
-                <th>Rola:</th>
-                <th>W klubie od:</th>
-                <th>W klubie do:</th>
-            </thead>
-            <tbody>
-                <ng-container *ngFor="let coach of this.coaches">
-                    <tr>
-                        <td>{{coach.firstName}}</td>
-                        <td>{{coach.lastName}}</td>
-                        <td>{{coach.whatTrains}}</td>
-                        <td>{{coach.contractFrom|date:"dd-mm-yyyy"}}</td>
-                        <td>{{coach.contractTo|date:"dd-mm-yyyy"}}</td>
-                    </tr>
-                </ng-container>
-            </tbody>
-        </table>
+    <section *ngIf="this.coaches">
+        <section *ngIf="this.coaches.length>0;else empty">
+            <table>
+                <thead>
+                    <th>Imię:</th>
+                    <th>Nazwisko:</th>
+                    <th>Rola:</th>
+                    <th>W klubie od:</th>
+                    <th>W klubie do:</th>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let coach of this.coaches">
+                        <tr>
+                            <td>{{coach.firstName}}</td>
+                            <td>{{coach.lastName}}</td>
+                            <td>{{coach.whatTrains}}</td>
+                            <td>{{coach.contractFrom|date:"dd-mm-yyyy"}}</td>
+                            <td>{{coach.contractTo|date:"dd-mm-yyyy"}}</td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </section>
     </section>
     <ng-template #empty>
         <h3>Jeszcze nie ma żadnego trenera</h3>

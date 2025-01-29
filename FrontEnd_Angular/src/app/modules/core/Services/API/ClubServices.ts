@@ -19,21 +19,18 @@ export class ClubServices {
 
   GetClubDetails(clubId: string): Observable<ClubDetails> {
     const params: HttpParams = new HttpParams().set('clubId', clubId);
-    return this.http.get<ClubDetails>(`${this.apiUrl}/Club/GetClubById`, {
+    return this.http.get<ClubDetails>(`${this.apiUrl}/GetClubById`, {
       headers: this.headers,
       params,
     });
   }
   GetAllClubsForHome(): Observable<HomeClubDTO[]> {
-    return this.http.get<HomeClubDTO[]>(
-      `${this.apiUrl}/Club/GetAllClubsForHome`,
-      {
-        headers: this.headers,
-      },
-    );
+    return this.http.get<HomeClubDTO[]>(`${this.apiUrl}/GetAllClubsForHome`, {
+      headers: this.headers,
+    });
   }
   GetAllClub(): Observable<HomeClubDTO[]> {
-    return this.http.get<HomeClubDTO[]>(`${this.apiUrl}/Club/GetAllClubs`, {
+    return this.http.get<HomeClubDTO[]>(`${this.apiUrl}/GetAllClubs`, {
       headers: this.headers,
     });
   }
