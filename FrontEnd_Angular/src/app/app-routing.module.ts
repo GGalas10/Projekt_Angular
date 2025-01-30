@@ -32,6 +32,11 @@ const routes: Routes = [
     loadChildren: () =>
       import('../app/modules/league/league.module').then((m) => m.LeagueModule),
   },
+  {
+    path: 'Matches',
+    loadChildren: () =>
+      import('../app/modules/match/match.module').then((m) => m.MatchModule),
+  },
   { path: '**', component: NotFoundComponent, title: 'Error 404' },
 ];
 

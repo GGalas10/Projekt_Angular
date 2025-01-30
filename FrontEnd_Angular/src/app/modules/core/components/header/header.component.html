@@ -9,10 +9,13 @@
   </li>
   <li class="d-flex centerBar">
     <ul>
+      <a href="League">Wszystkie ligi</a>
+    </ul>
+    <ul>
       <a href="Club">Wszystkie zespoły</a>
     </ul>
     <ul>
-      <a routerLink="login">Najbliższe mecze</a>
+      <a routerLink="Matches">Mecze w najbliższym tygodniu</a>
     </ul>
   </li>
   <li class="d-flex rightBar" *ngIf="!isLogin; else LogOut">
