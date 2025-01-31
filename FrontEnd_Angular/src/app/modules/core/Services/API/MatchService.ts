@@ -2,7 +2,10 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../../../../environments/environment.development';
-import { MatchByIdDTO } from '../../../../shared/Interfaces/Match';
+import {
+  MatchByIdDTO,
+  MatchDTOForWeekList,
+} from '../../../../shared/Interfaces/Match';
 
 @Injectable({
   providedIn: 'root',
@@ -24,5 +27,13 @@ export class MatchService {
       headers: this.headers,
       params: params,
     });
+  }
+  GetNextWeekMatches(): Observable<MatchDTOForWeekList[]> {
+    return this.http.get<MatchDTOForWeekList[]>(
+      `${this.apiUrl}/MatchDTOForWeekList`,
+      {
+        headers: this.headers,
+      },
+    );
   }
 }

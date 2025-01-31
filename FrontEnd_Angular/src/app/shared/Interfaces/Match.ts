@@ -17,6 +17,14 @@ export interface MatchByIdDTO {
   awayClubGoals: number;
   status: number;
 }
+export interface MatchDTOForWeekList {
+  id: string;
+  HomeClubName: string;
+  AwayClubName: string;
+  HomeClubId: string;
+  AwayClubId: string;
+  StartDate: Date;
+}
 export function GetMatchStatus(status: number) {
   switch (status) {
     case 0:

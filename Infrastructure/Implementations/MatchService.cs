@@ -48,6 +48,11 @@ namespace Infrastructure.Implementations
             var match = await _matchRepository.GetMatchById(matchId);
             return MatchDTO.GetFromModel(match);
         }
+        public async Task<List<MatchDTOForWeekList>> GetNextWeekMatches()
+        {
+            var result = await _matchRepository.GetNextWeekMatches();
+            return result.Select(x=>MatchDTOForWeekList.GetDTOFromModel(x)).ToList();
+        }
         private List<Weekend> GetAllWeekendsWithMatchesTime(DateTime leagueStart,int clubsQuantity)
         {
             var resultList = new List<Weekend>();

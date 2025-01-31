@@ -6,5 +6,6 @@ namespace Infrastructure.Interfaces
     {
         Task GenerateAllMatchesForLeague(Guid leagueId);
         Task<MatchDTO> GetMatchById(Guid matchId);
+        Task<List<MatchDTOForWeekList>> GetNextWeekMatches();
     }
 }

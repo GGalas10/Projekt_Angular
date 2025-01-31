@@ -27,7 +27,8 @@ namespace ApiForFirstAngular.Controllers
         [HttpGet]
         public async Task<IActionResult> GetNextWeekMatches()
         {
-            return Ok();
+            var result = await _matchService.GetNextWeekMatches();
+            return Ok(result);
         }
     }
 }

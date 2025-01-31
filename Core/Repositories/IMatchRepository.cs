@@ -9,5 +9,6 @@ namespace Core.Repositories
         Task AddMatchToLeague(Match match);
         Task<Match> GetMatchById(Guid matchId);
         Task AddListOfMatches(List<Match> matches);
+        Task<List<Match>> GetNextWeekMatches()
     }
 }

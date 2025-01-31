@@ -38,5 +38,13 @@ namespace DataAccess.Repositories
         }
         public async Task<Match> GetMatchById(Guid matchId)
             => await _dbContext.Matches.AsNoTracking().AsSplitQuery().Include(x=>x.HomeClubId).Include(x=>x.AwayClub).FirstOrDefaultAsync(x => x.Id == matchId);
+        public async Task<List<Match>> GetNextWeekMatches()
+        {          
+            var nextWeekStartAt = new DateTime(DateOnly.FromDateTime(DateTime.Now.AddDays(6 - (int)DateTime.Now.DayOfWeek)),new TimeOnly(0,0,0));
+            var nextWeekEndAt = new DateTime(DateOnly.FromDateTime(DateTime.Now.AddDays(7 - (int)DateTime.Now.DayOfWeek)), new TimeOnly(23, 59, 59));
+            var result = await _dbContext.Matches.AsNoTracking().Where(x=>x.StartAt >= nextWeekStartAt && x.StartAt <= nextWeekEndAt).ToListAsync();
+            return result;
+        }
+            
     }
 }
