@@ -18,6 +18,7 @@ namespace DataAccess
             services.AddScoped<IStaffRepository, StaffRepository>();
             services.AddScoped<ILeagueRepository, LeagueRepository>();
             services.AddScoped<IUserLeagueAccessRepository, UserLeagueAccessRepository>();
+            services.AddScoped<IMatchRepository, MatchRepository>();
             return services;
         }
     }

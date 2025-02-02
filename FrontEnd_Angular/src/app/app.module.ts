@@ -4,10 +4,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { CoreModule } from './modules/core/core.module';
-import { MatchComponent } from './modules/match/match.component';
 
 @NgModule({
-  declarations: [AppComponent, MatchComponent],
+  declarations: [AppComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, CoreModule],
   bootstrap: [AppComponent],
 })

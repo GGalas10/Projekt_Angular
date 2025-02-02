@@ -1,1 +1,9 @@
-<p>index works!</p>
+<ng-container *ngIf="matches;else NullTemplate">
+    <h1 style="text-align: center;margin-top: 15px;">Najbliższe mecze</h1>
+    <section>
+
+    </section>
+</ng-container>
+<ng-template #NullTemplate>
+    <div class="loader"></div>
+</ng-template>

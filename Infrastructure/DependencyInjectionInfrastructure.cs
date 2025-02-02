@@ -20,6 +20,7 @@ namespace Infrastructure
             services.AddScoped<ICoachService, CoachService>();
             services.AddScoped<IStaffService, StaffService>();
             services.AddScoped<ILeagueService, LeagueService>();
+            services.AddScoped<IMatchService, MatchService>();
             return services;
         }
     }

@@ -30,7 +30,7 @@ export class MatchService {
   }
   GetNextWeekMatches(): Observable<MatchDTOForWeekList[]> {
     return this.http.get<MatchDTOForWeekList[]>(
-      `${this.apiUrl}/MatchDTOForWeekList`,
+      `${this.apiUrl}/GetNextWeekMatches`,
       {
         headers: this.headers,
       },
