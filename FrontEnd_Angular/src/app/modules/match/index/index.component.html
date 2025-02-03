@@ -1,8 +1,15 @@
 <ng-container *ngIf="matches;else NullTemplate">
     <h1 style="text-align: center;margin-top: 15px;">Najbliższe mecze</h1>
-    <section>
-
+    <section *ngIf="matches.length>0;else emptyList">
+        <ng-container *ngFor="let oneMatch of matches">
+            <p>{{oneMatch.HomeClubName}} vs {{oneMatch.AwayClubName}}</p>
+            <p>{{oneMatch.StartDate}}</p>
+            <a href="/Matches/{{oneMatch.id}}">Szczegóły</a>
+        </ng-container>
     </section>
+    <ng-template #emptyList>
+        <h2 style="text-align: center;">W najbliższy weekend nie ma żadnych meczy.</h2>
+    </ng-template>
 </ng-container>
 <ng-template #NullTemplate>
     <div class="loader"></div>
