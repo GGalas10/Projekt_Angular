@@ -1,1 +1,6 @@
-<p>details works!</p>
+<h1 style="text-align: center;">Szczegóły meczu</h1>
+<section *ngIf="match;else null">
+</section>
+<ng-template #null>
+    <div class="loader" style="top:10%"></div>
+</ng-template>
