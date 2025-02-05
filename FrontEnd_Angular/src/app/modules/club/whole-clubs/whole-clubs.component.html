@@ -2,10 +2,10 @@
     <div *ngIf="homeClubs.length > 0;else empty" class="ClubPresentation">
         <ng-container *ngFor="let oneClub of homeClubs">
             <div class="OneClub">
-                <h4>{{oneClub.clubName}}</h4>
+                <h4 style="text-align: center;">{{oneClub.clubName}}</h4>
                 <img src="/Logo.png" width="150px" style="margin: 15px auto" alt="Fc_Logo" />
                 <p>Założony w {{oneClub.rising | date:"yyyy"}} roku</p>
-                <p class="DetailsBtn" routerLink="Club/Details/{{oneClub.clubId}}">Szczegóły</p>
+                <p class="DetailsBtn" routerLink="/Club/Details/{{oneClub.clubId}}">Szczegóły</p>
             </div>
         </ng-container>
     </div>

@@ -1,8 +1,11 @@
-<h1 style="text-align: center;">Wszystkie ligi na stronie</h1>
+<h1 style="text-align: center;margin-top:25px">Wszystkie ligi na stronie</h1>
 <section *ngIf="leagues;else nullSection">
     <section *ngIf="leagues.length>0;else emptyList">
-        <ng-container *ngFor="let oneLeague of leagues">
-            <p>{{oneLeague.name}}</p>
+        <ng-container *ngFor="let oneLeague of leagues" class="leagueList">
+            <section class="oneLeague">
+                <p style="font-size: 1.5rem;font-weight: bold;">{{oneLeague.name}}</p>
+                <a style="font-size: 1.5rem" href="/League/Details/{{oneLeague.id}}">Szczegóły</a>
+            </section>
         </ng-container>
     </section>
 </section>

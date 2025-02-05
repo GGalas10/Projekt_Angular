@@ -39,7 +39,7 @@ export class ClubServices {
     page: number,
   ): Observable<ClubListDTO> {
     return this.http.get<ClubListDTO>(
-      `${this.apiUrl}/GetAllClubsWithPagination?howMuchClubs${howMuchClubs}&page=${page}`,
+      `${this.apiUrl}/GetAllClubsWithPagination?howMuchClubs=${howMuchClubs}&page=${page}`,
       {
         headers: this.headers,
       },

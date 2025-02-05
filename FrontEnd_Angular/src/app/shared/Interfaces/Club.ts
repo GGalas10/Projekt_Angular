@@ -23,7 +23,7 @@ export interface HomeClubDTO {
 }
 export interface ClubListDTO {
   IsAllLoading: boolean;
-  ClubList: HomeClubDTO[];
+  clubList: HomeClubDTO[];
 }
 export interface ClubForSelectList {
   clubId: string;

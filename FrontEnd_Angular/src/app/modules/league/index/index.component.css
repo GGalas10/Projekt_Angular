@@ -1,0 +1,22 @@
+.oneLeague {
+  width: 30%;
+  background: #ffffff24;
+  border-radius: 15px;
+  padding: 15px;
+  display: flex;
+  gap: 25px;
+  margin: 25px auto auto;
+}
+a {
+  text-decoration: none;
+  color: whitesmoke;
+}
+a:hover {
+  opacity: 0.8;
+}
+.leagueList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

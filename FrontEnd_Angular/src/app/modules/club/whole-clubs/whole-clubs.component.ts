@@ -16,8 +16,9 @@ export class WholeClubsComponent implements OnInit {
   ngOnInit(): void {
     this.clubService.GetAllClubsWithPagination(40, this.page).subscribe({
       next: (data) => {
-        this.homeClubs = data.ClubList;
+        this.homeClubs = data.clubList;
         this.isAll = data.IsAllLoading;
+        console.log(data);
       },
     });
   }
