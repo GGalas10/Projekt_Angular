@@ -1,4 +1,4 @@
-import { ClubListDTO } from './Club';
+import { ClubListDTO, HomeClubDTO } from './Club';
 
 export interface MatchDTO {
   id: string;
@@ -11,11 +11,12 @@ export interface MatchDTO {
 }
 export interface MatchByIdDTO {
   id: string;
-  HomeClub: ClubListDTO;
-  AwayClub: ClubListDTO;
+  HomeClub: HomeClubDTO;
+  AwayClub: HomeClubDTO;
   homeClubGoals: number;
   awayClubGoals: number;
   status: number;
+  StartAt: Date;
 }
 export interface MatchDTOForWeekList {
   id: string;

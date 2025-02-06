@@ -1,5 +1,22 @@
 <h1 style="text-align: center;">Szczegóły meczu</h1>
 <section *ngIf="match;else null">
+    <p>Mecz między {{match.HomeClub.clubName}}, a {{match.AwayClub.clubName}} </p>
+    <div [ngSwitch]="match.status">
+        <div *ngSwitchCase="0">
+            <p>Mecz jeszcze się nie rozpoczął</p>
+            <p>Mecz rozpocznie się {{match.StartAt}}</p>
+        </div>
+        <div *ngSwitchCase="1">
+            <p>Mecz jest w trakcie rozgrywania</p>
+        </div>
+        <div *ngSwitchCase="2">
+            <p>Mecz się zakończył</p>
+        </div>
+        <div *ngSwitchDefault>output2</div>
+    </div>
+    <section *ngIf="match.status != 0">
+        Wynik {{match.homeClubGoals}}:{{match.awayClubGoals}}
+    </section>
 </section>
 <ng-template #null>
     <div class="loader" style="top:10%"></div>

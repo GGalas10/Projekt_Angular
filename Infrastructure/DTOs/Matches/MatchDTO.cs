@@ -11,6 +11,7 @@ namespace Infrastructure.DTOs.Matches
         public MatchStatusEnum Status { get; set; }
         public ClubHomeDTO HomeClub { get; set; }
         public ClubHomeDTO AwayClub { get; set; }
+        public DateTime StartAt { get; set; }
         public static MatchDTO GetFromModel(Match model)
         {
             return new MatchDTO()
@@ -20,6 +21,7 @@ namespace Infrastructure.DTOs.Matches
                 AwayClubGoals = model.AwayClubGoals,
                 AwayClub = ClubHomeDTO.GetDTOFromModel(model.AwayClub),
                 Status = model.Status,
+                StartAt = model.StartAt,
             };
         }
     }
